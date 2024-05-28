@@ -22,17 +22,15 @@ User:
 
     Example: Documents/GitHub/SmidigProsjekt/Frontend/Admin
 
-2. Make sure to have 'Node.js' and 'npm', and run the following commands:
+2. Make sure to have 'Node.js' and 'npm' installed, and run the following commands:
 
     INSTALLING DEPENDENCIES
 
     1. *in 'Frontend\Admin' Folder*
     - \npm i
-    - \npm i bootstrap axios react-router-dom
 
     2. *in 'Frontend\user' Folder*
     \npm i
-    \npm i bootstrap axios
 
     Double Check:
     To double check that the dependencies have been installed, check the 'package.json' file,
