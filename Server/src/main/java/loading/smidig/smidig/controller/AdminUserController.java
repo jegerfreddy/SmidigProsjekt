@@ -43,6 +43,7 @@ public class AdminUserController {
         adminUserService.deleteAdminUser(adminUser);
     }
 
+    //update adminUser
     @PutMapping
     public AdminUser updateAdminUser(@RequestBody AdminUser adminUser) {
         return adminUserService.updateAdminUser(adminUser);

@@ -17,22 +17,27 @@ public class AdminUserService {
         this.adminUserRepository = adminUserRepository;
     }
 
+    //get all admin users
     public List<AdminUser> getAdminUsers() {
         return adminUserRepository.findAll();
     }
 
+    //get admin users by id
     public AdminUser getAdminUserById(Long id) {
         return adminUserRepository.findById(id).orElse(null);
     }
 
+    //create admin user
     public AdminUser createAdminUser(AdminUser adminUser){
         return adminUserRepository.save(adminUser);
     }
 
+    //delete admin user
     public void deleteAdminUser(AdminUser adminUser) {
         adminUserRepository.delete(adminUser);
     }
 
+    //update admin user
     public AdminUser updateAdminUser(AdminUser adminUser) {
         return adminUserRepository.save(adminUser);
     }
