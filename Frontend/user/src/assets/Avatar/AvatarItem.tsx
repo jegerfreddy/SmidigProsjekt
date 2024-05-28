@@ -1,12 +1,13 @@
 import React from 'react';
-import { AvatarItemProps } from '../../Interfaces/IAvatar';
 
+interface AvatarItemProps {
+    imageUrl: string;
+    id: number;
+}
 
 const AvatarItem: React.FC<AvatarItemProps> = ({ imageUrl }) => {
     return (
-        <div className="avatarItem">
-            <img src={imageUrl} alt="Avatar" />
-        </div>
+        <img src={imageUrl} alt="Avatar" className='img-fluid' />
     );
 };
 

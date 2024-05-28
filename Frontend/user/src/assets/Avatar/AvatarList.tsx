@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AvatarItem from './AvatarItem';
 import { AvatarListProps } from '../../Interfaces/IAvatar';
 
@@ -12,21 +12,31 @@ const tempAvatarData = [
     { id: 7, imageUrl: "/images/Avatar-7.png" },
     { id: 8, imageUrl: "/images/Avatar-8.png" },
     { id: 9, imageUrl: "/images/Avatar-9.png" },
-    { id: 10, imageUrl: "/images/Avatar-10.png" },
-    { id: 11, imageUrl: "/images/Avatar-11.png" },
-    { id: 12, imageUrl: "/images/Avatar-12.png" },
-    { id: 13, imageUrl: "/images/Avatar-13.png" },
-    { id: 14, imageUrl: "/images/Avatar-14.png" },
-    { id: 15, imageUrl: "/images/Avatar-15.png" },
 ];
 
 const AvatarList: React.FC<AvatarListProps> = ({ avatars = tempAvatarData }) => {
+    const [pickedAvatar, setPickedAvatar] = useState(tempAvatarData[0].imageUrl);
+
+    const handleClick = (avatarId: number) => {
+        const pickedAvatarUrl = `/images/Avatar-${avatarId}.png`;
+        setPickedAvatar(pickedAvatarUrl);
+    };
+
     return (
-        <div className='avatarContainer'>
-            {avatars.map((avatar) => (
-                <AvatarItem key={avatar.id} imageUrl={avatar.imageUrl} id={avatar.id} />
-               
-            ))}
+        <div className='container'>
+            <div className='d-flex justify-content-center align-items-center flex-column my-3 p-5 m-5'>
+                <img src={pickedAvatar} alt="Selected Avatar" className='avatarPicked' />
+                <h2 className='mt-3'>Navn</h2>
+            </div>
+            <div className='row row-cols-3 g-4'>
+                {avatars.map((avatar) => (
+                    <div key={avatar.id} className='col d-flex justify-content-center'>
+                        <div onClick={() => handleClick(avatar.id)}>
+                            <AvatarItem imageUrl={avatar.imageUrl} id={avatar.id} />
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

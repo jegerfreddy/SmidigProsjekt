@@ -3,85 +3,38 @@ body {
   background-color: #F0D063;
   margin: 0;
   padding: 0;
-  max-height: 100vh;
 }
 
-.loginInputMain {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+.bgColor {
+  background-color: #F0D063;
 }
 
-.loginInput {
-  font-size: 5.5vh;
+.pinInput {
+  font-size: 3rem;
   text-align: center;
-  width: 60vw;
+  width: 80vw;
   background: none;
   border: none;
-  margin-bottom: 20px;
 }
 
-.loginButtonContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 200px; /* Push the button container to the bottom */
+.pinButton {
+  background: #BF6A06;
+  border-color: #383838;
+  color: white;
+  min-width: 185px;
+  min-height: 50px;
 }
-
-.loginButton {
-  width: 50vw;
-  height: 5vh;
-  margin-bottom: 20px;
-}
-
 
 /* Avatar css */
-
-.avatarTitleSection {
-  margin-top: 50px;
-  margin-bottom: 100px;
-  width: 100vw;
-}
-
-.avatarTitle {
-  font-size: 5vh;
-  text-align: center;
-}
-
-.avatarMain {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-
-}
-
-.avatarContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 40px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 100px;
-
-}
-
-.avatarItem {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-}
 
 .avatarPicked {
   border: 2px solid #000000;
   border-radius: 50%;
-  margin-bottom: 100px;
   width: 110px;
   height: 110px;
+}
+
+.avatarImg {
+  height: 64px;
+  width: 64px;
 }

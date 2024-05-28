@@ -5,6 +5,7 @@ import UserLoginPage from '../Pages/UserLoginPage';
 import ChooseAvatarPage from '../Pages/ChooseAvatarPage';
 import VotingPage from '../Pages/VotingPage';
 import ResultPage from '../Pages/ResultPage';
+import GameLobby from '../Pages/GameLobby';
 
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -19,6 +20,7 @@ const Routing: React.FC = () => {
                 <Route path="/" element={<UserLoginPage />} />
                 <Route path="/login" element={<StartPage />} />
                 <Route path="/avatar" element={<ChooseAvatarPage />} />
+                <Route path="/gameLobby" element={<GameLobby />} />
                 <Route path="/voting" element={<VotingPage />} />
                 <Route path="/result" element={<ResultPage />} />
             </Routes>
