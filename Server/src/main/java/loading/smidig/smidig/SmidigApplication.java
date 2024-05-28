@@ -1,7 +1,9 @@
 package loading.smidig.smidig;
 
+import loading.smidig.smidig.model.AdminUser;
 import loading.smidig.smidig.model.User;
 import loading.smidig.smidig.repository.ActRepository;
+import loading.smidig.smidig.repository.AdminUserRepository;
 import loading.smidig.smidig.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,17 +20,11 @@ public class SmidigApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(
 			UserRepository userRepository,
-			ActRepository actRepository
+			ActRepository actRepository,
+			AdminUserRepository adminUserRepository
 	){
 		return args ->{
-			/*
-			User user = new User();
-			user.setUsername("Per178");
-			user.setAvatarNumber(2);
-
-			userRepository.save(user);
 			
-			 */
 		};
 	}
 
