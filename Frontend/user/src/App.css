@@ -1,42 +1,87 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  font-family: 'Bungee';
+  background-color: #F0D063;
+  margin: 0;
+  padding: 0;
+  max-height: 100vh;
+}
+
+.loginInputMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.loginInput {
+  font-size: 5.5vh;
+  text-align: center;
+  width: 60vw;
+  background: none;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.loginButtonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 200px; /* Push the button container to the bottom */
+}
+
+.loginButton {
+  width: 50vw;
+  height: 5vh;
+  margin-bottom: 20px;
+}
+
+
+/* Avatar css */
+
+.avatarTitleSection {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  width: 100vw;
+}
+
+.avatarTitle {
+  font-size: 5vh;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.avatarMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.avatarContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.avatarItem {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.avatarPicked {
+  border: 2px solid #000000;
+  border-radius: 50%;
+  margin-bottom: 100px;
+  width: 110px;
+  height: 110px;
 }
