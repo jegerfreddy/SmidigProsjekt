@@ -23,4 +23,9 @@ public class User {
     @Column(name = "avatar")
     private int avatarNumber;
 
+    //Constructor
+    public User(String username, int avatarNumber) {
+        this.username = username;
+        this.avatarNumber = avatarNumber;
+    }
 }

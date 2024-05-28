@@ -21,13 +21,13 @@ public class SmidigApplication {
 			ActRepository actRepository
 	){
 		return args ->{
-			/*
+
 			User user = new User();
 			user.setUsername("Per178");
 			user.setAvatarNumber(2);
 
 			userRepository.save(user);
-			*/
+
 		};
 	}
 
