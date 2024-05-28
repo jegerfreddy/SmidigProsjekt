@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:loading
+    url: jdbc:h2:file:./data/loading;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
     username: neutron
     password:
     driverClassName: org.h2.Driver
@@ -12,6 +12,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       dialect: org.hibernate.dialect.MySQL5Dialect
