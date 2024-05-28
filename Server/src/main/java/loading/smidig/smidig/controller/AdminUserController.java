@@ -26,25 +26,25 @@ public class AdminUserController {
     }
 
     //get admins users by id
-    @GetMapping("{id}")
+    @GetMapping("/id/{id}")
     public AdminUser getPartById(@PathVariable Long id) {
         return adminUserService.getAdminUserById(id);
     }
 
     //create adminUser
-    @PostMapping
+    @PostMapping("/new")
     public AdminUser createAdminUser(@RequestBody AdminUser adminUser){
         return adminUserService.createAdminUser(adminUser);
     }
 
     //delete admin user
-    @DeleteMapping
-    public void deleteAdminUser(@RequestBody AdminUser adminUser) {
-        adminUserService.deleteAdminUser(adminUser);
+    @DeleteMapping("/delete/{id}")
+    public void deleteAdminUser(@PathVariable Long id) {
+        adminUserService.deleteAdminUserById(id);
     }
 
     //update adminUser
-    @PutMapping
+    @PutMapping("update")
     public AdminUser updateAdminUser(@RequestBody AdminUser adminUser) {
         return adminUserService.updateAdminUser(adminUser);
     }

@@ -33,8 +33,8 @@ public class AdminUserService {
     }
 
     //delete admin user
-    public void deleteAdminUser(AdminUser adminUser) {
-        adminUserRepository.delete(adminUser);
+    public void deleteAdminUserById(Long id) {
+        adminUserRepository.deleteById(id);
     }
 
     //update admin user
