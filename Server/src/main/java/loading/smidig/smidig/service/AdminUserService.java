@@ -42,4 +42,13 @@ public class AdminUserService {
         return adminUserRepository.save(adminUser);
     }
 
+    public boolean verifyAdminUser(AdminUser adminUser) {
+        List<AdminUser> adminUsers = adminUserRepository.findAll();
+        for (AdminUser user : adminUsers) {
+            if (user.getUsername().equals(adminUser.getUsername()) && user.getPassword().equals(adminUser.getPassword())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

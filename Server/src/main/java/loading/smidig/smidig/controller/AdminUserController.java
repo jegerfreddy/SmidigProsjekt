@@ -48,4 +48,10 @@ public class AdminUserController {
     public AdminUser updateAdminUser(@RequestBody AdminUser adminUser) {
         return adminUserService.updateAdminUser(adminUser);
     }
+
+    //Verify if username and password is correct
+    @PostMapping("/loginAdmin")
+    public boolean verifyAdminUser(@RequestBody AdminUser adminUser) {
+        return adminUserService.verifyAdminUser(adminUser);
+    }
 }
