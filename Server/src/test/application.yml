@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:loading
+    username: neutron
+    password:
+    driverClassName: org.h2.Driver
+    generate-unique-name: false
+    name: loading
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
