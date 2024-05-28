@@ -4,5 +4,5 @@ export interface AvatarItemProps {
 }
 
 export interface AvatarListProps {
-    avatars: AvatarItemProps[];
+    avatars?: AvatarItemProps[];
 }

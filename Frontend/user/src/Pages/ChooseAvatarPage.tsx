@@ -3,13 +3,17 @@ import AvatarList from '../assets/Avatar/AvatarList';
 
 const ChooseAvatarPage: React.FC = () => {
     return (
-        <main>
-            <section>
-                <h1>Choose Avatar Page</h1>
+        <main className='avatarMain'>
+            <section className='avatarTitleSection'>
+                <h1 className='avatarTitle'>Choose Avatar Page</h1>
             </section>
 
             <section>
-                <AvatarList avatars={[]} />
+                <img src="/images/Avatar-1.png" alt="" className='avatarPicked'/>
+            </section>
+
+            <section>
+                <AvatarList />
             </section>
         </main>
     );
