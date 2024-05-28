@@ -24,7 +24,7 @@ public class SmidigApplication {
 			AdminUserRepository adminUserRepository
 	){
 		return args ->{
-			
+
 		};
 	}
 
