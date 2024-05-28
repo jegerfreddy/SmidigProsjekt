@@ -16,11 +16,24 @@ body {
   background: none;
   border: none;
 }
+.userNameInput {
+  font-size: 3rem;
+  text-align: center;
+  width: 80vw;
+  color: #FFFFFF;
+  background-color: #009D2C;
+  border: 1px solid #383838;
+}
+
+.userNameInput::placeholder {
+  color: #FFFFFF;
+}
+
 
 .pinButton {
   background: #BF6A06;
   border-color: #383838;
-  color: white;
+  color: #FFFFFF;
   min-width: 185px;
   min-height: 50px;
 }

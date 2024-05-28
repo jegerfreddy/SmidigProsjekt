@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { NextBtn } from '../assets/Button/NextBtn';
 
 const UserLoginPage: React.FC = () => {
     return (
@@ -12,9 +13,7 @@ const UserLoginPage: React.FC = () => {
                 <input type="text" placeholder='TAST PIN' className='pinInput' />
             </div>
 
-            <div className='position-absolute bottom-0 start-50 translate-middle m-3'>
-                <button className='pinButton' onClick={() => window.location.href = '/avatar'}>OPPGI PIN</button>
-            </div>
+            <NextBtn path='username' />
         </div>
     );
 };

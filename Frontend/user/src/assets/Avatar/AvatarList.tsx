@@ -14,7 +14,7 @@ const tempAvatarData = [
     { id: 9, imageUrl: "/images/Avatar-9.png" },
 ];
 
-const AvatarList: React.FC<AvatarListProps> = ({ avatars = tempAvatarData }) => {
+const AvatarList: React.FC<AvatarListProps> = ({  avatars = tempAvatarData }) => {
     const [pickedAvatar, setPickedAvatar] = useState(tempAvatarData[0].imageUrl);
 
     const handleClick = (avatarId: number) => {
@@ -26,7 +26,7 @@ const AvatarList: React.FC<AvatarListProps> = ({ avatars = tempAvatarData }) => 
         <div className='container'>
             <div className='d-flex justify-content-center align-items-center flex-column my-3 p-5 m-5'>
                 <img src={pickedAvatar} alt="Selected Avatar" className='avatarPicked' />
-                <h2 className='mt-3'>Navn</h2>
+                <h2 className='mt-3'>username</h2>
             </div>
             <div className='row row-cols-3 g-4'>
                 {avatars.map((avatar) => (

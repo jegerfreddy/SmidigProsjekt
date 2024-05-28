@@ -1,11 +1,13 @@
 import React from 'react';
+import { NextBtn } from '../assets/Button/NextBtn';
 
 const VotingPage: React.FC = () => {
     return (
-        <div>
+        <main className='min-vh-100'>
             <h1>Voting Page</h1>
             {/* Add your voting logic and UI components here */}
-        </div>
+            <NextBtn path='result' />
+        </main>
     );
 };
 
