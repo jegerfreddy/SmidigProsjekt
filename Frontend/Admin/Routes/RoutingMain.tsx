@@ -10,7 +10,7 @@ const RoutingMain = () => {
             <BrowserRouter>
                 <AdminProvider>
                     
-                    <nav className="d-flex align-items-center justify-content-center w-100 bg-warning pt-4 pb-4 pl-3 pr-3">
+                    <nav className="nav-bar">
 
                         <h1 className="display-4"><u>the LOADING project</u></h1>
 
@@ -25,7 +25,7 @@ const RoutingMain = () => {
                         </div>
                     </nav>
 
-                    <main>
+                    <main className="main-container">
 
                         <Routes>
                             <Route path="/" element={<ActOverviewPage/>} />

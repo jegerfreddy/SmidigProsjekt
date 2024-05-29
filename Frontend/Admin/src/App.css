@@ -4,6 +4,32 @@
   height: 100%;
 }
 
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 3rem;
+  padding-left: 2rem;
+  background-color: #FFDB5C;
+  
+}
+
+.main-container {
+  background-image: url("/images/loginpage-background.png");
+  overflow-y: scroll;
+}
+
+.page-header {
+  background: linear-gradient(rgba(202, 244, 255, 1), rgba(202, 244, 255,.5));
+  
+}
+
+.actItem-hr {
+  background-color: white;
+  width: 95%;
+}
+
 .link-container {
   margin-left: auto;
 }
