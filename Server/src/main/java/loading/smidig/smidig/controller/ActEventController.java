@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/actEvent")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ActEventController {
 
     private final ActEventService actEventService;
