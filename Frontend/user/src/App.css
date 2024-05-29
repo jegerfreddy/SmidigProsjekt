@@ -51,3 +51,7 @@ body {
   height: 64px;
   width: 64px;
 }
+
+.rotate-20 {
+  transform: rotate(-20deg);
+}
