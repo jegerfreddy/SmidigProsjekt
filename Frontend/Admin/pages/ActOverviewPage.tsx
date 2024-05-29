@@ -4,11 +4,11 @@ const ActOverviewPage = () => {
 
     return (
         <>
-            <h1 className="display-3" >Acts</h1>
+            <h1 className="display-3 m-4" >Acts</h1>
 
             <hr />
 
-            <ActList/>
+           <ActList></ActList>
         </>
     );
 }
