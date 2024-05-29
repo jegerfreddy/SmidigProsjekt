@@ -51,12 +51,13 @@ public class ActEventService {
     public List<ActEvent> getActEventsByActID(Long actID) {
         return actEventRepository.findAll()
                 .stream()
-                .filter(actEvent -> actEvent.getAct().getActID().equals(actID))
+                .filter(actEvent -> actEvent.getAct() != null && actEvent.getAct().getActID().equals(actID))
                 .collect(Collectors.toList());
     }
 
     public ActEvent linkActEventToAct(Long actID, Long actEventID) {
         ActEvent actEvent = actEventRepository.findById(actEventID).orElse(null);
+
         if (actEvent != null) {
             Act act = actRepository.findById(actID).orElse(null);
             actEvent.setAct(act);
