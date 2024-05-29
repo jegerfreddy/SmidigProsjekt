@@ -5,7 +5,11 @@ const VotingPage: React.FC = () => {
     return (
         <main className='min-vh-100'>
             <h1>Voting Page</h1>
-            {/* Add your voting logic and UI components here */}
+
+            <div>
+                
+            </div>
+        
             <NextBtn path='result' />
         </main>
     );
