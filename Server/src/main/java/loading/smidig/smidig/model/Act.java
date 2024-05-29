@@ -16,4 +16,7 @@ public class Act {
     @SequenceGenerator(name = "act_seq_gen", sequenceName = "act_seq", allocationSize = 1)
     @Column(name = "act_id")
     private Long actID = 0L;
+
+    @Column(name = "act_name")
+    private String actName;
 }
