@@ -1,3 +1,6 @@
+import {IActItem} from "./IActItem";
+import {IEventItem} from "./IEventItem";
+
 export interface IAdminContext {
     acts: IActItem[];
     events: IEventItem[];
