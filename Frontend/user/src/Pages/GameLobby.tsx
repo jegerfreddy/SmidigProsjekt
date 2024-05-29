@@ -5,7 +5,7 @@ import { NextBtn } from '../assets/Button/NextBtn';
 const GameLobby: React.FC = () => {
     return (
         <div>
-            <h1>waiting</h1>
+            <h1 className=''>waiting</h1>
             <NextBtn path='voting' />
         </div>
     );
