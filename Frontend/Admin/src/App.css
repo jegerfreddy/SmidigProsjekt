@@ -9,10 +9,13 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 3rem;
-  padding-left: 2rem;
+  padding: 1.5rem;
   background-color: #FFDB5C;
-  
+}
+
+.logo {
+  border: solid 2px black;
+  border-radius: 1rem;
 }
 
 .main-container {
@@ -25,7 +28,11 @@
   
 }
 
-.actItem-hr {
+.act-item {
+  background-color: rgba(255, 255, 255, .65);
+}
+
+.act-item-hr {
   background-color: white;
   width: 95%;
 }

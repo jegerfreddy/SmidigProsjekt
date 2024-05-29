@@ -12,7 +12,9 @@ const RoutingMain = () => {
                     
                     <nav className="nav-bar">
 
-                        <h1 className="display-4"><u>the LOADING project</u></h1>
+                        <div className="logo p-4">
+                            <h1 className="display-4"><u>the LOADING project</u></h1>
+                        </div>
 
                         <div className="link-container">
                             <Link to={"/"}>

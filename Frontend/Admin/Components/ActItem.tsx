@@ -6,7 +6,7 @@ const ActItem : FC<IActItem> = ({actID, actName}) => {
     return (
         <>
             <div className="row p-4 d-flex align-items-center justify-content-center">
-                <div className="bg-primary rounded p-3 m-4 col-5">
+                <div className="act-item rounded p-3 m-4 col-5">
                     <h1 className="pl-3 pr-5">{actName}</h1>
 
                     <div className="m-3">
@@ -14,8 +14,8 @@ const ActItem : FC<IActItem> = ({actID, actName}) => {
                         <p>ID: {actID}</p>
                     </div>
 
-                    <button className="m-3 btn btn-warning">Start Act</button>
-                    <button className="m-3 btn btn-dark">Edit Act</button>
+                    <button className="m-3 btn btn-primary">Start Act</button>
+                    <button className="m-3 btn btn-primary">Edit Act</button>
                 </div>
                 <div className="col-6 d-flex align-items-center justify-content-center">
                     <h1 className="display-5">
@@ -25,7 +25,7 @@ const ActItem : FC<IActItem> = ({actID, actName}) => {
 
             </div>
 
-           <hr className="actItem-hr" />
+           <hr className="act-item-hr" />
         </>
     );
 };
