@@ -5,6 +5,7 @@ body {
   padding: 0;
 }
 
+
 .bgColor {
   background-color: #F0D063;
 }
@@ -37,6 +38,7 @@ body {
   min-width: 185px;
   min-height: 50px;
   border-radius: 25px;
+  margin: 0 auto;
 }
 
 /* Avatar css */
@@ -84,4 +86,29 @@ body {
 }
 .randomColor10 {
   background-color: #FFDEAD;
+}
+
+/*loading-logo*/
+
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+@media (orientation: portrait) {
+    .img-fluid {
+        max-height: 50vh; 
+    }
+}
+
+@media (orientation: landscape) {
+    .img-fluid {
+        max-height: 40vh;
+    }
+}
+
+.timer {
+  font-size: 2rem;
 }
