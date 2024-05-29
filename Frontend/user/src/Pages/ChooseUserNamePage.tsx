@@ -11,7 +11,7 @@ const ChooseUserNamePage: React.FC = () => {
 
     return (
         <main className='min-vh-100'>
-            <h1>Registrering</h1>
+            <h1 className='text-center'>Registrering</h1>
             <input 
                 type="text" 
                 placeholder='Brukernavn'
