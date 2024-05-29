@@ -17,10 +17,7 @@ const LoginPage : FC<ILoginPage> = ({setLoginValid}) => {
 
         await axios.post("http://localhost:3000/LoginAdmin", data)
             .then((res) => {
-
-                console.log(res.data);
                 
-
                 if (res.data) {
                     setLoginValid(res.data);
                 } else {
