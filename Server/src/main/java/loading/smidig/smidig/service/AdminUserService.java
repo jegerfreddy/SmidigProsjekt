@@ -42,6 +42,7 @@ public class AdminUserService {
         return adminUserRepository.save(adminUser);
     }
 
+    //verify if username and password is correct, returns true if correct
     public boolean verifyAdminUser(AdminUser adminUser) {
         List<AdminUser> adminUsers = adminUserRepository.findAll();
         for (AdminUser user : adminUsers) {
