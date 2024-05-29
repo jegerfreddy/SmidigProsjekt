@@ -1,17 +1,14 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import StartPage from '../Pages/StartPage';
 import UserLoginPage from '../Pages/UserLoginPage';
+import ChooseUserNamePage from '../Pages/ChooseUserNamePage';
 import ChooseAvatarPage from '../Pages/ChooseAvatarPage';
 import VotingPage from '../Pages/VotingPage';
 import ResultPage from '../Pages/ResultPage';
 import GameLobby from '../Pages/GameLobby';
-
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PhoneInfo from '../assets/Phone/PhoneInfo';
-import ChooseUserNamePage from '../Pages/ChooseUserNamePage';
-
 
 const Routing: React.FC = () => {
     PhoneInfo();
