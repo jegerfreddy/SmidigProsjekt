@@ -21,6 +21,8 @@ export const AdminProvider : FC<Props> = ({children}) => {
         return storedEvents ? JSON.parse(storedEvents) : [];
     });
 
+
+
     // Fetches the data when the component mounts.
     useEffect(() => {
         (async () => {

@@ -16,6 +16,7 @@ const ActList = () => {
                     actID={act.actID}
                     actName={act.actName}
                 ></ActItem>
+
             );
         })
 

@@ -43,7 +43,7 @@ const LoginPage : FC<ILoginPage> = ({setLoginValid}) => {
 
     return (
         <>
-            <main className="login-form">
+            <main className="login-form d-flex flex-column align-items-center">
                 <h2 className="display-4">LOADING - Admin</h2>
 
                 <hr />
@@ -58,7 +58,7 @@ const LoginPage : FC<ILoginPage> = ({setLoginValid}) => {
                     <input type="text" onChange={(e) => {handleInputChange(e.target)}} name="password-input" placeholder="Passord..." />
                 </div>
 
-                <button className="btn btn-primary" onClick={ () => { handleLogIn(inputUsername, inputPassword) }}>
+                <button className="btn btn-primary w-25" onClick={ () => { handleLogIn(inputUsername, inputPassword) }}>
                     <span>LOGG INN</span>
                 </button>
             </main>

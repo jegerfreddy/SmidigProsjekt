@@ -111,4 +111,8 @@ body {
 
 .timer {
   font-size: 2rem;
+
 }
+
+.rotate-20 {
+  transform: rotate(-20deg);
