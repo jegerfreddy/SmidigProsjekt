@@ -52,3 +52,36 @@ body {
   height: 64px;
   width: 64px;
 }
+
+/* voting color */
+
+.randomColor1 {
+  background-color: #FFD700;
+}
+.randomColor2 {
+  background-color: #FFA500;
+}
+.randomColor3 {
+  background-color: #FF8C00;
+}
+.randomColor4 {
+  background-color: #FF4500;
+}
+.randomColor5 {
+  background-color: #FF0000;
+}
+.randomColor6 {
+  background-color: #FF1493;
+}
+.randomColor7 {
+  background-color: #FF69B4;
+}
+.randomColor8 {
+  background-color: #FFC0CB;
+}
+.randomColor9 {
+  background-color: #FFDAB9;
+}
+.randomColor10 {
+  background-color: #FFDEAD;
+}
