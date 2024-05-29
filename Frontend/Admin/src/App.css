@@ -5,14 +5,14 @@
   text-align: center;
 }
 
-.login-form > div {
+.login-form > .input-field {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1rem;
-  margin: .5rem;
+  padding: 6rem;
+  margin: 3rem;
   height: 15rem;
-  border: #373A40 2px solid;
+  border: #373A40 1.5px solid;
   border-radius: 1rem;
 }
 

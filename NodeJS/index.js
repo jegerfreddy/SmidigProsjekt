@@ -1,7 +1,8 @@
-const {checkAdminLogin} = require("./Services/DatabaseService");
+const axios = require("axios");
 const express = require("express");
 const cors = require('cors');
 
+//---------------------
 // SERVER SETUP - START
 
 const allowedOrigins = [
@@ -30,19 +31,28 @@ app.use(cors({
 }));
 
 // SERVER SETUP - END
+//-------------------
 
 app.post('/LoginAdmin', async (req, res) => {
 
-    checkAdminLogin(req.body.username, req.body.password)
-        .then((isValid) => {
-            
-            if (isValid) {
-                res.send(isValid);
-            } else {
-                res.send(isValid);
-            };
+    const data = {
+        username: req.body.username,
+        password: req.body.password
+    }
 
-        });
+    await axios.post('http://localhost:8080/api/adminUser/loginAdmin', data)
+    .then((dbRes) => {
+
+        if (dbRes.data) {
+
+            res.send(dbRes.data);
+
+        } else {
+
+            res.send(dbRes.data);
+
+        };
+    });
 });
 
 
