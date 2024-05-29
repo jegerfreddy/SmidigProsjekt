@@ -1,9 +1,14 @@
 package loading.smidig.smidig.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,4 +24,8 @@ public class Act {
 
     @Column(name = "act_name")
     private String actName;
+
+    @OneToMany(mappedBy = "act", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("act")
+    private List<ActEvent> events = new ArrayList<>();
 }
