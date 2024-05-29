@@ -1,18 +1,30 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.login-form > div {
+.navButton {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rem;
+}
+
+.login-form > .input-field {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1rem;
-  margin: .5rem;
+  align-items: center;
+  padding: 6rem;
+  margin: 3rem;
   height: 15rem;
-  border: #373A40 2px solid;
+  border: #373A40 1.5px solid;
   border-radius: 1rem;
 }
 

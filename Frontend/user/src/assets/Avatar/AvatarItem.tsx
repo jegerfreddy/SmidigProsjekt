@@ -1,9 +1,5 @@
 import React from 'react';
-
-interface AvatarItemProps {
-    imageUrl: string;
-    id: number;
-}
+import { AvatarItemProps } from '../../Interfaces/IAvatar';
 
 const AvatarItem: React.FC<AvatarItemProps> = ({ imageUrl }) => {
     return (
