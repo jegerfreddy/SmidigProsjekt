@@ -23,9 +23,12 @@ const ActList = () => {
         return actsJSX;
     };
     return (
-        <>
+
+        <div className="container-fluid">
+            
             {getActsJSX()}
-        </>
+
+        </div>
     )
 }
 

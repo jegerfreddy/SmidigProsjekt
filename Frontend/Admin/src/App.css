@@ -4,9 +4,14 @@
   height: 100%;
 }
 
+.link-container {
+  margin-left: auto;
+}
+
 .navButton {
   margin-left: 1rem;
   margin-right: 1rem;
+  width: 10rem;
 }
 
 .login-form {
