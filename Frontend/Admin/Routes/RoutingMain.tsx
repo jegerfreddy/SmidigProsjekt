@@ -10,13 +10,13 @@ const RoutingMain = () => {
             <BrowserRouter>
                 <AdminProvider>
                     
-                    <nav className="navBar">
+                    <nav className="d-flex align-items-start p-3 bg-warning">
                         <Link to={"/"}>
-                            <button>Act Overview</button>
+                            <button className="navButton">Act Overview</button>
                         </Link>
 
                         <Link to={"/stats"}>
-                            <button>Stats</button>
+                            <button className="navButton">Stats</button>
                         </Link>
                     </nav>
 

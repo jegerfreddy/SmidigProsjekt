@@ -10,6 +10,7 @@ import ResultPage from '../Pages/ResultPage';
 import GameLobby from '../Pages/GameLobby';
 import PhoneInfo from '../assets/Phone/PhoneInfo';
 import TheaterPausePage from '../Pages/TheaterPausePage'
+import WaitingPage from '../Pages/WaitingPage';
 
 const Routing: React.FC = () => {
     PhoneInfo();
@@ -24,6 +25,7 @@ const Routing: React.FC = () => {
                 <Route path="/voting" element={<VotingPage />} />
                 <Route path="/result" element={<ResultPage />} />
                 <Route path="/Break" element={<TheaterPausePage/>} />
+                <Route path="/Waiting" element={<WaitingPage/>} />
             </Routes>
         </Router>
     );
