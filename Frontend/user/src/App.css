@@ -38,6 +38,7 @@ body {
   min-width: 185px;
   min-height: 50px;
   border-radius: 25px;
+  margin: 0 auto;
 }
 
 /* Avatar css */
@@ -98,12 +99,16 @@ body {
 
 @media (orientation: portrait) {
     .img-fluid {
-        max-height: 50vh; /* Adjust this value as needed for portrait mode */
+        max-height: 50vh; 
     }
 }
 
 @media (orientation: landscape) {
     .img-fluid {
-        max-height: 50vh; /* Adjust this value as needed for landscape mode */
+        max-height: 40vh;
     }
+}
+
+.timer {
+  font-size: 2rem;
 }
