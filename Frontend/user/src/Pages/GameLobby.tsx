@@ -10,11 +10,15 @@ const GameLobby: React.FC = () => {
         height: 'auto', // Maintain aspect ratio
     };
 
+    const loadingPhotoStyle = {
+        animation: 'loading-animation 2s infinite linear',
+    };
+
     return (
 
         <div className='text-center vh-100 d-flex flex-column justify-content-center position-relative'>
         <div className='position-absolute top-0 start-50 translate-middle-x mt-5'>
-                <img src="images/Loading.png" alt="Loading" />
+                <img id='Loading-photo' src="images/Loading.png" alt="Loading" style={loadingPhotoStyle} />
         </div>            
             <div className='display-4 text-center text-wrap mb-5'>Gjør dere klare for nå begynner eventyret!</div>
             <NextBtn path='voting' />
