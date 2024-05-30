@@ -90,6 +90,7 @@ body {
 
 /*loading-logo*/
 
+/*Få den til å flytte seg ved rotering av skjerm*/
 .img-fluid {
     max-width: 100%;
     height: auto;
@@ -134,4 +135,23 @@ body {
   0% {  transform: rotate(0deg);}
   100% {transform: rotate(360deg);}
 } 
+
+/* Clouds */
+
+.Cloud1 {
+    position: absolute;
+    width: 100px; /* Adjust width */
+    height: 115px;  /* Adjust height */
+    left: 217px;
+    top: 143.79px;
+    background: #FFFFFF;
+    border-radius: 50%; /* Make the main body rounded */
+    box-shadow: 
+        40px 10px 0 0 #FFFFFF, 
+        60px 5px 0 0 #FFFFFF, 
+        90px 10px 0 0 #FFFFFF, 
+        45px 20px 0 0 #FFFFFF, 
+        75px 20px 0 0 #FFFFFF;
+    transform: rotate(-15deg);
+}
 
