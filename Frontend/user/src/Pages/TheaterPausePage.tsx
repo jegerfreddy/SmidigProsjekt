@@ -23,7 +23,7 @@ const TheaterPausePage: React.FC = () => {
     return (
         <main className="min-vh-100 d-flex flex-column justify-content-center align-items-center">
             <div className="text-center">
-                <h1>Game Paused</h1>
+                <h1 className="UsedFont">Game Paused</h1>
                 <img src="/images/loading_logo.png" alt="Loading" className="img-fluid" />
                 <div className="timer">
                     {formatTime(seconds)}
