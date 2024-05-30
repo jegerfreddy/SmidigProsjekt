@@ -44,5 +44,11 @@ public class VoteController {
         return voteService.updateVote(vote);
     }
 
+    //Create a vote with actid, userid, actevent id, and option as url parameters.
+    @PostMapping("/new/{actid}/{userid}/{acteventid}/{option}")
+    public Vote createVote(@PathVariable Long actid, @PathVariable Long userid, @PathVariable Long acteventid, @PathVariable int option) {
+        return voteService.createVote(actid, userid, acteventid, option);
+    }
+
 
 }
