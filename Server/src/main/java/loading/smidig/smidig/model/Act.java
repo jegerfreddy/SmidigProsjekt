@@ -30,5 +30,6 @@ public class Act {
     private List<ActEvent> events = new ArrayList<>();
 
     @OneToMany(mappedBy = "act")
+    @JsonIgnore
     private List<Vote> votes;
 }

@@ -47,6 +47,7 @@ public class ActEvent {
     private String option4;
 
     @OneToMany(mappedBy = "actEvent")
+    @JsonIgnore
     private List<Vote> votes;
 
     // Constructor
