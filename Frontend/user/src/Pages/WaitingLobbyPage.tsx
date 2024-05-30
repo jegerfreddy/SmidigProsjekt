@@ -1,7 +1,7 @@
 import React from "react";
 import { ResumeBtn } from "../assets/Button/ResumeBtn";
 
-const WaitingPage: React.FC = () => {
+const WaitingLobbyPage: React.FC = () => {
     return (
         <main>
             <div>
@@ -14,4 +14,4 @@ const WaitingPage: React.FC = () => {
     )
 };
 
-export default WaitingPage;
+export default WaitingLobbyPage;
