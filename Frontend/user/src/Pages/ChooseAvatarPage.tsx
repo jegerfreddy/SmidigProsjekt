@@ -12,15 +12,17 @@ const ChooseAvatarPage: React.FC = () => {
 
     return (
         <div className='position-relative d-flex flex-column align-items-center min-vh-100'>
-            <section className='position-absolute text-center mt-5 mb-5 p-4'>
+            <section className='text-center mt-5 mb-3 p-4'>
                 <h1 className='display-4'>Velg din avatar</h1>
                 {username && <h2>{username}</h2>}
             </section>
 
-            <section className='container'>
+            <section className='container mt-5'>
                 <AvatarList />
             </section>
-            <NextBtn path='waiting' />
+            <div className='mt-auto mb-4'>
+                <NextBtn path='waiting' />
+            </div>
         </div>
     );
 };
