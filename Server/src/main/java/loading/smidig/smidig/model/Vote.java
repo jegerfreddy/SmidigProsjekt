@@ -1,5 +1,6 @@
 package loading.smidig.smidig.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,14 +20,17 @@ public class Vote {
 
     @ManyToOne
     @JoinColumn(name = "act_id", nullable = true)
+    @JsonIgnoreProperties({"actName", "events"})
     private Act act;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = true)
+    @JsonIgnoreProperties({"username", "avatarNumber", "verified"})
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "actevent_id", nullable = true)
+    @JsonIgnoreProperties({"eventTitle", "eventIndex", "option1", "option2", "option3", "option4"})
     private ActEvent actEvent;
 
     @Column(name = "option")
