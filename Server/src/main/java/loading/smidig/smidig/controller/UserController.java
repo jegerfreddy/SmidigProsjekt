@@ -39,6 +39,7 @@ public class UserController {
     //Create user
     @PostMapping("/new")
     public User createUser(@RequestBody User user) {
+        user.setVerified(0);
         logger.info("User created " + user.getUsername());
         return userService.createUser(user);
     }
@@ -56,4 +57,5 @@ public class UserController {
         logger.info("User deleted " + id);
         userService.deleteUser(id);
     }
+
 }

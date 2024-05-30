@@ -28,6 +28,10 @@ public class ActEvent {
     @Column(name = "event_title")
     private String eventTitle;
 
+
+    @Column (name = "event_index")
+    private Long eventIndex;
+
     @Column(name = "option_1")
     private String option1;
 
