@@ -23,6 +23,9 @@ public class User {
     @Column(name = "avatar")
     private int avatarNumber;
 
+    @Column(name = "verified")
+    private int verified = 0;
+
 
     //Constructor
     public User(String username, int avatarNumber) {
