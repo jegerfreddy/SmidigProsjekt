@@ -3,6 +3,8 @@ package loading.smidig.smidig.controller;
 import jakarta.servlet.http.Part;
 import loading.smidig.smidig.model.AdminUser;
 import loading.smidig.smidig.service.AdminUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,8 @@ import java.util.List;
 public class AdminUserController {
 
     private final AdminUserService adminUserService;
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     public AdminUserController(AdminUserService adminUserService) {
@@ -34,18 +38,21 @@ public class AdminUserController {
     //create adminUser
     @PostMapping("/new")
     public AdminUser createAdminUser(@RequestBody AdminUser adminUser){
+        logger.info("Admin account created:" + adminUser.getUsername());
         return adminUserService.createAdminUser(adminUser);
     }
 
     //delete admin user
     @DeleteMapping("/delete/{id}")
     public void deleteAdminUser(@PathVariable Long id) {
+        logger.info("Admin Account deleted: " + id);
         adminUserService.deleteAdminUserById(id);
     }
 
     //update adminUser
     @PutMapping("update")
     public AdminUser updateAdminUser(@RequestBody AdminUser adminUser) {
+        logger.info("Admin account updated: " + adminUser.getUsername());
         return adminUserService.updateAdminUser(adminUser);
     }
 

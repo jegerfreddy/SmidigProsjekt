@@ -63,7 +63,7 @@ export const ActService = GetService<IAct>(
     "http://localhost:8080/api/act"
     );
 export const ActEventService = GetService<IActEvent>(
-    "http://localhost:8080/api/act"
+    "http://localhost:8080/api/actevent"
     );
 export const UserService = GetService<IUser>(
     "http://localhost:8080/api/user"

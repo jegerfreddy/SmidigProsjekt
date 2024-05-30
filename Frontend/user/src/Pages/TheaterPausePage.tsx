@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ResumeBtn } from "../assets/Button/ResumeBtn";
 
 const TheaterPausePage: React.FC = () => {
-    const [seconds, setSeconds] = useState(3); // 15 min. setter den til 10 sek for nå.
+    const [seconds, setSeconds] = useState(10); // 15 min. setter den til 10 sek for nå. (15 x 60) for antall sekunder.
 
     useEffect(() => {
         if (seconds > 0) {
@@ -23,7 +23,7 @@ const TheaterPausePage: React.FC = () => {
     return (
         <main className="min-vh-100 d-flex flex-column justify-content-center align-items-center">
             <div className="text-center">
-                <h1>Game Paused</h1>
+                <h1 className="UsedFont">Game Paused</h1>
                 <img src="/images/loading_logo.png" alt="Loading" className="img-fluid" />
                 <div className="timer">
                     {formatTime(seconds)}
