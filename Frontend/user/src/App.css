@@ -125,3 +125,8 @@ body {
   transform: rotate(-20deg);
 }
 
+
+.rotate-right {
+  transform: rotate(30deg);
+}
+
