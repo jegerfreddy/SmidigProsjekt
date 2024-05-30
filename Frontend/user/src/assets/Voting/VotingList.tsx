@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import VotingItem from './VotingItem';
 import { IActEvent, IActEventItemProps, IActEventListProps } from '../../Interfaces/IAct';
+import { ActEventService } from '../../Services/GetService';
+
+const ACTEVENT_ID = 1; // Replace '1' with the actual value you want to use
+ActEventService.getById(ACTEVENT_ID).then((result) => {
+    console.log(result);
+});
 
 // Sample data
 const tempOptionsDATA: IActEvent[] = [
