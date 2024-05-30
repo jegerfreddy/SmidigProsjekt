@@ -50,5 +50,16 @@ public class VoteController {
         return voteService.createVote(actid, userid, acteventid, option);
     }
 
+    //Get winner of vote by ActEventID
+    @GetMapping("/winner/{acteventid}")
+    public String getWinner(@PathVariable Long acteventid) {
+        return voteService.getWinner(acteventid);
+    }
+
+    //Get percentage of votes for each option by ActEventID
+    @GetMapping("/percentage/{acteventid}")
+    public List<Integer> getPercentage(@PathVariable Long acteventid) {
+        return voteService.getPercentage(acteventid);
+    }
 
 }

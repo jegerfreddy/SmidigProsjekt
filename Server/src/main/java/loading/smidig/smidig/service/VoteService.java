@@ -1,5 +1,6 @@
 package loading.smidig.smidig.service;
 
+import loading.smidig.smidig.model.ActEvent;
 import loading.smidig.smidig.model.Vote;
 import loading.smidig.smidig.repository.ActEventRepository;
 import loading.smidig.smidig.repository.ActRepository;
@@ -8,7 +9,11 @@ import loading.smidig.smidig.repository.VoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class VoteService {
@@ -53,5 +58,106 @@ public class VoteService {
         vote.setActEvent(actEventRepository.findById(acteventid).orElse(null));
         vote.setOption(option);
         return voteRepository.save(vote);
+    }
+
+    //Get the winner of a vote by ActEventID.
+    public String getWinner(Long acteventid) {
+        ActEvent actEvent = actEventRepository.findById(acteventid).orElse(null);
+
+        if (actEvent == null) {
+            return "No ActEvent found";
+        }
+
+        List<Vote> votes = voteRepository.findAll();
+
+        Map<Integer, Integer> voteCount = new HashMap<>();
+        voteCount.put(1, 0);
+        voteCount.put(2, 0);
+        voteCount.put(3, 0);
+        voteCount.put(4, 0);
+
+        for (Vote vote : votes) {
+            if (vote.getActEvent().getActeventID().equals(acteventid)) {
+                int option = vote.getOption();
+                voteCount.put(option, voteCount.get(option) + 1);
+            }
+        }
+
+        List<Map.Entry<Integer, Integer>> sortedVotes = voteCount.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toList());
+
+        int maxVotes = sortedVotes.get(0).getValue();
+        List<Integer> winners = sortedVotes.stream()
+                .filter(entry -> entry.getValue() == maxVotes && maxVotes > 0)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        if (winners.size() > 1) {
+            String tieOptions = winners.stream()
+                    .map(option -> getOptionName(option, actEvent))
+                    .collect(Collectors.joining(", "));
+            return "Tie between " + tieOptions;
+        } else if (winners.size() == 1) {
+            return getOptionName(winners.get(0), actEvent);
+        } else {
+            return "No votes";
+        }
+    }
+
+    private String getOptionName(int option, ActEvent actEvent) {
+        switch (option) {
+            case 1:
+                return "1";
+            case 2:
+                return "2";
+            case 3:
+                return "3";
+            case 4:
+                return "4";
+            default:
+                return "Unknown option";
+        }
+    }
+
+
+    //Get percentage of votes for each option by ActEventID.
+    public List<Integer> getPercentage(Long acteventid) {
+        ActEvent actEvent = actEventRepository.findById(acteventid).orElse(null);
+
+        if (actEvent == null) {
+            return null;
+        }
+
+        List<Vote> votes = voteRepository.findAll();
+
+        int option1 = 0;
+        int option2 = 0;
+        int option3 = 0;
+        int option4 = 0;
+
+        for(Vote vote : votes) {
+            if(vote.getActEvent().getActeventID().equals(acteventid)) {
+                if(vote.getOption() == 1) {
+                    option1++;
+                } else if(vote.getOption() == 2) {
+                    option2++;
+                } else if(vote.getOption() == 3) {
+                    option3++;
+                } else if(vote.getOption() == 4) {
+                    option4++;
+                }
+            }
+        }
+
+        int totalVotes = option1 + option2 + option3 + option4;
+
+        //Calculate the percentage of votes for each option.
+        int percentage1 = (option1 * 100) / totalVotes;
+        int percentage2 = (option2 * 100) / totalVotes;
+        int percentage3 = (option3 * 100) / totalVotes;
+        int percentage4 = (option4 * 100) / totalVotes;
+
+        return List.of(percentage1, percentage2, percentage3, percentage4);
     }
 }

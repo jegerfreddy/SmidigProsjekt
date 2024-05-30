@@ -1,6 +1,7 @@
 package loading.smidig.smidig.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,7 @@ public class ActEvent {
 
     @ManyToOne
     @JoinColumn(name = "act_id", nullable = true)
-    @JsonIgnore
+    @JsonIgnoreProperties({"actName", "events", "votes"})
     @Nullable
     private Act act;
 
