@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import {IEventItem} from "../../Interfaces/IEventItem";
+import InputItem from "../../Components/EditorPage/InputItem";
 
 const EditEventItem : FC<IEventItem> = ({id, actID, eventIndex, eventTitle, option1, option2, option3, option4}) => {
 
@@ -60,6 +61,24 @@ const EditEventItem : FC<IEventItem> = ({id, actID, eventIndex, eventTitle, opti
 
     }
 
+    const printOptional = () => {
+        if (option3 && option4) {
+            return (
+                <>
+                    <InputItem name="input-3" defaultValue={option3} onChange={(e) => {handleChange(e.target)}} />
+                    <InputItem name="input-4" defaultValue={option4} onChange={(e) => {handleChange(e.target)}} />
+                </>
+            
+            );
+        } else if (option3) {
+
+            return (
+                <InputItem name="input-3" defaultValue={option3} onChange={(e) => {handleChange(e.target)}} />
+            );
+    
+        };
+    };
+
     return (
         <div className="row d-flex align-items-center justify-content-center">
 
@@ -69,20 +88,21 @@ const EditEventItem : FC<IEventItem> = ({id, actID, eventIndex, eventTitle, opti
                     <span className="p-3 d-flex flex-column align-items-center">
                         <h3 className="">
                             Event Title | Index: 
-                            <input className="index-input edit-input" name="input-index" type="text" defaultValue={eventIndex} />
+                            <input onChange={(e) => {handleChange(e.target)}} className="index-input edit-input" name="input-index" type="text" defaultValue={eventIndex} />
 
                         </h3>
-                        <input className="edit-input" name="input-title" type="text" defaultValue={eventTitle} />
+                        <input onChange={(e) => {handleChange(e.target)}} className="edit-input" name="input-title" type="text" defaultValue={eventTitle} />
                     </span>
 
                     <span className="p-3">
-                        <input className="edit-input" name="input-1" type="text" defaultValue={option1} />
-                        <input className="edit-input" name="input-2" type="text" defaultValue={option2} />
+                        <input onChange={(e) => {handleChange(e.target)}} className="edit-input" name="input-1" type="text" defaultValue={option1} />
+                        <input onChange={(e) => {handleChange(e.target)}} className="edit-input" name="input-2" type="text" defaultValue={option2} />
                     </span>
 
                     <span className="p-3">
-                        <input className="edit-input" name="input-3" type="text" defaultValue={option3} />
-                        <input className="edit-input" name="input-4" type="text" defaultValue={option4} />
+
+                        {printOptional()}
+
                     </span>
 
                 </div>

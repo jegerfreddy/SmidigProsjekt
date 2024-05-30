@@ -1,8 +1,18 @@
-import { FC } from "react"
+import { FC, useContext } from "react"
 import { IActItem } from "../../Interfaces/IActItem"
 import { Link } from "react-router-dom";
+import { AdminContext } from "../../Context/AdminContext";
+import { IAdminContext } from "../../Interfaces/IAdminContext";
 
 const ActItem : FC<IActItem> = ({actID, actName}) => {
+
+    const { events } = useContext(AdminContext) as IAdminContext;
+
+    const selectedActEvents = events.filter((event) => {
+        if (event.actID == actID) {
+            return event;
+        }
+    });
 
     return (
         <>
@@ -11,7 +21,7 @@ const ActItem : FC<IActItem> = ({actID, actName}) => {
                     <h1 className="pl-3 pr-5">{actName}</h1>
 
                     <div className="m-3">
-                        <p>Num of Events: 3</p>
+                        <p>Num of Events: {selectedActEvents.length}</p>
                         <p>ID: {actID}</p>
                     </div>
 
