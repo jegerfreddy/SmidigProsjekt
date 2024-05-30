@@ -11,6 +11,7 @@ const GameLobby: React.FC = () => {
     };
 
     return (
+
         <div className='text-center vh-100 d-flex flex-column justify-content-center position-relative'>
         <div className='position-absolute top-0 start-50 translate-middle-x mt-5'>
                 <img src="images/Loading.png" alt="Loading" />

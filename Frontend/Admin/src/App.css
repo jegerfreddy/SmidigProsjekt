@@ -4,9 +4,47 @@
   height: 100%;
 }
 
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #FFDB5C;
+}
+
+.logo {
+  border: solid 2px black;
+  border-radius: 1rem;
+}
+
+.main-container {
+  background-image: url("/images/loginpage-background.png");
+  overflow-y: scroll;
+}
+
+.page-header {
+  background: linear-gradient(rgba(202, 244, 255, 1), rgba(202, 244, 255,.5));
+  
+}
+
+.act-item {
+  background-color: rgba(255, 255, 255, .65);
+}
+
+.act-item-hr {
+  background-color: white;
+  width: 95%;
+}
+
+.link-container {
+  margin-left: auto;
+}
+
 .navButton {
   margin-left: 1rem;
   margin-right: 1rem;
+  width: 10rem;
 }
 
 .login-form {

@@ -43,7 +43,7 @@ const LoginPage : FC<ILoginPage> = ({setLoginValid}) => {
 
     return (
         <>
-            <main className="login-form d-flex flex-column align-items-center">
+            <main className="login-form">
                 <h2 className="display-4">LOADING - Admin</h2>
 
                 <hr />

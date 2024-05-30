@@ -1,9 +1,11 @@
 import React from 'react';
-import { VotingItemProps } from '../../Interfaces/IVoting';
+import { IActEventItemProps } from '../../Interfaces/IAct';
 
-const VotingItem: React.FC<VotingItemProps> = ({ option }) => {
+const VotingItem: React.FC<IActEventItemProps> = ({ id, ACTEVENT_ID, option }) => {
     return (
-        <p className='text-center fs-1'>{option}</p>
+        <div>
+            <p>{option}</p>
+        </div>
     );
 };
 

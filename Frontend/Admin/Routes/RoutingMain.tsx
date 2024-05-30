@@ -10,17 +10,24 @@ const RoutingMain = () => {
             <BrowserRouter>
                 <AdminProvider>
                     
-                    <nav className="d-flex align-items-start p-3 bg-warning">
-                        <Link to={"/"}>
-                            <button className="navButton">Act Overview</button>
-                        </Link>
+                    <nav className="nav-bar">
 
-                        <Link to={"/stats"}>
-                            <button className="navButton">Stats</button>
-                        </Link>
+                        <div className="logo p-4">
+                            <h1 className="display-4"><u>the LOADING project</u></h1>
+                        </div>
+
+                        <div className="link-container">
+                            <Link to={"/"}>
+                                <button className="navButton btn btn-dark">Act Overview</button>
+                            </Link>
+
+                            <Link to={"/stats"}>
+                                <button className="navButton btn btn-dark">Stats</button>
+                            </Link>
+                        </div>
                     </nav>
 
-                    <main>
+                    <main className="main-container">
 
                         <Routes>
                             <Route path="/" element={<ActOverviewPage/>} />
