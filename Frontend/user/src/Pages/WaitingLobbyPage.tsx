@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ResumeBtn } from "../assets/Button/ResumeBtn";
+import { NextBtn } from "../assets/Button/NextBtn";
 import "../App.css"; // Ensure this line imports your CSS
 
 const WaitingLobbyPage: React.FC = () => {
@@ -23,7 +23,7 @@ const WaitingLobbyPage: React.FC = () => {
                 <h1 className="text-center">
                     <div>Waiting for</div>
                     <div>players{dots}</div>
-                    <ResumeBtn />
+                    <NextBtn path="gameLobby" />
                 </h1>
             </div>
         </main>

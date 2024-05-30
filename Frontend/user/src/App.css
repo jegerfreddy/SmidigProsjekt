@@ -89,6 +89,7 @@ body {
 }
 
 /*loading-logo*/
+
 /*Få den til å flytte seg ved rotering av skjerm*/
 .img-fluid {
     max-width: 100%;
@@ -113,14 +114,27 @@ body {
 
 }
 
+/* pølse-bilde rotasjon */
 .rotate-20 {
   transform: rotate(-20deg);
 }
 
-
 .rotate-right {
   transform: rotate(30deg);
 }
+
+/* Loading-bilde css-animasjon */
+
+#Loading-photo {
+  animation-name: loading-animation;
+  animation-iteration-count: infinite;
+  transition-duration: 1s;
+}
+
+@keyframes loading-animation {
+  0% {  transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+} 
 
 /* Clouds */
 
@@ -140,3 +154,4 @@ body {
         75px 20px 0 0 #FFFFFF;
     transform: rotate(-15deg);
 }
+

@@ -20,7 +20,7 @@ const ChooseAvatarPage: React.FC = () => {
             <section className='container'>
                 <AvatarList />
             </section>
-            <NextBtn path='gameLobby' />
+            <NextBtn path='waiting' />
         </div>
     );
 };
