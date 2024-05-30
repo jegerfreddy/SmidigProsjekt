@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.lang.Nullable;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -43,6 +45,9 @@ public class ActEvent {
 
     @Column(name = "option_4")
     private String option4;
+
+    @OneToMany(mappedBy = "actEvent")
+    private List<Vote> votes;
 
     // Constructor
     public ActEvent(String eventTitle, String option1, String option2, String option3, String option4) {

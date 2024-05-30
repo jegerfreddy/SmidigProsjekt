@@ -28,4 +28,7 @@ public class Act {
     @OneToMany(mappedBy = "act", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("act")
     private List<ActEvent> events = new ArrayList<>();
+
+    @OneToMany(mappedBy = "act")
+    private List<Vote> votes;
 }

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,6 +27,9 @@ public class User {
 
     @Column(name = "verified")
     private int verified = 0;
+
+    @OneToMany(mappedBy = "user")
+    private List<Vote> votes;
 
 
     //Constructor
