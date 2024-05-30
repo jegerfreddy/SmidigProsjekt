@@ -1,7 +1,7 @@
 package loading.smidig.smidig.controller;
 
 import loading.smidig.smidig.model.ActEvent;
-import loading.smidig.smidig.model.ActEventDTO;
+import loading.smidig.smidig.DTO.ActEventDTO;
 import loading.smidig.smidig.service.ActEventService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
