@@ -5,9 +5,9 @@ import { NextBtn } from '../assets/Button/NextBtn';
 const StandByPage: React.FC = () => {
 
     return (
-        <main>
-            <div className="text-center justify-content-center"> Følg med på teaterstykket</div>
-            <img className="img-fluid" src="images/pølse.png" alt="Pølse-bilde" />
+        <main className="d-flex flex-column align-items-center justify-content-center vh-100 text-center">
+            <div className="text-center justify-content-center position relative"> Følg med på teaterstykket</div>
+            <img className="img-fluid position absolute" src="images/pølse.png" alt="Pølse-bilde" />
             <NextBtn path='voting'/>
         </main>
     )
