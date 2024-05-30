@@ -11,8 +11,8 @@ const ChooseAvatarPage: React.FC = () => {
     console.log(username);
 
     return (
-        <div className='d-flex flex-column align-items-center min-vh-100'>
-            <section className='text-center mt-5 mb-5 p-4'>
+        <div className='position-relative d-flex flex-column align-items-center min-vh-100'>
+            <section className='position-absolute text-center mt-5 mb-5 p-4'>
                 <h1 className='display-4'>Velg din avatar</h1>
                 {username && <h2>{username}</h2>}
             </section>
@@ -20,7 +20,6 @@ const ChooseAvatarPage: React.FC = () => {
             <section className='container'>
                 <AvatarList />
             </section>
-
             <NextBtn path='gameLobby' />
         </div>
     );

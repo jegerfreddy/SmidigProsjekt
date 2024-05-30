@@ -16,15 +16,19 @@ const ActList = () => {
                     actID={act.actID}
                     actName={act.actName}
                 ></ActItem>
+
             );
         })
 
         return actsJSX;
     };
     return (
-        <>
+
+        <div className="container-fluid">
+            
             {getActsJSX()}
-        </>
+
+        </div>
     )
 }
 
