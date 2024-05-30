@@ -26,7 +26,7 @@ const ActList = () => {
 
         <div className="container-fluid act-list">
 
-            <img className="background" src="/images/loginpage-background.png" alt="" />
+            <img className="background" src="/images/overviewPageBG.png" alt="" />
             
             {getActsJSX()}
 

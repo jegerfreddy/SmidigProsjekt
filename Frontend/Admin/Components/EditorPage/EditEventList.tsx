@@ -41,9 +41,16 @@ const EditEventList = () => {
     }
 
     return (
+            
         <>
-            {getEditEventJSX()}
+            <div className="container-fluid edit-event-list">
+
+                <img className="background" src="/images/settings-page.png" alt="" />
+
+                {getEditEventJSX()}
+            </div>
         </>
+        
     );
 }
 

@@ -61,16 +61,36 @@ const EditEventItem : FC<IEventItem> = ({id, actID, eventIndex, eventTitle, opti
     }
 
     return (
-        <div className="container-fluid d-flex flex-column align-items-center m-3">
+        <div className="row d-flex align-items-center justify-content-center">
 
-            <div className="row bg-warning w-50 edit-event border border-dark rounded">
+            <div className="edit-act-item col-6">
 
-                <h5>Event Title</h5>
-                <input type="text" defaultValue={eventTitle} />
+                <div className="d-flex flex-column align-items-center justify-content-center border border-dark rounded m-4 p-2">
+                    <span className="p-3 d-flex flex-column align-items-center">
+                        <h3 className="">
+                            Event Title | Index: 
+                            <input className="index-input edit-input" name="input-index" type="text" defaultValue={eventIndex} />
 
-                <hr />
+                        </h3>
+                        <input className="edit-input" name="input-title" type="text" defaultValue={eventTitle} />
+                    </span>
+
+                    <span className="p-3">
+                        <input className="edit-input" name="input-1" type="text" defaultValue={option1} />
+                        <input className="edit-input" name="input-2" type="text" defaultValue={option2} />
+                    </span>
+
+                    <span className="p-3">
+                        <input className="edit-input" name="input-3" type="text" defaultValue={option3} />
+                        <input className="edit-input" name="input-4" type="text" defaultValue={option4} />
+                    </span>
+
+                </div>
+
+                <div className="d-flex flex-column align-items-center">
+                    <button className="btn btn-success w-25" onClick={handleSave}>Save</button>
+                </div>
                 
-                <button className="btn btn-dark" onClick={handleSave}>Save</button>
             </div>
 
         </div>
