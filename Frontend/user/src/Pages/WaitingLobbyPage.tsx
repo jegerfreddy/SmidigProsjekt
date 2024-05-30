@@ -19,7 +19,7 @@ const WaitingLobbyPage: React.FC = () => {
     return (
         <main>
             <div>
-                <div className="Sky1"></div> {/* Corrected className */}
+                <div className="Cloud1"></div> {/* Corrected className */}
                 <h1 className="text-center">
                     <div>Waiting for</div>
                     <div>players{dots}</div>

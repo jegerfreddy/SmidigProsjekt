@@ -89,8 +89,7 @@ body {
 }
 
 /*loading-logo*/
-
-
+/*Få den til å flytte seg ved rotering av skjerm*/
 .img-fluid {
     max-width: 100%;
     height: auto;
@@ -123,9 +122,9 @@ body {
   transform: rotate(30deg);
 }
 
-/* Union */
+/* Clouds */
 
-.Sky1 {
+.Cloud1 {
     position: absolute;
     width: 100px; /* Adjust width */
     height: 115px;  /* Adjust height */
