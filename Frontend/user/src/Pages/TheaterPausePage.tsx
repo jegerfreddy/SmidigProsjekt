@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ResumeBtn } from "../assets/Button/ResumeBtn";
 
 const TheaterPausePage: React.FC = () => {
-    const [seconds, setSeconds] = useState(3); // 15 min. setter den til 10 sek for nå.
+    const [seconds, setSeconds] = useState(10); // 15 min. setter den til 10 sek for nå. (15 x 60) for antall sekunder.
 
     useEffect(() => {
         if (seconds > 0) {
