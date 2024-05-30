@@ -6,8 +6,8 @@ const GameLobby: React.FC = () => {
     const { orientation } = PhoneInfo();
 
     const imageStyle = {
-        width: '100px', // Adjust the width as needed
-        height: 'auto', // Maintain aspect ratio
+        width: '100px', 
+        height: 'auto', 
     };
 
     const loadingPhotoStyle = {
@@ -16,12 +16,12 @@ const GameLobby: React.FC = () => {
 
     return (
 
-        <div className='text-center vh-100 d-flex flex-column justify-content-center position-relative'>
+        <div className='text-center vh-100 d-flex flex-column justify-content-center position-relative overflow-hidden'>
         <div className='position-absolute top-0 start-50 translate-middle-x mt-5'>
-                <img id='Loading-photo' src="images/Loading.png" alt="Loading" style={loadingPhotoStyle} />
+                <img id='Loading-photo' src="images/Loading.png" alt="Loading" style={loadingPhotoStyle} /> 
         </div>            
             <div className='display-4 text-center text-wrap mb-5'>Gjør dere klare for nå begynner eventyret!</div>
-            <NextBtn path='voting' />
+            <NextBtn path='standByPage' />
             {orientation === 'horizontal' ? (
                 <img 
                     className='rotate-20 overflow-hidden position-absolute' 
@@ -33,7 +33,7 @@ const GameLobby: React.FC = () => {
                     className='rotate-right overflow-hidden position-absolute' 
                     src='/images/pølse.png' 
                     alt="pølse-bilde" 
-                    style={{ ...imageStyle, top: '805px', }} />
+                    style={{ ...imageStyle, top: '790px', right:'350px' }} />
             )}
         </div>
     );

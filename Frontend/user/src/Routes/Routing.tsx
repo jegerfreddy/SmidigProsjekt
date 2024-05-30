@@ -13,6 +13,7 @@ import TheaterPausePage from '../Pages/TheaterPausePage'
 import WaitingLobbyPage from '../Pages/WaitingLobbyPage';
 import { GeneralProvider } from '../Contexts/UserContext';
 import { ActService, UserService } from '../Services/GetService';
+import StandByPage from '../Pages/StandByPage';
 
 const Routing: React.FC = () => {
     PhoneInfo();
@@ -26,6 +27,7 @@ const Routing: React.FC = () => {
                         <Route path="/username" element={<ChooseUserNamePage />} />
                         <Route path="/avatar" element={<ChooseAvatarPage />} />
                         <Route path="/gameLobby" element={<GameLobby />} />
+                        <Route path="/standByPage" element={<StandByPage/>}/>
                         <Route path="/voting" element={<VotingPage />} />
                         <Route path="/result" element={<ResultPage />} />
                         <Route path="/Break" element={<TheaterPausePage/>} />
