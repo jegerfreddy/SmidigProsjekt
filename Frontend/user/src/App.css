@@ -90,7 +90,6 @@ body {
 
 /*loading-logo*/
 
-
 .img-fluid {
     max-width: 100%;
     height: auto;
@@ -114,12 +113,25 @@ body {
 
 }
 
+/* pølse-bilde rotasjon */
 .rotate-20 {
   transform: rotate(-20deg);
 }
 
-
 .rotate-right {
   transform: rotate(30deg);
 }
+
+/* Loading-bilde css-animasjon */
+
+#Loading-photo {
+  animation-name: loading-animation;
+  animation-iteration-count: infinite;
+  transition-duration: 1s;
+}
+
+@keyframes loading-animation {
+  0% {  transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+} 
 
