@@ -2,7 +2,7 @@ import { FC, ReactNode, createContext, useEffect, useState } from "react";
 import { IAdminContext } from "../Interfaces/IAdminContext.ts";
 import { IActItem } from "../Interfaces/IActItem.ts";
 import { IEventItem } from "../Interfaces/IEventItem.ts";
-import { getActs } from "../Services/Database.js";
+import { getActs, getEvents } from "../Services/Database.js";
 
 export const AdminContext = createContext<IAdminContext | null>(null);
 
@@ -54,13 +54,13 @@ export const AdminProvider : FC<Props> = ({children}) => {
                 localStorage.setItem('acts', JSON.stringify(acts));
             });
 
-        /*
+        
         await getEvents()
             .then((events: IEventItem[]) => {
                 setEvents(events);
                 localStorage.setItem('events', JSON.stringify(events));
             });
-        */
+        
     };
 
     return (

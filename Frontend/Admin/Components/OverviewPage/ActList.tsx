@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { IAdminContext } from "../Interfaces/IAdminContext";
-import { AdminContext } from "../Context/AdminContext";
-import ActItem from "../Components/ActItem";
+import { IAdminContext } from "../../Interfaces/IAdminContext";
+import { AdminContext } from "../../Context/AdminContext";
+import ActItem from "../OverviewPage/ActItem";
 
 const ActList = () => {
 
@@ -24,7 +24,9 @@ const ActList = () => {
     };
     return (
 
-        <div className="container-fluid">
+        <div className="container-fluid act-list">
+
+            <img className="background" src="/images/loginpage-background.png" alt="" />
             
             {getActsJSX()}
 

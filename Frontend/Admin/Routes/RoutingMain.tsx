@@ -1,7 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { ActOverviewPage } from "../pages/index.ts";
+import { ActOverviewPage, EditEventsPage } from "../pages/index.ts";
 import {AdminProvider} from "../Context/AdminContext.tsx";
-
 
 const RoutingMain = () => {
 
@@ -9,32 +8,35 @@ const RoutingMain = () => {
         <>
             <BrowserRouter>
                 <AdminProvider>
-                    
-                    <nav className="nav-bar">
+                
+                    <div>
+                        <nav className="nav-bar">
 
-                        <div className="logo p-4">
-                            <h1 className="display-4"><u>the LOADING project</u></h1>
-                        </div>
+                            <div className="logo p-4">
+                                <h1 className="display-4"><u>the LOADING project</u></h1>
+                            </div>
 
-                        <div className="link-container">
-                            <Link to={"/"}>
-                                <button className="navButton btn btn-dark">Act Overview</button>
-                            </Link>
+                            <div className="link-container">
+                                <Link to={"/"}>
+                                    <button className="navButton btn btn-dark">Act Overview</button>
+                                </Link>
 
-                            <Link to={"/stats"}>
-                                <button className="navButton btn btn-dark">Stats</button>
-                            </Link>
-                        </div>
-                    </nav>
+                                <Link to={"/stats"}>
+                                    <button className="navButton btn btn-dark">Stats</button>
+                                </Link>
+                            </div>
+                        </nav>
 
-                    <main className="main-container">
+                        
 
-                        <Routes>
-                            <Route path="/" element={<ActOverviewPage/>} />
-                            <Route path="/stats" /*element={<StatsPage}*/ />
-                        </Routes>
-
-                    </main>
+                        <main className="main-container">
+                            <Routes>
+                                <Route path="/" element={<ActOverviewPage/>} />
+                                <Route path="/stats" /*element={<StatsPage}*/ />
+                                <Route path="/edit" element={<EditEventsPage/>}/>
+                            </Routes>
+                        </main>
+                    </div>
                     
                 </AdminProvider>
             </BrowserRouter>

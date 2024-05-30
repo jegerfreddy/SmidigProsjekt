@@ -55,6 +55,24 @@ app.post('/LoginAdmin', async (req, res) => {
     });
 });
 
+app.get("/getActs", async (req, res) => {
+
+    await axios.get("http://localhost:8080/api/act/all")
+    .then((dbRes) => {
+        res.send(dbRes.data);
+    })
+
+});
+
+app.get("/getEvents", async (req, res) => {
+
+    await axios.get("http://localhost:8080/api/actEvent/all")
+    .then((dbRes) => {
+        res.send(dbRes.data);
+    })
+
+});
+
 app.listen(3000, () => {
 
     console.log("Listening on PORT 3000");

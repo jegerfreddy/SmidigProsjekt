@@ -1,6 +1,7 @@
 export interface IEventItem {
     id: number,
-    actID: number,
+    actID: number
+    eventIndex: number
     eventTitle: string,
     option1: string,
     option2: string,

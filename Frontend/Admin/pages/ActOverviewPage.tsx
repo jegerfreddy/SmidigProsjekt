@@ -1,13 +1,14 @@
-import ActList from "../Components/ActList"
+import ActList from "../Components/OverviewPage/ActList";
+import PageHeader from "../Components/GlobalComponents/PageHeader.tsx";
 
 const ActOverviewPage = () => {
 
     return (
         <>
-            <div className="page-header d-flex align-items-center p-3">
-                <h1 className="display-5 mt-2" >Acts Overview |</h1>
-                <p className="mt-4 ml-2 text-secondary">A list of all existing acts.</p>
-            </div>
+            <PageHeader 
+                title="Act Overview |"
+                underTitle="A list of all exisiting acts."
+            />
 
            <ActList></ActList>
         </>

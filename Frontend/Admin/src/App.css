@@ -4,13 +4,18 @@
   height: 100%;
 }
 
+.main-container {
+  padding: 0;
+  margin: 0;
+}
+
 .nav-bar {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   padding: 1.5rem;
-  background-color: #FFDB5C;
+  background-color: #ffdb5c;
 }
 
 .logo {
@@ -18,23 +23,40 @@
   border-radius: 1rem;
 }
 
-.main-container {
-  background-image: url("/images/loginpage-background.png");
-  overflow-y: scroll;
-}
-
 .page-header {
-  background: linear-gradient(rgba(202, 244, 255, 1), rgba(202, 244, 255,.5));
-  
+  background: white;
+  display: flex;
+  padding: 1.5rem;
+  align-items: center;
+  justify-content: start;
 }
 
 .act-item {
-  background-color: rgba(255, 255, 255, .65);
+  background-color: rgba(255, 255, 255, .9);
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  height: 18rem;
+  padding: 1.5rem;
+  margin: 2rem;
 }
 
-.act-item-hr {
-  background-color: white;
-  width: 95%;
+.act-list {
+  background-image: url("/images/overviewPageBG.png");
+  overflow-y: scroll;
+}
+
+.act-list > .background {
+  position: absolute;
+  filter: blur(.25rem);
+}
+
+.edit-event {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .link-container {
