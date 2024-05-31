@@ -25,7 +25,7 @@ const AvatarList: React.FC<AvatarListProps> = ({ avatars = tempAvatarData }) => 
     return (
         <div className='container'>
             <div className='d-flex justify-content-center align-items-center my-3 p-5 m-5'>
-                <img src={pickedAvatar} alt="Selected Avatar" className='avatarPicked' />
+                <img src={pickedAvatar} alt="Selected Avatar" className='avatar-picked img-fluid' />
             </div>
             <div className='row row-cols-3 g-4'>
                 {avatars.map((avatar) => (

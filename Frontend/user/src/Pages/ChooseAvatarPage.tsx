@@ -8,8 +8,6 @@ const ChooseAvatarPage: React.FC = () => {
     const location = useLocation();
     const { username } = location.state || {};
 
-    console.log(username);
-
     return (
         <div className='position-relative d-flex flex-column align-items-center min-vh-100'>
             <section className='text-center mt-5 mb-3 p-4'>
