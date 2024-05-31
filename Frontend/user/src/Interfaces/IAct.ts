@@ -4,13 +4,16 @@ export interface IAct {
 }
 
 export interface IActEvent {
-    ACTEVENT_ID: number;
-    EVENT_TITLE: string;
-    OPTION_1: string;
-    OPTION_2: string;
-    OPTION_3?: string;
-    OPTION_4?: string;
-    ACT_ID: number;
+    acteventID: number;
+    eventTitle?: string;
+    option1: string;
+    option2: string;
+    option3: string;
+    option4: string;
+}
+
+export interface IActEventItem {
+    event?: IActEvent[];
 }
 
 export interface IActEventItemProps {

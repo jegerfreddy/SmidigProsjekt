@@ -11,14 +11,13 @@ import PhoneInfo from '../assets/Phone/PhoneInfo';
 import TheaterPausePage from '../Pages/TheaterPausePage'
 import WaitingLobbyPage from '../Pages/WaitingLobbyPage';
 import { GeneralProvider } from '../Contexts/UserContext';
-import { ActService, UserService } from '../Services/GetService';
+import { ActEventService } from '../Services/GetService';
 import StandByPage from '../Pages/StandByPage';
 
 const Routing: React.FC = () => {
     PhoneInfo();
     return (
-    <GeneralProvider service={ActService}>
-        <GeneralProvider service={UserService}>
+    <GeneralProvider service={ActEventService}>
                 <Router>
                     <Routes>
                         <Route path="/" element={<UserLoginPage />} />
@@ -32,7 +31,6 @@ const Routing: React.FC = () => {
                         <Route path="/Waiting" element={<WaitingLobbyPage/>} />
                     </Routes>
                 </Router>
-        </GeneralProvider>
     </GeneralProvider>
     );
 };
