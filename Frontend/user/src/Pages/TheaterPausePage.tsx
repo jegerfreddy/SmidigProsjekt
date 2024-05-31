@@ -29,7 +29,7 @@ const TheaterPausePage: React.FC = () => {
                     {formatTime(seconds)}
                 </div>
             </div>
-            {seconds === 0 && <ResumeBtn />}
+            {seconds === 0 && <ResumeBtn path="standByPage" />}
         </main>
     );
 };
