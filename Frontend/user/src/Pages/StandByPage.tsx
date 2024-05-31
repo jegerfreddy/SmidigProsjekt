@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NextBtn } from '../assets/Button/NextBtn';
 
+/* StandBy - page when the teather is running */
 
 const StandByPage: React.FC = () => {
 

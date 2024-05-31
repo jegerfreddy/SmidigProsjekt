@@ -23,7 +23,6 @@ const Routing: React.FC = () => {
                 <Router>
                     <Routes>
                         <Route path="/" element={<UserLoginPage />} />
-                        <Route path="/login" element={<StartPage />} />
                         <Route path="/username" element={<ChooseUserNamePage />} />
                         <Route path="/avatar" element={<ChooseAvatarPage />} />
                         <Route path="/gameLobby" element={<GameLobby />} />
