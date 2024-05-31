@@ -32,7 +32,8 @@ public class AdminUserController {
 
     //get admins users by id
     @GetMapping("/id/{id}")
-    public AdminUser getPartById(@PathVariable Long id) {
+    public AdminUser getAdminById(@PathVariable Long id) {
+        logger.info("Fetching admin user by ID: " + id);
         return adminUserService.getAdminUserById(id);
     }
 
@@ -60,6 +61,7 @@ public class AdminUserController {
     //Verify if username and password is correct
     @PostMapping("/loginAdmin")
     public boolean verifyAdminUser(@RequestBody AdminUser adminUser) {
+        logger.info("Admin account login attempt: " + adminUser.getUsername());
         return adminUserService.verifyAdminUser(adminUser);
     }
 }

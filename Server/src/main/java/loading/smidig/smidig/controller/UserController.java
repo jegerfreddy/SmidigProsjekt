@@ -28,12 +28,14 @@ public class UserController {
     //Get all users
     @GetMapping("/all")
     public List<User> getAllUsers() {
+        logger.info("Fetching all users");
         return userService.getUsers();
     }
 
     //Get user by ID
     @GetMapping("/id/{id}")
     public User getUserById(@PathVariable Long id) {
+        logger.info("Fetching user by ID: " + id);
         return userService.getUserById(id);
     }
 

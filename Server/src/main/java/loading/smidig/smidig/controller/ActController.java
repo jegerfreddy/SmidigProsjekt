@@ -25,6 +25,7 @@ public class ActController {
 
     @GetMapping("/all")
     public List<Act> getActs(){
+        logger.info("Fetching all acts");
         return actService.getActs();
     }
 
