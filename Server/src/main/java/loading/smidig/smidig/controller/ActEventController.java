@@ -59,6 +59,11 @@ public class ActEventController {
     // Update act event
     @PutMapping("/update")
     public ActEventDTO updateActEvent(@RequestBody ActEvent actEvent) {
+        ActEvent eventToEdit = actEventService.getActEventById(actEvent.getActeventID());
+
+        actEvent.setAct(eventToEdit.getAct());
+
+
         logger.info("Updating act event by ID: " + actEvent.getActeventID());
         return convertToDto(actEventService.updateActEvent(actEvent));
     }
