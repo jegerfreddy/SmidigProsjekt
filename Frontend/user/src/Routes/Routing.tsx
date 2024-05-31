@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import StartPage from '../Pages/StartPage';
 import UserLoginPage from '../Pages/UserLoginPage';
 import ChooseUserNamePage from '../Pages/ChooseUserNamePage';
 import ChooseAvatarPage from '../Pages/ChooseAvatarPage';
