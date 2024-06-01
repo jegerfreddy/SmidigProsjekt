@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AvatarItem from './AvatarItem';
 import { AvatarListProps } from '../../Interfaces/IAvatar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const tempAvatarData = [
     { id: 1, imageUrl: "/images/Avatar-1.png" },
@@ -14,26 +15,12 @@ const tempAvatarData = [
     { id: 9, imageUrl: "/images/Avatar-9.png" },
 ];
 
-const AvatarList: React.FC<AvatarListProps> = ({ avatars = tempAvatarData }) => {
-    const [pickedAvatar, setPickedAvatar] = useState(tempAvatarData[0].imageUrl);
-
-    const handleClick = (avatarId: number) => {
-        const pickedAvatarUrl = `/images/Avatar-${avatarId}.png`;
-        setPickedAvatar(pickedAvatarUrl);
-    };
-
+const AvatarList: React.FC<AvatarListProps> = ({ avatars = tempAvatarData, onClick }) => {
     return (
-        <div className='container'>
-            <div className='d-flex justify-content-center align-items-center my-3 p-5 m-5'>
-                <img src={pickedAvatar} alt="Selected Avatar" className='avatar-picked img-fluid' />
-            </div>
-            <div className='row row-cols-3 g-4'>
+        <div className="container">
+            <div className="row">
                 {avatars.map((avatar) => (
-                    <div key={avatar.id} className='col d-flex justify-content-center'>
-                        <div onClick={() => handleClick(avatar.id)}>
-                            <AvatarItem imageUrl={avatar.imageUrl} id={avatar.id} />
-                        </div>
-                    </div>
+                    <AvatarItem key={avatar.id} imageUrl={avatar.imageUrl} id={avatar.id} onClick={onClick} />
                 ))}
             </div>
         </div>
