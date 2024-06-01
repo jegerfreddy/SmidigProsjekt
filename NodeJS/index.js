@@ -73,7 +73,19 @@ app.get("/getEvents", async (req, res) => {
 
 });
 
+app.post("/updateEvent", async (req, res) => {
+
+    const data = req.body
+
+    await axios.put("http://localhost:8080/api/actEvent/update", data)
+        .then(() => {
+            res.send();
+        })
+
+});
+
 app.listen(3000, () => {
+
 
     console.log("Listening on PORT 3000");
 

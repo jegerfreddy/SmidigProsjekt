@@ -1,5 +1,0 @@
-
-
-Dette er bare en filler fil så jeg kan pushe parent-mappe til git.
-
-Kan slettes etter kode er lagt til.

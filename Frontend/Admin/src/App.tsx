@@ -5,7 +5,20 @@ import './App.css'
 
 function App() {
 
-  const [loginValid, setLoginValid] = useState<boolean>(false);
+  const [loginValid, setLoginValid] = useState<boolean>(() => {
+    const storedLogin = localStorage.getItem("loginValid");
+
+    if (storedLogin == "true") {
+      
+      return true;
+
+    } else {
+
+      return false;
+
+    };
+
+  });
 
   return (
     <>

@@ -32,32 +32,26 @@
 }
 
 .act-item, .edit-act-item {
-  background-color: rgba(255, 255, 255, .9);
+  background-color: #f0e8b8;
   display: flex;
   flex-direction: column;
+  border: .01rem solid #807c63;
   border-radius: 1rem;
   padding: 1.5rem;
   margin: 2rem;
+  filter: drop-shadow(0 0 .5rem #807c63);
 }
 
 .act-list {
   padding: 0;
   overflow-y: scroll;
+  background-color: #fcf9e4;
 }
 
 .edit-event-list {
+  background-color: #fcf9e4;
   padding: 0;
   overflow-y: scroll;
-}
-
-.edit-event-list > .background {
-  position: absolute;
-}
-
-.act-list > .background {
-  position: absolute;
-  height: fit-content;
-  
 }
 
 .edit-event {
@@ -109,15 +103,37 @@
   padding: 1rem;
 }
 
-.index-input {
-  width: 3rem;
-  height: 2rem;
-  margin: 0 10px;
-}
-
 .edit-input {
   margin: .5rem;
   padding: .5rem;
+  padding-bottom: .2rem;
   text-align: center;
+  background: transparent;
+  color:black;
+  border: none;
+  border-bottom: #373a4065 solid;
+  transition: .05s;
 }
 
+.index-input {
+  width: 3rem;
+  height: 2rem;
+  color: #845612;
+  display: inline;
+}
+
+.edit-input:focus {
+  transform: scale(1.02);
+}
+
+.save-button {
+  transition: .05s;
+}
+
+.save-button:hover {
+  transform: scale(1.02);
+}
+
+input:-webkit-autofill {
+  
+}

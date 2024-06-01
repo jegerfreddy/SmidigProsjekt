@@ -17,6 +17,17 @@ const EditEventList = () => {
         }
     });
 
+    actEvents.sort((a, b) => {
+        if (a.eventIndex < b.eventIndex) {
+
+            return -1;
+
+        } else {
+
+            return 1;
+
+        };
+    });
 
     const getEditEventJSX = () => {
         
@@ -25,7 +36,7 @@ const EditEventList = () => {
             return (
                 <EditEventItem
                     key={i}
-                    id={event.id}
+                    acteventID={event.acteventID}
                     actID={event.actID}
                     eventIndex={event.eventIndex}
                     eventTitle={event.eventTitle}
@@ -44,9 +55,6 @@ const EditEventList = () => {
             
         <>
             <div className="container-fluid edit-event-list">
-
-                <img className="background" src="/images/settings-page.png" alt="" />
-
                 {getEditEventJSX()}
             </div>
         </>

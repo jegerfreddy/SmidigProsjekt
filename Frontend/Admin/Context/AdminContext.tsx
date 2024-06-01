@@ -3,6 +3,7 @@ import { IAdminContext } from "../Interfaces/IAdminContext.ts";
 import { IActItem } from "../Interfaces/IActItem.ts";
 import { IEventItem } from "../Interfaces/IEventItem.ts";
 import { getActs, getEvents } from "../Services/Database.js";
+import { updateEvent } from "../Services/Database.js";
 
 export const AdminContext = createContext<IAdminContext | null>(null);
 
@@ -46,9 +47,7 @@ export const AdminProvider : FC<Props> = ({children}) => {
 
         await getActs()
             .then((acts: IActItem[]) => {
-
                 setActs(acts);
-
                 // Here we store the data in localstorage so that the state-variables can
                 // access them after the components has been mounted.
                 localStorage.setItem('acts', JSON.stringify(acts));
@@ -63,10 +62,21 @@ export const AdminProvider : FC<Props> = ({children}) => {
         
     };
 
+    const postUpdateEvent = async (updatedEvent: IEventItem) => {
+
+        await updateEvent(updatedEvent);
+        await fetchData()
+            .then(() => {
+                
+                window.location.reload(); // Reloads the page so the updated data is loaded into the frontend.  
+
+            });
+    };
+
     return (
         <>
             <AdminContext.Provider value={{
-                acts, events
+                acts, events, postUpdateEvent
             }}>
 
                 {children}

@@ -4,6 +4,6 @@ import {IEventItem} from "./IEventItem";
 export interface IAdminContext {
     acts: IActItem[];
     events: IEventItem[];
-    // updateEvent: (newEvent: IEventItem) => 200;
+    postUpdateEvent: (newEvent: IEventItem) =>void;
     // startAct: (actID: number) => 200;
 }

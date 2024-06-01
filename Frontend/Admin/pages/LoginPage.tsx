@@ -20,6 +20,7 @@ const LoginPage : FC<ILoginPage> = ({setLoginValid}) => {
                 
                 if (res.data) {
                     setLoginValid(res.data);
+                    localStorage.setItem("loginValid", "true");
                 } else {
                     setShowError(true);
                 };
@@ -54,8 +55,8 @@ const LoginPage : FC<ILoginPage> = ({setLoginValid}) => {
 
                 <div className="input-field">
                     <p>Skriv inn:</p>
-                    <input type="text" onChange={(e) => {handleInputChange(e.target)}} name="username-input" placeholder="Brukernavn..."/>
-                    <input type="text" onChange={(e) => {handleInputChange(e.target)}} name="password-input" placeholder="Passord..." />
+                    <input autoComplete="off" type="text" onChange={(e) => {handleInputChange(e.target)}} name="username-input" placeholder="Brukernavn..."/>
+                    <input autoComplete="off" type="text" onChange={(e) => {handleInputChange(e.target)}} name="password-input" placeholder="Passord..." />
                 </div>
 
                 <button className="btn btn-primary w-25" onClick={ () => { handleLogIn(inputUsername, inputPassword) }}>
