@@ -15,12 +15,12 @@ const tempAvatarData = [
     { id: 9, imageUrl: "/images/Avatar-9.png" },
 ];
 
-const AvatarList: React.FC<AvatarListProps> = ({ avatars = tempAvatarData, onClick }) => {
+const AvatarList: React.FC<AvatarListProps> = ({ avatars = tempAvatarData, onClick, orientation }) => {
     return (
         <div className="container">
             <div className="row">
                 {avatars.map((avatar) => (
-                    <AvatarItem key={avatar.id} imageUrl={avatar.imageUrl} id={avatar.id} onClick={onClick} />
+                    <AvatarItem key={avatar.id} imageUrl={avatar.imageUrl} id={avatar.id} onClick={onClick} orientation={orientation} />
                 ))}
             </div>
         </div>
