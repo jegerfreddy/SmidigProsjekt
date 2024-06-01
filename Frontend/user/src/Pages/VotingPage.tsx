@@ -1,5 +1,4 @@
 import React from 'react';
-import { NextBtn } from '../assets/Button/NextBtn';
 import VotingList from '../assets/Voting/VotingList';
 
 const VotingPage: React.FC = () => {
@@ -16,9 +15,6 @@ const VotingPage: React.FC = () => {
 
             <div className='position-absolute top-50 start-50 translate-middle'>
                 <VotingList />
-            </div>
-            <div className=''>
-                <NextBtn path='result' />
             </div>
         </main>
     );
