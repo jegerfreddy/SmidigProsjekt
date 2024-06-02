@@ -1,6 +1,7 @@
 import axios from "axios";
 import { IService } from "../Interfaces/IService";
 import {  IActEvent } from "../Interfaces/IAct";
+import { IUser } from "../Interfaces/IUser";
 
 
 const GetService = <T>(controller: string) => {
@@ -17,9 +18,21 @@ const GetService = <T>(controller: string) => {
   };
 
 
+  const post = async (data: T): Promise<{ result: T }> => {
+    try {
+      const result = await axios.post(`${controller}/new`, data);
+      const postResult = result.data;
+      return { result: postResult };
+    } catch (error) {
+      console.log(`Error posting item to ${controller}`, error);
+      throw error;
+    }
+  };  
+
 
   return {
     getById,
+    post,
    
   } as IService<T>;
 };
@@ -30,6 +43,6 @@ const GetService = <T>(controller: string) => {
 export const ActEventService = GetService<IActEvent>(
     "http://localhost:8080/api/actEvent"
     );
-/* export const UserService = GetService<IUser>(
+export const UserService = GetService<IUser>(
     "http://localhost:8080/api/user"
-    ); */
+    );

@@ -1,26 +1,37 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import AvatarList from '../assets/Avatar/AvatarList';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { NextBtn } from '../assets/Button/NextBtn';
 import SelectedAvatar from '../assets/Avatar/SelectedAvatar';
 import PhoneInfo from '../assets/Phone/PhoneInfo';
+import { IUser } from '../Interfaces/IUser';
+import { GeneralContext } from '../Contexts/UserContext';
+import { IGeneralContext } from '../Interfaces/IContext';
 
 const ChooseAvatarPage: React.FC = () => {
+    const userContext = useContext(GeneralContext) as IGeneralContext<IUser>;
     const location = useLocation();
     const { username } = location.state || { username: 'Username' };
     const [selectedAvatar, setSelectedAvatar] = useState<string>('/images/Avatar-4.png');
+    const [avatarNumber, setAvatarNumber] = useState<number>(0);
 
     const handleClick = (avatarId: number) => {
         const pickedAvatarUrl = `/images/Avatar-${avatarId}.png`;
         setSelectedAvatar(pickedAvatarUrl);
+        setAvatarNumber(avatarId);
     };
 
-    const { width, height, orientation } = PhoneInfo();
-    console.log('width i page:', width);
-    console.log('height i page:', height);
-    console.log('orientation i page:', orientation);
-    //className={`class for alle her ${orientation === 'vertical' ? 'vertical-layout' : ' horizontal-layout'}`}/>
+    const { orientation } = PhoneInfo();
+    const { postItem } = userContext;
+
+    const handleSubmit = async (newUser: IUser) => {
+        try {
+            await postItem(newUser);
+            window.location.href = `/waiting`
+        } catch (error) {
+            // Handle error during submission
+            console.error('Error occurred while submitting user data:', error);
+        }
+    };
 
     return (
         <div className='position-relative vh-100'>
@@ -30,7 +41,7 @@ const ChooseAvatarPage: React.FC = () => {
             </section>
 
             <section 
-                className={`text-center position-absolute ${orientation === 'vertical' ? 'my-5 p-5 top-0 start-50 translate-middle-x vertical-layout' : ' top-0 end-0 m-5 horizontal-layout'}`}>
+                className={`text-center position-absolute ${orientation === 'vertical' ? 'my-5 p-5 top-0 start-50 translate-middle-x vertical-layout' : ' top-0 end-0 m-5 p-5 horizontal-layout'}`}>
                     <SelectedAvatar selectedAvatar={selectedAvatar} username={username} />
             </section>
 
@@ -40,8 +51,11 @@ const ChooseAvatarPage: React.FC = () => {
             </section>
             
             <section>
-                    <NextBtn path='waiting' />
+                <button 
+            className={`position-absolute pinButton ${orientation === 'vertical' ? 'bottom-0 start-50 translate-middle-x mb-4 vertical-layout' : 'bottom-0 end-0 m-5 horizontal-layout'}`}
+            onClick={() => handleSubmit({ avatarNumber, username })}>Fortsett</button>
             </section>
+        
         </div>
     );
 };

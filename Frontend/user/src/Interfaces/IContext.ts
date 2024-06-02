@@ -5,6 +5,8 @@ export interface IGeneralContext<T> {
     loading: boolean;
     error: string | null;
     getById: (id: number) => Promise<T>;
+    postItem: (newItem: T) => Promise<void>;
+
   }
 
 

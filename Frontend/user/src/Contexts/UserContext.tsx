@@ -23,11 +23,20 @@ export const GeneralProvider = <T extends {}>({
       }
     };
 
+    const postItem = async (newItem: T): Promise<void> => {
+      try {
+        await service.post(newItem);
+      } catch (error) {
+        console.error("Error adding item:", error);
+      }
+    };
+
   const contextValue: IGeneralContext<T> = {
     items,
     loading,
     error,
     getById,
+    postItem,
   };
   return (
     <GeneralContext.Provider value={contextValue}>
