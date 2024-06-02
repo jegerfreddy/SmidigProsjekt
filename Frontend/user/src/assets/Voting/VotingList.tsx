@@ -3,8 +3,9 @@
 import { useContext, useEffect, useState } from "react";
 import { IActEvent } from "../../Interfaces/IAct";
 import VotingItem from "./VotingItem";
-import { GeneralContext } from "../../Contexts/UserContext";
+import { GeneralContext, GeneralProvider } from "../../Contexts/UserContext";
 import { IGeneralContext } from "../../Interfaces/IContext";
+import { VoteService } from "../../Services/GetService";
 
 const VotingList = () => {
   const { getById } = useContext(GeneralContext) as IGeneralContext<IActEvent>;
@@ -17,6 +18,7 @@ const VotingList = () => {
         const fetchedEvent = await getById(1); // Fetching event with ID 1
         if (fetchedEvent) {
           setEvent(fetchedEvent);
+          console.log("Event fetched:", fetchedEvent);
         } else {
           console.error("Event not found.");
           setError("Event not found.");
@@ -40,7 +42,9 @@ const VotingList = () => {
   return (
     <div className="container">
         <div className='row g-3 m-2'>
+        <GeneralProvider service={VoteService}>
             <VotingItem event={event} />
+        </GeneralProvider>
         </div>
       </div>
   );

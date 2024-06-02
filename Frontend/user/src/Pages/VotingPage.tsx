@@ -1,5 +1,7 @@
 import React from 'react';
 import VotingList from '../assets/Voting/VotingList';
+import { ActEventService } from '../Services/GetService';
+import { GeneralProvider } from '../Contexts/UserContext';
 
 const VotingPage: React.FC = () => {
 
@@ -14,7 +16,9 @@ const VotingPage: React.FC = () => {
             </div>
 
             <div className='position-absolute top-50 start-50 translate-middle'>
+            <GeneralProvider service={ActEventService}>
                 <VotingList />
+            </GeneralProvider>
             </div>
         </main>
     );

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ChooseUserNamePage: React.FC = () => {
     const [username, setUsername] = React.useState('');

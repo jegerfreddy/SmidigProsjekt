@@ -27,7 +27,7 @@ export const GeneralProvider = <T extends {}>({
       try {
         await service.post(newItem);
       } catch (error) {
-        console.error("Error adding item:", error);
+        console.error('Error adding item:', error);
       }
     };
 

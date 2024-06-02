@@ -2,6 +2,7 @@ import axios from "axios";
 import { IService } from "../Interfaces/IService";
 import {  IActEvent } from "../Interfaces/IAct";
 import { IUser } from "../Interfaces/IUser";
+import { IVote } from "../Interfaces/IVoting";
 
 
 const GetService = <T>(controller: string) => {
@@ -18,16 +19,17 @@ const GetService = <T>(controller: string) => {
   };
 
 
-  const post = async (data: T): Promise<{ result: T }> => {
+  const post = async <T,>(data: T): Promise<{ result: T }> => {
     try {
-      const result = await axios.post(`${controller}/new`, data);
-      const postResult = result.data;
-      return { result: postResult };
+        const result = await axios.post(`${controller}/new`, data);
+        const postResult = result.data;
+        console.log(`Posted item to ${controller}`, postResult);
+        return { result: postResult };
     } catch (error) {
-      console.log(`Error posting item to ${controller}`, error);
-      throw error;
+        console.log(`Error posting item to ${controller}`, error);
+        throw error;
     }
-  };  
+};
 
 
   return {
@@ -46,3 +48,7 @@ export const ActEventService = GetService<IActEvent>(
 export const UserService = GetService<IUser>(
     "http://localhost:8080/api/user"
     );
+
+export const VoteService = GetService<IVote>(
+  "http://localhost:8080/api/vote"
+  );

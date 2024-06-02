@@ -17,23 +17,31 @@ import StandByPage from '../Pages/StandByPage';
 const Routing: React.FC = () => {
     PhoneInfo();
     return (
-    <GeneralProvider service={ActEventService}>
-        <GeneralProvider service={UserService}>
-                <Router>
-                    <Routes>
-                        <Route path="/" element={<UserLoginPage />}/>
-                        <Route path="/username" element={<ChooseUserNamePage />} />
-                        <Route path="/avatar" element={<ChooseAvatarPage />} />
-                        <Route path="/gameLobby" element={<GameLobby />} />
-                        <Route path="/standByPage" element={<StandByPage/>}/>
-                        <Route path="/voting" element={<VotingPage />} />
-                        <Route path="/result" element={<ResultPage />} />
-                        <Route path="/Break" element={<TheaterPausePage/>} />
-                        <Route path="/Waiting" element={<WaitingLobbyPage/>} />
-                    </Routes>
-                </Router>
-        </GeneralProvider>
-    </GeneralProvider>
+        <Router>
+            <Routes>
+                <Route path="/" element={<UserLoginPage />} />
+                <Route path="/username" element={
+                    <GeneralProvider service={UserService}>
+                        <ChooseUserNamePage />
+                    </GeneralProvider>
+                } />
+                <Route path="/avatar" element={
+                    <GeneralProvider service={UserService}>
+                        <ChooseAvatarPage />
+                    </GeneralProvider>
+                } />
+                <Route path="/gameLobby" element={<GameLobby />} />
+                <Route path="/standByPage" element={<StandByPage />} />
+                <Route path="/voting" element={
+                    <GeneralProvider service={ActEventService}>
+                        <VotingPage />
+                    </GeneralProvider>
+                } />
+                <Route path="/result" element={<ResultPage />} />
+                <Route path="/Break" element={<TheaterPausePage />} />
+                <Route path="/Waiting" element={<WaitingLobbyPage />} />
+            </Routes>
+        </Router>
     );
 };
 
