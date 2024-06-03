@@ -63,7 +63,7 @@ public class VoteController {
 
     //Get winner of vote by ActEventID
     @GetMapping("/winner/{acteventid}")
-    public String getWinner(@PathVariable Long acteventid) {
+    public List<Integer> getWinner(@PathVariable Long acteventid) {
         logger.info("Fetching winner of event: " + acteventid);
         return voteService.getWinner(acteventid);
     }

@@ -9,10 +9,7 @@ import loading.smidig.smidig.repository.VoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,11 +58,11 @@ public class VoteService {
     }
 
     //Get the winner of a vote by ActEventID.
-    public String getWinner(Long acteventid) {
+    public List<Integer> getWinner(Long acteventid) {
         ActEvent actEvent = actEventRepository.findById(acteventid).orElse(null);
 
         if (actEvent == null) {
-            return "No ActEvent found";
+            return Collections.singletonList(-1);
         }
 
         List<Vote> votes = voteRepository.findAll();
@@ -94,32 +91,16 @@ public class VoteService {
                 .collect(Collectors.toList());
 
         if (winners.size() > 1) {
-            String tieOptions = winners.stream()
-                    .map(option -> getOptionName(option, actEvent))
-                    .collect(Collectors.joining(", "));
-            return "Tie between " + tieOptions;
+            // Tie between multiple options
+            return winners;
         } else if (winners.size() == 1) {
-            return getOptionName(winners.get(0), actEvent);
+            // Clear winner
+            return Collections.singletonList(winners.get(0));
         } else {
-            return "No votes";
+            // No votes case
+            return Collections.singletonList(-1);
         }
     }
-
-    private String getOptionName(int option, ActEvent actEvent) {
-        switch (option) {
-            case 1:
-                return "1";
-            case 2:
-                return "2";
-            case 3:
-                return "3";
-            case 4:
-                return "4";
-            default:
-                return "Unknown option";
-        }
-    }
-
 
     //Get percentage of votes for each option by ActEventID.
     public List<Integer> getPercentage(Long acteventid) {
