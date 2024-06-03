@@ -37,7 +37,8 @@ return (
                         </span>
                     ))}
                 </div>
-                {rating > 0 && <div id="rating-message">Du ga teateret {rating} stjerne{rating > 1 ? 'r' : ''}.</div>}
+                <div>Takk for din tilbakemelding!</div>
+                {rating > 0 && <div>Du ga teateret {rating} stjerne{rating > 1 ? 'r' : ''}.</div>}
             </div>
         </main>
     );
