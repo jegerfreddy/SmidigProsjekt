@@ -7,15 +7,19 @@ const FeedBackPage: React.FC = () => {
     
     const handleClick = (value: number) => {
         setRating(value);
+        /* saveRating(value); */
     };
 
-    const handleMouseOver = (value: number) => {
-        setHoverRating(value);
-    };
+    const handleMouseOver = (value: number) => {setHoverRating(value);};
+    const handleMouseOut = () => {setHoverRating(0);};
 
-    const handleMouseOut = () => {
-        setHoverRating(0);
-    };
+/*     const saveRating = async(value:number) => {
+        try {
+            if ()
+        } catch (error) {
+            console.log('Error occured while submitting user feedback', error);
+        }
+    }; */
 
 
 return (
