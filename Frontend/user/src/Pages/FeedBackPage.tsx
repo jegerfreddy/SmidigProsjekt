@@ -1,12 +1,46 @@
-import { NextBtn } from "../assets/Button/NextBtn";
+import { useState } from "react";
 
 const FeedBackPage: React.FC = () => {
-    return(
+
+    const [rating, setRating] = useState<number>(0);
+    const [hoverRating, setHoverRating] = useState<number>(0);
+    
+    const handleClick = (value: number) => {
+        setRating(value);
+    };
+
+    const handleMouseOver = (value: number) => {
+        setHoverRating(value);
+    };
+
+    const handleMouseOut = () => {
+        setHoverRating(0);
+    };
+
+
+return (
         <main>
-            <div></div>
-            
+            <div className="container text-center">
+                <h1>Gi oss din tilbakemelding!</h1>
+                <div className="stars my-4">
+                    {[1, 2, 3, 4, 5].map((value) => (
+                        <span
+                            key={value}
+                            className={`star ${value <= (hoverRating || rating) ? 'active' : ''}`}
+                            data-value={value}
+                            onClick={() => handleClick(value)}
+                            onMouseOver={() => handleMouseOver(value)}
+                            onMouseOut={handleMouseOut}
+                            style={{ cursor: 'pointer', fontSize: '5rem', color: value <= (hoverRating || rating) ? 'gold' : '#ccc' }}
+                        >
+                            &#9733;
+                        </span>
+                    ))}
+                </div>
+                {rating > 0 && <div id="rating-message">Du ga teateret {rating} stjerne{rating > 1 ? 'r' : ''}.</div>}
+            </div>
         </main>
-    )
+    );
 };
 
 export default FeedBackPage;

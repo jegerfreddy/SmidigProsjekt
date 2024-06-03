@@ -13,6 +13,7 @@ import WaitingLobbyPage from '../Pages/WaitingLobbyPage';
 import { GeneralProvider } from '../Contexts/UserContext';
 import { ActEventService, UserService } from '../Services/GetService';
 import StandByPage from '../Pages/StandByPage';
+import FeedBackPage from '../Pages/FeedBackPage';
 
 const Routing: React.FC = () => {
     PhoneInfo();
@@ -38,6 +39,7 @@ const Routing: React.FC = () => {
                     </GeneralProvider>
                 } />
                 <Route path="/result" element={<ResultPage />} />
+                <Route path="/feedBackPage" element={<FeedBackPage />} />
                 <Route path="/Break" element={<TheaterPausePage />} />
                 <Route path="/Waiting" element={<WaitingLobbyPage />} />
             </Routes>
