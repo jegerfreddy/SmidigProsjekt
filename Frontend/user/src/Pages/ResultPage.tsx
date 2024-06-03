@@ -5,9 +5,9 @@ import { NextBtn } from '../Components/Button/NextBtn';
 const ResultPage: React.FC = () => {
     return (
         <div>
-            <h1>Result</h1>
+            <h1>Resultat</h1>
             {/* Add your avatar selection logic here */}
-            <NextBtn path="break" />
+            <NextBtn path="feedBackPage" />
         </div>
     );
 };
