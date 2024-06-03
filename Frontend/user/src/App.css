@@ -155,3 +155,42 @@ body {
     transform: rotate(-15deg);
 }
 
+/* result bar css */
+.result-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end; /* Align items at the bottom */
+}
+
+.result-text {
+  font-size: 1.5rem;
+  color: #FFFFFF;
+}
+
+.result-box {
+  border: 6px solid #383838;
+  text-align: center;
+  width: 10vw;
+  margin: 0 10px; /* Adjusted margin to only affect horizontal spacing */
+  display: flex;
+  align-items: flex-end; /* Ensure text is at the bottom */
+  justify-content: center;
+  padding-bottom: 10px; /* Add padding to the bottom for spacing */
+}
+
+/* Define different background colors for each option */
+.option-1 {
+  background-color: #009D2C; /* Red */
+}
+
+.option-2 {
+  background-color: #9E00B8; /* Green */
+}
+
+.option-3 {
+  background-color: #009D9D; /* Blue */
+}
+
+.option-4 {
+  background-color: #BF6A06; /* Yellow */
+}

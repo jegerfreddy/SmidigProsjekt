@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NextBtn } from '../Components/Button/NextBtn';
 import PhoneInfo from '../Components/Phone/PhoneInfo';
+import LoadingComponent from '../Components/Header/LoadingCircle';
 
 const GameLobby: React.FC = () => {
     const { orientation } = PhoneInfo();
@@ -10,16 +11,12 @@ const GameLobby: React.FC = () => {
         height: 'auto', 
     };
 
-    const loadingPhotoStyle = {
-        animation: 'loading-animation 2s infinite linear',
-    };
-
     return (
 
         <div className='text-center vh-100 d-flex flex-column justify-content-center position-relative overflow-hidden'>
-        <div className='position-absolute top-0 start-50 translate-middle-x mt-5'>
-                <img id='Loading-photo' src="images/Loading.png" alt="Loading" style={loadingPhotoStyle} /> 
-        </div>            
+                
+                <LoadingComponent/> 
+                          
             <div className='display-4 text-center text-wrap mb-5'>Gjør dere klare for nå begynner eventyret!</div>
             <NextBtn path='standByPage' />
             {orientation === 'horizontal' ? (

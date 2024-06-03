@@ -1,14 +1,22 @@
 import React from 'react';
-import { NextBtn } from '../Components/Button/NextBtn';
-
+import ResultList from '../Components/Result/ResultList';
+import { GeneralProvider } from '../Contexts/UserContext';
+import { ResultService } from '../Services/GetService';
+import { useParams } from 'react-router-dom';
 
 const ResultPage: React.FC = () => {
+    const { actEventId } = useParams<{ actEventId: string }>();
+    const id = actEventId ?? '';
+
+
     return (
-        <div>
-            <h1>Result</h1>
-            {/* Add your avatar selection logic here */}
-            <NextBtn path="break" />
-        </div>
+        <main className='position-relative vh-100'>
+            <div className='position-absolute top-50 start-50 translate-middle'>
+                <GeneralProvider service={ResultService}>
+                    <ResultList actEventId={(id)} />
+                </GeneralProvider>
+            </div>
+        </main>
     );
 };
 
