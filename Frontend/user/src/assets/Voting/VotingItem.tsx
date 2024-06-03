@@ -9,7 +9,8 @@ const VotingItem: React.FC<VotingItemProps> = ({event}) => {
 
 
   const [actId] = useState<number>(1);
-  const [yourUserID] = useState<number>(1);
+  console.log(localStorage.getItem('yourUserID'));
+  const yourUserID = parseInt(localStorage.getItem('yourUserID') || '0', 10);
 
   const getRandomColorClass = () => {
     const randomColor = Math.floor(Math.random() * 10) + 1;
@@ -30,7 +31,7 @@ const VotingItem: React.FC<VotingItemProps> = ({event}) => {
     const newVote: IVote = {
       act: { actID: actId },
       actEvent: { acteventID: event.acteventID, act: { actID: actId } },
-      user: { userID: yourUserID}, // Provide a default value of 0 for yourUserID
+      user: { userID: yourUserID},
       option: option
     };
     sendVoteToDb(newVote);
