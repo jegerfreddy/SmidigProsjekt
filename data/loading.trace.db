@@ -1,0 +1,23 @@
+2024-06-02 15:45:24.088561+02:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "VOTES" not found; SQL statement:
+INSERT INTO VOTES (VOTE_ID, OPTION, ACT_ID, ACTEVENT_ID, USER_ID)
+VALUES (1, 'Option A', 123, 456, 789) [42102-224]
+2024-06-02 15:45:24.092423+02:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "VOTES" not found; SQL statement:
+INSERT INTO VOTES (VOTE_ID, OPTION, ACT_ID, ACTEVENT_ID, USER_ID)
+VALUES (2, 'Option B', 456, 789, 123) [42102-224]
+2024-06-02 15:47:04.498323+02:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]ACT"; expected "ALTER, ANALYZE"; SQL statement:
+ACT [42001-224]
+2024-06-02 15:47:52.387907+02:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'avatar_url' (APP_USER: ""AVATAR"" INTEGER)"; SQL statement:
+INSERT INTO APP_USER (USER_ID, AVATAR, USERNAME, VERIFIED)
+VALUES (1, 'avatar_url', 'app_user', true) [22018-224]
+2024-06-02 15:48:16.055089+02:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'avatar_url' (APP_USER: ""AVATAR"" INTEGER)"; SQL statement:
+INSERT INTO APP_USER (USER_ID, AVATAR, USERNAME, VERIFIED)
+VALUES (1, 'avatar_url', 'app_user', true) [22018-224]
+2024-06-02 15:48:32.173393+02:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'Option A' (VOTE: ""OPTION"" INTEGER)"; SQL statement:
+INSERT INTO VOTE (VOTE_ID, OPTION, ACT_ID, ACTEVENT_ID, USER_ID)
+VALUES (1, 'Option A', 1, 1, 1) [22018-224]

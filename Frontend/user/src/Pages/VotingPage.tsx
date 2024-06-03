@@ -1,5 +1,5 @@
 import React from 'react';
-import VotingList from '../assets/Voting/VotingList';
+import VotingList from '../Components/Voting/VotingList';
 import { ActEventService } from '../Services/GetService';
 import { GeneralProvider } from '../Contexts/UserContext';
 

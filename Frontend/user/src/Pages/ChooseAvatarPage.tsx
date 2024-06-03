@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import AvatarList from '../assets/Avatar/AvatarList';
-import SelectedAvatar from '../assets/Avatar/SelectedAvatar';
-import PhoneInfo from '../assets/Phone/PhoneInfo';
+import AvatarList from '../Components/Avatar/AvatarList';
+import SelectedAvatar from '../Components/Avatar/SelectedAvatar';
+import PhoneInfo from '../Components/Phone/PhoneInfo';
 import { IUser } from '../Interfaces/IUser';
 import { GeneralContext } from '../Contexts/UserContext';
 import { IGeneralContext } from '../Interfaces/IContext';
@@ -10,11 +9,10 @@ import { UserService } from '../Services/GetService';
 
 const ChooseAvatarPage: React.FC = () => {
     const userContext = useContext(GeneralContext) as IGeneralContext<IUser>;
-    const location = useLocation();
-    const { username } = location.state || { username: 'Username' };
     const [selectedAvatar, setSelectedAvatar] = useState<string>('/images/Avatar-4.png');
     const [avatarNumber, setAvatarNumber] = useState<number>(0);
-    const [yourUserID, setPostResult] = useState<number>(0);
+    const username = localStorage.getItem('username') || '';
+
 
     const handleClick = (avatarId: number) => {
         const pickedAvatarUrl = `/images/Avatar-${avatarId}.png`;
@@ -27,14 +25,13 @@ const ChooseAvatarPage: React.FC = () => {
 
     const handleSubmit = async (newUser: IUser) => {
         try {
-            const result: any = await UserService.post(newUser); // Use UserService to post data
-            const postResult = result.result; // Store postResult from result object
+            const result: any = await UserService.post(newUser);
+            const postResult = result.result;
             console.log(`I page`, postResult.userID);
-            setPostResult(postResult.userID); // Set postResult in component state
-            // Optionally redirect to the /waiting page
+            localStorage.setItem('yourUserID', postResult.userID);
+
             window.location.href = `/waiting`
         } catch (error) {
-            // Handle error during submission
             console.error('Error occurred while submitting user data:', error);
         }
     };

@@ -15,7 +15,7 @@ const VotingList = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const fetchedEvent = await getById(1); // Fetching event with ID 1
+        const fetchedEvent = await getById(1); // endre her
         if (fetchedEvent) {
           setEvent(fetchedEvent);
           console.log("Event fetched:", fetchedEvent);
