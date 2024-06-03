@@ -13,7 +13,7 @@ import lombok.Setter;
 public class AdminUser {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "admin_user_seq_gen")
-    @SequenceGenerator(name = "act_seq_gen", sequenceName = "admin_user_seq", allocationSize = 1)
+    @SequenceGenerator(name = "admin_user_seq_gen", sequenceName = "admin_user_seq", allocationSize = 1)
     @Column(name = "admin_id")
     private Long adminID = 0L;
 
