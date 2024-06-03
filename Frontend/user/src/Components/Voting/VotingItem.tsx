@@ -44,22 +44,22 @@ const VotingItem: React.FC<VotingItemProps> = ({ event }) => {
   return (
     <div>
       {event.option1 && (
-        <div className={`rounded ${getRandomColorClass()}`} onClick={() => handleOptionClick(1)}>
+        <div className='vote-box option-1' onClick={() => handleOptionClick(1)}>
           <p>{event.option1}</p>
         </div>
       )}
       {event.option2 && (
-        <div className={`rounded ${getRandomColorClass()}`} onClick={() => handleOptionClick(2)}>
+        <div className='vote-box option-2' onClick={() => handleOptionClick(2)}>
           <p>{event.option2}</p>
         </div>
       )}
       {event.option3 && (
-        <div className={`rounded ${getRandomColorClass()}`} onClick={() => handleOptionClick(3)}>
+        <div className='vote-box option-3' onClick={() => handleOptionClick(3)}>
           <p>{event.option3}</p>
         </div>
       )}
       {event.option4 && (
-        <div className={`rounded ${getRandomColorClass()}`} onClick={() => handleOptionClick(4)}>
+        <div className='vote-box option-4' onClick={() => handleOptionClick(4)}>
           <p>{event.option4}</p>
         </div>
       )}

@@ -13,7 +13,7 @@ const GameLobby: React.FC = () => {
 
     return (
 
-        <div className='text-center vh-100 d-flex flex-column justify-content-center position-relative overflow-hidden'>
+        <div className='text-center vh-100 d-flex flex-column justify-content-center position-relative overflow-hidden bgColor'>
                 
                 <LoadingComponent/> 
                           

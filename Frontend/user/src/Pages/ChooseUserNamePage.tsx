@@ -11,7 +11,7 @@ const ChooseUserNamePage: React.FC = () => {
     };
 
     return (
-        <div className='position-relative vh-100'>
+        <div className='position-relative vh-100 bgColor'>
             <h1 className='position-absolute top-0 start-50 translate-middle-x mt-4'>
                 Registrering
             </h1>

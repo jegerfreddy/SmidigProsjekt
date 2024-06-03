@@ -17,7 +17,7 @@ const WaitingLobbyPage: React.FC = () => {
     }, []);
 
     return (
-        <main>
+        <main className="bgColor vh-100">
             <div>
                 <div className="Cloud1"></div> {/* Corrected className */}
                 <h1 className="text-center">

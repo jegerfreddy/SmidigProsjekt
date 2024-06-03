@@ -1,13 +1,23 @@
 body {
   font-family: 'Bungee';
-  background-color: #F0D063;
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 
 .bgColor {
   background-color: #F0D063;
+}
+
+.bgColor2 {
+  background-color: #442D6E;
+  background-image: url('../public/images/horizontalBg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+
 }
 
 .pinInput {
@@ -155,11 +165,23 @@ body {
     transform: rotate(-15deg);
 }
 
+/* Vote option css */
+.vote-box {
+  border: 6px solid #383838;
+  border-radius: 12px;
+  text-align: center;
+  width: 300px;
+  height: 50px;
+  margin: 25px;
+  color: #FFFFFF;
+
+}
+
 /* result bar css */
 .result-container {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-end; /* Align items at the bottom */
+  align-items: flex-end;
 }
 
 .result-text {
@@ -171,26 +193,26 @@ body {
   border: 6px solid #383838;
   text-align: center;
   width: 10vw;
-  margin: 0 10px; /* Adjusted margin to only affect horizontal spacing */
+  margin: 0 10px;
   display: flex;
-  align-items: flex-end; /* Ensure text is at the bottom */
+  align-items: flex-end;
   justify-content: center;
-  padding-bottom: 10px; /* Add padding to the bottom for spacing */
+  padding-bottom: 10px;
 }
 
-/* Define different background colors for each option */
+/* Different background colors for each option */
 .option-1 {
-  background-color: #009D2C; /* Red */
+  background-color: #009D2C; 
 }
 
 .option-2 {
-  background-color: #9E00B8; /* Green */
+  background-color: #9E00B8;
 }
 
 .option-3 {
-  background-color: #009D9D; /* Blue */
+  background-color: #009D9D;
 }
 
 .option-4 {
-  background-color: #BF6A06; /* Yellow */
+  background-color: #BF6A06;
 }
