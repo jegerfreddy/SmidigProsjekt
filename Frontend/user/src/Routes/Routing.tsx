@@ -8,10 +8,10 @@ import VotingPage from '../Pages/VotingPage';
 import ResultPage from '../Pages/ResultPage';
 import GameLobby from '../Pages/GameLobby';
 import PhoneInfo from '../Components/Phone/PhoneInfo';
-import TheaterPausePage from '../Pages/TheaterPausePage'
+import TheaterPausePage from '../Pages/TheaterPausePage';
 import WaitingLobbyPage from '../Pages/WaitingLobbyPage';
 import { GeneralProvider } from '../Contexts/UserContext';
-import { ActEventService, UserService } from '../Services/GetService';
+import { ActEventService, ResultService, UserService } from '../Services/GetService';
 import StandByPage from '../Pages/StandByPage';
 
 const Routing: React.FC = () => {
@@ -30,14 +30,22 @@ const Routing: React.FC = () => {
                         <ChooseAvatarPage />
                     </GeneralProvider>
                 } />
+
                 <Route path="/gameLobby" element={<GameLobby />} />
                 <Route path="/standByPage" element={<StandByPage />} />
+
                 <Route path="/voting" element={
                     <GeneralProvider service={ActEventService}>
                         <VotingPage />
                     </GeneralProvider>
                 } />
-                <Route path="/result" element={<ResultPage />} />
+
+                <Route path="/result/:actEventId" element={
+                    <GeneralProvider service={ResultService}>
+                        <ResultPage />
+                    </GeneralProvider>
+                } />
+
                 <Route path="/Break" element={<TheaterPausePage />} />
                 <Route path="/Waiting" element={<WaitingLobbyPage />} />
             </Routes>

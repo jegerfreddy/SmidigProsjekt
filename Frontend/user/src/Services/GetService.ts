@@ -3,6 +3,7 @@ import { IService } from "../Interfaces/IService";
 import {  IActEvent } from "../Interfaces/IAct";
 import { IUser } from "../Interfaces/IUser";
 import { IVote } from "../Interfaces/IVoting";
+import { IResult } from "../Interfaces/IResult";
 
 
 const GetService = <T>(controller: string) => {
@@ -42,6 +43,7 @@ const GetService = <T>(controller: string) => {
 /* export const ActService = GetService<IAct>(
     "http://localhost:8080/api/act"
     ); */
+  
 export const ActEventService = GetService<IActEvent>(
     "http://localhost:8080/api/actEvent"
     );
@@ -51,4 +53,8 @@ export const UserService = GetService<IUser>(
 
 export const VoteService = GetService<IVote>(
   "http://localhost:8080/api/vote"
+  );
+
+export const ResultService = GetService<IResult>(
+  "http://localhost:8080/api/vote/percentage"
   );

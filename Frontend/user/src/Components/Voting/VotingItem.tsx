@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 import { IVote, VotingItemProps } from "../../Interfaces/IVoting";
 import { GeneralContext } from "../../Contexts/UserContext";
 import { IGeneralContext } from "../../Interfaces/IContext";
+import { useNavigate } from "react-router-dom";
 
-const VotingItem: React.FC<VotingItemProps> = ({event}) => {
+const VotingItem: React.FC<VotingItemProps> = ({ event }) => {
   const userContext = useContext(GeneralContext) as IGeneralContext<IVote>;
   const { postItem } = userContext;
-
 
   const [actId] = useState<number>(1);
   console.log(localStorage.getItem('yourUserID'));
@@ -17,11 +17,13 @@ const VotingItem: React.FC<VotingItemProps> = ({event}) => {
     return `randomColor${randomColor}`;
   };
 
+  const navigate = useNavigate();
+
   const sendVoteToDb = async (newVote: IVote) => {
     console.log('Sending vote to database:', newVote);
     try {
       await postItem(newVote);
-      // window.location.href = `/result`;
+      navigate(`/result/${newVote.actEvent.acteventID}`); // Navigate to the result page with the corresponding acteventId
     } catch (error) {
       console.error('Error occurred while submitting user data:', error);
     }
@@ -31,7 +33,7 @@ const VotingItem: React.FC<VotingItemProps> = ({event}) => {
     const newVote: IVote = {
       act: { actID: actId },
       actEvent: { acteventID: event.acteventID, act: { actID: actId } },
-      user: { userID: yourUserID},
+      user: { userID: yourUserID },
       option: option
     };
     sendVoteToDb(newVote);
