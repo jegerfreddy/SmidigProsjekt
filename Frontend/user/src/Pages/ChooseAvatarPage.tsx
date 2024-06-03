@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import AvatarList from '../assets/Avatar/AvatarList';
-import SelectedAvatar from '../assets/Avatar/SelectedAvatar';
-import PhoneInfo from '../assets/Phone/PhoneInfo';
+import AvatarList from '../Components/Avatar/AvatarList';
+import SelectedAvatar from '../Components/Avatar/SelectedAvatar';
+import PhoneInfo from '../Components/Phone/PhoneInfo';
 import { IUser } from '../Interfaces/IUser';
 import { GeneralContext } from '../Contexts/UserContext';
 import { IGeneralContext } from '../Interfaces/IContext';

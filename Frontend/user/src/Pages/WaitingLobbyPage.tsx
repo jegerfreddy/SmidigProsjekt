@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NextBtn } from "../assets/Button/NextBtn";
+import { NextBtn } from "../Components/Button/NextBtn";
 import "../App.css"; // Ensure this line imports your CSS
 
 const WaitingLobbyPage: React.FC = () => {

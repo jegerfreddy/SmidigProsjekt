@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { NextBtn } from '../assets/Button/NextBtn';
+import { NextBtn } from '../Components/Button/NextBtn';
 
 const UserLoginPage: React.FC = () => {
     return (

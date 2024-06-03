@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NextBtn } from '../assets/Button/NextBtn';
+import { NextBtn } from '../Components/Button/NextBtn';
 
 /* StandBy - page when the teather is running */
 

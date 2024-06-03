@@ -1,5 +1,5 @@
 import React from 'react';
-import { NextBtn } from '../assets/Button/NextBtn';
+import { NextBtn } from '../Components/Button/NextBtn';
 
 
 const ResultPage: React.FC = () => {

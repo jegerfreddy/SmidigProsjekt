@@ -7,7 +7,7 @@ import ChooseAvatarPage from '../Pages/ChooseAvatarPage';
 import VotingPage from '../Pages/VotingPage';
 import ResultPage from '../Pages/ResultPage';
 import GameLobby from '../Pages/GameLobby';
-import PhoneInfo from '../assets/Phone/PhoneInfo';
+import PhoneInfo from '../Components/Phone/PhoneInfo';
 import TheaterPausePage from '../Pages/TheaterPausePage'
 import WaitingLobbyPage from '../Pages/WaitingLobbyPage';
 import { GeneralProvider } from '../Contexts/UserContext';
