@@ -62,14 +62,14 @@ public class VoteController {
     }
 
     //Get winner of vote by ActEventID
-    @GetMapping("/winner/id/{acteventid}")
+    @GetMapping("/winner/{acteventid}")
     public List<Integer> getWinner(@PathVariable Long acteventid) {
         logger.info("Fetching winner of event: " + acteventid);
         return voteService.getWinner(acteventid);
     }
 
     //Get percentage of votes for each option by ActEventID
-    @GetMapping("/percentage/id/{acteventid}")
+    @GetMapping("/percentage/{acteventid}")
     public List<Integer> getPercentage(@PathVariable Long acteventid) {
         logger.info("Fetching percentage of votes for event: " + acteventid);
         return voteService.getPercentage(acteventid);
