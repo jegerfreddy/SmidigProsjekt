@@ -10,7 +10,7 @@ const UserLoginPage: React.FC = () => {
             </div>
 
             <div className='position-absolute top-50 start-50 translate-middle'>
-                <input type="text" placeholder='TAST PIN' className='pinInput' />
+                <input type="text" placeholder='TAST PIN' className='userInput' />
             </div>
 
             <NextBtn path='username' />

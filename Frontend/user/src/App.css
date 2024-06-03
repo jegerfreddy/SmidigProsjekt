@@ -10,20 +10,21 @@ body {
   background-color: #F0D063;
 }
 
-.pinInput {
+/*.pinInput {
   font-size: 3rem;
   text-align: center;
   width: 80vw;
   background: none;
   border: none;
-}
-.userNameInput {
+}*/
+
+.userInput {
   font-size: 3rem;
   text-align: center;
-  width: 80vw;
-  color: #FFFFFF;
+  width: 70vw;
+  color: #000000;
   background-color: #009D2C;
-  border: 1px solid #383838;
+  border: 5px solid #383838;
 }
 
 .userNameInput::placeholder {
@@ -32,28 +33,26 @@ body {
 
 
 .pinButton {
+  font-size: 1.5rem;
   background: #BF6A06;
   border-color: #383838;
-  color: #FFFFFF;
+  color: #121010;
   min-width: 185px;
   min-height: 50px;
   border-radius: 25px;
+  border: 5px solid;
   margin: 0 auto;
 }
 
 /* Avatar css */
 
-.avatarPicked {
-  border: 2px solid #000000;
+.selectedAvatarImg {
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  width: 110px;
-  height: 110px;
+  
 }
 
-.avatarImg {
-  height: 64px;
-  width: 64px;
-}
 
 /* voting color */
 
