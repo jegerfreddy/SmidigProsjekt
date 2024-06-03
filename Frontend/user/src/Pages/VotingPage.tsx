@@ -8,12 +8,9 @@ import PhoneInfo from '../Components/Phone/PhoneInfo';
 const VotingPage: React.FC = () => {
 
     const { orientation } = PhoneInfo();
-
-
-
-
+    
     return (
-        <main className={`position-relative vh-100 ${orientation === 'vertical' ? 'bgColor vertical-layout' : 'bgColor2 bgVectors horizontal-layout'}`}>
+        <main className={`position-relative vh-100 ${orientation === 'vertical' ? 'bgColor vertical-layout' : 'horizontalbg1 bgVectors horizontal-layout'}`}>
             <section>
                 {orientation === 'vertical' && <LoadingComponent/>}
             </section>

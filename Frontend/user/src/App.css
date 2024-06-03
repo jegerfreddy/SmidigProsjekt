@@ -11,13 +11,42 @@ body {
 .bgColor {
   background-color: #F0D063;
 }
-
+.bgColor1 {
+  background-color: #F0D063;
+  background-image: url('../public/images/yellowBg1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .bgColor2 {
+  background-color: #F0D063;
+  background-image: url('../public/images/yellowBg2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bgColor3 {
+  background-color: #F0D063;
+  background-image: url('../public/images/yellowBg3.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.horizontalbg1 {
   background-color: #442D6E;
   background-image: url('../public/images/horizontalBg.png');
   background-size: cover;
   background-repeat: no-repeat;
 
+}
+.horizontalbg2 {
+  background-color: #442D6E;
+  background-image: url('../public/images/baloonBg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.bgColor5 {
+  background-color: #D075B7;
 }
 
 .pinInput {

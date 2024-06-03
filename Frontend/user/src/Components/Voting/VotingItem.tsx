@@ -9,18 +9,11 @@ const VotingItem: React.FC<VotingItemProps> = ({ event }) => {
   const { postItem } = userContext;
 
   const [actId] = useState<number>(1);
-  console.log(localStorage.getItem('yourUserID'));
   const yourUserID = parseInt(localStorage.getItem('yourUserID') || '0', 10);
-
-  const getRandomColorClass = () => {
-    const randomColor = Math.floor(Math.random() * 10) + 1;
-    return `randomColor${randomColor}`;
-  };
 
   const navigate = useNavigate();
 
   const sendVoteToDb = async (newVote: IVote) => {
-    console.log('Sending vote to database:', newVote);
     try {
       await postItem(newVote);
       navigate(`/result/${newVote.actEvent.acteventID}`); // Navigate to the result page with the corresponding acteventId

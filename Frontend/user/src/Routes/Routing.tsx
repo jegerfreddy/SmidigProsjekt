@@ -13,6 +13,8 @@ import WaitingLobbyPage from '../Pages/WaitingLobbyPage';
 import { GeneralProvider } from '../Contexts/UserContext';
 import { ActEventService, ResultService, UserService } from '../Services/GetService';
 import StandByPage from '../Pages/StandByPage';
+import TiePage from '../Pages/TiePage';
+import MiniGamePage from '../Pages/MiniGamePage';
 
 const Routing: React.FC = () => {
     PhoneInfo();
@@ -48,6 +50,8 @@ const Routing: React.FC = () => {
 
                 <Route path="/Break" element={<TheaterPausePage />} />
                 <Route path="/Waiting" element={<WaitingLobbyPage />} />
+                <Route path="/Tie" element={<TiePage />} />
+                <Route path="/Minigame" element={<MiniGamePage />} />
             </Routes>
         </Router>
     );

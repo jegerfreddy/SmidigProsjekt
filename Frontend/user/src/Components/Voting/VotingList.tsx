@@ -18,7 +18,6 @@ const VotingList = () => {
         const fetchedEvent = await getById(1); // endre her
         if (fetchedEvent) {
           setEvent(fetchedEvent);
-          console.log("Event fetched:", fetchedEvent);
         } else {
           console.error("Event not found.");
           setError("Event not found.");
