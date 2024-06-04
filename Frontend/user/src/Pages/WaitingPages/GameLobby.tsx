@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { NextBtn } from '../Components/Button/NextBtn';
-import PhoneInfo from '../Components/Phone/PhoneInfo';
-import LoadingComponent from '../Components/Header/LoadingCircle';
+import { NextBtn } from '../../Components/Button/NextBtn';
+import LoadingComponent from '../../Components/Header/LoadingCircle';
+import PhoneInfo from '../../Components/Phone/PhoneInfo';
+
 
 const GameLobby: React.FC = () => {
     const { orientation } = PhoneInfo();

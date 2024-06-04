@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { NextBtn } from '../Components/Button/NextBtn';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const UserLoginPage: React.FC = () => {
     const [pin, setPin] = useState('');

@@ -1,22 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import UserLoginPage from '../Pages/UserLoginPage';
-import ChooseUserNamePage from '../Pages/ChooseUserNamePage';
-import ChooseAvatarPage from '../Pages/ChooseAvatarPage';
-import VotingPage from '../Pages/VotingPage';
-import ResultPage from '../Pages/ResultPage';
-import GameLobby from '../Pages/GameLobby';
+import ChooseUserNamePage from '../Pages/CreateUserPages/ChooseUserNamePage';
+import ChooseAvatarPage from '../Pages/CreateUserPages/ChooseAvatarPage';
 import PhoneInfo from '../Components/Phone/PhoneInfo';
-import TheaterPausePage from '../Pages/TheaterPausePage';
-import WaitingLobbyPage from '../Pages/WaitingLobbyPage';
+import TheaterPausePage from '../Pages/WaitingPages/TheaterPausePage';
 import { GeneralProvider } from '../Contexts/UserContext';
 import { ActEventService, ResultService, UserService, WinnerService} from '../Services/GetService';
-import StandByPage from '../Pages/StandByPage';
-import TiePage from '../Pages/TiePage';
-import MiniGamePage from '../Pages/MiniGamePage';
-import WaitResultPage from '../Pages/WaitResultPage';
-import FeedBackPage from '../Pages/FeedBackPage';
+import UserLoginPage from '../Pages/CreateUserPages/UserLoginPage';
+import FeedBackPage from '../Pages/FeedBackPages/FeedBackPage';
+import MiniGamePage from '../Pages/VotingResultPages/MiniGamePage';
+import ResultPage from '../Pages/VotingResultPages/ResultPage';
+import TiePage from '../Pages/VotingResultPages/TiePage';
+import VotingPage from '../Pages/VotingResultPages/VotingPage';
+import WaitResultPage from '../Pages/VotingResultPages/WaitResultPage';
+import GameLobby from '../Pages/WaitingPages/GameLobby';
+import StandByPage from '../Pages/WaitingPages/StandByPage';
+import WaitingLobbyPage from '../Pages/WaitingPages/WaitingLobbyPage';
 
 
 const Routing: React.FC = () => {

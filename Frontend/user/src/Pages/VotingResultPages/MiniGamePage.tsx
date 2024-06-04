@@ -1,5 +1,5 @@
 import React from "react";
-import MiniGameBaloons from "../Components/Minigame/MiniGameComponent";
+import MiniGameBaloons from "../../Components/Minigame/MiniGameComponent";
 
 
 const MiniGamePage: React.FC = () => {

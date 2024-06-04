@@ -1,12 +1,13 @@
-import React, { useContext, useState } from 'react';
-import AvatarList from '../Components/Avatar/AvatarList';
-import SelectedAvatar from '../Components/Avatar/SelectedAvatar';
-import PhoneInfo from '../Components/Phone/PhoneInfo';
-import { IUser } from '../Interfaces/IUser';
-import { GeneralContext } from '../Contexts/UserContext';
-import { IGeneralContext } from '../Interfaces/IContext';
-import { UserService } from '../Services/GetService';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import AvatarList from "../../Components/Avatar/AvatarList";
+import SelectedAvatar from "../../Components/Avatar/SelectedAvatar";
+import PhoneInfo from "../../Components/Phone/PhoneInfo";
+import { GeneralContext } from "../../Contexts/UserContext";
+import { IGeneralContext } from "../../Interfaces/IContext";
+import { IUser } from "../../Interfaces/IUser";
+import { UserService } from "../../Services/GetService";
+
 
 const ChooseAvatarPage: React.FC = () => {
     const userContext = useContext(GeneralContext) as IGeneralContext<IUser>;

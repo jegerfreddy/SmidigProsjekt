@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { WinnerItemProps } from '../Interfaces/IWinner';
-import { IGeneralContext } from '../Interfaces/IContext';
-import { GeneralContext } from '../Contexts/UserContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import { GeneralContext } from '../../Contexts/UserContext';
+import { IGeneralContext } from '../../Interfaces/IContext';
+import { WinnerItemProps } from '../../Interfaces/IWinner';
 
 const WaitResultPage: React.FC = () => {
     const { actEventId } = useParams<{ actEventId: string }>();

@@ -1,8 +1,8 @@
-import React from 'react';
-import ResultList from '../Components/Result/ResultList';
-import { GeneralProvider } from '../Contexts/UserContext';
-import { ResultService } from '../Services/GetService';
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
+import ResultList from "../../Components/Result/ResultList";
+import { GeneralProvider } from "../../Contexts/UserContext";
+import { ResultService } from "../../Services/GetService";
+
 
 const ResultPage: React.FC = () => {
     const { actEventId } = useParams<{ actEventId: string }>();

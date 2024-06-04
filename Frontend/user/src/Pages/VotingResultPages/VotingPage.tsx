@@ -1,9 +1,10 @@
 import React from 'react';
-import VotingList from '../Components/Voting/VotingList';
-import { ActEventService } from '../Services/GetService';
-import { GeneralProvider } from '../Contexts/UserContext';
-import LoadingComponent from '../Components/Header/LoadingCircle';
-import PhoneInfo from '../Components/Phone/PhoneInfo';
+import LoadingComponent from '../../Components/Header/LoadingCircle';
+import PhoneInfo from '../../Components/Phone/PhoneInfo';
+import VotingList from '../../Components/Voting/VotingList';
+import { GeneralProvider } from '../../Contexts/UserContext';
+import { ActEventService } from '../../Services/GetService';
+
 
 const VotingPage: React.FC = () => {
 
