@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
 
 @Getter
 @Setter
@@ -25,4 +26,10 @@ public class Feedback {
 
     @Column(name = "rating")
     private int rating;
+
+    @ManyToOne
+    @JoinColumn(name = "act_id", nullable = true)
+    @JsonIgnoreProperties({"actName", "events", "votes", "minigames"})
+    @Nullable
+    private Act act;
 }

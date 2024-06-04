@@ -58,6 +58,7 @@ public class FeedbackController {
         feedbackDTO.setFeedbackID(feedback.getFeedbackID());
         feedbackDTO.setUserID(feedback.getUser().getUserID());
         feedbackDTO.setRating(feedback.getRating());
+        feedbackDTO.setActID(feedback.getAct().getActID());
         return feedbackDTO;
     }
 }
