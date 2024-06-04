@@ -20,7 +20,7 @@ const ChooseUserNamePage: React.FC = () => {
                 <input 
                     type="text" 
                     placeholder='Brukernavn'
-                    className='userNameInput'
+                    className='userInput'
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />

@@ -48,21 +48,22 @@ body {
 .bgColor5 {
   background-color: #D075B7;
 }
-
+/*
 .pinInput {
   font-size: 3rem;
   text-align: center;
   width: 80vw;
   background: none;
   border: none;
-}
-.userNameInput {
+}*/
+
+.userInput {
   font-size: 3rem;
   text-align: center;
-  width: 80vw;
+  width: 60vw;
   color: #FFFFFF;
   background-color: #009D2C;
-  border: 1px solid #383838;
+  border: 5px solid #383838;
 }
 
 .userNameInput::placeholder {
@@ -73,7 +74,7 @@ body {
 .pinButton {
   background: #BF6A06;
   border-color: #383838;
-  color: #FFFFFF;
+  color: #050505;
   min-width: 185px;
   min-height: 50px;
   border-radius: 25px;
