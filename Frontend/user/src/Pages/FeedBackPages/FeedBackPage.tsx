@@ -1,51 +1,45 @@
 import { useState } from "react";
+import FeedBackList from "../../Components/FeedBack/FeedBackList";
+import { IFeedBack } from "../../Interfaces/IFeedBack";
+import { FeedBackService } from "../../Services/GetService";
+
 
 const FeedBackPage: React.FC = () => {
+    const [actEventId] = useState<string>('');
+    const [rating, setRating] = useState<number>(0); 
+    const [userID, setUserId] = useState<number>(1); 
 
-    const [rating, setRating] = useState<number>(0);
-    const [hoverRating, setHoverRating] = useState<number>(0);
-    
-    const handleClick = (value: number) => {
+
+        const handleClick = (value: number) => {
         setRating(value);
-        /* saveRating(value); */
+        setUserId(1);
+        console.log(`Rating: ${value}`, `User ID: ${userID}`);
     };
 
-    const handleMouseOver = (value: number) => {setHoverRating(value);};
-    const handleMouseOut = () => {setHoverRating(0);};
-
-/*     const saveRating = async(value:number) => {
+    const handleSubmit = async (newFeedback: IFeedBack) => {
         try {
-            if ()
+            const result: any = await FeedBackService.post(newFeedback);
+            const postResult = result;
+            console.log(`I page`, postResult);
         } catch (error) {
-            console.log('Error occured while submitting user feedback', error);
+            console.error('Error occurred while submitting user data:', error);
         }
-    }; */
+    };
 
-
-return (
-        <main className="vh-100 bgColor">
-            <div className="container text-center">
-                <h1>Gi oss din tilbakemelding!</h1>
-                <div className="stars my-4">
-                    {[1, 2, 3, 4, 5].map((value) => (
-                        <span
-                            key={value}
-                            className={`star ${value <= (hoverRating || rating) ? 'active' : ''}`}
-                            data-value={value}
-                            onClick={() => handleClick(value)}
-                            onMouseOver={() => handleMouseOver(value)}
-                            onMouseOut={handleMouseOut}
-                            style={{ cursor: 'pointer', fontSize: '5rem', color: value <= (hoverRating || rating) ? 'gold' : '#ccc' }}
-                        >
-                            &#9733;
-                        </span>
-                    ))}
+     
+    
+    return (
+            <main className='position-relative vh-100  bgColor'>
+                <div className='position-absolute top-50 start-50 translate-middle'>
+                    <FeedBackList actEventId={actEventId} onClick={handleClick} />
+                    <section>
+                        <button className="btn btn-primary" onClick={() => handleSubmit({ userID, rating })}>
+                            Submit Feedback
+                        </button>
+                    </section>
                 </div>
-                <div>Takk for din tilbakemelding!</div>
-                {rating > 0 && <div>Du ga teateret {rating} stjerne{rating > 1 ? 'r' : ''}.</div>}
-            </div>
-        </main>
+            </main>
     );
-};
+}
 
 export default FeedBackPage;

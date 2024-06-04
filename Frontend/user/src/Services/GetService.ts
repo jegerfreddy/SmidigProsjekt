@@ -6,6 +6,7 @@ import { IVote } from "../Interfaces/IVoting";
 import { IResult } from "../Interfaces/IResult";
 import { IWinner } from "../Interfaces/IWinner";
 import { IVertify } from "../Interfaces/IVertify";
+import { IFeedBack } from "../Interfaces/IFeedBack";
 
 
 const GetService = <T>(controller: string) => {
@@ -77,4 +78,7 @@ export const WinnerService = GetService<IWinner>(
 
 export const VertifyService = GetService<IVertify>(
   "http://localhost:8080/api/verify"
+  );
+export const FeedBackService = GetService<IFeedBack>(
+  "http://localhost:8080/api/feedback"
   );
