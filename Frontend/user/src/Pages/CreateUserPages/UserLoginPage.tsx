@@ -7,14 +7,12 @@ const UserLoginPage: React.FC = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        localStorage.setItem('code', pin);
-        console.log('Stored code:', localStorage.getItem('code')); // Check the console for the stored value
-        navigate('/username')
+        navigate(`/username/${pin}`);
+
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPin(e.target.value);
-        console.log('Current input value:', pin); // Check the console for the current input value
     };
 
     return (

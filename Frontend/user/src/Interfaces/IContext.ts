@@ -6,6 +6,7 @@ export interface IGeneralContext<T> {
     error: string | null;
     getById: (id: number) => Promise<T>;
     postItem: (newItem: T) => Promise<void>;
+    vertifyUser: (userId: string, code: string) =>Promise<boolean>;
 
   }
 

@@ -5,7 +5,7 @@ import ChooseAvatarPage from '../Pages/CreateUserPages/ChooseAvatarPage';
 import PhoneInfo from '../Components/Phone/PhoneInfo';
 import TheaterPausePage from '../Pages/WaitingPages/TheaterPausePage';
 import { GeneralProvider } from '../Contexts/UserContext';
-import { ActEventService, ResultService, UserService, WinnerService} from '../Services/GetService';
+import { ActEventService, ResultService, UserService, VertifyService, WinnerService} from '../Services/GetService';
 import UserLoginPage from '../Pages/CreateUserPages/UserLoginPage';
 import FeedBackPage from '../Pages/FeedBackPages/FeedBackPage';
 import MiniGamePage from '../Pages/VotingResultPages/MiniGamePage';
@@ -16,6 +16,7 @@ import WaitResultPage from '../Pages/VotingResultPages/WaitResultPage';
 import GameLobby from '../Pages/WaitingPages/GameLobby';
 import StandByPage from '../Pages/WaitingPages/StandByPage';
 import WaitingLobbyPage from '../Pages/WaitingPages/WaitingLobbyPage';
+import VertifyUserPage from '../Pages/CreateUserPages/VertifyUserPage';
 
 
 const Routing: React.FC = () => {
@@ -24,14 +25,19 @@ const Routing: React.FC = () => {
         <Router>
             <Routes>
                 <Route path="/GAMECODE" element={<UserLoginPage />} />
-                <Route path="/username" element={
+                <Route path="/username/:code" element={
                     <GeneralProvider service={UserService}>
                         <ChooseUserNamePage />
                     </GeneralProvider>
                 } />
-                <Route path="/avatar" element={
+                <Route path="/avatar/:username/:code" element={
                     <GeneralProvider service={UserService}>
                         <ChooseAvatarPage />
+                    </GeneralProvider>
+                } />
+                <Route path="/vertifyuser/:userId/:code" element={
+                    <GeneralProvider service={VertifyService}>
+                        <VertifyUserPage />
                     </GeneralProvider>
                 } />
            
