@@ -11,18 +11,20 @@ import PhoneInfo from '../Components/Phone/PhoneInfo';
 import TheaterPausePage from '../Pages/TheaterPausePage';
 import WaitingLobbyPage from '../Pages/WaitingLobbyPage';
 import { GeneralProvider } from '../Contexts/UserContext';
-import { ActEventService, ResultService, UserService } from '../Services/GetService';
+import { ActEventService, ResultService, UserService, VertifyService, WinnerService } from '../Services/GetService';
 import StandByPage from '../Pages/StandByPage';
 import TiePage from '../Pages/TiePage';
 import MiniGamePage from '../Pages/MiniGamePage';
+import WaitResultPage from '../Pages/WaitResultPage';
 import FeedBackPage from '../Pages/FeedBackPage';
+
 
 const Routing: React.FC = () => {
     PhoneInfo();
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<UserLoginPage />} />
+                <Route path="/GAMECODE" element={<UserLoginPage />} />
                 <Route path="/username" element={
                     <GeneralProvider service={UserService}>
                         <ChooseUserNamePage />
@@ -31,6 +33,11 @@ const Routing: React.FC = () => {
                 <Route path="/avatar" element={
                     <GeneralProvider service={UserService}>
                         <ChooseAvatarPage />
+                    </GeneralProvider>
+                } />
+                <Route path="/vertifyUser/:userID/:code" element={
+                    <GeneralProvider service={VertifyService}>
+                        <VertifyUserPage />
                     </GeneralProvider>
                 } />
 
@@ -49,11 +56,19 @@ const Routing: React.FC = () => {
                     </GeneralProvider>
                 } />
 
+                <Route path="/waitresult/:actEventId" element={
+                    <GeneralProvider service={WinnerService}>
+                        <WaitResultPage />
+                    </GeneralProvider>
+                } />
+
                 <Route path="/Break" element={<TheaterPausePage />} />
                 <Route path="/Waiting" element={<WaitingLobbyPage />} />
-                <Route path="/Tie" element={<TiePage />} />
-                <Route path="/Minigame" element={<MiniGamePage />} />
+
+                <Route path="/tie/:actEventId" element={<TiePage />} />
+                <Route path="/minigame/:actEventId" element={<MiniGamePage />} />
                 <Route path="/feedBackPage" element={<FeedBackPage />} />
+
             </Routes>
         </Router>
     );

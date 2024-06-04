@@ -6,12 +6,16 @@ import { IUser } from '../Interfaces/IUser';
 import { GeneralContext } from '../Contexts/UserContext';
 import { IGeneralContext } from '../Interfaces/IContext';
 import { UserService } from '../Services/GetService';
+import { useNavigate } from 'react-router-dom';
 
 const ChooseAvatarPage: React.FC = () => {
     const userContext = useContext(GeneralContext) as IGeneralContext<IUser>;
     const [selectedAvatar, setSelectedAvatar] = useState<string>('/images/Avatar-4.png');
     const [avatarNumber, setAvatarNumber] = useState<number>(0);
     const username = localStorage.getItem('username') || '';
+    const code = localStorage.getItem('code') || '';
+    const navigate = useNavigate();
+
 
 
     const handleClick = (avatarId: number) => {
@@ -30,7 +34,7 @@ const ChooseAvatarPage: React.FC = () => {
             console.log(`I page`, postResult.userID);
             localStorage.setItem('yourUserID', postResult.userID);
 
-            window.location.href = `/waiting`
+            navigate(`/vertifyUser/${postResult.userID}/${code}`);
         } catch (error) {
             console.error('Error occurred while submitting user data:', error);
         }

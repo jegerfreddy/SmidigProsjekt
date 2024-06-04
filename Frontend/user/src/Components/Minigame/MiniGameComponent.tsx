@@ -28,8 +28,8 @@ const MiniGameBaloons: React.FC = () => {
                 <h1 className="text-center position relative top-0 start-0 p-5">
                     Hjelp laget ditt ved å gi luft til ballongen
                 </h1>
-                <img src="images/redBaloon.png" alt="redBaloon" className='position-absolute start-0'  style={{ bottom: `${redValue}vh`, transition: 'bottom 0.5s ease' }}/>
-                <img src="images/purpleBaloon.png" alt="purpleBaloon" className='position-absolute end-0'  style={{ bottom: `${purpleValue}vh`, transition: 'bottom 0.5s ease' }}/>
+                <img src="/images/redBaloon.png" alt="redBaloon" className='position-absolute start-0'  style={{ bottom: `${redValue}vh`, transition: 'bottom 0.5s ease' }}/>
+                <img src="/images/purpleBaloon.png" alt="purpleBaloon" className='position-absolute end-0'  style={{ bottom: `${purpleValue}vh`, transition: 'bottom 0.5s ease' }}/>
             </div>
         </>
     );
