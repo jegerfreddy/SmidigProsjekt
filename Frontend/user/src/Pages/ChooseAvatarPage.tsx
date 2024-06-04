@@ -34,7 +34,7 @@ const ChooseAvatarPage: React.FC = () => {
             console.log(`I page`, postResult.userID);
             localStorage.setItem('yourUserID', postResult.userID);
 
-            navigate(`/vertifyUser/${postResult.userID}/${code}`);
+            navigate(`/gameLobby`);
         } catch (error) {
             console.error('Error occurred while submitting user data:', error);
         }
