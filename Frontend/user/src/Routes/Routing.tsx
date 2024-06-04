@@ -11,7 +11,7 @@ import PhoneInfo from '../Components/Phone/PhoneInfo';
 import TheaterPausePage from '../Pages/TheaterPausePage';
 import WaitingLobbyPage from '../Pages/WaitingLobbyPage';
 import { GeneralProvider } from '../Contexts/UserContext';
-import { ActEventService, ResultService, UserService, VertifyService, WinnerService } from '../Services/GetService';
+import { ActEventService, ResultService, UserService, WinnerService} from '../Services/GetService';
 import StandByPage from '../Pages/StandByPage';
 import TiePage from '../Pages/TiePage';
 import MiniGamePage from '../Pages/MiniGamePage';
@@ -35,11 +35,7 @@ const Routing: React.FC = () => {
                         <ChooseAvatarPage />
                     </GeneralProvider>
                 } />
-                <Route path="/vertifyUser/:userID/:code" element={
-                    <GeneralProvider service={VertifyService}>
-                        <VertifyUserPage />
-                    </GeneralProvider>
-                } />
+           
 
                 <Route path="/gameLobby" element={<GameLobby />} />
                 <Route path="/standByPage" element={<StandByPage />} />
