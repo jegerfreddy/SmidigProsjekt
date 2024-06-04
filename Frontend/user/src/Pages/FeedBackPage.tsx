@@ -23,7 +23,7 @@ const FeedBackPage: React.FC = () => {
 
 
 return (
-        <main className="bgColor">
+        <main className="vh-100 bgColor">
             <div className="container text-center">
                 <h1>Gi oss din tilbakemelding!</h1>
                 <div className="stars my-4">

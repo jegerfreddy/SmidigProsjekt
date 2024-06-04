@@ -16,7 +16,8 @@ import StandByPage from '../Pages/StandByPage';
 import TiePage from '../Pages/TiePage';
 import MiniGamePage from '../Pages/MiniGamePage';
 import WaitResultPage from '../Pages/WaitResultPage';
-import VertifyUserPage from '../Pages/VertifyUserPage';
+import FeedBackPage from '../Pages/FeedBackPage';
+
 
 const Routing: React.FC = () => {
     PhoneInfo();
@@ -63,8 +64,11 @@ const Routing: React.FC = () => {
 
                 <Route path="/Break" element={<TheaterPausePage />} />
                 <Route path="/Waiting" element={<WaitingLobbyPage />} />
+
                 <Route path="/tie/:actEventId" element={<TiePage />} />
                 <Route path="/minigame/:actEventId" element={<MiniGamePage />} />
+                <Route path="/feedBackPage" element={<FeedBackPage />} />
+
             </Routes>
         </Router>
     );

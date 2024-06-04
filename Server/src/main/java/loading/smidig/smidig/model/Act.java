@@ -32,4 +32,8 @@ public class Act {
     @OneToMany(mappedBy = "act")
     @JsonIgnore
     private List<Vote> votes;
+
+    @OneToMany(mappedBy = "act", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("act")
+    private List<Minigame> minigames;
 }
