@@ -5,7 +5,7 @@ import ChooseAvatarPage from '../Pages/CreateUserPages/ChooseAvatarPage';
 import PhoneInfo from '../Components/Phone/PhoneInfo';
 import TheaterPausePage from '../Pages/WaitingPages/TheaterPausePage';
 import { GeneralProvider } from '../Contexts/UserContext';
-import { ActEventService, ResultService, UserService, VertifyService, WinnerService} from '../Services/GetService';
+import { ActEventService, FeedBackService, ResultService, UserService, VertifyService, WinnerService} from '../Services/GetService';
 import UserLoginPage from '../Pages/CreateUserPages/UserLoginPage';
 import FeedBackPage from '../Pages/FeedBackPages/FeedBackPage';
 import MiniGamePage from '../Pages/VotingResultPages/MiniGamePage';
@@ -68,7 +68,13 @@ const Routing: React.FC = () => {
 
                 <Route path="/tie/:actEventId" element={<TiePage />} />
                 <Route path="/minigame/:actEventId" element={<MiniGamePage />} />
-                <Route path="/feedBackPage" element={<FeedBackPage />} />
+
+
+                <Route path="/feedBackPage" element={
+                    <GeneralProvider service={FeedBackService}>
+                        <FeedBackPage />
+                    </GeneralProvider>
+                } />
 
             </Routes>
         </Router>
