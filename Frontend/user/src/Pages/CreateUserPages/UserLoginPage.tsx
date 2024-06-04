@@ -7,8 +7,9 @@ const UserLoginPage: React.FC = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/username/${pin}`);
-
+        if(pin.length === 6){
+            navigate(`/username/${pin}`);
+        }
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,9 +31,12 @@ const UserLoginPage: React.FC = () => {
                     onChange={handleInputChange}
                 />
             </div>
-            <button onClick={handleClick}>
-                fortsett knapp
-            </button>
+
+            <div className='position-absolute bottom-0 start-50 translate-middle-x mb-4'>
+                <button className='pinButton' onClick={handleClick}>
+                    Fortsett
+                </button>
+            </div>
 
         </div>
     );
