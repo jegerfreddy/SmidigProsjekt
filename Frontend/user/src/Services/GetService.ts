@@ -4,6 +4,7 @@ import {  IActEvent } from "../Interfaces/IAct";
 import { IUser } from "../Interfaces/IUser";
 import { IVote } from "../Interfaces/IVoting";
 import { IResult } from "../Interfaces/IResult";
+import { IFeedBack } from "../Interfaces/IFeedBack";
 
 
 const GetService = <T>(controller: string) => {
@@ -57,4 +58,7 @@ export const VoteService = GetService<IVote>(
 
 export const ResultService = GetService<IResult>(
   "http://localhost:8080/api/vote/percentage"
+  );
+export const FeedBackService = GetService<IFeedBack>(
+  "http://localhost:8080/api/feedback"
   );
