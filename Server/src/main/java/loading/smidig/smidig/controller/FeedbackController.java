@@ -1,8 +1,14 @@
 package loading.smidig.smidig.controller;
 
+import loading.smidig.smidig.model.Act;
 import loading.smidig.smidig.model.Feedback;
 import loading.smidig.smidig.model.FeedbackDTO;
+import loading.smidig.smidig.model.User;
+import loading.smidig.smidig.service.ActService;
 import loading.smidig.smidig.service.FeedbackService;
+import loading.smidig.smidig.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +20,18 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "http://localhost:5173")
 public class FeedbackController {
     private final FeedbackService feedbackService;
+    private final UserService userService;
+    private final ActService actService;
 
     @Autowired
-    public FeedbackController(FeedbackService feedbackService) {
+    public FeedbackController(FeedbackService feedbackService, UserService userService, ActService actService) {
         this.feedbackService = feedbackService;
+        this.userService = userService;
+        this.actService = actService;
     }
+
+    //Logger
+    private static final Logger logger = LoggerFactory.getLogger(FeedbackController.class);
 
     //Get all feedback
     @GetMapping("/all")
@@ -36,8 +49,22 @@ public class FeedbackController {
 
     //Create feedback
     @PostMapping("/new")
-    public FeedbackDTO createFeedback(@RequestBody Feedback feedback) {
-        return convertToDto(feedbackService.createFeedback(feedback));
+    public FeedbackDTO createFeedback(@RequestBody FeedbackDTO feedbackDTO) {
+        Feedback feedbackToAdd = new Feedback();
+        User user = userService.getUserById(feedbackDTO.getUserID());
+        Act act = actService.getActsById(feedbackDTO.getActID());
+
+        if (user == null || act == null) {
+            throw new IllegalArgumentException("User or Act not found");
+        }
+
+        logger.info(user.getUsername() + " is creating feedback");
+
+        feedbackToAdd.setUser(user);
+        feedbackToAdd.setAct(act);
+        feedbackToAdd.setRating(feedbackDTO.getRating());
+
+        return convertToDto(feedbackService.createFeedback(feedbackToAdd));
     }
 
     //Delete feedback by id
@@ -49,7 +76,7 @@ public class FeedbackController {
     //Update feedback
     @PutMapping("/update")
     public FeedbackDTO updateFeedback(@RequestBody Feedback feedback) {
-        return convertToDto(feedbackService.updateFeedback(feedback));
+        return convertToDto(feedbackService.createFeedback(feedback));
     }
 
     //Convert to DTO
