@@ -1,8 +1,22 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react';
 import { NextBtn } from '../Components/Button/NextBtn';
+import { useNavigate } from 'react-router-dom';
 
 const UserLoginPage: React.FC = () => {
+    const [pin, setPin] = useState('');
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        localStorage.setItem('code', pin);
+        console.log('Stored code:', localStorage.getItem('code')); // Check the console for the stored value
+        navigate('/username')
+    };
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPin(e.target.value);
+        console.log('Current input value:', pin); // Check the console for the current input value
+    };
+
     return (
         <div className='position-relative vh-100 bgColor'>
             <div className='position-absolute top-0 end-0 m-4'>
@@ -10,10 +24,18 @@ const UserLoginPage: React.FC = () => {
             </div>
 
             <div className='position-absolute top-50 start-50 translate-middle'>
-                <input type="text" placeholder='TAST PIN' className='pinInput' />
+                <input 
+                    type="text" 
+                    placeholder='TAST PIN' 
+                    className='pinInput' 
+                    value={pin} 
+                    onChange={handleInputChange}
+                />
             </div>
+            <button onClick={handleClick}>
+                fortsett knapp
+            </button>
 
-            <NextBtn path='username' />
         </div>
     );
 };

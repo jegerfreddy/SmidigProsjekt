@@ -16,7 +16,7 @@ const VotingItem: React.FC<VotingItemProps> = ({ event }) => {
   const sendVoteToDb = async (newVote: IVote) => {
     try {
       await postItem(newVote);
-      navigate(`/result/${newVote.actEvent.acteventID}`); // Navigate to the result page with the corresponding acteventId
+      navigate(`/waitresult/${newVote.actEvent.acteventID}`); // Navigate to the result page with the corresponding acteventId
     } catch (error) {
       console.error('Error occurred while submitting user data:', error);
     }
