@@ -5,6 +5,7 @@ import { IUser } from "../Interfaces/IUser";
 import { IVote } from "../Interfaces/IVoting";
 import { IResult } from "../Interfaces/IResult";
 import { IWinner } from "../Interfaces/IWinner";
+import { IVertify } from "../Interfaces/IVertify";
 
 
 const GetService = <T>(controller: string) => {
@@ -32,11 +33,21 @@ const GetService = <T>(controller: string) => {
         throw error;
     }
 };
+  const vertifyUser = async (userId:string, code:string): Promise<boolean> => {
+    try {
+        const result = await axios.post(`${controller}/${userId}/${code}`);
+        return result.data;
+    } catch (error) {
+        console.log(`Error posting item to ${controller}`, error);
+        throw error;
+    }
+};
 
 
   return {
     getById,
     post,
+    vertifyUser
    
   } as IService<T>;
 };
@@ -62,4 +73,8 @@ export const ResultService = GetService<IResult>(
 
 export const WinnerService = GetService<IWinner>(
   "http://localhost:8080/api/vote/winner"
+  );
+
+export const VertifyService = GetService<IVertify>(
+  "http://localhost:8080/api/verify"
   );

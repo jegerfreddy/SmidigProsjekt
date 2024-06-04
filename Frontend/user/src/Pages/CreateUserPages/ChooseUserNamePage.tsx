@@ -1,13 +1,15 @@
 import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ChooseUserNamePage: React.FC = () => {
+    const navigate = useNavigate();
     const [username, setUsername] = React.useState('');
+    const { code } = useParams<{ code: string }>();
+
+
 
     const createUserName = () => {
-        localStorage.setItem('username', username);
-        window.location.href = `/avatar`
-
-
+        navigate(`/avatar/${username}/${code}`);
     };
 
     return (
