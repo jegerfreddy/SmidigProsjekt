@@ -36,4 +36,11 @@ public class VerificationCodeController {
         logger.info("Verifying user with ID: " + userID + " and code: " + code);
         return verificationCodeService.verifyUser(userID, code);
     }
+
+    //Validate if code is valid
+    @GetMapping("/validate/{code}")
+    public boolean validateCode(@PathVariable String code) {
+        logger.info("Validating code: " + code);
+        return verificationCodeService.validateCode(code);
+    }
 }

@@ -60,6 +60,10 @@ public class VerificationCodeService {
         VerificationCode verificationCode = getVerificationCodeByCode(code);
         User user = userRepository.findById(userID).orElse(null);
 
+        if(user == null || verificationCode == null){
+            return false;
+        }
+
         if(verificationCode.getUsed() == 0){
             verificationCode.setUsed(1);
             user.setVerified(1);
@@ -78,5 +82,15 @@ public class VerificationCodeService {
             }
         }
         return null;
+    }
+
+    public boolean validateCode(String code) {
+        List<VerificationCode> codes = verificationCodeRepository.findAll();
+        for (VerificationCode verificationCode : codes) {
+            if (verificationCode.getCode().equals(code)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
