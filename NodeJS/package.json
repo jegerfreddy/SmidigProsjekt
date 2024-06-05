@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node Server.js"
+    "admin-install": "cd ../Frontend/Admin && npm install",
+    "admin-dev": "cd ../Frontend/Admin && npm run dev",
+    "user-install": "cd ../Frontend/user && npm install",
+    "user-dev": "cd ../Frontend/user && npm run dev",
+    "nodejs-install": "npm install",
+    "nodejs-start": "nodemon Server.js",
+    "setup": "npm-run-all --parallel admin-install user-install nodejs-install",
+    "start": "npm-run-all --parallel admin-dev user-dev nodejs-start"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +21,9 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "ws": "^8.17.0"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "nodemon": "^2.0.7"
   }
 }
