@@ -1,0 +1,41 @@
+import { useNavigate, useParams } from "react-router-dom";
+import { IVertify } from "../../Interfaces/IVertify";
+import { useContext, useEffect } from "react";
+import { GeneralContext } from "../../Contexts/UserContext";
+import { IGeneralContext } from "../../Interfaces/IContext";
+
+const VertifyUserPage: React.FC = () => {
+    const userContext = useContext(GeneralContext) as IGeneralContext<IVertify>;
+    const navigate = useNavigate();
+    const { userId, code } = useParams<{ userId: string, code: string }>();
+
+    useEffect(() => {
+        const handleSubmit = async (userId: string, code: string) => {
+            try {
+                const result = await userContext.vertifyUser(userId, code);
+                if (result) {
+                    // Handle true case
+                     navigate('/gameLobby');
+                } else {
+                    // Handle false case
+                     navigate('/GAMECODE');
+                }
+            } catch (error) {
+                console.error('Error occurred while submitting user data:', error);
+                console.log('User not verified');
+            }
+        };
+
+        if (userId && code) {
+            handleSubmit(userId, code);
+        }
+    }, [userContext, navigate, userId, code]);
+
+    return (
+        <div className='position-relative vh-100 bgColor'>
+            <h1>vertify user</h1>
+        </div>
+    );
+};
+
+export default VertifyUserPage;

@@ -7,14 +7,13 @@ const UserLoginPage: React.FC = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        localStorage.setItem('code', pin);
-        console.log('Stored code:', localStorage.getItem('code')); // Check the console for the stored value
-        navigate('/username')
+        if(pin.length === 6){
+            navigate(`/username/${pin}`);
+        }
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPin(e.target.value);
-        console.log('Current input value:', pin); // Check the console for the current input value
     };
 
     return (
@@ -32,9 +31,12 @@ const UserLoginPage: React.FC = () => {
                     onChange={handleInputChange}
                 />
             </div>
-            <button onClick={handleClick}>
-                fortsett knapp
-            </button>
+
+            <div className='position-absolute bottom-0 start-50 translate-middle-x mb-4'>
+                <button className='pinButton' onClick={handleClick}>
+                    Fortsett
+                </button>
+            </div>
 
         </div>
     );

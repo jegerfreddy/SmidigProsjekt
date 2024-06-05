@@ -60,6 +60,10 @@ public class VerificationCodeService {
         VerificationCode verificationCode = getVerificationCodeByCode(code);
         User user = userRepository.findById(userID).orElse(null);
 
+        if(user.getVerified() == 1){
+            return true;
+        }
+
         if(user == null || verificationCode == null){
             return false;
         }

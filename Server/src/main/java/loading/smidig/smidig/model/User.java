@@ -33,6 +33,10 @@ public class User {
     @JsonIgnore
     private List<Vote> votes;
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Feedback> feedback;
+
 
     //Constructor
     public User(String username, int avatarNumber) {

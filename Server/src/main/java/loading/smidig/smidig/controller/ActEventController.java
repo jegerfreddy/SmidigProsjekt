@@ -1,8 +1,9 @@
 package loading.smidig.smidig.controller;
 
 import loading.smidig.smidig.model.ActEvent;
-import loading.smidig.smidig.model.ActEventDTO;
+import loading.smidig.smidig.DTO.ActEventDTO;
 import loading.smidig.smidig.service.ActEventService;
+import loading.smidig.smidig.service.ActService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,12 @@ import java.util.stream.Collectors;
 public class ActEventController {
 
     private final ActEventService actEventService;
+    private final ActService actService;
 
     @Autowired
-    public ActEventController(ActEventService actEventService) {
+    public ActEventController(ActEventService actEventService, ActService actService) {
         this.actEventService = actEventService;
+        this.actService = actService;
     }
 
     // Logger
@@ -47,6 +50,15 @@ public class ActEventController {
     public ActEventDTO createActEvent(@RequestBody ActEvent actEvent) {
         logger.info("Creating new act event - " + actEvent.getEventTitle());
         return convertToDto(actEventService.createActEvent(actEvent));
+    }
+
+    //Create ActEvent and link to Act
+    @PostMapping("/new/{actID}")
+    public ActEventDTO createActEventAndLinkToAct(@PathVariable Long actID, @RequestBody ActEvent actEvent) {
+        logger.info("Creating new act event and linking to act - " + actEvent.getEventTitle());
+        ActEvent newActEvent = actEventService.createActEvent(actEvent);
+        actService.linkActEventToAct(actID, newActEvent.getActeventID());
+        return convertToDto(newActEvent);
     }
 
     // Delete act event by ID

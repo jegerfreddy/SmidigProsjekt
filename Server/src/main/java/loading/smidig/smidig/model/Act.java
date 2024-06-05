@@ -36,4 +36,9 @@ public class Act {
     @OneToMany(mappedBy = "act", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("act")
     private List<Minigame> minigames;
+
+    //Constructor
+    public Act(Long actID) {
+        this.actID = actID;
+    }
 }

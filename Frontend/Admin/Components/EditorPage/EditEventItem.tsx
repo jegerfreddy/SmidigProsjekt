@@ -8,12 +8,12 @@ const EditEventItem : FC<IEventItem> = ({acteventID, actID, eventIndex, eventTit
 
     const {postUpdateEvent} = useContext(AdminContext) as IAdminContext;
 
-    const [newTitle, setNewTitle] = useState<string>(eventTitle ? eventTitle : "");
+    const [newTitle, setNewTitle] = useState<string>(eventTitle ? eventTitle : "undefined");
     const [newIndex, setNewIndex] = useState<number>(eventIndex ? eventIndex : 0);
-    const [alt1, setAlt1] = useState<string>(option1 ? option1 : "");
-    const [alt2, setAlt2] = useState<string>(option2 ? option2 : "");
-    const [alt3, setAlt3] = useState<string | undefined>(option3 ? option3 : "");
-    const [alt4, setAlt4] = useState<string | undefined>(option4 ? option4 : "");
+    const [alt1, setAlt1] = useState<string>(option1 ? option1 : "undefined");
+    const [alt2, setAlt2] = useState<string>(option2 ? option2 : "undefined");
+    const [alt3, setAlt3] = useState<string | undefined>(option3 ? option3 : "undefined");
+    const [alt4, setAlt4] = useState<string | undefined>(option4 ? option4 : "undefined");
 
     const handleChange = (target: HTMLInputElement) => {
 

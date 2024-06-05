@@ -31,6 +31,11 @@
   justify-content: start;
 }
 
+.page-header-button-container {
+  margin: 1.5rem;
+  margin-top: 0;
+}
+
 .act-item, .edit-act-item {
   background-color: #f0e8b8;
   display: flex;
@@ -103,7 +108,7 @@
   padding: 1rem;
 }
 
-.edit-input {
+.edit-input, .create-input {
   margin: .5rem;
   padding: .5rem;
   padding-bottom: .2rem;
@@ -115,15 +120,47 @@
   transition: .05s;
 }
 
+.create-act-content {
+  height: 100vh;
+  display: flex;
+  overflow-y: scroll;
+}
+
+.create-act-content > .event-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-event-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding: 2rem;
+  height: 60vh;
+}
+
+.create-event-input {
+  width: 20rem;
+  height: 3rem;
+  margin: 1rem;
+}
+
+.add-event-image {
+  width: 60%;
+}
+
+.create-input {
+  text-align: center;
+  width: 80%;
+}
+
 .index-input {
   width: 3rem;
   height: 2rem;
   color: #845612;
   display: inline;
-}
-
-.edit-input:focus {
-  transform: scale(1.02);
 }
 
 .save-button {
@@ -134,6 +171,18 @@
   transform: scale(1.02);
 }
 
-input:-webkit-autofill {
-  
+.count-button, .count-button-left {
+  width: 2rem;
+}
+
+.count-button-left {
+  transform: rotate(180deg);
+}
+
+.count-button-left:hover {
+  transform: rotate(180deg) scale(1.04);
+}
+
+.count-button:hover {
+  transform: scale(1.04);
 }

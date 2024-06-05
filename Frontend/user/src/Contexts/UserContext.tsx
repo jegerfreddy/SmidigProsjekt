@@ -30,6 +30,15 @@ export const GeneralProvider = <T extends {}>({
         console.error('Error adding item:', error);
       }
     };
+    const vertifyUser = async (userId: string, code: string): Promise<boolean> => {
+      try {
+        const result = await service.vertifyUser(userId, code);
+        return result;
+      } catch (error) {
+        console.error('Error adding item:', error);
+      }
+      return false;
+    };
 
   const contextValue: IGeneralContext<T> = {
     items,
@@ -37,6 +46,7 @@ export const GeneralProvider = <T extends {}>({
     error,
     getById,
     postItem,
+    vertifyUser,
   };
   return (
     <GeneralContext.Provider value={contextValue}>
