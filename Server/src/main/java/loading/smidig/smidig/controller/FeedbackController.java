@@ -2,7 +2,7 @@ package loading.smidig.smidig.controller;
 
 import loading.smidig.smidig.model.Act;
 import loading.smidig.smidig.model.Feedback;
-import loading.smidig.smidig.model.FeedbackDTO;
+import loading.smidig.smidig.DTO.FeedbackDTO;
 import loading.smidig.smidig.model.User;
 import loading.smidig.smidig.service.ActService;
 import loading.smidig.smidig.service.FeedbackService;
