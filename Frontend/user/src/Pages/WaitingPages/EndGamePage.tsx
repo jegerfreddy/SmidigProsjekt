@@ -8,10 +8,23 @@ const EndGamePage: React.FC = () => {
     return (
         <main className={`${orientation} vh-100 bgColor`}>
             <div className="text-center">
-                <img src="/images/LoadingLogo.png" alt="Loading" className="mt-5" />
+                <h1>ENDGAME</h1>
+                <img src="/images/LoadingLogo.png" alt="Loading" className="" />
             </div>
-            <div className="text-center mt-5 fs-2">
-                THE GAME HAS ENDED
+            <div className="credits-container">
+                <div className="credits-text text-primary">
+                    <p>Special Thanks: OBAMA</p>
+                    <p>Music: 50-CENT</p>
+                    <p>Designer: TEAM NEUTRON</p>
+                    <p>Developer: TEAM NEUTRON</p>
+                    <p>Credits: CHRISTOFFER CALANDRI</p>
+                    <p>LOADING</p>
+                    
+                    
+                    
+                    
+                    {/* Add more credits as needed */}
+                </div>
             </div>
         </main>
     );

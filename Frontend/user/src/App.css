@@ -266,3 +266,30 @@ body {
 .option-4 {
   background-color: #BF6A06;
 }
+
+/*CREDITS*/
+.credits-container {
+    position: relative;
+    height: 60vh; /* Adjust based on your needs */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.credits-text {
+    position: absolute;
+    animation: scroll 10s linear infinite;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+@keyframes scroll {
+    0% {
+        top: -100%;
+    }
+    100% {
+        top: 100%;
+    }
+}
