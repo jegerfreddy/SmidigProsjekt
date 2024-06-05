@@ -17,6 +17,7 @@ import GameLobby from '../Pages/WaitingPages/GameLobby';
 import StandByPage from '../Pages/WaitingPages/StandByPage';
 import WaitingLobbyPage from '../Pages/WaitingPages/WaitingLobbyPage';
 import VertifyUserPage from '../Pages/CreateUserPages/VertifyUserPage';
+import EndGamePage from '../Pages/WaitingPages/EndGamePage';
 
 
 const Routing: React.FC = () => {
@@ -65,7 +66,8 @@ const Routing: React.FC = () => {
 
                 <Route path="/Break" element={<TheaterPausePage />} />
                 <Route path="/Waiting" element={<WaitingLobbyPage />} />
-
+                <Route path="/EndGame" element={<EndGamePage/>} />
+                
                 <Route path="/tie/:actEventId" element={<TiePage />} />
                 <Route path="/minigame/:actEventId" element={<MiniGamePage />} />
 

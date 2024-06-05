@@ -42,7 +42,7 @@ const ChooseAvatarPage: React.FC = () => {
 
     return (
         <div className='position-relative vh-100 bgColor'>
-            <section className={`text-center my-4 position-absolute ${orientation === 'vertical' ? 'top-0 start-50 translate-middle-x vertical-layout' : 'top-0 end-50 m-5 p-3 horizontal-layout'}`}>
+            <section className={`text-center my-1 position-absolute ${orientation === 'vertical' ? 'top-0 start-50 translate-middle-x vertical-layout' : 'top-0 end-50 m-5 p-3 horizontal-layout'}`}>
                 <h2>Velg avatar</h2>
             </section>
 
@@ -50,12 +50,12 @@ const ChooseAvatarPage: React.FC = () => {
                 <SelectedAvatar selectedAvatar={selectedAvatar} username={username} />
             </section>
 
-            <section className={`text-center position-absolute ${orientation === 'vertical' ? 'top-50 start-50 mb-5 translate-middle vertical-layout' : 'bottom-0 start-0 mb-5 horizontal-layout'}`}>
+            <section className={`text-center position-absolute  ${orientation === 'vertical' ? 'top-50 start-50 mb-5 translate-middle vertical-layout' : 'bottom-0 start-0 mb-4  horizontal-layout'}`}>
                 <AvatarList onClick={handleClick} orientation={orientation} />
             </section>
 
             <section>
-                <button className={`position-absolute pinButton ${orientation === 'vertical' ? 'bottom-0 start-50 translate-middle-x mb-4 vertical-layout' : 'bottom-0 end-0 m-5 horizontal-layout'}`} onClick={() => handleSubmit({ avatarNumber, username })}>Fortsett</button>
+                <button className={`position-absolute pinButton ${orientation === 'vertical' ? 'bottom-0 start-50 translate-middle-x mb-4 vertical-layout' : 'bottom-0 end-0 m-4 horizontal-layout'}`} onClick={() => handleSubmit({ avatarNumber, username })}>Fortsett</button>
             </section>
         </div>
     );

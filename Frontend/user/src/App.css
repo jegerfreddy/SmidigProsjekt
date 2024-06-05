@@ -95,6 +95,26 @@ body {
   width: 64px;
 }
 
+.avatar-container {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* Juster høyden etter behov */
+    overflow: hidden;
+}
+
+.avatar-item {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width: 600px) {
+    .avatar-item {
+        width: 50px;
+        height: 50px;
+    }
+} 
+
 /* voting color */
 
 .randomColor1 {
@@ -247,7 +267,6 @@ body {
   background-color: #BF6A06;
 }
 
-
 .btn-primary {
     padding: 10px 20px;
     font-size: 1.25rem;
@@ -291,3 +310,31 @@ body {
         font-size: 2.5rem;
     }
 }
+
+/*CREDITS*/
+.credits-container {
+    position: relative;
+    height: 60vh; /* Adjust based on your needs */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.credits-text {
+    position: absolute;
+    animation: scroll 10s linear infinite;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+@keyframes scroll {
+    0% {
+        top: -100%;
+    }
+    100% {
+        top: 100%;
+    }
+}
+

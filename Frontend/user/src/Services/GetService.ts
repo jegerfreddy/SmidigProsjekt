@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IService } from "../Interfaces/IService";
-import {  IActEvent } from "../Interfaces/IAct";
+import { IActEvent } from "../Interfaces/IAct";
 import { IUser } from "../Interfaces/IUser";
 import { IVote } from "../Interfaces/IVoting";
 import { IResult } from "../Interfaces/IResult";
@@ -34,7 +34,7 @@ const GetService = <T>(controller: string) => {
         throw error;
     }
 };
-  const vertifyUser = async (userId:string, code:string): Promise<boolean> => {
+const vertifyUser = async (userId:string, code:string): Promise<boolean> => {
     try {
         const result = await axios.post(`${controller}/${userId}/${code}`);
         return result.data;
@@ -44,11 +44,22 @@ const GetService = <T>(controller: string) => {
     }
 };
 
+const getAll = async (): Promise<{ items: IUser[] }> => {
+    try {
+        const result = await axios.get(`${controller}/all`);
+        const items = result.data;
+        return { items };
+    } catch (error) {
+        console.log(`Error getting items from ${controller}`, error);
+        throw error;
+    }
+};
 
   return {
     getById,
     post,
-    vertifyUser
+    vertifyUser,
+    getAll  
    
   } as IService<T>;
 };
