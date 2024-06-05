@@ -39,7 +39,7 @@ const WaitResultPage: React.FC = () => {
             if (winnersCount === 1) {
                  navigate(`/tie/${actEventId}`);
              } else if (winnersCount >= 2) {
-                 navigate(`/waitResult/${actEventId}`);
+                 navigate(`/result/${actEventId}`);
              }
         }
     }, [result, navigate, actEventId]);

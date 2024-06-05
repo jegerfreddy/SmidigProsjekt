@@ -14,7 +14,8 @@ const GetService = <T>(controller: string) => {
     const getById = async (id: number): Promise<{ item: T }> => {
         try {
             const result = await axios.get(`${API_BASE_URL}/${controller}/id/${id}`);
-            return result.data;
+            const items = result.data;
+            return items;
         } catch (error) {
             console.log(`Error getting item by ID from ${controller}`, error);
             throw error;
