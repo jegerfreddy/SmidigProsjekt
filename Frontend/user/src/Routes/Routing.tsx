@@ -16,6 +16,7 @@ import StandByPage from "../Pages/WaitingPages/StandByPage";
 import TheaterPausePage from "../Pages/WaitingPages/TheaterPausePage";
 import WaitingLobbyPage from "../Pages/WaitingPages/WaitingLobbyPage";
 import VerifyUserPage from "../Pages/CreateUserPages/VerifyUserPage";
+import EndGamePage from "../Pages/WaitingPages/EndGamePage";
 import { ActEventService, FeedBackService, ResultService, UserService, VerifyService, WinnerService } from "../Services/GetService";
 
 
@@ -117,6 +118,7 @@ const Routing: React.FC = () => {
       <Route path="/Waiting" element={<WaitingLobbyPage />} />
       <Route path="/tie/:actEventId" element={<TiePage />} />
       <Route path="/minigame/:actEventId" element={<MiniGamePage />} />
+      <Route path="/endGame" element={<EndGamePage />} />
       <Route path="/feedBackPage" element={
         <GeneralProvider service={FeedBackService}>
           <FeedBackPage />

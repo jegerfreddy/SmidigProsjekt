@@ -25,7 +25,7 @@ const FeedBackPage: React.FC = () => {
             const result: any = await FeedBackService.post(newFeedback);
             const postResult = result;
             console.log(`I page`, postResult);
-            navigate("/endGame");
+            navigate("/endgame");
         } catch (error) {
             console.error('Error occurred while submitting user data:', error);
         }
