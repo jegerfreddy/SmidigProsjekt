@@ -4,7 +4,7 @@ export interface IGeneralContext<T> {
     items: T[];
     loading: boolean;
     error: string | null;
-    getById: (id: number) => Promise<T>;
+    getById: (id: number) => Promise<{ item: T }>;
     postItem: (newItem: T) => Promise<void>;
     vertifyUser: (userId: string, code: string) =>Promise<boolean>;
 

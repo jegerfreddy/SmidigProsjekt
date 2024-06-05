@@ -3,6 +3,7 @@ import { GeneralContext } from "../../Contexts/UserContext";
 import { IGeneralContext } from "../../Interfaces/IContext";
 import ResultItem from "./ResultItem";
 import { IResult } from "../../Interfaces/IResult";
+import { ResultService } from "../../Services/GetService";
 
 interface Props {
   actEventId: string;
@@ -10,13 +11,13 @@ interface Props {
 
 const ResultList: React.FC<Props> = ({ actEventId }) => {
   const { getById } = useContext(GeneralContext) as IGeneralContext<IResult>;
-  const [result, setResult] = useState<IResult | null>(null);
+  const [result, setResult] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const fetchedResult = await getById(Number(actEventId)); // Convert actEventId to number
+        const fetchedResult = await ResultService.getById(Number(actEventId));
         if (fetchedResult) {
           setResult(fetchedResult);
           console.log("Result fetched:", fetchedResult);

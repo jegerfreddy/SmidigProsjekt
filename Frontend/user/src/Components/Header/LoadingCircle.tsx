@@ -7,7 +7,7 @@ const LoadingComponent: React.FC = () => {
 
   return (
     <div className='position-absolute top-0 start-50 translate-middle-x mt-5'>
-      <img id='Loading-photo' src="images/Loading.png" alt="Loading" style={loadingPhotoStyle} /> 
+      <img id='Loading-photo' src="/images/Loading.png" alt="Loading" style={loadingPhotoStyle} /> 
     </div>
   );
 };

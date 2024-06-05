@@ -21,6 +21,7 @@ const RoutingMain = () => {
                                     <button className="navButton btn btn-dark">Act Overview</button>
                                 </Link>
 
+
                                 <Link to={"/act-controller"}>
                                     <button className="navButton btn btn-dark">Act Controller</button>
                                 </Link>
@@ -47,6 +48,7 @@ const RoutingMain = () => {
                                 <Route path="/stats" /*element={<StatsPage}*/ />
                                 <Route path="/edit" element={<EditEventsPage/>}/>
                                 <Route path="/newAct" element={<CreateActPage/>}/>
+                                <Route path="/userserver" element={<AdminToUserPage/>}/>
                             </Routes>
                         </main>
                     </div>

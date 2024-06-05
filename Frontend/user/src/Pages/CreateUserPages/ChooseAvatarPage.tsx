@@ -1,5 +1,6 @@
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
 import AvatarList from "../../Components/Avatar/AvatarList";
 import SelectedAvatar from "../../Components/Avatar/SelectedAvatar";
 import PhoneInfo from "../../Components/Phone/PhoneInfo";
@@ -32,14 +33,13 @@ const ChooseAvatarPage: React.FC = () => {
         try {
             const result: any = await UserService.post(newUser);
             const postResult = result.result;
-            console.log(`I page`, postResult.userID);
-            localStorage.setItem('yourUserID', postResult.userID);
+            navigate(`/verifyUser/${postResult.userID}/${code}`);
 
-            navigate(`/waiting`);
         } catch (error) {
             console.error('Error occurred while submitting user data:', error);
         }
     };
+    
 
     return (
         <div className='position-relative vh-100 bgColor'>

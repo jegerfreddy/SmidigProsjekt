@@ -67,4 +67,4 @@ const LoginPage : FC<ILoginPage> = ({setLoginValid}) => {
     )
 }
 
-export default LoginPage;
+export default LoginPage; 

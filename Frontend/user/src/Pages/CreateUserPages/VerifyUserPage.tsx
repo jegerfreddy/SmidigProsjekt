@@ -3,8 +3,9 @@ import { IVertify } from "../../Interfaces/IVertify";
 import { useContext, useEffect } from "react";
 import { GeneralContext } from "../../Contexts/UserContext";
 import { IGeneralContext } from "../../Interfaces/IContext";
+import { VerifyService } from "../../Services/GetService";
 
-const VertifyUserPage: React.FC = () => {
+const VertiyUserPage: React.FC = () => {
     const userContext = useContext(GeneralContext) as IGeneralContext<IVertify>;
     const navigate = useNavigate();
     const { userId, code } = useParams<{ userId: string, code: string }>();
@@ -12,7 +13,7 @@ const VertifyUserPage: React.FC = () => {
     useEffect(() => {
         const handleSubmit = async (userId: string, code: string) => {
             try {
-                const result = await userContext.vertifyUser(userId, code);
+                const result = await VerifyService.verifyUser(userId, code);
                 if (result) {
                     // Handle true case
                      navigate('/gameLobby');
@@ -38,4 +39,4 @@ const VertifyUserPage: React.FC = () => {
     );
 };
 
-export default VertifyUserPage;
+export default VertiyUserPage;
