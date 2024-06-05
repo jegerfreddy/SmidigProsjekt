@@ -11,9 +11,6 @@ const TiePage: React.FC = () => {
                 Det ble uavgjort
             </h1>
             <img className="img-fluid position absolute p-3 m-5" src="/images/tie.png" alt="tie-bilde" />
-
-            <button onClick={() => navigate(`/minigame/${actEventId}`)}>til neste</button>
-
         </main>
     )
 };

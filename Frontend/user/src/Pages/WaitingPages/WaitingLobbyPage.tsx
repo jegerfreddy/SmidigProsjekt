@@ -57,10 +57,6 @@ const WaitingLobbyPage: React.FC = () => {
                     ))}
                 </div>
             </section>
-
-            <section className="position-absolute bottom-0 start-50 translate-middle-x mb-4">
-                <NextBtn path="gamelobby" /> 
-            </section>
         </div>
     );
 };

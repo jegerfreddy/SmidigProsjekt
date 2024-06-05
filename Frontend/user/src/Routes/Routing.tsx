@@ -19,8 +19,6 @@ import VerifyUserPage from "../Pages/CreateUserPages/VerifyUserPage";
 import EndGamePage from "../Pages/WaitingPages/EndGamePage";
 import { ActEventService, FeedBackService, ResultService, UserService, VerifyService, WinnerService } from "../Services/GetService";
 
-
-
 const Routing: React.FC = () => {
   const [gameCodeFromServer, setGameCodeFromServer] = useState('');
   const navigate = useNavigate();
@@ -39,7 +37,7 @@ const Routing: React.FC = () => {
 
       switch (data.type) {
         case 'GAME_STATE':
-          handleGameStateChange(data.state);
+          handleGameStateChange(data.state, data.actEventId);
           break;
         case 'NEW_CODE':
           setGameCodeFromServer(data.code);
@@ -57,22 +55,27 @@ const Routing: React.FC = () => {
       console.log('WebSocket connection closed');
     };
 
-
     return () => {
       ws.close();
     };
   }, []);
 
-  const handleGameStateChange = (state: string) => {
+  const handleGameStateChange = (state: string, actEventId?: string) => {
     switch (state) {
       case 'START':
         navigate('/');
         break;
+      case 'WAITING':
+        navigate('/Waiting');
+        break;
       case 'VOTING':
-        navigate('/vote/1');
+        navigate('/vote/' + actEventId);
         break;
       case 'RESULT':
-        navigate('/waitresult/1');
+        navigate('/waitresult/' + actEventId);
+        break;
+      case 'MINIGAME':
+        navigate('/minigame/' + actEventId);
         break;
       default:
         console.log('Unknown game state:', state);
