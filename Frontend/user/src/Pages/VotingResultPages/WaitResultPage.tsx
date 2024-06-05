@@ -3,18 +3,20 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { GeneralContext } from '../../Contexts/UserContext';
 import { IGeneralContext } from '../../Interfaces/IContext';
 import { WinnerItemProps } from '../../Interfaces/IWinner';
+import { WinnerService } from '../../Services/GetService';
 
 const WaitResultPage: React.FC = () => {
     const { actEventId } = useParams<{ actEventId: string }>();
     const { getById } = useContext(GeneralContext) as IGeneralContext<WinnerItemProps>;
-    const [result, setResult] = useState<WinnerItemProps | null>(null);
+    const [result, setResult] = useState<any | null>(null);
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-                const fetchedResult = await getById(Number(actEventId)); // Convert actEventId to number
+                const fetchedResult = await WinnerService.getById(Number(actEventId)); // Convert actEventId to number
+
                 if (fetchedResult) {
                     setResult(fetchedResult);
                     console.log("Result fetched:", fetchedResult);
@@ -35,10 +37,10 @@ const WaitResultPage: React.FC = () => {
         if (result) {
             const winnersCount = result.length;
             if (winnersCount === 1) {
-                navigate(`/tie/${actEventId}`);
-            } else if (winnersCount >= 2) {
-                navigate(`/waitResult/${actEventId}`);
-            }
+                 navigate(`/tie/${actEventId}`);
+             } else if (winnersCount >= 2) {
+                 navigate(`/waitResult/${actEventId}`);
+             }
         }
     }, [result, navigate, actEventId]);
 

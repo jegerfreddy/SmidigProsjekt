@@ -1,12 +1,14 @@
 import { useParams } from "react-router-dom";
-import ResultList from "../../Components/Result/ResultList";
 import { GeneralProvider } from "../../Contexts/UserContext";
 import { ResultService } from "../../Services/GetService";
+import ResultList from "../../Components/Result/ResultList";
 
 
 const ResultPage: React.FC = () => {
     const { actEventId } = useParams<{ actEventId: string }>();
     const id = actEventId ?? '';
+
+    console.log('actEventId:', id);
 
 
     return (

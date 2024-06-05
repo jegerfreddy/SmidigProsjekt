@@ -1,23 +1,27 @@
-// VotingList.tsx
-
 import { useContext, useEffect, useState } from "react";
 import { IActEvent } from "../../Interfaces/IAct";
 import VotingItem from "./VotingItem";
 import { GeneralContext, GeneralProvider } from "../../Contexts/UserContext";
 import { IGeneralContext } from "../../Interfaces/IContext";
-import { VoteService } from "../../Services/GetService";
+import { ActEventService } from "../../Services/GetService";
 
-const VotingList = () => {
-  const { getById } = useContext(GeneralContext) as IGeneralContext<IActEvent>;
-  const [event, setEvent] = useState<IActEvent | null>(null);
+interface Props {
+  actEventId: number;
+}
+
+const VotingList: React.FC<Props> = ({ actEventId }) => {
+  const userContext = useContext(GeneralContext) as IGeneralContext<IActEvent>;
+  const [event, setEvent] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const fetchedEvent = await getById(2); // endre her
+        const fetchedEvent = await ActEventService.getById(actEventId);
+        console.log("fetchedEvent:", fetchedEvent);
         if (fetchedEvent) {
-          setEvent(fetchedEvent);
+          setEvent(fetchedEvent); // Set the fetched event directly
+          console.log("Event fetched:", fetchedEvent);
         } else {
           console.error("Event not found.");
           setError("Event not found.");
@@ -29,7 +33,7 @@ const VotingList = () => {
     };
 
     fetchEvent();
-  }, [getById]);
+  }, [userContext, actEventId]);
 
   if (error) {
     return <div>{error}</div>;
@@ -38,14 +42,15 @@ const VotingList = () => {
   if (!event) {
     return <div>Loading...</div>;
   }
+
   return (
     <div className="container">
-        <div className='row g-3 m-2'>
-        <GeneralProvider service={VoteService}>
-            <VotingItem event={event} />
+      <div className="row g-3 m-2">
+        <GeneralProvider service={ActEventService}>
+          <VotingItem event={event} />
         </GeneralProvider>
-        </div>
       </div>
+    </div>
   );
 };
 

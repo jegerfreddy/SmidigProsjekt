@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AvatarList from "../../Components/Avatar/AvatarList";
 import SelectedAvatar from "../../Components/Avatar/SelectedAvatar";
@@ -30,11 +30,12 @@ const ChooseAvatarPage: React.FC = () => {
         try {
             const result: any = await UserService.post(newUser);
             const postResult = result.result;
-            navigate(`/vertifyUser/${postResult.userID}/${code}`);
+            navigate(`/verifyUser/${postResult.userID}/${code}`);
         } catch (error) {
             console.error('Error occurred while submitting user data:', error);
         }
     };
+    
 
     if (!username) {
         return <div>Loading...</div>;
