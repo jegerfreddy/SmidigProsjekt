@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
 import AvatarList from "../../Components/Avatar/AvatarList";
 import SelectedAvatar from "../../Components/Avatar/SelectedAvatar";
 import PhoneInfo from "../../Components/Phone/PhoneInfo";
+import { GeneralContext } from "../../Contexts/UserContext";
+import { IGeneralContext } from "../../Interfaces/IContext";
 import { IUser } from "../../Interfaces/IUser";
 import { UserService } from "../../Services/GetService";
 
+
 const ChooseAvatarPage: React.FC = () => {
+    const userContext = useContext(GeneralContext) as IGeneralContext<IUser>;
     const [selectedAvatar, setSelectedAvatar] = useState<string>('/images/Avatar-4.png');
     const [avatarNumber, setAvatarNumber] = useState<number>(0);
-    const { username, code } = useParams<{ username: string; code: string }>();
+    const username = localStorage.getItem('username') || '';
+    const code = localStorage.getItem('code') || '';
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!username || !code) {
-            navigate('/GAMECODE');
-        }
-    }, [username, code, navigate]);
+
 
     const handleClick = (avatarId: number) => {
         const pickedAvatarUrl = `/images/Avatar-${avatarId}.png`;
@@ -25,21 +27,19 @@ const ChooseAvatarPage: React.FC = () => {
     };
 
     const { orientation } = PhoneInfo();
+    const { postItem } = userContext;
 
     const handleSubmit = async (newUser: IUser) => {
         try {
             const result: any = await UserService.post(newUser);
             const postResult = result.result;
             navigate(`/verifyUser/${postResult.userID}/${code}`);
+
         } catch (error) {
             console.error('Error occurred while submitting user data:', error);
         }
     };
     
-
-    if (!username) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <div className='position-relative vh-100 bgColor'>
@@ -58,6 +58,7 @@ const ChooseAvatarPage: React.FC = () => {
             <section>
                 <button className={`position-absolute pinButton ${orientation === 'vertical' ? 'bottom-0 start-50 translate-middle-x mb-4 vertical-layout' : 'bottom-0 end-0 m-5 horizontal-layout'}`} onClick={() => handleSubmit({ avatarNumber, username })}>Fortsett</button>
             </section>
+
         </div>
     );
 };

@@ -26,7 +26,7 @@ const UserLoginPage: React.FC = () => {
                 <input 
                     type="text" 
                     placeholder='TAST PIN' 
-                    className='pinInput' 
+                    className='userInput' 
                     value={pin} 
                     onChange={handleInputChange}
                 />

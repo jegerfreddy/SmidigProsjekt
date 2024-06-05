@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FeedBackItemProps } from "../../Interfaces/IFeedBack";
 
-const FeedBackItem: React.FC<FeedBackItemProps> = ({onClick}) => {
+const FeedBackItem: React.FC<FeedBackItemProps> = ({onClick, orientation}) => {
     const [hoverRating, setHoverRating] = useState<number | null>(null);
-    const [rating, setRating] = useState<number>(0);
+    const [rating] = useState<number>(0);
 
     const handleMouseOver = (value: number) => {
         setHoverRating(value);
@@ -14,8 +14,8 @@ const FeedBackItem: React.FC<FeedBackItemProps> = ({onClick}) => {
     };
 
     return (
-        <main className="vh-100 bgColor">
-            <div className="container text-center">
+        <main className={`feedback-item ${orientation}`}>
+            <div className="text-center ">
                 <h1>Gi oss din tilbakemelding!</h1>
                 <div className="stars my-4">
                     {[1, 2, 3, 4, 5].map((value) => (
@@ -33,7 +33,6 @@ const FeedBackItem: React.FC<FeedBackItemProps> = ({onClick}) => {
                     ))}
                 </div>
                 <div>Takk for din tilbakemelding!</div>
-                {rating > 0 && <div>Du ga teateret {rating} stjerne{rating > 1 ? 'r' : ''}.</div>}
             </div>
         </main>
     );

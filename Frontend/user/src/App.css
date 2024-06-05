@@ -49,6 +49,7 @@ body {
   background-color: #D075B7;
 }
 
+/*--UI--*/
 .pinInput {
   font-size: 3rem;
   text-align: center;
@@ -90,10 +91,68 @@ body {
   height: 110px;
 }
 
-.avatarImg {
-  height: 64px;
-  width: 64px;
+/*Spesifikt til waitingLobbyPage*/
+.avatar-grid-container-vertical {
+    position: absolute;
+    top: 50px; 
+    bottom: 100px; 
+    left: 0;
+    right: 0;
+    overflow: hidden;
 }
+
+.avatar-grid-container-horizontal {
+    position: absolute;
+    top: 50px; 
+    bottom: 70px; 
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.avatar-grid {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.avatar-item {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    animation: moveInCircle 10s linear infinite;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 600px) {
+    .avatar-item {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@keyframes moveInCircle {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(20px, 0) rotate(90deg);
+    }
+    50% {
+        transform: translate(20px, 20px) rotate(180deg);
+    }
+    75% {
+        transform: translate(0, 20px) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
 
 /* voting color */
 
@@ -176,24 +235,6 @@ body {
   100% {transform: rotate(360deg);}
 } 
 
-/* Clouds */
-
-.Cloud1 {
-    position: absolute;
-    width: 100px; /* Adjust width */
-    height: 115px;  /* Adjust height */
-    left: 217px;
-    top: 143.79px;
-    background: #FFFFFF;
-    border-radius: 50%; /* Make the main body rounded */
-    box-shadow: 
-        40px 10px 0 0 #FFFFFF, 
-        60px 5px 0 0 #FFFFFF, 
-        90px 10px 0 0 #FFFFFF, 
-        45px 20px 0 0 #FFFFFF, 
-        75px 20px 0 0 #FFFFFF;
-    transform: rotate(-15deg);
-}
 
 /* Vote option css */
 .vote-box {
@@ -246,3 +287,75 @@ body {
 .option-4 {
   background-color: #BF6A06;
 }
+
+.btn-primary {
+    padding: 10px 20px;
+    font-size: 1.25rem;
+}
+
+.feedback-item {
+    padding: 20px;
+    margin: auto;
+    max-width: 600px;
+    width: 100%;
+}
+
+.feedback-item.horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback-item.vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+}
+
+.star {
+    transition: color 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    .feedback-item.horizontal {
+        flex-direction: column;
+    }
+
+    .star {
+        font-size: 2.5rem;
+    }
+}
+
+/*CREDITS*/
+.credits-container {
+    position: relative;
+    height: 60vh; /* Adjust based on your needs */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.credits-text {
+    position: absolute;
+    animation: scroll 10s linear infinite;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+@keyframes scroll {
+    0% {
+        top: -100%;
+    }
+    100% {
+        top: 100%;
+    }
+}
+

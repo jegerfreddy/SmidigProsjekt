@@ -147,13 +147,23 @@
   margin: 1rem;
 }
 
-.add-event-image {
-  width: 60%;
-}
 
 .create-input {
   text-align: center;
   width: 80%;
+}
+
+.add-event-image {
+  width: 6rem;
+  transition: .2s;
+}
+
+.add-event-image:hover {
+  transform: scale(1.03);
+}
+
+.add-event-image:active {
+  transform: scale(1);
 }
 
 .index-input {

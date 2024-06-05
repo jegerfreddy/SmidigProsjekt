@@ -19,6 +19,7 @@ import VerifyUserPage from "../Pages/CreateUserPages/VerifyUserPage";
 import { ActEventService, FeedBackService, ResultService, UserService, VerifyService, WinnerService } from "../Services/GetService";
 
 
+
 const Routing: React.FC = () => {
   const [gameCodeFromServer, setGameCodeFromServer] = useState('');
   const navigate = useNavigate();
@@ -54,6 +55,7 @@ const Routing: React.FC = () => {
     ws.onclose = () => {
       console.log('WebSocket connection closed');
     };
+
 
     return () => {
       ws.close();

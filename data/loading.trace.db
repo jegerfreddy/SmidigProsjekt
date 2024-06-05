@@ -43,3 +43,9 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
 	... 16 more
+2024-06-05 14:12:39.865272+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FROM APP_USER"; expected "identifier"; SQL statement:
+DELETE * FROM APP_USER [42001-224]
+2024-06-05 14:12:42.964782+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FROM APP_USER"; expected "identifier"; SQL statement:
+DELETE * FROM APP_USER [42001-224]

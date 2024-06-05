@@ -1,8 +1,7 @@
 package loading.smidig.smidig.controller;
 
-import loading.smidig.smidig.model.Act;
 import loading.smidig.smidig.model.ActEvent;
-import loading.smidig.smidig.model.ActEventDTO;
+import loading.smidig.smidig.DTO.ActEventDTO;
 import loading.smidig.smidig.service.ActEventService;
 import loading.smidig.smidig.service.ActService;
 import org.slf4j.Logger;
@@ -95,6 +94,14 @@ public class ActEventController {
     public ActEventDTO linkActEventToAct(@PathVariable Long actID, @PathVariable Long actEventID) {
         logger.info("Linking act event to act - act ID: " + actID + ", act event ID: " + actEventID);
         return convertToDto(actEventService.linkActEventToAct(actID, actEventID));
+    }
+
+    @PostMapping("/new/link/{actID}")
+    public ActEventDTO createActEventAndLink(@PathVariable long actID, @RequestBody ActEvent actEvent) {
+        logger.info("Creating new act event and linking to act - " + actEvent.getEventTitle());
+        ActEvent newActEvent = actEventService.createActEvent(actEvent);
+        actService.linkActEventToAct(actID, newActEvent.getActeventID());
+        return convertToDto(newActEvent);
     }
 
     // Helper method to convert ActEvent to ActEventDTO

@@ -1,4 +1,4 @@
-package loading.smidig.smidig.model;
+package loading.smidig.smidig.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
