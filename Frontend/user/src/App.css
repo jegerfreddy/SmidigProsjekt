@@ -49,6 +49,7 @@ body {
   background-color: #D075B7;
 }
 
+/*--UI--*/
 .pinInput {
   font-size: 3rem;
   text-align: center;
@@ -90,6 +91,7 @@ body {
   height: 110px;
 }
 
+/*Spesifikt til waitingLobbyPage*/
 .avatar-grid-container-vertical {
     position: absolute;
     top: 50px; 
@@ -118,11 +120,12 @@ body {
     position: absolute;
     width: 100px;
     height: 100px;
+    animation: moveInCircle 10s linear infinite;
 }
 
 .avatar-img {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
 }
 
 @media (max-width: 600px) {
@@ -131,6 +134,25 @@ body {
         height: 50px;
     }
 }
+
+@keyframes moveInCircle {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(20px, 0) rotate(90deg);
+    }
+    50% {
+        transform: translate(20px, 20px) rotate(180deg);
+    }
+    75% {
+        transform: translate(0, 20px) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
 
 /* voting color */
 
@@ -213,24 +235,6 @@ body {
   100% {transform: rotate(360deg);}
 } 
 
-/* Clouds */
-
-.Cloud1 {
-    position: absolute;
-    width: 100px; /* Adjust width */
-    height: 115px;  /* Adjust height */
-    left: 217px;
-    top: 143.79px;
-    background: #FFFFFF;
-    border-radius: 50%; /* Make the main body rounded */
-    box-shadow: 
-        40px 10px 0 0 #FFFFFF, 
-        60px 5px 0 0 #FFFFFF, 
-        90px 10px 0 0 #FFFFFF, 
-        45px 20px 0 0 #FFFFFF, 
-        75px 20px 0 0 #FFFFFF;
-    transform: rotate(-15deg);
-}
 
 /* Vote option css */
 .vote-box {
