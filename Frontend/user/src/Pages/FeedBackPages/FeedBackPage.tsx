@@ -1,3 +1,4 @@
+import  {useNavigate} from "react-router-dom"; 
 import { useState } from "react";
 import FeedBackList from "../../Components/FeedBack/FeedBackList";
 import { IFeedBack } from "../../Interfaces/IFeedBack";
@@ -9,6 +10,7 @@ const FeedBackPage: React.FC = () => {
     const [rating, setRating] = useState<number>(0); 
     const [userID, setUserId] = useState<number>(1); 
     const [actID, setActId] = useState<number>(1); 
+    const navigate = useNavigate();
 
 
         const handleClick = (value: number) => {
@@ -23,6 +25,7 @@ const FeedBackPage: React.FC = () => {
             const result: any = await FeedBackService.post(newFeedback);
             const postResult = result;
             console.log(`I page`, postResult);
+            navigate("/endGame");
         } catch (error) {
             console.error('Error occurred while submitting user data:', error);
         }
