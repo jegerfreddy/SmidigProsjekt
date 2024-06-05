@@ -96,6 +96,14 @@ public class ActEventController {
         return convertToDto(actEventService.linkActEventToAct(actID, actEventID));
     }
 
+    @PostMapping("/new/link/{actID}")
+    public ActEventDTO createActEventAndLink(@PathVariable long actID, @RequestBody ActEvent actEvent) {
+        logger.info("Creating new act event and linking to act - " + actEvent.getEventTitle());
+        ActEvent newActEvent = actEventService.createActEvent(actEvent);
+        actService.linkActEventToAct(actID, newActEvent.getActeventID());
+        return convertToDto(newActEvent);
+    }
+
     // Helper method to convert ActEvent to ActEventDTO
     private ActEventDTO convertToDto(ActEvent actEvent) {
         return new ActEventDTO(
