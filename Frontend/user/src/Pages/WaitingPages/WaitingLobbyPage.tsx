@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { UserService } from "../../Services/GetService";
 import { IUser } from "../../Interfaces/IUser";
-import { NextBtn } from "../../Components/Button/NextBtn";
+import { NextBtn } from "../../Components/Button/NextBtn"; // Importer NextBtn-komponenten
 import PhoneInfo from "../../Components/Phone/PhoneInfo";
 import "../../App.css";
 
@@ -10,7 +9,6 @@ const WaitingLobbyPage: React.FC = () => {
     const [avatars, setAvatars] = useState<{ avatarNumber: number, x: number, y: number }[]>([]);
     const [dots, setDots] = useState('');
     const { orientation } = PhoneInfo();
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -42,10 +40,6 @@ const WaitingLobbyPage: React.FC = () => {
         return () => clearInterval(interval);
     }, []);
 
-    const handleNextClick = () => {
-        navigate("/gamelobby");
-    };
-
     return (
         <div className={`position-relative vh-100 bgColor ${orientation}`}>
             <section className="text-center my-1 position-absolute top-0 start-50 translate-middle-x">
@@ -63,7 +57,7 @@ const WaitingLobbyPage: React.FC = () => {
             </section>
 
             <section className="position-absolute bottom-0 start-50 translate-middle-x mb-4">
-                <button onClick={handleNextClick} className="pinButton">Next</button>
+                <NextBtn path="gamelobby" /> 
             </section>
         </div>
     );
