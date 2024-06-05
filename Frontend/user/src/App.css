@@ -267,6 +267,50 @@ body {
   background-color: #BF6A06;
 }
 
+.btn-primary {
+    padding: 10px 20px;
+    font-size: 1.25rem;
+}
+
+.feedback-item {
+    padding: 20px;
+    margin: auto;
+    max-width: 600px;
+    width: 100%;
+}
+
+.feedback-item.horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback-item.vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+}
+
+.star {
+    transition: color 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    .feedback-item.horizontal {
+        flex-direction: column;
+    }
+
+    .star {
+        font-size: 2.5rem;
+    }
+}
+
 /*CREDITS*/
 .credits-container {
     position: relative;
@@ -293,3 +337,4 @@ body {
         top: 100%;
     }
 }
+
