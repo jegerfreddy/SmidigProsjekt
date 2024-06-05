@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import AvatarList from "../../Components/Avatar/AvatarList";
@@ -15,7 +15,7 @@ const ChooseAvatarPage: React.FC = () => {
     const [selectedAvatar, setSelectedAvatar] = useState<string>('/images/Avatar-4.png');
     const [avatarNumber, setAvatarNumber] = useState<number>(0);
     const username = localStorage.getItem('username') || '';
-    const code = localStorage.getItem('code') || '';
+    const { code } = useParams<{ code: string }>();
     const navigate = useNavigate();
 
 
