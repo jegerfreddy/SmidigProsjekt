@@ -44,6 +44,7 @@ const vertifyUser = async (userId:string, code:string): Promise<boolean> => {
     }
 };
 
+//Denne brukes til å hente avatarer som er valgt, skal vises i waitingLobby
 const getAll = async (): Promise<{ items: IUser[] }> => {
     try {
         const result = await axios.get(`${controller}/all`);
