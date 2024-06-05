@@ -41,10 +41,23 @@ const GetService = <T>(controller: string) => {
         }
     };
 
+        //Denne brukes til å hente avatarer som er valgt, skal vises i waitingLobby
+     const getAll = async (): Promise<{ items: IUser[] }> => {
+        try {
+            const result = await axios.get(`${API_BASE_URL}/${controller}/all`);
+           const items = result.data;
+           return { items };
+       } catch (error) {
+           console.log(`Error getting items from ${controller}`, error);
+           throw error;
+       }
+    };
+
     return {
         getById,
         post,
         verifyUser,
+        getAll
     } as IService<T>;
 };
 

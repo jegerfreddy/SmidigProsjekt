@@ -2,21 +2,21 @@ import axios from "axios";
 
 export const getActs = async () => {
 
-    const res = await axios.get("http://localhost:3000/getActs")
+    const res = await axios.get("http://localhost:4000/api/getActs")
     return res.data;
     
 };
 
 export const getEvents = async () => {
 
-    const res = await axios.get("http://localhost:3000/getEvents")
+    const res = await axios.get("http://localhost:4000/api/getEvents")
     return res.data;
     
 };
 
 export const updateEvent = async (event) => {
 
-    await axios.post("http://localhost:3000/updateEvent", event)
+    await axios.post("http://localhost:4000/api/updateEvent", event)
      
 
 };

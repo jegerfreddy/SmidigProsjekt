@@ -1,5 +1,6 @@
 export interface IUser {
-    user_id?: number;
+    userID?: number;
     avatarNumber: number;
     username: string;
+    verified?: number;
 }

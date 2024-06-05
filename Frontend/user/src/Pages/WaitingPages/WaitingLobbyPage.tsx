@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { UserService } from "../../Services/GetService";
 import { IUser } from "../../Interfaces/IUser";
 import { NextBtn } from "../../Components/Button/NextBtn"; // Importer NextBtn-komponenten
 import PhoneInfo from "../../Components/Phone/PhoneInfo";
 import "../../App.css";
+import { UserService } from "../../Services/GetService";
 
 const WaitingLobbyPage: React.FC = () => {
     const [avatars, setAvatars] = useState<{ avatarNumber: number, x: number, y: number }[]>([]);
@@ -14,14 +14,16 @@ const WaitingLobbyPage: React.FC = () => {
         const fetchUsers = async () => {
             try {
                 const result = await UserService.getAll();
-                const avatarNumbers = result.items
-                    .filter((user: IUser) => user.avatarNumber > 0) // Ingen avatar med avatarNumber 0, så den hopper vi over
+                console.log('Fetched users result:', result);
+                const users = result.items; // Access the nested items array
+                const avatarNumbers = users
+                    .filter((user: IUser) => user.avatarNumber > 0) // Ignore avatars with avatarNumber 0
                     .map((user: IUser) => ({
                         avatarNumber: user.avatarNumber,
-                        x: Math.floor(Math.random() * 80) + 10, // Random x pos. fra 10% til 90%
-                        y: Math.floor(Math.random() * 60) + 20 // random y pos. fra 20% til 80%
+                        x: Math.floor(Math.random() * 80) + 10, // Random x pos. from 10% to 90%
+                        y: Math.floor(Math.random() * 60) + 20 // Random y pos. from 20% to 80%
                     }))
-                    .slice(0, 10); // Begrenser antall avatarer som vises
+                    .slice(0, 10); // Limit the number of avatars displayed
                 setAvatars(avatarNumbers);
             } catch (error) {
                 console.error('Error fetching users:', error);
@@ -30,12 +32,12 @@ const WaitingLobbyPage: React.FC = () => {
 
         fetchUsers();
 
-        const movingDots = ['', '.', '..', '...', '....']; // Liten array til prikker som det skal "spille" igjennom
+        const movingDots = ['', '.', '..', '...', '....']; // Array for the dots animation
         let index = 0;
         const interval = setInterval(() => {
             setDots(movingDots[index]);
             index = (index + 1) % movingDots.length;
-        }, 500); // Oppdateres hver 500ms
+        }, 500); // Update every 500ms
 
         return () => clearInterval(interval);
     }, []);

@@ -114,8 +114,13 @@ const Routing: React.FC = () => {
           <WaitResultPage />
         </GeneralProvider>
       } />
+      <Route path="/Waiting" element={
+        <GeneralProvider service={UserService}>
+          <WaitingLobbyPage />
+        </GeneralProvider>
+      } />
+      
       <Route path="/Break" element={<TheaterPausePage />} />
-      <Route path="/Waiting" element={<WaitingLobbyPage />} />
       <Route path="/tie/:actEventId" element={<TiePage />} />
       <Route path="/minigame/:actEventId" element={<MiniGamePage />} />
       <Route path="/endGame" element={<EndGamePage />} />
