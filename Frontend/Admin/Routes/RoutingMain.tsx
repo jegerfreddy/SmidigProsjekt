@@ -1,5 +1,5 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { ActOverviewPage, EditEventsPage, CreateActPage } from "../pages/index.ts";
+import { ActOverviewPage, EditEventsPage, CreateActPage, AdminToUserPage } from "../pages/index.ts";
 import {AdminProvider} from "../Context/AdminContext.tsx";
 
 const RoutingMain = () => {
@@ -21,6 +21,10 @@ const RoutingMain = () => {
                                     <button className="navButton btn btn-dark">Act Overview</button>
                                 </Link>
 
+                                <Link to={"/act-controller"}>
+                                    <button className="navButton btn btn-dark">Act Controller</button>
+                                </Link>
+
                                 <Link to={"/stats"}>
                                     <button className="navButton btn btn-dark">Stats</button>
                                 </Link>
@@ -39,6 +43,7 @@ const RoutingMain = () => {
                         <main className="main-container">
                             <Routes>
                                 <Route path="/" element={<ActOverviewPage/>} />
+                                <Route path="/act-controller" element={<AdminToUserPage/>} />
                                 <Route path="/stats" /*element={<StatsPage}*/ />
                                 <Route path="/edit" element={<EditEventsPage/>}/>
                                 <Route path="/newAct" element={<CreateActPage/>}/>

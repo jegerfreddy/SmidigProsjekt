@@ -22,25 +22,22 @@ export const updateEvent = async (event) => {
 };
 
 export const createAct = async (actName, events) => {
+    
+    let newActId;
 
     const data = {
         actName: actName
     }
 
-    let newActId;
-
     // Post a new act, returns new act ID
-    await axios.post("endpoint")
-        .then( (res) => {
+    await axios.post("http://localhost:8080/api/act/new", data)
+        .then( async (res) => {
             newActId = res.data.actID;
-        })
+
+            // Loop for creating new events, returns new event ID
+            for (let i = 0; i < events.length; i++) {
+                await axios.post(`http://localhost:8080/api/actEvent/new/link/${newActId}`, events[i]);
+            };
+        });
     ;
-
-    // Loop for creating new events, returns new event ID
-    for (let i = 0; index < events.length; i++) {
-        await axios.post(`/new/${newActId}`, events[i]);
-    }
-
-    await axios.post("endpoint", events);
-
 }
