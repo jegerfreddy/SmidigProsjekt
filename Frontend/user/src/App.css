@@ -73,25 +73,20 @@ body {
 
 
 .pinButton {
-  background: #BF6A06;
-  border-color: #383838;
-  color: #050505;
+  background: #BF6A06;  
+  border-color: #383838;  
+  color: #050505;  
   min-width: 185px;
   min-height: 50px;
   border-radius: 25px;
   margin: 0 auto;
-}
-
-.pinButton.enabled {
-  background: #BF6A06;
-  border-color: #383838;
-  color: #050505;
+  cursor: pointer; 
 }
 
 .pinButton.disabled {
-    background-color: #cccccc; 
-    color: #666666;
-    cursor: not-allowed; 
+  background-color: #cccccc;  
+  color: #666666;  
+  cursor: not-allowed; 
 }
 
 /* Avatar css */
