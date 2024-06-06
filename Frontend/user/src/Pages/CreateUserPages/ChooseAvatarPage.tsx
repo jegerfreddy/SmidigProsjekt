@@ -29,6 +29,7 @@ const ChooseAvatarPage: React.FC = () => {
     const { postItem } = userContext;
 
     const handleSubmit = async (newUser: IUser) => {
+        console.log('newUser:', newUser);
         try {
             const result: any = await UserService.post(newUser);
             const postResult = result.result;
