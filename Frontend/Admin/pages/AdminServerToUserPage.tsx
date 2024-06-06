@@ -4,55 +4,57 @@ const AdminServerToUserPage: React.FC = () => {
   const [actEventId, setActEventId] = useState('');
   const [redCount, setRedCount] = useState(0);
   const [purpleCount, setPurpleCount] = useState(0);
+  const [blueCount, setBlueCount] = useState(0);
+  const [greenCount, setGreenCount] = useState(0);
   const [winner, setWinner] = useState('');
+  const [ws, setWs] = useState<WebSocket | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:3000');
+    const websocket = new WebSocket('ws://localhost:3000');
 
-    ws.onopen = () => {
+    websocket.onopen = () => {
       console.log('Connected to WebSocket server');
     };
 
-    ws.onmessage = (message) => {
+    websocket.onmessage = (message) => {
       const data = JSON.parse(message.data);
       console.log('Received:', data);
 
       if (data.type === 'MINIGAME_COUNT') {
         setRedCount(data.redCount);
         setPurpleCount(data.purpleCount);
+        setBlueCount(data.blueCount);
+        setGreenCount(data.greenCount);
       } else if (data.type === 'WINNER') {
         setWinner(data.winner);
         alert(`Winner is: ${data.winner}`);
       }
     };
 
-    ws.onerror = (error) => {
+    websocket.onerror = (error) => {
       console.error('WebSocket error:', error);
     };
 
-    ws.onclose = () => {
+    websocket.onclose = () => {
       console.log('WebSocket connection closed');
     };
 
+    setWs(websocket);
+
     return () => {
-      ws.close();
+      websocket.close();
     };
   }, []);
 
   const sendCommand = (command: string, actEventId: string) => {
-    const ws = new WebSocket('ws://localhost:3000');
-
-    ws.onopen = () => {
+    if (ws) {
       ws.send(JSON.stringify({ type: 'CHANGE_GAME_STATE', state: command, actEventId }));
-      ws.close();
-    };
-
-    ws.onerror = (error) => {
-      console.error('WebSocket error:', error);
-    };
+    } else {
+      console.error('WebSocket connection is not open');
+    }
   };
 
-  const handleStartMiniGame = (actEventId: string) => {
+  const handleStartMiniGame = () => {
     sendCommand('MINIGAME', actEventId);
   };
 
@@ -69,11 +71,13 @@ const AdminServerToUserPage: React.FC = () => {
       <button onClick={() => sendCommand('WAITING', '')}>Waiting</button>
       <button onClick={() => sendCommand('VOTING', actEventId)}>Start Voting</button>
       <button onClick={() => sendCommand('RESULT', actEventId)}>Show Results</button>
-      <button onClick={() => handleStartMiniGame(actEventId)}>MINIGAME</button>
+      <button onClick={handleStartMiniGame}>MINIGAME</button>
 
       <h1>MiniGame Counter</h1>
       <p>Red: {redCount}</p>
       <p>Purple: {purpleCount}</p>
+      <p>Blue: {blueCount}</p>
+      <p>Green: {greenCount}</p>
       <h2>Winner: {winner}</h2>
     </div>
   );

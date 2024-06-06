@@ -13,15 +13,17 @@ const VotingItem: React.FC<VotingItemProps> = ({ event }) => {
  */
 
 
-  const yourUserID = 1; 
+  const yourUserID = Number(localStorage.getItem('yourUserID') || '0');
   // For testing purposes
   const navigate = useNavigate();
 
   const sendVoteToDb = async (newVote: IVote) => {
     try {
       await VoteService.post(newVote);
-      navigate(`/waitresult/${newVote.actEvent.acteventID}`); // Navigate to the result page with the corresponding acteventId
-    } catch (error) {
+      localStorage.setItem('youVotedFor', newVote.option.toString());
+      console.log(localStorage.getItem('youVotedFor'));
+       navigate(`/waitresult/${newVote.actEvent.acteventID}`); // Navigate to the result page with the corresponding acteventId
+     } catch (error) {
       console.error('Error occurred while submitting user data:', error);
     }
   };
