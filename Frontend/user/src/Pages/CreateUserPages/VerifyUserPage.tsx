@@ -16,6 +16,7 @@ const VertiyUserPage: React.FC = () => {
                 const result = await VerifyService.verifyUser(userId, code);
                 if (result) {
                     // Handle true case
+                    localStorage.setItem('yourUserID', userId);
                      navigate('/Waiting');
                 } else {
                     // Handle false case
