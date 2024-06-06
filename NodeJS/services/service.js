@@ -53,7 +53,7 @@ const GetService = (controller) => {
 };
 
 module.exports = {
-    ActEventService: GetService('actEvent'),
+    EventService: GetService('actEvent'),
     UserService: GetService('user'),
     VoteService: GetService('vote'),
     ResultService: GetService('vote/percentage'),
