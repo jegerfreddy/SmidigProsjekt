@@ -3,3 +3,5 @@ Frontend/.idea/workspace.xml
 
 Server/data/loading.mv.db
 NodeJS/package-lock.json
+Frontend/Admin/package-lock.json
+Frontend/user/package-lock.json

@@ -14,8 +14,7 @@ const ChooseAvatarPage: React.FC = () => {
     const userContext = useContext(GeneralContext) as IGeneralContext<IUser>;
     const [selectedAvatar, setSelectedAvatar] = useState<string>('/images/Avatar-4.png');
     const [avatarNumber, setAvatarNumber] = useState<number>(0);
-    const username = localStorage.getItem('username') || '';
-    const { code } = useParams<{ code: string }>();
+    const { username, code } = useParams<{ code: string, username: string }>();
     const navigate = useNavigate();
 
 
@@ -48,7 +47,7 @@ const ChooseAvatarPage: React.FC = () => {
             </section>
 
             <section className={`text-center position-absolute ${orientation === 'vertical' ? 'my-5 p-5 top-0 start-50 translate-middle-x vertical-layout' : ' top-0 end-0 m-5 p-5 horizontal-layout'}`}>
-                <SelectedAvatar selectedAvatar={selectedAvatar} username={username} />
+                <SelectedAvatar selectedAvatar={selectedAvatar} username={username ?? ''} />
             </section>
 
             <section className={`text-center position-absolute ${orientation === 'vertical' ? 'top-50 start-50 mb-5 translate-middle vertical-layout' : 'bottom-0 start-0 mb-5 horizontal-layout'}`}>
@@ -56,7 +55,7 @@ const ChooseAvatarPage: React.FC = () => {
             </section>
 
             <section>
-                <button className={`position-absolute pinButton ${orientation === 'vertical' ? 'bottom-0 start-50 translate-middle-x mb-4 vertical-layout' : 'bottom-0 end-0 m-5 horizontal-layout'}`} onClick={() => handleSubmit({ avatarNumber, username })}>Fortsett</button>
+                <button className={`position-absolute pinButton ${orientation === 'vertical' ? 'bottom-0 start-50 translate-middle-x mb-4 vertical-layout' : 'bottom-0 end-0 m-5 horizontal-layout'}`} onClick={() => handleSubmit({ avatarNumber, username: username ?? '' })}>Fortsett</button>
             </section>
 
         </div>
