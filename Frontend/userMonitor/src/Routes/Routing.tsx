@@ -1,27 +1,18 @@
-import { useEffect } from "react";
+import {  useEffect } from "react";
 import { useNavigate, Routes, Route } from "react-router-dom";
-import PhoneInfo from "../Components/Phone/PhoneInfo";
 import { GeneralProvider } from "../Contexts/UserContext";
-import ChooseAvatarPage from "../Pages/CreateUserPages/ChooseAvatarPage";
-import ChooseUserNamePage from "../Pages/CreateUserPages/ChooseUserNamePage";
-import UserLoginPage from "../Pages/CreateUserPages/UserLoginPage";
-import FeedBackPage from "../Pages/FeedBackPages/FeedBackPage";
 import MiniGamePage from "../Pages/VotingResultPages/MiniGamePage";
 import ResultPage from "../Pages/VotingResultPages/ResultPage";
 import TiePage from "../Pages/VotingResultPages/TiePage";
-import VotingPage from "../Pages/VotingResultPages/VotingPage";
 import WaitResultPage from "../Pages/VotingResultPages/WaitResultPage";
-import GameLobby from "../Pages/WaitingPages/GameLobby";
 import StandByPage from "../Pages/WaitingPages/StandByPage";
 import TheaterPausePage from "../Pages/WaitingPages/TheaterPausePage";
-import WaitingLobbyPage from "../Pages/WaitingPages/WaitingLobbyPage";
-import VerifyUserPage from "../Pages/CreateUserPages/VerifyUserPage";
 import EndGamePage from "../Pages/WaitingPages/EndGamePage";
-import { ActEventService, FeedBackService, ResultService, UserService, VerifyService, WinnerService } from "../Services/GetService";
+import {  ResultService, UserService, WinnerService } from "../Services/GetService";
+import QrPage from "../Pages/WaitingPages/QrPage";
 
 const Routing: React.FC = () => {
   const navigate = useNavigate();
-  PhoneInfo();
 
   useEffect(() => {
     const ws = new WebSocket('ws://localhost:3000');
@@ -62,7 +53,7 @@ const Routing: React.FC = () => {
         navigate('/');
         break;
       case 'VOTING':
-        navigate('/vote/' + actEventId);
+        navigate('/result/' + actEventId);
         break;
       case 'RESULT':
         navigate('/waitresult/' + actEventId);
@@ -71,7 +62,7 @@ const Routing: React.FC = () => {
         navigate('/minigame/' + actEventId);
         break;
       case 'FEEDBACK':
-        navigate('/feedBack/' + actId);
+        navigate('/endGame');
         break;
       case 'PAUSE':
         navigate('/Break');
@@ -86,29 +77,14 @@ const Routing: React.FC = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<UserLoginPage />} />
-      <Route path="/username/:code" element={
+      <Route path="/" element={
         <GeneralProvider service={UserService}>
-          <ChooseUserNamePage />
+          <QrPage />
         </GeneralProvider>
       } />
-      <Route path="/avatar/:username/:code" element={
-        <GeneralProvider service={UserService}>
-          <ChooseAvatarPage />
-        </GeneralProvider>
-      } />
-      <Route path="/verifyUser/:userId/:code" element={
-        <GeneralProvider service={VerifyService}>
-          <VerifyUserPage />
-        </GeneralProvider>
-      } />
-      <Route path="/gameLobby" element={<GameLobby />} />
-      <Route path="/Standby" element={<StandByPage />} />
-      <Route path="/vote/:actEventId" element={
-        <GeneralProvider service={ActEventService}>
-          <VotingPage />
-        </GeneralProvider>
-      } />
+
+      <Route path="/standBy" element={<StandByPage />} />
+  
       <Route path="/result/:actEventId" element={
         <GeneralProvider service={ResultService}>
           <ResultPage />
@@ -119,21 +95,15 @@ const Routing: React.FC = () => {
           <WaitResultPage />
         </GeneralProvider>
       } />
-      <Route path="/Waiting" element={
-        <GeneralProvider service={UserService}>
-          <WaitingLobbyPage />
-        </GeneralProvider>
-      } />
+ 
       
       <Route path="/Break" element={<TheaterPausePage />} />
+
       <Route path="/tie/:actEventId" element={<TiePage />} />
+
       <Route path="/minigame/:actEventId" element={<MiniGamePage />} />
+
       <Route path="/endGame" element={<EndGamePage />} />
-      <Route path="/feedBack/:actId" element={
-        <GeneralProvider service={FeedBackService}>
-          <FeedBackPage />
-        </GeneralProvider>
-      } />
     </Routes>
   );
 };

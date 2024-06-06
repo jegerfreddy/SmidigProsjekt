@@ -56,7 +56,6 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = ({ yourTeam }) => {
       console.log('Received:', data);
 
       if (data.type === 'WINNER') {
-        alert(`Winner is: ${data.winner}`);
         setRedValue(0);
         setPurpleValue(0);
         setBlueValue(0);
@@ -77,33 +76,6 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = ({ yourTeam }) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (redValue > 100) {
-      setRedValue(0);
-      setPurpleValue(0);
-      setBlueValue(0);
-      setGreenValue(0);
-      alert('Gratulerer! Rød har vunnet spillet');
-    } else if (purpleValue > 100) {
-      setRedValue(0);
-      setPurpleValue(0);
-      setBlueValue(0);
-      setGreenValue(0);
-      alert('Gratulerer! Lilla har vunnet spillet');
-    } else if (blueValue > 100) {
-      setRedValue(0);
-      setPurpleValue(0);
-      setBlueValue(0);
-      setGreenValue(0);
-      alert('Gratulerer! Blå har vunnet spillet');
-    } else if (greenValue > 100) {
-      setRedValue(0);
-      setPurpleValue(0);
-      setBlueValue(0);
-      setGreenValue(0);
-      alert('Gratulerer! Grønn har vunnet spillet');
-    }
-  }, [redValue, purpleValue, blueValue, greenValue]);
 
   const renderBalloon = () => {
     switch (yourTeam) {
@@ -113,7 +85,7 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = ({ yourTeam }) => {
             onClick={() => handleClick('red')}
             src="/images/redBaloon.png"
             alt="redBaloon"
-            className='position-absolute start-0'
+            className='position-absolute start-50 translate-middle-x'
             style={{ bottom: `${redValue}vh`, transition: 'bottom 0.5s ease' }}
           />
         );
@@ -123,7 +95,7 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = ({ yourTeam }) => {
             onClick={() => handleClick('purple')}
             src="/images/purpleBaloon.png"
             alt="purpleBaloon"
-            className='position-absolute end-0'
+            className='position-absolute start-50 translate-middle-x'
             style={{ bottom: `${purpleValue}vh`, transition: 'bottom 0.5s ease' }}
           />
         );
@@ -133,7 +105,7 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = ({ yourTeam }) => {
             onClick={() => handleClick('blue')}
             src="/images/blueBaloon.png"
             alt="blueBaloon"
-            className='position-absolute end-0'
+            className='position-absolute start-50 translate-middle-x'
             style={{ bottom: `${blueValue}vh`, transition: 'bottom 0.5s ease' }}
           />
         );
@@ -143,14 +115,14 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = ({ yourTeam }) => {
             onClick={() => handleClick('green')}
             src="/images/greenBaloon.png"
             alt="greenBaloon"
-            className='position-absolute end-0'
+            className='position-absolute start-50 translate-middle-x'
             style={{ bottom: `${greenValue}vh`, transition: 'bottom 0.5s ease' }}
           />
         );
       default:
         return null;
     }
-  };
+  };  
 
   return (
     <div className='position-relative vh-100'>

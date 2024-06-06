@@ -36,7 +36,6 @@ const AdminServerToUserPage: React.FC = () => {
         setGreenCount(data.greenCount);
       } else if (data.type === 'WINNER') {
         setWinner(data.winner);
-        alert(`Winner is: ${data.winner}`);
       }
     };
 
@@ -101,16 +100,12 @@ const AdminServerToUserPage: React.FC = () => {
   return (
       <div>
           <h1>Admin Page</h1>
-          <input
-              type="text"
-              placeholder="actEventId"
-              value={actEventId}
-              onChange={(e) => setActEventId(e.target.value)}
-          />
+
           <button onClick={() => sendCommand('START', '', '')}>Start Game</button>
-          <button onClick={() => sendCommand('WAITING', '', '')}>Waiting</button>
           <button onClick={() => handleButtonClick('VOTING')}>Start Voting</button>
           <button onClick={() => sendCommand('FEEDBACK', '', actId)}>Feedback</button>
+          <button onClick={() => sendCommand('PAUSE', '', '')}>Pause</button>
+          <button onClick={() => sendCommand('STANDBY', '', '')}>StandBy</button>
           <button onClick={handleStartMiniGame}>MINIGAME</button>
           
           <h1>MiniGame Counter</h1>

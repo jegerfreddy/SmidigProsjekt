@@ -83,16 +83,16 @@ const websocketServer = () => {
     };
 
     const checkForWinner = () => {
-        if (miniGameRedCount >= 10) {
+        if (miniGameRedCount >= 100) {
             broadcastWinner('red');
             resetGame();
-        } else if (miniGamePurpleCount >= 10) {
+        } else if (miniGamePurpleCount >= 100) {
             broadcastWinner('purple');
             resetGame();
-        } else if (miniGameBlueCount >= 10) {
+        } else if (miniGameBlueCount >= 100) {
             broadcastWinner('blue');
             resetGame();
-        } else if (miniGameGreenCount >= 10) {
+        } else if (miniGameGreenCount >= 100) {
             broadcastWinner('green');
             resetGame();
         }
