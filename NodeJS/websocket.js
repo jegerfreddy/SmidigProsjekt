@@ -5,6 +5,7 @@ const websocketServer = () => {
 
     let gameState = 'START'; // Example game state
     let actEventId = ''; // Example act event ID
+    let actId = ''; // Example act ID
     let miniGameRedCount = 0;
     let miniGamePurpleCount = 0;
     let miniGameBlueCount = 0;
@@ -24,7 +25,8 @@ const websocketServer = () => {
                 case 'CHANGE_GAME_STATE':
                     gameState = data.state;
                     actEventId = data.actEventId;
-                    broadcastGameState(gameState, actEventId);
+                    actId = data.actId;
+                    broadcastGameState(gameState, actEventId, actId);
                     break;
 
                 case 'INCREMENT_MINIGAME_COUNTER':
@@ -49,14 +51,14 @@ const websocketServer = () => {
         });
 
         // Send initial game state to new connections
-        ws.send(JSON.stringify({ type: 'GAME_STATE', state: gameState, actEventId }));
+        ws.send(JSON.stringify({ type: 'GAME_STATE', state: gameState, actEventId, actId }));
         ws.send(JSON.stringify({ type: 'MINIGAME_COUNT', redCount: miniGameRedCount, purpleCount: miniGamePurpleCount, blueCount: miniGameBlueCount, greenCount: miniGameGreenCount }));
     });
 
-    const broadcastGameState = (state, actEventId) => {
+    const broadcastGameState = (state, actEventId, actId) => {
         wss.clients.forEach(client => {
             if (client.readyState === WebSocket.OPEN) {
-                client.send(JSON.stringify({ type: 'GAME_STATE', state, actEventId }));
+                client.send(JSON.stringify({ type: 'GAME_STATE', state, actEventId, actId }));
             }
         });
     };
