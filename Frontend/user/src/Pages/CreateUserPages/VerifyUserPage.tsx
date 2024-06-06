@@ -19,7 +19,7 @@ const VertiyUserPage: React.FC = () => {
                      navigate('/Waiting');
                 } else {
                     // Handle false case
-                     navigate('/GAMECODE');
+                     navigate('/');
                 }
             } catch (error) {
                 console.error('Error occurred while submitting user data:', error);
