@@ -57,7 +57,7 @@ app.post("/api/user/new", async (req, res) => {
 });
 
 // HTTP endpoint for creating a new vote
-app.post("api/vote/new", async (req, res) => {
+app.post("/api/vote/new", async (req, res) => {
 
     const newVote = req.body;
 
@@ -76,7 +76,7 @@ app.post("api/vote/new", async (req, res) => {
 });
 
 // HTTP endpoint for verifying a user
-app.post("api/verify/:userId/:code", async (req, res) => {
+app.post("/api/verify/:userId/:code", async (req, res) => {
 
     const { userId, code } = req.params;
 
@@ -95,7 +95,7 @@ app.post("api/verify/:userId/:code", async (req, res) => {
 });
 
 // HTTP endpoint for getting act event by ID
-app.get("api/actEvent/id/:id", async (req, res) => {
+app.get("/api/actEvent/id/:id", async (req, res) => {
 
     const { id } = req.params;
 
@@ -114,7 +114,7 @@ app.get("api/actEvent/id/:id", async (req, res) => {
 });
 
 // HTTP endpoint for getting result by ID
-app.get("api/vote/percentage/id/:id", async (req, res) => {
+app.get("/api/vote/percentage/id/:id", async (req, res) => {
 
     const { id } = req.params;
 
@@ -133,7 +133,7 @@ app.get("api/vote/percentage/id/:id", async (req, res) => {
 });
 
 // HTTP endpoint for getting winner by ID
-app.get("api/vote/winner/id/:id", async (req, res) => {
+app.get("/api/vote/winner/id/:id", async (req, res) => {
 
     const { id } = req.params;
 
@@ -152,7 +152,7 @@ app.get("api/vote/winner/id/:id", async (req, res) => {
 });
 
 // HTTP endpoint for getting all users
-app.get("api/user/all", async (req, res) => {
+app.get("/api/user/all", async (req, res) => {
     
     try {
 
@@ -169,7 +169,7 @@ app.get("api/user/all", async (req, res) => {
 });
 
 // Additional endpoints
-app.post("api/loginAdmin", async (req, res) => {
+app.post("/api/loginAdmin", async (req, res) => {    
 
     const { username, password } = req.body;
     const data = { username, password };
@@ -186,7 +186,7 @@ app.post("api/loginAdmin", async (req, res) => {
     };
 });
 
-app.get("api/getActs", async (req, res) => {
+app.get("/api/getActs", async (req, res) => {
 
     try {
 
@@ -201,7 +201,7 @@ app.get("api/getActs", async (req, res) => {
     };
 });
 
-app.get("api/getEvents", async (req, res) => {
+app.get("/api/getEvents", async (req, res) => {
 
     try {
 
@@ -215,7 +215,7 @@ app.get("api/getEvents", async (req, res) => {
     };
 });
 
-app.post("api/updateEvent", async (req, res) => {
+app.post("/api/updateEvent", async (req, res) => {
 
     const data = req.body;
 

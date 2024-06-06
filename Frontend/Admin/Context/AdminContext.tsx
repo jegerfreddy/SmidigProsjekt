@@ -2,8 +2,8 @@ import { FC, ReactNode, createContext, useEffect, useState } from "react";
 import { IAdminContext } from "../Interfaces/IAdminContext.ts";
 import { IActItem } from "../Interfaces/IActItem.ts";
 import { IEventItem } from "../Interfaces/IEventItem.ts";
-import { getActs, getEvents } from "../Services/Database.js";
-import { updateEvent } from "../Services/Database.js";
+import { getActs, getEvents } from "../Services/NodeService.js";
+import { updateEvent } from "../Services/NodeService.js";
 
 export const AdminContext = createContext<IAdminContext | null>(null);
 
