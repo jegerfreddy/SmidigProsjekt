@@ -22,6 +22,12 @@ const websocketServer = () => {
 
             switch (data.type) {
 
+                case "SETUP":
+
+                    setup({type: "SETUP", actData: data.actData});
+
+                break;
+
                 case 'CHANGE_GAME_STATE':
                     gameState = data.state;
                     actEventId = data.actEventId;
@@ -54,6 +60,11 @@ const websocketServer = () => {
         ws.send(JSON.stringify({ type: 'GAME_STATE', state: gameState, actEventId, actId }));
         ws.send(JSON.stringify({ type: 'MINIGAME_COUNT', redCount: miniGameRedCount, purpleCount: miniGamePurpleCount, blueCount: miniGameBlueCount, greenCount: miniGameGreenCount }));
     });
+
+    // This function will send the act data recived from the admin to the user and monitor.
+    const setup = (data) => {
+        wss.send(JSON.stringify(data));
+    }
 
     const broadcastGameState = (state, actEventId, actId) => {
         wss.clients.forEach(client => {
