@@ -111,112 +111,114 @@ const AdminServerToUserPage: React.FC = () => {
       </Typography>
 
       <Grid container spacing={2} mb={4}>
-        <Grid item xs={12} md={4}>
-          <Card variant="outlined">
-            <CardContent>
-              <Typography variant="h6" component="div">
-                Act ID:
-              </Typography>
-              <Typography variant="h4" component="div">
-                {actId}
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Card variant="outlined">
-            <CardContent>
-              <Typography variant="h6" component="div">
-                Act Title:
-              </Typography>
-              <Typography variant="h4" component="div">
-                {actTitle}
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Card variant="outlined">
-            <CardContent>
-              <Typography variant="h6" component="div">
-                Act Event ID:
-              </Typography>
-              <Typography variant="h4" component="div">
-                {actEventId}
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+  <Grid item xs={12} md={4}>
+    <Card variant="outlined" sx={{ backgroundColor: 'lightblue' }}>
+      <CardContent>
+        <Typography variant="h6" component="div">
+          Act ID:
+        </Typography>
+        <Typography variant="h4" component="div">
+          {actId}
+        </Typography>
+      </CardContent>
+    </Card>
+  </Grid>
+  <Grid item xs={12} md={4}>
+    <Card variant="outlined" sx={{ backgroundColor: 'lightgreen' }}>
+      <CardContent>
+        <Typography variant="h6" component="div">
+          Act Title:
+        </Typography>
+        <Typography variant="h4" component="div">
+          {actTitle}
+        </Typography>
+      </CardContent>
+    </Card>
+  </Grid>
+  <Grid item xs={12} md={4}>
+    <Card variant="outlined" sx={{ backgroundColor: 'lightcoral' }}>
+      <CardContent>
+        <Typography variant="h6" component="div">
+          Act Event ID:
+        </Typography>
+        <Typography variant="h4" component="div">
+          {actEventId}
+        </Typography>
+      </CardContent>
+    </Card>
+  </Grid>
+</Grid>
 
-      <Grid container spacing={2} mb={2}>
-        <Grid item xs={6} md={4}>
-          <Button 
-            variant="contained" 
-            color="primary" 
-            fullWidth 
-            onClick={() => handleButtonClick('START')} 
-            disabled={loading}
-          >
-            {loading ? <CircularProgress size={24} /> : 'Start Game'}
-          </Button>
-        </Grid>
-        <Grid item xs={6} md={4}>
-          <Button 
-            variant="contained" 
-            color="primary" 
-            fullWidth 
-            onClick={() => handleButtonClick('VOTING')} 
-            disabled={loading}
-          >
-            {loading ? <CircularProgress size={24} /> : 'Start Voting'}
-          </Button>
-        </Grid>
-        <Grid item xs={6} md={4}>
-          <Button 
-            variant="contained" 
-            color="primary" 
-            fullWidth 
-            onClick={() => handleButtonClick('FEEDBACK')} 
-            disabled={loading}
-          >
-            {loading ? <CircularProgress size={24} /> : 'Feedback'}
-          </Button>
-        </Grid>
-        <Grid item xs={6} md={4}>
-          <Button 
-            variant="contained" 
-            color="primary" 
-            fullWidth 
-            onClick={() => handleButtonClick('PAUSE')} 
-            disabled={loading}
-          >
-            {loading ? <CircularProgress size={24} /> : 'Pause'}
-          </Button>
-        </Grid>
-        <Grid item xs={6} md={4}>
-          <Button 
-            variant="contained" 
-            color="primary" 
-            fullWidth 
-            onClick={() => handleButtonClick('STANDBY')} 
-            disabled={loading}
-          >
-            {loading ? <CircularProgress size={24} /> : 'StandBy'}
-          </Button>
-        </Grid>
-        <Grid item xs={6} md={4}>
-          <Button 
-            variant="contained" 
-            color="primary" 
-            fullWidth 
-            onClick={handleStartMiniGame} 
-            disabled={loading}
-          >
-            {loading ? <CircularProgress size={24} /> : 'MINIGAME'}
-          </Button>
-        </Grid>
-      </Grid>
+
+<Grid container spacing={2} mb={2}>
+  <Grid item xs={6} md={4}>
+    <Button
+      variant="contained"
+      sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#115293' } }}
+      fullWidth
+      onClick={() => handleButtonClick('START')}
+      disabled={loading}
+    >
+      {loading ? <CircularProgress size={24} /> : 'Start Game'}
+    </Button>
+  </Grid>
+  <Grid item xs={6} md={4}>
+    <Button
+      variant="contained"
+      sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#115293' } }}
+      fullWidth
+      onClick={() => handleButtonClick('VOTING')}
+      disabled={loading}
+    >
+      {loading ? <CircularProgress size={24} /> : 'Start Voting'}
+    </Button>
+  </Grid>
+  <Grid item xs={6} md={4}>
+    <Button
+      variant="contained"
+      sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#115293' } }}
+      fullWidth
+      onClick={handleStartMiniGame}
+      disabled={loading}
+    >
+      {loading ? <CircularProgress size={24} /> : 'MINIGAME'}
+    </Button>
+  </Grid>
+  <Grid item xs={6} md={4}>
+    <Button
+      variant="contained"
+      sx={{ backgroundColor: '#ff9800', '&:hover': { backgroundColor: '#fb8c00' } }}
+      fullWidth
+      onClick={() => handleButtonClick('PAUSE')}
+      disabled={loading}
+    >
+      {loading ? <CircularProgress size={24} /> : 'Pause'}
+    </Button>
+  </Grid>
+  <Grid item xs={6} md={4}>
+    <Button
+      variant="contained"
+      sx={{ backgroundColor: '#ff9800', '&:hover': { backgroundColor: '#fb8c00' } }}
+      fullWidth
+      onClick={() => handleButtonClick('STANDBY')}
+      disabled={loading}
+    >
+      {loading ? <CircularProgress size={24} /> : 'StandBy'}
+    </Button>
+  </Grid>
+  <Grid item xs={6} md={4}>
+    <Button
+      variant="contained"
+      sx={{ backgroundColor: '#ff9800', '&:hover': { backgroundColor: '#fb8c00' } }}
+      fullWidth
+      onClick={() => handleButtonClick('FEEDBACK')}
+      disabled={loading}
+    >
+      {loading ? <CircularProgress size={24} /> : 'Feedback'}
+    </Button>
+  </Grid>
+</Grid>
+
 
       <Typography variant="h5" gutterBottom>
         MiniGame Counter
