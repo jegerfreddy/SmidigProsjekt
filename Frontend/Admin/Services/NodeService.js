@@ -18,7 +18,6 @@ export const updateEvent = async (event) => {
 
     await axios.post("http://localhost:4000/api/updateEvent", event)
      
-
 };
 
 export const createAct = async (actName, events) => {

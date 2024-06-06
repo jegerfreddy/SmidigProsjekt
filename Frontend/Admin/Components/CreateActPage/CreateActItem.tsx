@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { createAct } from "../../Services/Database.js";
+import { createAct } from "../../Services/NodeService.js";
 import CreateEventItem from "../CreateActPage/CreateEventItem";
 import { AdminContext } from "../../Context/AdminContext.js";
 import { IAdminContext } from "../../Interfaces/IAdminContext.js";
@@ -92,6 +92,7 @@ const CreateActItem = () => {
         createAct(actName, newEvents);
         localStorage.removeItem("tempNewEvents");
         fetchData();
+        window.location.reload();
     };
 
     return (
