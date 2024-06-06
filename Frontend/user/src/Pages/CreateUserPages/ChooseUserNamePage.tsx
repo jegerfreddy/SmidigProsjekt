@@ -6,10 +6,17 @@ const ChooseUserNamePage: React.FC = () => {
     const [username, setUsername] = React.useState('');
     const { code } = useParams<{ code: string }>();
 
-
-
     const createUserName = () => {
-        navigate(`/avatar/${username}/${code}`);
+        if (username.length > 0) {
+            navigate(`/avatar/${username}/${code}`);
+        }
+    };
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        if (value.length <= 15) {
+            setUsername(value);
+        }
     };
 
     return (
@@ -24,12 +31,17 @@ const ChooseUserNamePage: React.FC = () => {
                     placeholder='Brukernavn'
                     className='userInput'
                     value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    onChange={handleInputChange}
+                    maxLength={15} // Restrict input to 15 characters
                 />
             </div>
 
             <div className='position-absolute bottom-0 start-50 translate-middle-x mb-4'>
-                <button className='pinButton' onClick={createUserName}>
+                <button 
+                    className={`pinButton ${username.length > 0 ? 'enabled' : 'disabled'}`}
+                    onClick={createUserName}
+                    disabled={username.length === 0} // Disable button if username is empty
+                >
                     Fortsett
                 </button>
             </div>
