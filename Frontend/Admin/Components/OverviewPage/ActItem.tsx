@@ -26,7 +26,9 @@ const ActItem : FC<IActItem> = ({actID, actName}) => {
                     </div>
 
                     <div>
+                        <Link to={"/userserver"} state={actID}>
                         <button className="m-3 btn btn-primary">Start Act</button>
+                        </Link>
                         <Link to={"/edit"} state={actID}>
                             <button className="m-3 btn btn-primary">Edit Act</button>
                         </Link>

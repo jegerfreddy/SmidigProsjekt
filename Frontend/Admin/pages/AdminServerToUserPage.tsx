@@ -1,8 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { IAdminContext } from '../Interfaces/IAdminContext';
+import { AdminContext } from '../Context/AdminContext';
+import { useLocation } from 'react-router-dom';
 
 const AdminServerToUserPage: React.FC = () => {
+  const location = useLocation();
+  const actID = location.state;
+  
+  const actId = actID.toString();
+
   const [actEventId, setActEventId] = useState('');
-  const [actId, setActId] = useState('');
+  const [ setActId] = useState('');
   const [redCount, setRedCount] = useState(0);
   const [purpleCount, setPurpleCount] = useState(0);
   const [blueCount, setBlueCount] = useState(0);
@@ -59,35 +67,59 @@ const AdminServerToUserPage: React.FC = () => {
     sendCommand('MINIGAME', actEventId, actId);
   };
 
-  return (
-    <div>
-      <h1>Admin Page</h1>
-      <input
-        type="text"
-        placeholder="actEventId"
-        value={actEventId}
-        onChange={(e) => setActEventId(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="actEventId"
-        value={actId}
-        onChange={(e) => setActId(e.target.value)}
-      />
-      <button onClick={() => sendCommand('START', '', '')}>Start Game</button>
-      <button onClick={() => sendCommand('WAITING', '', '')}>Waiting</button>
-      <button onClick={() => sendCommand('VOTING', actEventId, '')}>Start Voting</button>
-      <button onClick={() => sendCommand('RESULT', actEventId, '')}>Show Results</button>
-      <button onClick={() => sendCommand('FEEDBACK', '', actId)}>Feedback</button>
-      <button onClick={handleStartMiniGame}>MINIGAME</button>
 
-      <h1>MiniGame Counter</h1>
-      <p>Red: {redCount}</p>
-      <p>Purple: {purpleCount}</p>
-      <p>Blue: {blueCount}</p>
-      <p>Green: {greenCount}</p>
-      <h2>Winner: {winner}</h2>
-    </div>
+  const [sortedEventIDs, setSortedEventIDs] = useState<number[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const { events } = useContext(AdminContext) as IAdminContext;
+
+
+  useEffect(() => {
+      const actEvents = events.filter((event) => event.actID === Number(actId));
+
+      actEvents.sort((a, b) => a.eventIndex - b.eventIndex);
+
+      setSortedEventIDs(actEvents.map(event => event.acteventID));
+      setCurrentIndex(0);
+      console.log('Event:', actEvents);
+  }, [actId, events]);
+
+
+  const handleButtonClick = (command: string) => {
+      if (sortedEventIDs.length > 0 && currentIndex < sortedEventIDs.length) {
+          const eventId = sortedEventIDs[currentIndex].toString();
+          sendCommand(command, eventId, '');
+          setActEventId(eventId);
+          setCurrentIndex(currentIndex + 1);
+          console.log('Current index:', currentIndex);
+          console.log('Current event:', eventId);
+      }
+  };
+
+
+
+  return (
+      <div>
+          <h1>Admin Page</h1>
+          <input
+              type="text"
+              placeholder="actEventId"
+              value={actEventId}
+              onChange={(e) => setActEventId(e.target.value)}
+          />
+          <button onClick={() => sendCommand('START', '', '')}>Start Game</button>
+          <button onClick={() => sendCommand('WAITING', '', '')}>Waiting</button>
+          <button onClick={() => handleButtonClick('VOTING')}>Start Voting</button>
+          <button onClick={() => sendCommand('FEEDBACK', '', actId)}>Feedback</button>
+          <button onClick={handleStartMiniGame}>MINIGAME</button>
+          
+          <h1>MiniGame Counter</h1>
+          <p>Red: {redCount}</p>
+          <p>Purple: {purpleCount}</p>
+          <p>Blue: {blueCount}</p>
+          <p>Green: {greenCount}</p>
+          <h2>Winner: {winner}</h2>
+      </div>
   );
 };
 

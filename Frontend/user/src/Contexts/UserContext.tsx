@@ -44,7 +44,7 @@ export const GeneralProvider = <T extends {}>({
     setLoading(true);
     setError(null);
     try {
-      const result = await service.vertifyUser(userId, code);
+      const result = await service.verifyUser(userId, code);
       return result;
     } catch (error) {
       console.error('Error verifying user:', error);

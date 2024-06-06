@@ -4,7 +4,7 @@ const axios = require('axios');
 const websocketServer = require('./websocket');
 const {
 
-    UserService, VerifyService, ActEventService,
+    UserService, VerifyService, EventService,
     ResultService, WinnerService, VoteService, FeedBackService
 
 } = require('./services/service');
@@ -101,7 +101,7 @@ app.get("/api/actEvent/id/:id", async (req, res) => {
 
     try {
 
-        const result = await ActEventService.getById(id);
+        const result = await EventService.getById(id);
 
         console.log('Act event received:', result);
         res.status(200).json(result);
@@ -206,6 +206,20 @@ app.get("/api/getEvents", async (req, res) => {
     try {
 
         const dbRes = await axios.get("http://localhost:8080/api/actEvent/all");
+        res.send(dbRes.data);
+
+    } catch (error) {
+
+        console.error('Error occurred while fetching events:', error);
+        res.status(500).json({ error: 'Failed to fetch events' });
+    };
+});
+app.get("/api/getAllEventsFromAct/:id", async (req, res) => {
+    const { id } = req.params;
+
+    try {
+
+        const dbRes = await axios.get(`http://localhost:8080/api/actEvent/act/${id}`);
         res.send(dbRes.data);
 
     } catch (error) {
