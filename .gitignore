@@ -5,3 +5,4 @@ Server/data/loading.mv.db
 NodeJS/package-lock.json
 Frontend/Admin/package-lock.json
 Frontend/user/package-lock.json
+data/loading.mv.db
