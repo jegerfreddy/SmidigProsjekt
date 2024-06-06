@@ -1,14 +1,17 @@
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate, useParams } from "react-router-dom"; 
 import { useState } from "react";
 import FeedBackList from "../../Components/FeedBack/FeedBackList";
 import { IFeedBack } from "../../Interfaces/IFeedBack";
 import { FeedBackService } from "../../Services/GetService";
 
+
+
 const FeedBackPage: React.FC = () => {
     const [actEventId] = useState<string>('');
-    const [rating, setRating] = useState<number>(0); 
-    const [userID] = useState<number>(1); 
-    const [actID] = useState<number>(1); 
+    const [rating, setRating] = useState<number>(0);
+    const userID = Number(localStorage.getItem('yourUserID') || '0');  
+    const actIdFromParams = useParams<{ actId: string }>();
+    const actID = Number(actIdFromParams)
     const navigate = useNavigate();
 
     const handleClick = (value: number) => {

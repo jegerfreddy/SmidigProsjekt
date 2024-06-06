@@ -59,5 +59,5 @@ module.exports = {
     ResultService: GetService('vote/percentage'),
     WinnerService: GetService('vote/winner'),
     VerifyService: GetService('verify'),
-    FeedbackService: GetService('feedback')
+    FeedBackService: GetService('feedback')
 };

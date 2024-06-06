@@ -5,7 +5,7 @@ const websocketServer = require('./websocket');
 const {
 
     UserService, VerifyService, ActEventService,
-    ResultService, WinnerService, VoteService
+    ResultService, WinnerService, VoteService, FeedBackService
 
 } = require('./services/service');
 
@@ -231,17 +231,19 @@ app.post("/api/updateEvent", async (req, res) => {
     };
 });
 
+// HTTP endpoint for creating new feedback
 app.post("/api/feedback/new", async (req, res) => {
     const newFeedback = req.body;
     try {
         const result = await FeedBackService.post(newFeedback);
-        console.log('Ny tilbakemelding mottatt og videresendt:', result);
+        console.log('New feedback received and forwarded:', result);
         res.status(201).json(result);
     } catch (error) {
-        console.error('Feil oppstod under videresending av tilbakemeldingsdata:', error);
-        res.status(500).json({ error: 'Kunne ikke opprette tilbakemelding' });
+        console.error('Error occurred while forwarding new feedback data:', error.message, error.stack);
+        res.status(500).json({ error: 'Failed to create feedback', details: error.message });
     }
 });
+
 
 const httpServer = app.listen(4000, () => {
 
