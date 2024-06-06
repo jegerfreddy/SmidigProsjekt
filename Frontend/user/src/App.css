@@ -197,7 +197,7 @@ body {
 /*loading-logo*/
 
 /*Få den til å flytte seg ved rotering av skjerm*/
-.img-fluid {
+/*.img-fluid {
     max-width: 100%;
     height: auto;
     object-fit: contain;
@@ -218,7 +218,7 @@ body {
 .timer {
   font-size: 2rem;
 
-}
+}*/
 
 /* pølse-bilde rotasjon */
 .rotate-20 {
@@ -299,6 +299,17 @@ body {
     padding: 10px 20px;
     font-size: 1.25rem;
 }
+
+/* feedback disabled button */
+.btn-primary.disabled {
+    background-color: #007bff;
+    border-color: #007bff; 
+    opacity: 0.65; 
+    color: #fff; 
+    cursor: not-allowed; 
+    pointer-events: none; 
+}
+
 
 .feedback-item {
     padding: 20px;
