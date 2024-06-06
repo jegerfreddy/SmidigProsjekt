@@ -82,6 +82,18 @@ body {
   margin: 0 auto;
 }
 
+.pinButton.enabled {
+  background: #BF6A06;
+  border-color: #383838;
+  color: #050505;
+}
+
+.pinButton.disabled {
+    background-color: #cccccc; 
+    color: #666666;
+    cursor: not-allowed; 
+}
+
 /* Avatar css */
 
 .avatarPicked {
