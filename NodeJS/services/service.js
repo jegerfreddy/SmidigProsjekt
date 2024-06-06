@@ -20,7 +20,7 @@ const GetService = (controller) => {
         } catch (error) {
             console.error(`Error posting item to ${controller}`, error);
             throw error;
-        }
+        };
     };
 
     const verifyUser = async (userId, code) => {
@@ -30,7 +30,7 @@ const GetService = (controller) => {
         } catch (error) {
             console.error(`Error verifying user`, error);
             throw error;
-        }
+        };
     };
 
     // Used to fetch all avatars selected, to be displayed in the waiting lobby
@@ -41,7 +41,7 @@ const GetService = (controller) => {
         } catch (error) {
             console.error(`Error getting items from ${controller}`, error);
             throw error;
-        }
+        };
     };
 
     return {

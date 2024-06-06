@@ -76,7 +76,7 @@ export const AdminProvider : FC<Props> = ({children}) => {
     return (
         <>
             <AdminContext.Provider value={{
-                acts, events, postUpdateEvent
+                acts, events, postUpdateEvent, fetchData
             }}>
 
                 {children}

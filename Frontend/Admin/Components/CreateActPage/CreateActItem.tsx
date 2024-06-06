@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { createAct } from "../../Services/Database.js";
 import CreateEventItem from "../CreateActPage/CreateEventItem";
+import { AdminContext } from "../../Context/AdminContext.js";
+import { IAdminContext } from "../../Interfaces/IAdminContext.js";
 
 const CreateActItem = () => {
 
@@ -14,6 +16,8 @@ const CreateActItem = () => {
         option3: string | undefined,
         option4: string | undefined
     }
+
+    const { fetchData } = useContext(AdminContext) as IAdminContext
     
     const [newEvents, setNewEvents] = useState<ITempEvent[]>([]);
     const [eventCount, setEventCount] = useState<number>(0);
@@ -87,6 +91,7 @@ const CreateActItem = () => {
     const handleSave = () => {
         createAct(actName, newEvents);
         localStorage.removeItem("tempNewEvents");
+        fetchData();
     };
 
     return (

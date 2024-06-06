@@ -5,5 +5,6 @@ export interface IAdminContext {
     acts: IActItem[];
     events: IEventItem[];
     postUpdateEvent: (newEvent: IEventItem) =>void;
+    fetchData: () => void;
     // startAct: (actID: number) => 200;
 }
