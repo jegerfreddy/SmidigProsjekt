@@ -22,9 +22,6 @@ const RoutingMain = () => {
                                 </Link>
 
 
-                                <Link to={"/act-controller"}>
-                                    <button className="navButton btn btn-dark">Act Controller</button>
-                                </Link>
 
                                 <Link to={"/stats"}>
                                     <button className="navButton btn btn-dark">Stats</button>

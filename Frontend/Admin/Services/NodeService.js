@@ -9,7 +9,7 @@ export const getActs = async () => {
 
 export const getEvents = async () => {
 
-    const res = await axios.get("http://localhost:4000/api/getAllEventsFromAct/")
+    const res = await axios.get("http://localhost:4000/api/getEvents")
     return res.data;
     
 };
