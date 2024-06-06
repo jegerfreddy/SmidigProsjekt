@@ -20,7 +20,6 @@ import EndGamePage from "../Pages/WaitingPages/EndGamePage";
 import { ActEventService, FeedBackService, ResultService, UserService, VerifyService, WinnerService } from "../Services/GetService";
 
 const Routing: React.FC = () => {
-  const [gameCodeFromServer, setGameCodeFromServer] = useState('');
   const navigate = useNavigate();
   PhoneInfo();
 
@@ -37,10 +36,7 @@ const Routing: React.FC = () => {
 
       switch (data.type) {
         case 'GAME_STATE':
-          handleGameStateChange(data.state, data.actEventId);
-          break;
-        case 'NEW_CODE':
-          setGameCodeFromServer(data.code);
+          handleGameStateChange(data.state, data.actEventId, data.actId);
           break;
         default:
           console.log('Unknown message type:', data.type);
@@ -60,7 +56,7 @@ const Routing: React.FC = () => {
     };
   }, []);
 
-  const handleGameStateChange = (state: string, actEventId?: string) => {
+  const handleGameStateChange = (state: string, actEventId: string, actId: string) => {
     switch (state) {
       case 'START':
         navigate('/');
@@ -76,6 +72,9 @@ const Routing: React.FC = () => {
         break;
       case 'MINIGAME':
         navigate('/minigame/' + actEventId);
+        break;
+      case 'FEEDBACK':
+        navigate('/feedBack/' + actId);
         break;
       default:
         console.log('Unknown game state:', state);
@@ -127,7 +126,7 @@ const Routing: React.FC = () => {
       <Route path="/tie/:actEventId" element={<TiePage />} />
       <Route path="/minigame/:actEventId" element={<MiniGamePage />} />
       <Route path="/endGame" element={<EndGamePage />} />
-      <Route path="/feedBackPage" element={
+      <Route path="/feedBack/:actId" element={
         <GeneralProvider service={FeedBackService}>
           <FeedBackPage />
         </GeneralProvider>

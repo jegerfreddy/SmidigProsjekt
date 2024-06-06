@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const AdminServerToUserPage: React.FC = () => {
   const [actEventId, setActEventId] = useState('');
+  const [actId, setActId] = useState('');
   const [redCount, setRedCount] = useState(0);
   const [purpleCount, setPurpleCount] = useState(0);
   const [blueCount, setBlueCount] = useState(0);
@@ -46,16 +47,16 @@ const AdminServerToUserPage: React.FC = () => {
     };
   }, []);
 
-  const sendCommand = (command: string, actEventId: string) => {
+  const sendCommand = (command: string, actEventId: string, actId: string) => {
     if (ws) {
-      ws.send(JSON.stringify({ type: 'CHANGE_GAME_STATE', state: command, actEventId }));
+      ws.send(JSON.stringify({ type: 'CHANGE_GAME_STATE', state: command, actEventId, actId }));
     } else {
       console.error('WebSocket connection is not open');
     }
   };
 
   const handleStartMiniGame = () => {
-    sendCommand('MINIGAME', actEventId);
+    sendCommand('MINIGAME', actEventId, actId);
   };
 
   return (
@@ -67,10 +68,17 @@ const AdminServerToUserPage: React.FC = () => {
         value={actEventId}
         onChange={(e) => setActEventId(e.target.value)}
       />
-      <button onClick={() => sendCommand('START', '')}>Start Game</button>
-      <button onClick={() => sendCommand('WAITING', '')}>Waiting</button>
-      <button onClick={() => sendCommand('VOTING', actEventId)}>Start Voting</button>
-      <button onClick={() => sendCommand('RESULT', actEventId)}>Show Results</button>
+      <input
+        type="text"
+        placeholder="actEventId"
+        value={actId}
+        onChange={(e) => setActId(e.target.value)}
+      />
+      <button onClick={() => sendCommand('START', '', '')}>Start Game</button>
+      <button onClick={() => sendCommand('WAITING', '', '')}>Waiting</button>
+      <button onClick={() => sendCommand('VOTING', actEventId, '')}>Start Voting</button>
+      <button onClick={() => sendCommand('RESULT', actEventId, '')}>Show Results</button>
+      <button onClick={() => sendCommand('FEEDBACK', '', actId)}>Feedback</button>
       <button onClick={handleStartMiniGame}>MINIGAME</button>
 
       <h1>MiniGame Counter</h1>

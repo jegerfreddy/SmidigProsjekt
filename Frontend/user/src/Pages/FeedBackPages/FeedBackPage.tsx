@@ -10,8 +10,8 @@ const FeedBackPage: React.FC = () => {
     const [actEventId] = useState<string>('');
     const [rating, setRating] = useState<number>(0);
     const userID = Number(localStorage.getItem('yourUserID') || '0');  
-    const actIdFromParams = useParams<{ actId: string }>();
-    const actID = Number(actIdFromParams)
+    const { actId } = useParams<{ actId: string }>();
+    const actID = Number(actId); // Convert actId from params to a number
     const navigate = useNavigate();
 
     const handleClick = (value: number) => {
