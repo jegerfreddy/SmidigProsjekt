@@ -231,6 +231,18 @@ app.post("/api/updateEvent", async (req, res) => {
     };
 });
 
+app.post("/api/feedback/new", async (req, res) => {
+    const newFeedback = req.body;
+    try {
+        const result = await FeedBackService.post(newFeedback);
+        console.log('Ny tilbakemelding mottatt og videresendt:', result);
+        res.status(201).json(result);
+    } catch (error) {
+        console.error('Feil oppstod under videresending av tilbakemeldingsdata:', error);
+        res.status(500).json({ error: 'Kunne ikke opprette tilbakemelding' });
+    }
+});
+
 const httpServer = app.listen(4000, () => {
 
     console.log('HTTP server running on http://localhost:4000');
