@@ -21,7 +21,7 @@ const GetService = <T>(controller: string) => {
             throw error;
         }
     };
-
+//as
     const post = async (data: T): Promise<{ result: T }> => {
         try {
             const result = await axios.post(`${API_BASE_URL}/${controller}/new`, data);
