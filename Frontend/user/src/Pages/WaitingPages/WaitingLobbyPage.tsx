@@ -23,7 +23,7 @@ const WaitingLobbyPage: React.FC = () => {
                         x: Math.floor(Math.random() * 80) + 10, // Random x pos. from 10% to 90%
                         y: Math.floor(Math.random() * 60) + 20 // Random y pos. from 20% to 80%
                     }))
-                    .slice(0, 10); // Limit the number of avatars displayed
+                    .slice(0, 20); // Limit the number of avatars displayed
                 setAvatars(avatarNumbers);
             } catch (error) {
                 console.error('Error fetching users:', error);
