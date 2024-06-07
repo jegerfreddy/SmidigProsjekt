@@ -20,7 +20,7 @@ const TheaterPausePage: React.FC = () => {
     };
 
     return (
-        <main className="min-vh-100 d-flex flex-column justify-content-center align-items-center bgColor">
+        <main className="userPage d-flex flex-column justify-content-center align-items-center bgColor">
             <div className="text-center">
                 <h1>Game Paused</h1>
                 <img src="/images/LoadingLogo.png" alt="Loading" className="img-fluid" />

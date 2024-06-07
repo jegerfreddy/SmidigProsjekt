@@ -43,7 +43,7 @@ const WaitingLobbyPage: React.FC = () => {
     }, []);
 
     return (
-        <div className={`position-relative vh-100 bgColor ${orientation}`}>
+        <div className={`position-relative userPage bgColor ${orientation}`}>
             <section className="text-center my-1 position-absolute top-0 start-50 translate-middle-x">
                 <h2>Waiting for players{dots}</h2>
             </section>

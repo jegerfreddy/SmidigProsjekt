@@ -6,7 +6,7 @@ const TiePage: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <main className="d-flex flex-column align-items-center justify-content-center vh-100 text-center bgColor5">
+        <main className="d-flex flex-column align-items-center justify-content-center userPage text-center bgColor5">
             <h1 className="text-center justify-content-center position relative">
                 Det ble uavgjort
             </h1>

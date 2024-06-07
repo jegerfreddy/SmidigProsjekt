@@ -46,7 +46,7 @@ const WaitResultPage: React.FC = () => {
 
     if (error) {
         return (
-            <main className='position-relative vh-100 bgColor'>
+            <main className='position-relative userPage bgColor'>
                 <div className='position-absolute top-50 start-50 translate-middle'>
                     <p>{error}</p>
                 </div>

@@ -43,7 +43,7 @@ const ChooseAvatarPage: React.FC = () => {
 
     return (
         <div className='position-relative vh-100 bgColor'>
-            <section className={`text-center my-4 position-absolute ${orientation === 'vertical' ? 'top-0 start-50 translate-middle-x vertical-layout' : 'top-0 end-50 m-4 horizontal-layout'}`}>
+            <section className={`text-center my-4 position-absolute ${orientation === 'vertical' ? 'top-0 start-50 translate-middle-x vertical-layout' : 'top-0 end-50 m-5 p-3 horizontal-layout'}`}>
                 <h2>Velg avatar</h2>
             </section>
 

@@ -8,12 +8,10 @@
     "admin-dev": "cd ../Frontend/Admin && npm run dev",
     "user-install": "cd ../Frontend/user && npm install",
     "user-dev": "cd ../Frontend/user && npm run dev",
-    "userMonitor-install": "cd ../Frontend/userMonitor && npm install",
-    "userMonitor-dev": "cd ../Frontend/userMonitor && npm run dev",
     "nodejs-install": "npm install",
     "nodejs-start": "nodemon Server.js",
-    "setup": "npm-run-all --parallel admin-install user-install userMonitor-install nodejs-install",
-    "start": "npm-run-all --parallel admin-dev user-dev userMonitor-dev nodejs-start"
+    "setup": "npm-run-all --parallel admin-install user-install nodejs-install",
+    "start": "npm-run-all --parallel admin-dev user-dev nodejs-start"
   },
   "keywords": [],
   "author": "",

@@ -12,7 +12,7 @@ const ResultPage: React.FC = () => {
 
 
     return (
-        <main className='position-relative vh-100 bgColor'>
+        <main className='position-relative userPage bgColor'>
             <div className='position-absolute top-50 start-50 translate-middle'>
                 <GeneralProvider service={ResultService}>
                     <ResultList actEventId={(id)} />
