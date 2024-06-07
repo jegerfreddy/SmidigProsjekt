@@ -96,6 +96,7 @@ public class ActEventController {
         return convertToDto(actEventService.linkActEventToAct(actID, actEventID));
     }
 
+    //Create new event and link to act
     @PostMapping("/new/link/{actID}")
     public ActEventDTO createActEventAndLink(@PathVariable long actID, @RequestBody ActEvent actEvent) {
         logger.info("Creating new act event and linking to act - " + actEvent.getEventTitle());

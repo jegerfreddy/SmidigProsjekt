@@ -25,6 +25,7 @@ public class MinigameResultController {
     //Get all minigame results
     @GetMapping("/all")
     public List<MinigameResult> getMinigameResults() {
+        logger.info("Fetching all minigame results");
         return minigameResultService.getMinigameResults();
     }
 

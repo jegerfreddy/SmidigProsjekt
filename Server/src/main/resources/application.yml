@@ -6,6 +6,8 @@ spring:
     driverClassName: org.h2.Driver
     generate-unique-name: false
     name: loading
+  main:
+    allow-bean-definition-overriding: true
   h2:
     console:
       enabled: true
@@ -15,3 +17,12 @@ spring:
     show-sql: false
     properties:
       dialect: org.hibernate.dialect.MySQL5Dialect
+  logging:
+    level:
+      org:
+        springframework:
+          security: INFO
+      loading:
+        smidig:
+          smidig:
+            security: INFO

@@ -36,6 +36,7 @@ public class FeedbackController {
     //Get all feedback
     @GetMapping("/all")
     public List<FeedbackDTO> getFeedback() {
+        logger.info("Fetching all feedback");
         return feedbackService.getFeedback().stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
@@ -44,6 +45,7 @@ public class FeedbackController {
     //Get feedback by id
     @GetMapping("/id/{id}")
     public FeedbackDTO getFeedbackById(@PathVariable Long id) {
+        logger.info("Fetching feedback by ID: " + id);
         return convertToDto(feedbackService.getFeedbackById(id));
     }
 
@@ -70,12 +72,14 @@ public class FeedbackController {
     //Delete feedback by id
     @DeleteMapping("/delete/{id}")
     public void deleteFeedbackById(@PathVariable Long id) {
+        logger.info("Deleting feedback by ID: " + id);
         feedbackService.deleteFeedbackById(id);
     }
 
     //Update feedback
     @PutMapping("/update")
     public FeedbackDTO updateFeedback(@RequestBody Feedback feedback) {
+        logger.info("Updating feedback by ID: " + feedback.getFeedbackID());
         return convertToDto(feedbackService.createFeedback(feedback));
     }
 

@@ -3,6 +3,7 @@ package loading.smidig.smidig.service;
 import loading.smidig.smidig.model.AdminUser;
 import loading.smidig.smidig.repository.AdminUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,9 @@ import java.util.List;
 public class AdminUserService {
 
     private final AdminUserRepository adminUserRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public AdminUserService(AdminUserRepository adminUserRepository) {
@@ -29,6 +33,8 @@ public class AdminUserService {
 
     //create admin user
     public AdminUser createAdminUser(AdminUser adminUser){
+        AdminUser user = adminUser;
+        user.setPassword(passwordEncoder.encode(adminUser.getPassword()));
         return adminUserRepository.save(adminUser);
     }
 
@@ -46,7 +52,8 @@ public class AdminUserService {
     public boolean verifyAdminUser(AdminUser adminUser) {
         List<AdminUser> adminUsers = adminUserRepository.findAll();
         for (AdminUser user : adminUsers) {
-            if (user.getUsername().equals(adminUser.getUsername()) && user.getPassword().equals(adminUser.getPassword())) {
+            if (user.getUsername().equals(adminUser.getUsername()) &&
+                    passwordEncoder.matches(adminUser.getPassword(), user.getPassword())) {
                 return true;
             }
         }

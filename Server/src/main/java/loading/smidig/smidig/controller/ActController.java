@@ -31,18 +31,19 @@ public class ActController {
 
     @GetMapping("/id/{id}")
     public Act getActById(@PathVariable Long id){
+        logger.info("Fetching act by ID: " + id);
         return actService.getActsById(id);
     }
 
     @PostMapping("/new")
     public Act createAct(@RequestBody Act act){
-        logger.info("Act created:" + act.getActName());
+        logger.info("Act created: " + act.getActName());
         return actService.createAct(act);
     }
 
     @DeleteMapping("delete/{id}")
     public void deleteActById(@PathVariable Long id){
-        logger.info("Act deleted:" + id);
+        logger.info("Act deleted: " + id);
         actService.deleteActById(id);
     }
 
