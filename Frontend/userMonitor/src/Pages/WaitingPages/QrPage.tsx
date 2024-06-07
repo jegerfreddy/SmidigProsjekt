@@ -46,7 +46,7 @@ const QrPage: React.FC = () => {
             </section>
 
             <section className="position-absolute top-50 start-50 translate-middle">
-                <h1>QR KODE HER</h1>
+                <img src="/images/QR.png" alt="QR KODE" />
             </section>
 
             <section className="position-absolute w-100 top-50 start-50 translate-middle">
