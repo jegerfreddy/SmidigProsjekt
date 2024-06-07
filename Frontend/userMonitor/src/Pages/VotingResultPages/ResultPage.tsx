@@ -1,25 +1,67 @@
-import { useParams } from "react-router-dom";
-import { GeneralProvider } from "../../Contexts/UserContext";
-import { ResultService } from "../../Services/GetService";
-import ResultList from "../../Components/Result/ResultList";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+const ResultPage = () => {
+  const { actEventId } = useParams();
+  const [voteCounts, setVoteCounts] = useState({ option1: 0, option2: 0, option3: 0, option4: 0 });
 
-const ResultPage: React.FC = () => {
-    const { actEventId } = useParams<{ actEventId: string }>();
-    const id = actEventId ?? '';
+  useEffect(() => {
+    const ws = new WebSocket('ws://localhost:3000');
 
-    console.log('actEventId:', id);
+    ws.onopen = () => {
+      console.log('Connected to WebSocket server');
+    };
 
+    ws.onmessage = (message) => {
+      const data = JSON.parse(message.data);
+      if (data.type === 'VOTE_COUNTS') {
+        setVoteCounts(data.counts);
+      }
+    };
 
-    return (
-        <main className='position-relative vh-100 bgColor'>
-            <div className='position-absolute top-50 start-50 translate-middle'>
-                <GeneralProvider service={ResultService}>
-                    <ResultList actEventId={(id)} />
-                </GeneralProvider>
-            </div>
-        </main>
-    );
+    ws.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
+
+    ws.onclose = () => {
+      console.log('WebSocket connection closed');
+    };
+
+    return () => {
+      ws.close();
+    };
+  }, [actEventId]);
+
+  return (
+
+    <main className={`position-relative vh-100 horizontalbg1 bgVectors horizontal-layout'}`}>
+
+    <section className='position-absolute top-50 start-50 translate-middle'>
+    <div className="container">
+      <div className="row g-3 m-2">
+    <div className='result-container d-flex align-items-end'>
+      {Object.entries(voteCounts).map(([option, count], index) => (
+        count !== 0 ? (
+          <div key={index}>
+            <div 
+              className={`result-box option-${index + 1}`}
+              style={{ height: `${count}vh` }}
+              id={option}
+            ></div>
+            <p className='text-center result-text'>
+              {count}
+            </p>
+          </div>
+        ) : null
+      ))}
+    </div>
+        </div>
+        </div>
+    </section>
+</main>
+ 
+  );
 };
 
 export default ResultPage;
