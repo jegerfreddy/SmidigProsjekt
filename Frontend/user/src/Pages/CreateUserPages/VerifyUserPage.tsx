@@ -34,7 +34,7 @@ const VertiyUserPage: React.FC = () => {
     }, [userContext, navigate, userId, code]);
 
     return (
-        <div className='position-relative vh-100 bgColor'>
+        <div className='position-relative userPage bgColor'>
             <h1>vertify user</h1>
         </div>
     );

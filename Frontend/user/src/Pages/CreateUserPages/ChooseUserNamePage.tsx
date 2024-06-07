@@ -20,7 +20,7 @@ const ChooseUserNamePage: React.FC = () => {
     };
 
     return (
-        <div className='position-relative vh-100 bgColor'>
+        <div className='position-relative userPage bgColor'>
             <h1 className='position-absolute top-0 start-50 translate-middle-x mt-4'>
                 Registrering
             </h1>

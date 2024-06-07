@@ -30,7 +30,7 @@ const FeedBackPage: React.FC = () => {
     };
 
     return (
-        <main className='feedback-page vh-100 d-flex overflow-hidden align-items-center justify-content-center bgColor'>
+        <main className='feedback-page userPage d-flex overflow-hidden align-items-center justify-content-center bgColor'>
             <div className='feedback-content text-center'>
                 <FeedBackList actEventId={actEventId} onClick={handleClick} orientation="horizontal" />
                 <section className="mt-4">

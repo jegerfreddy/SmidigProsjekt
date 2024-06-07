@@ -6,7 +6,7 @@ const EndGamePage: React.FC = () => {
     const { orientation } = PhoneInfo();
 
     return (
-        <main className={`${orientation} vh-100 bgColor`}>
+        <main className={`${orientation} userPage bgColor`}>
             <div className="text-center">
                 <h1>ENDGAME</h1>
                 <img src="/images/LoadingLogo.png" alt="Loading" className="" />

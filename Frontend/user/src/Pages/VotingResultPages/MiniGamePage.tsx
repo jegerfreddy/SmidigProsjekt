@@ -5,7 +5,7 @@ const MiniGamePage: React.FC = () => {
   const yourTeam = localStorage.getItem('youVotedFor');
   console.log('Your team:', yourTeam);
   return (
-    <main className="vh-100 horizontalbg2">
+    <main className="userPage horizontalbg2">
       <MiniGameBaloons yourTeam={yourTeam} />
     </main>
   )
