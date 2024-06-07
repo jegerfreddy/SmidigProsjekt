@@ -1,42 +1,51 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { IVote, VotingItemProps } from "../../Interfaces/IVoting";
 import { GeneralContext } from "../../Contexts/UserContext";
 import { IGeneralContext } from "../../Interfaces/IContext";
 import { useNavigate } from "react-router-dom";
-import { VoteService } from "../../Services/GetService";
 
 const VotingItem: React.FC<VotingItemProps> = ({ event }) => {
   const userContext = useContext(GeneralContext) as IGeneralContext<IVote>;
-
   const [actId] = useState<number>(1);
-/*   const yourUserID = parseInt(localStorage.getItem('yourUserID') || '0', 10);
- */
-
-
-  const yourUserID = Number(localStorage.getItem('yourUserID') || '0');
-  // For testing purposes
+  const yourUserID = Number(localStorage.getItem('yourUserID') || '1');
   const navigate = useNavigate();
+  const [ws, setWs] = useState<WebSocket | null>(null);
 
-  const sendVoteToDb = async (newVote: IVote) => {
-    try {
-      await VoteService.post(newVote);
-      localStorage.setItem('youVotedFor', newVote.option.toString());
-      console.log(localStorage.getItem('youVotedFor'));
-       navigate(`/waitresult/${newVote.actEvent.acteventID}`); // Navigate to the result page with the corresponding acteventId
-     } catch (error) {
-      console.error('Error occurred while submitting user data:', error);
-    }
-  };
+  useEffect(() => {
+    const socket = new WebSocket('ws://localhost:3000');
+    setWs(socket);
+
+    socket.onopen = () => {
+      console.log('Connected to WebSocket server');
+    };
+
+    socket.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
+
+    socket.onclose = () => {
+      console.log('WebSocket connection closed');
+    };
+
+    return () => {
+      socket.close();
+    };
+  }, []);
 
   const handleOptionClick = (option: number) => {
-    const newVote: IVote = {
-      act: { actID: actId },
-      actEvent: { acteventID: event.acteventID, act: { actID: actId } },
-      user: { userID: yourUserID },
-      option: option
-    };
-    console.log('New vote:', newVote);
-    sendVoteToDb(newVote);
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      const voteData = {
+        type: 'VOTE',
+        option: option,
+        actId: actId,
+        actEventId: event.acteventID,
+        userId: yourUserID
+      };
+      console.log('Sending vote:', voteData);
+      ws.send(JSON.stringify(voteData));
+      localStorage.setItem('youVotedFor', option.toString());
+       navigate(`/userVoted`);
+     }
   };
 
   if (!event) return null;

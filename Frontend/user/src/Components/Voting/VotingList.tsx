@@ -18,17 +18,13 @@ const VotingList: React.FC<Props> = ({ actEventId }) => {
     const fetchEvent = async () => {
       try {
         const fetchedEvent = await ActEventService.getById(actEventId);
-        console.log("fetchedEvent:", fetchedEvent);
         if (fetchedEvent) {
           setEvent(fetchedEvent); // Set the fetched event directly
-          console.log("Event fetched:", fetchedEvent);
         } else {
           console.error("Event not found.");
-          setError("Event not found.");
         }
       } catch (e) {
         console.error("Error fetching event:", e);
-        setError("Error fetching event.");
       }
     };
 

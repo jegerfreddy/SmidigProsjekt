@@ -9,6 +9,7 @@ import FeedBackPage from "../Pages/FeedBackPages/FeedBackPage";
 import MiniGamePage from "../Pages/VotingResultPages/MiniGamePage";
 import ResultPage from "../Pages/VotingResultPages/ResultPage";
 import TiePage from "../Pages/VotingResultPages/TiePage";
+import userVotedPage from "../Pages/VotingResultPages/userVotedPage";
 import VotingPage from "../Pages/VotingResultPages/VotingPage";
 import WaitResultPage from "../Pages/VotingResultPages/WaitResultPage";
 import GameLobby from "../Pages/WaitingPages/GameLobby";
@@ -18,6 +19,7 @@ import WaitingLobbyPage from "../Pages/WaitingPages/WaitingLobbyPage";
 import VerifyUserPage from "../Pages/CreateUserPages/VerifyUserPage";
 import EndGamePage from "../Pages/WaitingPages/EndGamePage";
 import { ActEventService, FeedBackService, ResultService, UserService, VerifyService, WinnerService } from "../Services/GetService";
+import UserVotedPage from "../Pages/VotingResultPages/userVotedPage";
 
 const Routing: React.FC = () => {
   const navigate = useNavigate();
@@ -126,6 +128,9 @@ const Routing: React.FC = () => {
       } />
       
       <Route path="/Break" element={<TheaterPausePage />} />
+
+      <Route path="/userVoted" element={<UserVotedPage />} />
+
       <Route path="/tie/:actEventId" element={<TiePage />} />
       <Route path="/minigame/:actEventId" element={<MiniGamePage />} />
       <Route path="/endGame" element={<EndGamePage />} />
