@@ -104,6 +104,20 @@ public class ActEventController {
         return convertToDto(newActEvent);
     }
 
+    //Get next event by option
+    @GetMapping("/next/{actEventID}")
+    public ActEventDTO getNextEventByOption(@PathVariable Long actEventID) throws Exception {
+        logger.info("Fetching next event by option for event ID: " + actEventID);
+        return convertToDto(actEventService.getNextEvent(actEventID));
+    }
+
+    //Set next event by option
+    @PutMapping("/next/{actEventID}/{option}/{nextEventID}")
+    public ActEventDTO setNextEventByOption(@PathVariable Long actEventID, @PathVariable int option, @PathVariable Long nextEventID) {
+        logger.info("Setting next event by option for event ID: " + actEventID + ", option: " + option + ", next event ID: " + nextEventID);
+        return convertToDto(actEventService.setNextEventByOption(actEventID, option, nextEventID));
+    }
+
     // Helper method to convert ActEvent to ActEventDTO
     private ActEventDTO convertToDto(ActEvent actEvent) {
         return new ActEventDTO(
