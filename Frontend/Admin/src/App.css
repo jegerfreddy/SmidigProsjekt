@@ -18,6 +18,10 @@
   background-color: #ffdb5c;
 }
 
+.link-container > button {
+  margin: 1rem;
+}
+
 .logo {
   border: solid 2px black;
   border-radius: 1rem;
