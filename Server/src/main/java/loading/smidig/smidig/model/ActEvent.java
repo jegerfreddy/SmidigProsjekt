@@ -2,11 +2,11 @@ package loading.smidig.smidig.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.lang.Nullable;
 
 import java.util.List;
 
@@ -31,8 +31,7 @@ public class ActEvent {
     @Column(name = "event_title")
     private String eventTitle;
 
-
-    @Column (name = "event_index")
+    @Column(name = "event_index")
     private Long eventIndex;
 
     @Column(name = "option_1")
@@ -50,6 +49,26 @@ public class ActEvent {
     @OneToMany(mappedBy = "actEvent")
     @JsonIgnore
     private List<Vote> votes;
+
+    @ManyToOne
+    @JoinColumn(name = "next_event_option_1", nullable = true)
+    @jakarta.annotation.Nullable
+    private ActEvent nextEventOption1;
+
+    @ManyToOne
+    @JoinColumn(name = "next_event_option_2", nullable = true)
+    @jakarta.annotation.Nullable
+    private ActEvent nextEventOption2;
+
+    @ManyToOne
+    @JoinColumn(name = "next_event_option_3", nullable = true)
+    @jakarta.annotation.Nullable
+    private ActEvent nextEventOption3;
+
+    @ManyToOne
+    @JoinColumn(name = "next_event_option_4", nullable = true)
+    @jakarta.annotation.Nullable
+    private ActEvent nextEventOption4;
 
     // Constructor
     public ActEvent(String eventTitle, String option1, String option2, String option3, String option4) {
