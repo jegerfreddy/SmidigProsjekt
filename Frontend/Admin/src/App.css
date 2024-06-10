@@ -105,6 +105,7 @@
   margin: .5rem;
   border-radius: .5rem;
   background-color: black;
+  color: white;
 }
 
 .login-form > button {
@@ -122,6 +123,12 @@
   border: none;
   border-bottom: #373a4065 solid;
   transition: .05s;
+}
+
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
 }
 
 .create-act-content {
