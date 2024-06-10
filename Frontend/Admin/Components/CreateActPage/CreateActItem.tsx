@@ -92,8 +92,8 @@ const CreateActItem = () => {
         createAct(actName, newEvents);
         localStorage.removeItem("tempNewEvents");
         fetchData();
-        window.location.reload();
-    };
+/*         window.location.reload();
+ */    };
 
     return (
         <>
