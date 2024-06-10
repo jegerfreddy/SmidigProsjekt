@@ -32,6 +32,9 @@ const ActItem : FC<IActItem> = ({actID, actName}) => {
                         <Link to={"/edit"} state={actID}>
                             <button className="m-3 btn btn-primary">Edit Act</button>
                         </Link>
+                        <Link to={"/link"} state={actID}>
+                            <button className="m-3 btn btn-primary">Link Events</button>
+                        </Link>
                     </div>
                 </div>
                 <div className="col-6 act-item d-flex align-items-center justify-content-center">
