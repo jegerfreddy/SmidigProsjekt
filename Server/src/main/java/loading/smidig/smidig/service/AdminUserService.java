@@ -52,4 +52,15 @@ public class AdminUserService {
         }
         return false;
     }
+
+    //Check if username exists in DB
+    public boolean checkUsername(String username) {
+        List<AdminUser> adminUsers = adminUserRepository.findAll();
+        for (AdminUser user : adminUsers) {
+            if (user.getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

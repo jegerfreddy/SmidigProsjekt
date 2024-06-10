@@ -64,4 +64,12 @@ public class AdminUserController {
         logger.info("Admin account login attempt: " + adminUser.getUsername());
         return adminUserService.verifyAdminUser(adminUser);
     }
+
+    //Check if username already exists
+    @GetMapping("/checkUsername/{username}")
+    public boolean checkUsername(@PathVariable String username) {
+        logger.info("Checking if username exists: " + username);
+        return adminUserService.checkUsername(username);
+    }
+
 }
