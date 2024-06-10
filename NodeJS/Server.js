@@ -38,6 +38,18 @@ app.use(express.json());
 
 
 //  SERVER ENDPOINTS
+// Endpoint for creating a new act and associated events
+app.post("/api/createAct", async (req, res) => {
+    const { actName, events } = req.body;
+
+    try {
+        const newActId = await EventService.createAct(actName, events);
+        res.status(201).json({ actID: newActId });
+    } catch (error) {
+        console.error('Error occurred while creating act and events:', error);
+        res.status(500).json({ error: 'Failed to create act and events' });
+    }
+});
 
 // Add user to database
 app.post("/api/user/new", async (req, res) => {
