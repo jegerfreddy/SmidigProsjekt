@@ -21,8 +21,6 @@ const RoutingMain = () => {
                                     <button className="navButton btn btn-dark">Act Overview</button>
                                 </Link>
 
-
-
                                 <Link to={"/stats"}>
                                     <button className="navButton btn btn-dark">Stats</button>
                                 </Link>
@@ -36,13 +34,11 @@ const RoutingMain = () => {
                                     localStorage.removeItem("acts");
                                     localStorage.removeItem("events");
                                     window.location.reload();
-                                }}>Logg ut</button>
+                                }}>Logout</button>
 
                                 
                             </div>
                         </nav>
-
-                        
 
                         <main className="main-container">
                             <Routes>
