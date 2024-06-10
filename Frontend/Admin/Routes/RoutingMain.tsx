@@ -1,5 +1,5 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { ActOverviewPage, EditEventsPage, CreateActPage, AdminToUserPage } from "../pages/index.ts";
+import { ActOverviewPage, EditEventsPage, CreateActPage, AdminToUserPage, SettingsPage } from "../pages/index.ts";
 import {AdminProvider} from "../Context/AdminContext.tsx";
 
 const RoutingMain = () => {
@@ -27,12 +27,18 @@ const RoutingMain = () => {
                                     <button className="navButton btn btn-dark">Stats</button>
                                 </Link>
 
-                                <button className="navButton btn btn-primary" onClick={() => {
+                                <Link to={"/settings"}>
+                                    <button className="navButton btn btn-success">Settings</button>
+                                </Link>
+                                
+                                <button className="navButton btn btn-primary mr-0" onClick={() => {
                                     localStorage.removeItem("loginValid");
                                     localStorage.removeItem("acts");
                                     localStorage.removeItem("events");
                                     window.location.reload();
                                 }}>Logg ut</button>
+
+                                
                             </div>
                         </nav>
 
@@ -46,6 +52,7 @@ const RoutingMain = () => {
                                 <Route path="/edit" element={<EditEventsPage/>}/>
                                 <Route path="/newAct" element={<CreateActPage/>}/>
                                 <Route path="/userserver" element={<AdminToUserPage/>}/>
+                                <Route path="/settings" element={<SettingsPage/>}/>
                             </Routes>
                         </main>
                     </div>
