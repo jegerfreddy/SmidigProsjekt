@@ -58,9 +58,9 @@ public class AdminUserService {
         List<AdminUser> adminUsers = adminUserRepository.findAll();
         for (AdminUser user : adminUsers) {
             if (user.getUsername().equals(username)) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 }
