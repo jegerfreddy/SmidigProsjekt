@@ -1,4 +1,4 @@
-import {  useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Routes, Route } from "react-router-dom";
 import { GeneralProvider } from "../Contexts/UserContext";
 import MiniGamePage from "../Pages/VotingResultPages/MiniGamePage";
@@ -8,11 +8,12 @@ import WaitResultPage from "../Pages/VotingResultPages/WaitResultPage";
 import StandByPage from "../Pages/WaitingPages/StandByPage";
 import TheaterPausePage from "../Pages/WaitingPages/TheaterPausePage";
 import EndGamePage from "../Pages/WaitingPages/EndGamePage";
-import {  ResultService, UserService, WinnerService } from "../Services/GetService";
+import { ResultService, UserService, WinnerService } from "../Services/GetService";
 import QrPage from "../Pages/WaitingPages/QrPage";
 
 const Routing: React.FC = () => {
   const navigate = useNavigate();
+  const [userCount, setUserCount] = useState(0);
 
   useEffect(() => {
     const ws = new WebSocket('ws://localhost:3000');
@@ -28,6 +29,9 @@ const Routing: React.FC = () => {
       switch (data.type) {
         case 'GAME_STATE':
           handleGameStateChange(data.state, data.actEventId, data.actId);
+          break;
+        case 'USER_COUNT':
+          setUserCount(data.userCount);
           break;
         default:
           console.log('Unknown message type:', data.type);
@@ -79,12 +83,12 @@ const Routing: React.FC = () => {
     <Routes>
       <Route path="/" element={
         <GeneralProvider service={UserService}>
-          <QrPage />
+          <QrPage userCountFromSocket={userCount} />
         </GeneralProvider>
       } />
 
       <Route path="/standBy" element={<StandByPage />} />
-  
+
       <Route path="/result/:actEventId" element={
         <GeneralProvider service={ResultService}>
           <ResultPage />
@@ -95,8 +99,7 @@ const Routing: React.FC = () => {
           <WaitResultPage />
         </GeneralProvider>
       } />
- 
-      
+
       <Route path="/Break" element={<TheaterPausePage />} />
 
       <Route path="/tie/:actEventId" element={<TiePage />} />
