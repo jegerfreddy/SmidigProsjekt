@@ -23,6 +23,16 @@ export const getWinner = async (actEventId) => {
     
 };
 
+export const getMiniGameWinnerEvent = async (option, actEventId) => {
+  console.log('Getting winner from frontend service', option, actEventId);
+  
+
+    const res = await axios.get(`http://localhost:4000/api/actEvent/next/${actEventId}/${option}`)
+    
+    return res.data;
+    
+};
+
 export const updateEvent = async (event) => {
 
     await axios.post("http://localhost:4000/api/updateEvent", event)
