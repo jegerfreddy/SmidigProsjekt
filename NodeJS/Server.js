@@ -51,19 +51,6 @@ app.post("/api/createAct", async (req, res) => {
     }
 });
 
-// Endpoint for linking events
-app.put("/api/actEvent/next", async (req, res) => {
-    const { actEventID, option, nextEventID } = req.body;
-
-    try {
-        const response = await axios.put(`http://localhost:8080/api/actEvent/next/${actEventID}/${option}/${nextEventID}`);
-        res.status(200).json(response.data);
-    } catch (error) {
-        console.error("Error linking events:", error);
-        res.status(500).json({ error: 'Failed to link events' });
-    }
-});
-
 // Add user to database
 app.post("/api/user/new", async (req, res) => {
 
@@ -208,6 +195,43 @@ app.get("/api/user/all", async (req, res) => {
 });
 
 // Additional endpoints
+app.get("/api/adminUser/checkUsername/:id", async (req, res) => {
+    
+    const { id } = req.params;
+
+    try {
+        
+        await axios.get(`http://localhost:8080/api/adminUser/checkUsername/${id}`)
+            .then((response) => {
+                res.send(response.data);
+            })
+        ;
+
+    } catch (error) {
+        
+        console.log(error);
+
+    };
+});
+
+app.post("/api/addNewAdmin", async (req, res) => {
+    
+    const newAdmin = req.body;
+
+    console.log(newAdmin);
+
+    await axios.post("http://localhost:8080/api/adminUser/new", newAdmin)
+        .then((response) => {
+            if (response.status == 200) {
+
+                res.status(200).send();
+
+            }
+        })
+    ;
+
+})
+
 app.post("/api/loginAdmin", async (req, res) => {    
 
     const { username, password } = req.body;

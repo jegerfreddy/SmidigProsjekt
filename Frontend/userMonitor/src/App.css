@@ -377,3 +377,34 @@ body {
     }
 }
 
+/* In your App.css or a specific CSS file for QrPage */
+.user-count-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00b4aa; /* Adjust the color to match your design */
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  width: 150px; /* Adjust the width as needed */
+}
+
+.user-icon {
+  width: 20px; /* Adjust the size as needed */
+  height: 20px;
+  margin-right: 10px;
+}
+
+.user-count {
+  font-size: 20px; /* Adjust the size as needed */
+}
+
+/* qr code css */
+.QR-code-container {
+  z-index: 1000;
+}

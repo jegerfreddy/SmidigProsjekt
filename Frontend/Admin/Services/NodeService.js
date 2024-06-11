@@ -32,14 +32,20 @@ export const updateEvent = async (event) => {
 export const linkEvents = async (choice) => {
     try {
       const response = await axios.put("http://localhost:4000/api/actEvent/next", {
+
         actEventID: choice.actEventID,
         option: choice.option,
         nextEventID: choice.nextActEventID
+
       });
+
       return response.data;
+
     } catch (error) {
+
       console.error("Error linking events:", error);
       throw error;
+
     }
   };
 
@@ -58,4 +64,31 @@ export const createAct = async (actName, events) => {
         console.error('Error occurred while creating act and events:', error);
         throw new Error('Failed to create act and events');
     }
+};
+
+export const addNewAdmin = async (newAdmin) => {
+
+  console.log(newAdmin);
+
+  try {
+
+    await axios.post("http://localhost:4000/api/addNewAdmin", newAdmin)
+      .then((res) => {
+        if (res.status == 200) {
+
+          console.log("User added.");
+
+        } else {
+
+          console.log("Hmmmm");
+
+        }
+      })
+    ;
+
+  } catch (error) {
+
+    console.log(error);
+
+  };
 };
