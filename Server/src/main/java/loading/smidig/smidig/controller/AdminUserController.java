@@ -1,11 +1,12 @@
 package loading.smidig.smidig.controller;
 
-import jakarta.servlet.http.Part;
 import loading.smidig.smidig.model.AdminUser;
 import loading.smidig.smidig.service.AdminUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -60,9 +61,13 @@ public class AdminUserController {
 
     //Verify if username and password is correct
     @PostMapping("/loginAdmin")
-    public boolean verifyAdminUser(@RequestBody AdminUser adminUser) {
-        logger.info("Admin account login attempt: " + adminUser.getUsername());
-        return adminUserService.verifyAdminUser(adminUser);
+    public ResponseEntity<Integer> verifyAdminUser(@RequestBody AdminUser adminUser) {
+        try {
+            int adminId = adminUserService.verifyAdminUser(adminUser);
+            return ResponseEntity.ok(adminId);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
     //Check if username already exists

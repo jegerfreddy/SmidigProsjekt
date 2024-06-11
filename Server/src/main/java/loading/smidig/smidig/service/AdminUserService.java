@@ -43,14 +43,14 @@ public class AdminUserService {
     }
 
     //verify if username and password is correct, returns true if correct
-    public boolean verifyAdminUser(AdminUser adminUser) {
+    public int verifyAdminUser(AdminUser adminUser) throws Exception {
         List<AdminUser> adminUsers = adminUserRepository.findAll();
         for (AdminUser user : adminUsers) {
             if (user.getUsername().equals(adminUser.getUsername()) && user.getPassword().equals(adminUser.getPassword())) {
-                return true;
+                return user.getAdminID().intValue();
             }
         }
-        return false;
+        throw new Exception("Invalid admin user credentials");
     }
 
     //Check if username exists in DB
