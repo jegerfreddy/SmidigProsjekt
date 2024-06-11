@@ -118,6 +118,14 @@ public class ActEventController {
         return convertToDto(actEventService.setNextEventByOption(actEventID, option, nextEventID));
     }
 
+    //Get next ActEvent from ActEventID and option
+    @GetMapping("/next/{actEventID}/{option}")
+    public ActEventDTO getNextActEventByOption(@PathVariable Long actEventID, @PathVariable int option) {
+        logger.info("Fetching next event by option for event ID: " + actEventID + ", option: " + option);
+        return convertToDto(actEventService.getNextActEventByOption(actEventID, option));
+    }
+
+
     // Helper method to convert ActEvent to ActEventDTO
     private ActEventDTO convertToDto(ActEvent actEvent) {
         return new ActEventDTO(

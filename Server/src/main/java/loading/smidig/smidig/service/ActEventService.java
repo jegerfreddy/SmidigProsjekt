@@ -118,4 +118,24 @@ public class ActEventService {
 
         return null;
     }
+
+    public ActEvent getNextActEventByOption(Long actEventID, int option) {
+        ActEvent actEvent = actEventRepository.findById(actEventID).orElse(null);
+
+        if (actEvent != null) {
+            switch (option) {
+                case 1:
+                    return actEvent.getNextEventOption1();
+                case 2:
+                    return actEvent.getNextEventOption2();
+                case 3:
+                    return actEvent.getNextEventOption3();
+                case 4:
+                    return actEvent.getNextEventOption4();
+                default:
+                    return null;
+            }
+        }
+        return null;
+    }
 }
