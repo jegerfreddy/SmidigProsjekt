@@ -208,3 +208,89 @@
 .count-button:hover {
   transform: scale(1.04);
 }
+
+/* nodecss */
+.custom-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 1000px; /* Adjust the width as needed */
+  height: 500px;
+}
+
+.custom-node-container {
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 20px;
+  width: 1000px; /* Adjust the width as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-node-title {
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #ffd700;
+  border: 1px solid #000;
+  border-radius: 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.custom-node-options {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.custom-node-option {
+  background-color: #d3d3d3;
+  border: 1px solid #000;
+  border-radius: 5px;
+  width: 200px;  /* Fixed width */
+  height: 200px; /* Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 10px;
+}
+
+.custom-node-option-handle {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) scale(1.5); /* Example scale transformation */
+}
+
+/*save button in tree  */
+.save-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
+
+.minimap-container {
+  position: fixed;
+  bottom: 80px; /* Adjust this value to position above the save button */
+  right: 20px;  /* Align with the save button */
+  z-index: 999; /* Ensure it is just below the save button */
+  background: white; /* Optional: background for better visibility */
+  border: 1px solid #ddd; /* Optional: border for better visibility */
+  border-radius: 5px; /* Optional: rounded corners */
+  padding: 5px; /* Optional: padding */
+}

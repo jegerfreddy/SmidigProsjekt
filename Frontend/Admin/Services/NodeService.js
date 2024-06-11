@@ -20,6 +20,20 @@ export const updateEvent = async (event) => {
      
 };
 
+export const linkEvents = async (choice) => {
+    try {
+      const response = await axios.put("http://localhost:4000/api/actEvent/next", {
+        actEventID: choice.actEventID,
+        option: choice.option,
+        nextEventID: choice.nextActEventID
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error linking events:", error);
+      throw error;
+    }
+  };
+
 export const createAct = async (actName, events) => {
     console.log('Creating act from frontend service', actName, events);
 

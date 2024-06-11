@@ -1,6 +1,7 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { ActOverviewPage, EditEventsPage, CreateActPage, AdminToUserPage, SettingsPage } from "../pages/index.ts";
 import {AdminProvider} from "../Context/AdminContext.tsx";
+import LinkEventsPage from "../pages/LinkEventsPage.tsx";
 
 const RoutingMain = () => {
 
@@ -46,6 +47,7 @@ const RoutingMain = () => {
                                 <Route path="/act-controller" element={<AdminToUserPage/>} />
                                 <Route path="/stats" /*element={<StatsPage}*/ />
                                 <Route path="/edit" element={<EditEventsPage/>}/>
+                                <Route path="/link" element={<LinkEventsPage/>}/>
                                 <Route path="/newAct" element={<CreateActPage/>}/>
                                 <Route path="/userserver" element={<AdminToUserPage/>}/>
                                 <Route path="/settings" element={<SettingsPage/>}/>
