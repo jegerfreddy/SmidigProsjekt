@@ -25,7 +25,7 @@ function CustomNode({ data }: NodeProps<NodeData>) {
                   position={Position.Bottom}
                   id={`option-${index}`}
                   className="custom-node-option-handle"
-                  style={{ background: '#00ff00', transform: 'scale(3)' }} // Example transformation
+                  style={{ background: '#00ff00', transform: 'scale(5)' }} // Example transformation
                 />
               </div>
             )
@@ -34,7 +34,7 @@ function CustomNode({ data }: NodeProps<NodeData>) {
         <Handle
           type="target"
           position={Position.Top}
-          style={{ background: '#555', transform: 'scale(3)' }} // Example transformation
+          style={{ background: '#555', transform: 'scale(5)' }} // Example transformation
         />
       </div>
     </div>

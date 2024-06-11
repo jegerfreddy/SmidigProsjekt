@@ -47,7 +47,7 @@ const Flow = ({ events, onConnectionsChange, saveChoice }: { events: IEventItem[
           actID: event.actID,
           options: [event.option1, event.option2, event.option3, event.option4],
         },
-        position: { x: 250 * index, y: 50 },
+        position: { y: 400 * index, x: 500 },
         type: 'custom',
       }));
       setNodes(initialNodes);
