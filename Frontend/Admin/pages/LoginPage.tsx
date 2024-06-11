@@ -1,6 +1,7 @@
 import axios from "axios";
-import { ILoginPage } from "../Interfaces/ILoginPage.ts";
 import { useState, FC } from "react";
+import { ILoginPage } from "../Interfaces/ILoginPage.ts";
+import AlertMessage from "../Components/GlobalComponents/AlertMessage.tsx";
 
 const LoginPage : FC<ILoginPage> = ({setLoginValid}) => {
 
@@ -15,18 +16,27 @@ const LoginPage : FC<ILoginPage> = ({setLoginValid}) => {
             password: password
         }
 
+            
         await axios.post("http://localhost:4000/api/loginAdmin", data)
-        .then((res) => {
+
+            // This block of code is executed on fulfilled promise
+            .then((response) => {
+    
+                setLoginValid(true);
+                localStorage.setItem("loginId", `${response.data.toString()}`);
+                localStorage.setItem("loginValid", "true");
+ 
+            })
+
+            // This block of code is executed on rejected promise
+            .catch((response) => {
+
+                setShowError(true)
+                console.log(response);
                 
-                if (res.data) {
-                    setLoginValid(res.data);
-                    localStorage.setItem("loginValid", "true");
-                } else {
-                    setShowError(true);
-                };
-            });
-        
-        
+            })
+        ;
+
     };
 
     const handleInputChange = (target: HTMLInputElement) => {
@@ -49,18 +59,20 @@ const LoginPage : FC<ILoginPage> = ({setLoginValid}) => {
 
                 <hr />
 
-                <div className={`${(showError ? "" : "d-none")} bg-warning border border-dark rounded m-3 p-3`}>
-                    <p className="p-0 m-0 font-weight-bold">Username or Password was wrong. Please try again.</p>
-                </div>
+                <AlertMessage 
+                    display={showError ? "" : "none"}
+                    message="Wrong username or password."
+                    alertId={0}
+                />
 
                 <div className="input-field">
-                    <p>Skriv inn:</p>
+                    <p>Enter Login:</p>
                     <input autoComplete="off" type="text" onChange={(e) => {handleInputChange(e.target)}} name="username-input" placeholder="Brukernavn..."/>
                     <input autoComplete="off" type="password" onChange={(e) => {handleInputChange(e.target)}} name="password-input" placeholder="Passord..." />
                 </div>
 
                 <button className="btn btn-primary w-25" onClick={ () => { handleLogIn(inputUsername, inputPassword) }}>
-                    <span>LOGG INN</span>
+                    <span>LOGIN</span>
                 </button>
             </main>
         </>

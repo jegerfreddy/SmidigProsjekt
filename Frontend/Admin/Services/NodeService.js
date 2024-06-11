@@ -78,8 +78,6 @@ export const createAct = async (actName, events) => {
 
 export const addNewAdmin = async (newAdmin) => {
 
-  console.log(newAdmin);
-
   try {
 
     await axios.post("http://localhost:4000/api/addNewAdmin", newAdmin)
@@ -98,6 +96,19 @@ export const addNewAdmin = async (newAdmin) => {
 
   } catch (error) {
 
+    console.log(error);
+
+  };
+};
+
+export const updateAdminUser = (user) => {
+
+  try {
+    
+    axios.put("http://localhost:4000/api/updateAdmin", user);
+
+  } catch (error) {
+    
     console.log(error);
 
   };

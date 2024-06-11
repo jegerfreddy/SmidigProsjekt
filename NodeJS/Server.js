@@ -8,6 +8,7 @@ const {
     ResultService, WinnerService, VoteService, FeedBackService
 
 } = require('./services/service');
+const e = require('express');
 
 // SETUP EXPRESS SERVER
 
@@ -245,21 +246,37 @@ app.post("/api/addNewAdmin", async (req, res) => {
 
 })
 
-app.post("/api/loginAdmin", async (req, res) => {    
-
-    const { username, password } = req.body;
-    const data = { username, password };
+app.put("/api/updateAdmin", async (req, res) => {
+    const data = req.body;
 
     try {
-
-        const dbRes = await axios.post('http://localhost:8080/api/adminUser/loginAdmin', data);
-        res.send(dbRes.data);
+        
+        axios.put("http://localhost:8080/api/adminUser/update", data);
 
     } catch (error) {
+        
+        console.log(error);
 
-        console.error('Error occurred during admin login:', error.message);
-        res.status(500).json({ error: 'Failed to login admin' });
     };
+})
+
+app.post("/api/loginAdmin", async (req, res) => {    
+
+    const data = req.body;
+
+    await axios.post('http://localhost:8080/api/adminUser/loginAdmin', data)
+        .then((response) => {
+                  
+            res.send(JSON.stringify(response.data));
+
+        })
+        
+        .catch((response) => {
+
+            res.status(401).send(response);
+
+        })
+    ;
 });
 
 app.get("/api/getActs", async (req, res) => {

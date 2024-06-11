@@ -1,116 +1,144 @@
 import { useState } from "react";
 import axios from "axios";
 import PageHeader from "../Components/GlobalComponents/PageHeader";
-import { addNewAdmin } from "../Services/NodeService";
+import { addNewAdmin, updateAdminUser } from "../Services/NodeService";
+import AlertMessage from "../Components/GlobalComponents/AlertMessage";
 
 const SettingsPage = () => {
 
-    const [username, setUsername] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [confirmPassword, setConfirmPassword] = useState<string>("");
+    const [renameUser, setRenameUser] = useState<string>("");
+    const [renamePass, setRenamePass] = useState<string>("");
+    const [renameConfirmPass, setRenameConfirmPass] = useState<string>("");
 
-    const [userAvailable, setUserAvailable] = useState<boolean>(true);
-    const [newUserValid, setNewUserValid] = useState<boolean>(false);
-    const [changeUserValid, setChangeUserValid] = useState<boolean>(false);
+    const [newUsername, setNewUsername] = useState<string>("");
+    const [newPassword, setNewPassword] = useState<string>("");
+    const [newConfirmPassword, setNewConfirmPassword] = useState<string>("");
+
+    const [usernameAvailable, setUsernameAvailable] = useState<boolean>(true);
 
     let timeout: number;
+
+    const checkUsernamAvailable = (username: string) => {
+
+        // Clears the timeout while the user is still typing so that we don't send
+        // (value.length) amount of axios calls.
+        clearTimeout(timeout);
+    
+        if (username != "") {
+
+            // This timeout waits for 1,5 seconds after a username has been entered
+            // before it checks if its valid.
+            timeout = setTimeout( async () => {
+                await axios.get(`http://localhost:4000/api/adminUser/checkUsername/${username}`)
+                    .then((res) => {
+
+                        setUsernameAvailable(res.data);
+                        
+                    })
+                ;
+            }, 1000);
+        };
+    };
 
     const handleChange = (target: HTMLInputElement) => {
 
         switch (target.name) {
-            case "username-input":
+            case "rename-user":
 
-                // Clears the timeout while the user is still typing so that we don't send
-                // (value.length) amount of axios calls.
-                clearTimeout(timeout);
-            
-                if (target.value != "") {
-
-                    // This timeout waits for 1,5 seconds after a username has been entered
-                    // before it checks if its valid.
-                    timeout = setTimeout( async () => {
-                        await axios.get(`http://localhost:4000/api/adminUser/checkUsername/${target.value}`)
-                            .then((res) => {
-    
-                                setUserAvailable(res.data);
-                                
-                            })
-                        ;
-                    }, 1000);
-                }
-
-                setUsername(target.value);
+                checkUsernamAvailable(target.value);
+                setRenameUser(target.value);
           
             break;
 
-            case "password-input":
+            case "rename-password":
 
-                setPassword(target.value);
-
-            break;
-
-            case "confirm-password-input":
-
-                setConfirmPassword(target.value);
+                setRenamePass(target.value);
         
             break;
-        };
 
-        if (password == confirmPassword && username != "") {
-            setChangeUserValid(true);
-        }
+            case "rename-confirm-password":
+
+                setRenameConfirmPass(target.value);
+        
+            break;
+
+            case "new-username":
+
+                checkUsernamAvailable(target.value);
+                setNewUsername(target.value);
+
+            break;
+
+            case "new-password":
+
+                setNewPassword(target.value);
+
+            break;
+
+            case "new-confirm-password":
+
+                setNewConfirmPassword(target.value);
+
+            break;
+        };
     };
 
     const addNewUser = () => {
 
-        if (password == confirmPassword) {
-
+        if (usernameAvailable && (newPassword == newConfirmPassword)) {
             const newAdmin = {
-                username: username,
-                password: password
-            }
+                username: newUsername,
+                password: newPassword
+            };
     
             addNewAdmin(newAdmin);
-
-        } else {
-
-            setNewUserValid(false);
-            
-        };
-
+        }
     };
 
     const handleSave = () => {
 
-    }
+        if (usernameAvailable && (renamePass == renameConfirmPass)) {
+            const updatedUser = {
+                adminID: localStorage.getItem("loginId"),
+                username: renameUser,
+                password: renamePass
+            };
+
+            updateAdminUser(updatedUser);
+
+        };
+    };
 
     return (
         <>
 
-            <PageHeader title="Settings" underTitle="Add new admin user or change user settings."/>
+            <PageHeader title="Settings |" underTitle="Add new admin user or change current user details."/>
 
             <div className="d-flex flex-column align-items-center">
 
                 <div className="settings-content">
                     <h2>Logged in as: <i className="text-primary">admin</i></h2>
 
-                    <div className={`${(userAvailable ? "d-none" : "")} bg-warning border border-dark rounded m-3 p-3`}>
-                        <p className="p-0 m-0 font-weight-bold">Username already taken.</p>
-                    </div>
+                    <AlertMessage
+                        display={usernameAvailable ? "none" : ""}
+                        message={usernameAvailable ? "" : "Username not available."}
+                        alertId={1}
+                    />
 
                     <div className="d-flex flex-column align-items-center mt-3 mb-3 pt-3 pb-3 pl-5 pr-5 border border-dark rounded w-100">
                         <p> <u>Change Username & Password</u></p>
-                        <input onChange={(e) => {handleChange(e.target)}} placeholder="New Username" name="username-input" type="text" />
-                        <input onChange={(e) => {handleChange(e.target)}} placeholder="New Password" name="password-input" type="text" />
-                        <button onClick={handleSave} disabled={!changeUserValid} className="btn btn-success w-100 m-3">Save</button>
+                        <input onChange={(e) => {handleChange(e.target)}} value={renameUser} placeholder="New Username" name="rename-user" type="text" />
+                        <input onChange={(e) => {handleChange(e.target)}} value={renamePass} placeholder="New Password" name="rename-password" type="text" />
+                        <input onChange={(e) => {handleChange(e.target)}} value={renameConfirmPass} placeholder="Confirm Password" name="rename-confirm-password" type="password" />
+                        <button onClick={handleSave} className="btn btn-success w-100 m-3">Save</button>
                     </div>
 
                     <div className="d-flex flex-column align-items-center mt-3 mb-3 pt-3 pb-3 pl-5 pr-5 border border-dark rounded w-100">
                         <p> <u>New Admin</u></p>
-                        <input onChange={(e) => {handleChange(e.target)}} placeholder="Username" name="username-input" type="text" />
-                        <input onChange={(e) => {handleChange(e.target)}} placeholder="Password" name="password-input" type="password" />
-                        <input onChange={(e) => {handleChange(e.target)}} placeholder="Confirm Password" name="confirm-password-input" type="password" />
-                        <button onClick={addNewUser} disabled={!newUserValid} className="btn btn-primary w-75 m-3">Add New Admin</button>
+                        <input onChange={(e) => {handleChange(e.target)}} value={newUsername} placeholder="Username" name="new-username" type="text" />
+                        <input onChange={(e) => {handleChange(e.target)}} value={newPassword} placeholder="Password" name="new-password" type="password" />
+                        <input onChange={(e) => {handleChange(e.target)}} value={newConfirmPassword} placeholder="Confirm Password" name="new-confirm-password" type="password" />
+                        <button onClick={addNewUser} className="btn btn-primary w-75 m-3">Add New Admin</button>
                     </div>
     
                 </div>
