@@ -215,7 +215,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  width: 1000px; /* Adjust the width as needed */
+  width: 1000px;
   height: 500px;
 }
 
@@ -223,7 +223,7 @@
   background-color: transparent;
   border-radius: 5px;
   padding: 20px;
-  width: 1000px; /* Adjust the width as needed */
+  width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -250,8 +250,8 @@
   background-color: #d3d3d3;
   border: 1px solid #000;
   border-radius: 5px;
-  width: 200px;  /* Fixed width */
-  height: 200px; /* Fixed height */
+  width: 200px;  
+  height: 200px; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -263,7 +263,7 @@
   position: absolute;
   bottom: -10px;
   left: 50%;
-  transform: translateX(-50%) scale(1.5); /* Example scale transformation */
+  transform: translateX(-50%) scale(1.5);
 }
 
 /*save button in tree  */
@@ -277,20 +277,41 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  z-index: 1000; /* Ensure it stays on top of other content */
+  z-index: 1000;
 }
+
+/* Leave button */
+.leave-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #ff5900;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
 
 .save-button:hover {
   background-color: #0056b3;
-}
+};
 
 .minimap-container {
   position: fixed;
-  bottom: 80px; /* Adjust this value to position above the save button */
-  right: 20px;  /* Align with the save button */
-  z-index: 999; /* Ensure it is just below the save button */
-  background: white; /* Optional: background for better visibility */
-  border: 1px solid #ddd; /* Optional: border for better visibility */
-  border-radius: 5px; /* Optional: rounded corners */
-  padding: 5px; /* Optional: padding */
+  bottom: 80px; 
+  right: 20px;  
+  z-index: 999; 
+  background: white; 
+  border: 1px solid #ddd; 
+  border-radius: 5px; 
+  padding: 5px;
+};
+
+/* link page */
+.LinkPage {
+  height: 100%;
+  width: 100%;
 }

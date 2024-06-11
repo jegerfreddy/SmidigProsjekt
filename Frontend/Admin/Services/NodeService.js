@@ -13,6 +13,15 @@ export const getEvents = async () => {
     return res.data;
     
 };
+export const getWinner = async (actEventId) => {
+  console.log('Getting winner from frontend service', actEventId);
+  
+
+    const res = await axios.get(`http://localhost:4000/api/winningEvent/${actEventId}/new`)
+    
+    return res.data;
+    
+};
 
 export const updateEvent = async (event) => {
 

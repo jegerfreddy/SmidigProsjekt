@@ -3,6 +3,7 @@ import { IAdminContext } from '../Interfaces/IAdminContext';
 import { AdminContext } from '../Context/AdminContext';
 import { useLocation } from 'react-router-dom';
 import { Button, Container, Grid, Typography, Box, CircularProgress, Snackbar, Alert, Card, CardContent } from '@mui/material';
+import { getWinner } from '../Services/NodeService';
 
 const AdminServerToUserPage: React.FC = () => {
   const location = useLocation();
@@ -77,32 +78,34 @@ const AdminServerToUserPage: React.FC = () => {
   };
 
   const handleStartMiniGame = () => {
-    sendCommand('MINIGAME', actEventId, actId);
+    handleGetWinningEvent(actEventId);
   };
-
-  const [sortedEventIDs, setSortedEventIDs] = useState<number[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const actEvents = events.filter((event) => event.actID === Number(actId));
-    actEvents.sort((a, b) => a.eventIndex - b.eventIndex);
-    setSortedEventIDs(actEvents.map(event => event.acteventID));
-    setCurrentIndex(0);
-    console.log('Event:', actEvents);
-  }, [actId, events]);
 
   const handleButtonClick = (command: string) => {
-    if (sortedEventIDs.length > 0) {
-      const eventId = sortedEventIDs[currentIndex].toString();
-      sendCommand(command, eventId, actId);
-      setActEventId(eventId);
-      if (command === 'VOTING') {
-        setCurrentIndex(currentIndex + 1);
-      }
-      console.log('Current index:', currentIndex);
-      console.log('Current event:', eventId);
+    sendCommand(command, actEventId, actId);
+    if (command === 'VOTING') {
+      // handle specific logic if needed
     }
+    console.log('Current event:', actEventId);
   };
+
+
+  const handleGetWinningEvent = async (actEventId: string) => {
+ 
+      console.log('Saving choice:', actEventId);
+      try {
+        const result = await getWinner(actEventId);
+        console.log('vinneren er event med id:', result.acteventID);
+        setActEventId(result.acteventID);
+        sendCommand('MINIGAME', result.acteventID, actId);
+
+      } catch (error) {
+        console.error('Error saving choice:', error);
+      }
+    }
+    console.log('All choices processed.');
+  
+
 
   return (
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
@@ -159,7 +162,7 @@ const AdminServerToUserPage: React.FC = () => {
       onClick={() => handleButtonClick('START')}
       disabled={loading}
     >
-      {loading ? <CircularProgress size={24} /> : 'Start Game'}
+      {loading ? <CircularProgress size={24} /> : 'Restart Game'}
     </Button>
   </Grid>
   <Grid item xs={6} md={4}>
@@ -178,8 +181,8 @@ const AdminServerToUserPage: React.FC = () => {
       variant="contained"
       sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#115293' } }}
       fullWidth
-      onClick={handleStartMiniGame}
-      disabled={loading}
+       onClick={handleStartMiniGame}
+       disabled={loading}
     >
       {loading ? <CircularProgress size={24} /> : 'MINIGAME'}
     </Button>

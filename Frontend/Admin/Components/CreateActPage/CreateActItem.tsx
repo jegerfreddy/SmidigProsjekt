@@ -3,6 +3,7 @@ import { createAct } from "../../Services/NodeService.js";
 import CreateEventItem from "../CreateActPage/CreateEventItem";
 import { AdminContext } from "../../Context/AdminContext.js";
 import { IAdminContext } from "../../Interfaces/IAdminContext.js";
+import { useNavigate } from "react-router-dom";
 
 const CreateActItem = () => {
 
@@ -18,6 +19,8 @@ const CreateActItem = () => {
     }
 
     const { fetchData } = useContext(AdminContext) as IAdminContext
+
+    const navigate = useNavigate();
     
     const [newEvents, setNewEvents] = useState<ITempEvent[]>([]);
     const [eventCount, setEventCount] = useState<number>(0);
@@ -92,8 +95,8 @@ const CreateActItem = () => {
         createAct(actName, newEvents);
         localStorage.removeItem("tempNewEvents");
         fetchData();
-/*         window.location.reload();
- */    };
+        navigate("/");
+    };
 
     return (
         <>

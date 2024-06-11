@@ -3,7 +3,7 @@ import { AdminContext } from '../Context/AdminContext';
 import { IAdminContext } from '../Interfaces/IAdminContext';
 import Flow from '../Components/Node/Flow'; // Adjust the import path as necessary
 import { linkEvents } from '../Services/NodeService';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ConnectionData } from '../Interfaces/INode';
 
 
@@ -29,6 +29,7 @@ const LinkEventsPage = () => {
   const [connections, setConnections] = useState<ConnectionData[]>([]);
   const [choices, setChoices] = useState<{ parentId: number; optionId: number; selectedEventId: number }[]>([]);
   const location = useLocation();
+  const navigate = useNavigate();
   const actID = location.state;
 
   useEffect(() => {
@@ -51,12 +52,16 @@ const LinkEventsPage = () => {
     console.log(`Saved choice: ${parentId}/${optionId}/${selectedEventId}`); // Log or save the choice as needed
   };
 
+  const goToHomePage = () => {
+    navigate('/');
+  };
+
   return (
-    <div className="App" style={{ width: '100vw', height: '100vh' }}>
-      <h1>Link Event</h1>
+    <main className="LinkPage">
       <Flow events={actEvents} onConnectionsChange={setConnections} saveChoice={saveChoice} />
       <button className="save-button" onClick={saveConnections}>Save</button>
-    </div>
+      <button className="leave-button" onClick={goToHomePage}>Leave</button>
+    </main>
   );
 };
 

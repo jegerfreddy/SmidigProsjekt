@@ -141,6 +141,18 @@ app.get("/api/actEvent/id/:id", async (req, res) => {
 });
 
 // HTTP endpoint for getting result by ID
+app.get("/api/winningEvent/:actEventId/new", async (req, res) => {
+        const  actEventId  = req.params.actEventId;
+    
+        try {
+            const response = await axios.get(`http://localhost:8080/api/actEvent/next/${actEventId}`);
+            res.status(200).json(response.data);
+        } catch (error) {
+            console.error("Error linking events:", error);
+            res.status(500).json({ error: 'Failed to link events' });
+        }
+    });
+// HTTP endpoint for getting result by ID
 app.get("/api/vote/percentage/id/:id", async (req, res) => {
 
     const { id } = req.params;
