@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { IAdminContext } from '../Interfaces/IAdminContext';
 import { AdminContext } from '../Context/AdminContext';
 import { useLocation } from 'react-router-dom';
-import { Button, Container, Grid, Typography, Box, CircularProgress, Snackbar, Alert, Card, CardContent } from '@mui/material';
-import { getWinner } from '../Services/NodeService';
+import { Button, Container, Grid, Typography, Box, CircularProgress, Card, CardContent, Alert, Snackbar } from '@mui/material';
+import { getMiniGameWinnerEvent, getWinner } from '../Services/NodeService';
 
 const AdminServerToUserPage: React.FC = () => {
   const location = useLocation();
@@ -39,10 +39,11 @@ const AdminServerToUserPage: React.FC = () => {
         setPurpleCount(data.purpleCount);
         setBlueCount(data.blueCount);
         setGreenCount(data.greenCount);
-      } else if (data.type === 'WINNER') {
+      } else if (data.type === 'MINIGAME_WINNER') {
         setWinner(data.winner);
+        handleMiniGameWinner(data.winner, actEventId);
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     websocket.onerror = (error) => {
@@ -85,27 +86,52 @@ const AdminServerToUserPage: React.FC = () => {
     sendCommand(command, actEventId, actId);
     if (command === 'VOTING') {
       // handle specific logic if needed
+      setLoading(false);
     }
     console.log('Current event:', actEventId);
   };
 
-
   const handleGetWinningEvent = async (actEventId: string) => {
- 
-      console.log('Saving choice:', actEventId);
-      try {
-        const result = await getWinner(actEventId);
-        console.log('vinneren er event med id:', result.acteventID);
-        setActEventId(result.acteventID);
-        sendCommand('MINIGAME', result.acteventID, actId);
-
-      } catch (error) {
-        console.error('Error saving choice:', error);
-      }
+    console.log('Saving choice:', actEventId);
+    try {
+      const result = await getWinner(actEventId);
+      console.log('Winner event ID:', result.acteventID);
+      setActEventId(result.acteventID);
+    } catch (error) {
+      console.error('Error saving choice:', error);
+      sendCommand('MINIGAME', actEventId, actId);
     }
-    console.log('All choices processed.');
-  
+  };
 
+  const handleMiniGameWinner = async (winner: string, actEventId: string) => {
+    let option = '';
+
+    switch (winner) {
+      case 'red':
+        option = '1';
+        break;
+      case 'purple':
+        option = '2';
+        break;
+      case 'blue':
+        option = '3';
+        break;
+      case 'green':
+        option = '4';
+        break;
+      default:
+        console.error('Invalid winner color:', winner);
+        return;
+    }
+
+    try {
+      const result = await getMiniGameWinnerEvent(option, actEventId);
+      console.log('Mini game winner event ID:', result);
+       setActEventId(result.acteventID);
+     } catch (error) {
+      console.error('Error getting mini game winner event:', error);
+    }
+  };
 
   return (
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>

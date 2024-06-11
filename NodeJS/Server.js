@@ -127,12 +127,25 @@ app.get("/api/actEvent/id/:id", async (req, res) => {
     };
 });
 
-// HTTP endpoint for getting result by ID
+// HTTP endpoint for event option with most votes
 app.get("/api/winningEvent/:actEventId/new", async (req, res) => {
         const  actEventId  = req.params.actEventId;
     
         try {
             const response = await axios.get(`http://localhost:8080/api/actEvent/next/${actEventId}`);
+            res.status(200).json(response.data);
+        } catch (error) {
+            console.error("Error linking events:", error);
+            res.status(500).json({ error: 'Failed to link events' });
+        }
+    });
+// HTTP endpoint for getting event of minigame winner
+app.get("/api/actEvent/next/:actEventId/:option", async (req, res) => {
+        const  actEventId  = req.params.actEventId;
+        const  option  = req.params.option;
+    
+        try {
+            const response = await axios.get(`http://localhost:8080/api/actEvent/next/${actEventId}/${option}`);
             res.status(200).json(response.data);
         } catch (error) {
             console.error("Error linking events:", error);
