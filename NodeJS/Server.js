@@ -51,6 +51,19 @@ app.post("/api/createAct", async (req, res) => {
     }
 });
 
+// Endpoint for linking events
+app.put("/api/actEvent/next", async (req, res) => {
+    const { actEventID, option, nextEventID } = req.body;
+
+    try {
+        const response = await axios.put(`http://localhost:8080/api/actEvent/next/${actEventID}/${option}/${nextEventID}`);
+        res.status(200).json(response.data);
+    } catch (error) {
+        console.error("Error linking events:", error);
+        res.status(500).json({ error: 'Failed to link events' });
+    }
+});
+
 // Add user to database
 app.post("/api/user/new", async (req, res) => {
 
@@ -127,6 +140,18 @@ app.get("/api/actEvent/id/:id", async (req, res) => {
     };
 });
 
+// HTTP endpoint for getting result by ID
+app.get("/api/winningEvent/:actEventId/new", async (req, res) => {
+        const  actEventId  = req.params.actEventId;
+    
+        try {
+            const response = await axios.get(`http://localhost:8080/api/actEvent/next/${actEventId}`);
+            res.status(200).json(response.data);
+        } catch (error) {
+            console.error("Error linking events:", error);
+            res.status(500).json({ error: 'Failed to link events' });
+        }
+    });
 // HTTP endpoint for getting result by ID
 app.get("/api/vote/percentage/id/:id", async (req, res) => {
 

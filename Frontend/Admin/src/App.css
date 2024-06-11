@@ -128,6 +128,7 @@
 .settings-content {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 80vh;
 }
 
@@ -206,4 +207,111 @@
 
 .count-button:hover {
   transform: scale(1.04);
+}
+
+/* nodecss */
+.custom-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 1000px;
+  height: 500px;
+}
+
+.custom-node-container {
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 20px;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-node-title {
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #ffd700;
+  border: 1px solid #000;
+  border-radius: 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.custom-node-options {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.custom-node-option {
+  background-color: #d3d3d3;
+  border: 1px solid #000;
+  border-radius: 5px;
+  width: 200px;  
+  height: 200px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 10px;
+}
+
+.custom-node-option-handle {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) scale(1.5);
+}
+
+/*save button in tree  */
+.save-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Leave button */
+.leave-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #ff5900;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+
+.save-button:hover {
+  background-color: #0056b3;
+};
+
+.minimap-container {
+  position: fixed;
+  bottom: 80px; 
+  right: 20px;  
+  z-index: 999; 
+  background: white; 
+  border: 1px solid #ddd; 
+  border-radius: 5px; 
+  padding: 5px;
+};
+
+/* link page */
+.LinkPage {
+  height: 100%;
+  width: 100%;
 }

@@ -1,14 +1,13 @@
-import PageHeader from "../Components/GlobalComponents/PageHeader.tsx";
-import EditEventList from "../Components/EditorPage/EditEventList.tsx";
+import React from 'react';
+import EditEventList from '../Components/EditorPage/EditEventList';
 
 const EditEventsPage = () => {
-    return (
-        <>
-            <PageHeader title="Editor |" underTitle="A place to edit act data."/>
-
-            <EditEventList/>
-        </>
-    )
-}
+  return (
+    <div className="App">
+      <h1>New Event</h1>
+      <EditEventList />
+    </div>
+  );
+};
 
 export default EditEventsPage;

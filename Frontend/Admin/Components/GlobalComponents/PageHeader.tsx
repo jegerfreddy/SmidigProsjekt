@@ -1,4 +1,4 @@
-import { IPageHeader } from "../Interfaces/IPageHeader";
+import { IPageHeader } from "../../Interfaces/IPageHeader.ts";
 import { FC } from "react";
 
 const PageHeader : FC<IPageHeader> = ({title, underTitle}) => {
