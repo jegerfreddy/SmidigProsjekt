@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, Routes, Route } from "react-router-dom";
 import PhoneInfo from "../Components/Phone/PhoneInfo";
 import { GeneralProvider } from "../Contexts/UserContext";
@@ -9,7 +9,6 @@ import FeedBackPage from "../Pages/FeedBackPages/FeedBackPage";
 import MiniGamePage from "../Pages/VotingResultPages/MiniGamePage";
 import ResultPage from "../Pages/VotingResultPages/ResultPage";
 import TiePage from "../Pages/VotingResultPages/TiePage";
-import userVotedPage from "../Pages/VotingResultPages/userVotedPage";
 import VotingPage from "../Pages/VotingResultPages/VotingPage";
 import WaitResultPage from "../Pages/VotingResultPages/WaitResultPage";
 import GameLobby from "../Pages/WaitingPages/GameLobby";
@@ -23,6 +22,7 @@ import UserVotedPage from "../Pages/VotingResultPages/userVotedPage";
 
 const Routing: React.FC = () => {
   const navigate = useNavigate();
+  const [ws, setWs] = useState<WebSocket | null>(null);
   PhoneInfo();
 
   useEffect(() => {
@@ -30,6 +30,8 @@ const Routing: React.FC = () => {
 
     ws.onopen = () => {
       console.log('Connected to WebSocket server');
+      // Only this component sends the USER_CONNECTED message
+      ws.send(JSON.stringify({ type: 'USER_CONNECTED' }));
     };
 
     ws.onmessage = (message) => {
@@ -52,6 +54,8 @@ const Routing: React.FC = () => {
     ws.onclose = () => {
       console.log('WebSocket connection closed');
     };
+
+    setWs(ws);
 
     return () => {
       ws.close();

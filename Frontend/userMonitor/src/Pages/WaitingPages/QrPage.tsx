@@ -2,10 +2,17 @@ import React, { useState, useEffect } from "react";
 import { IUser } from "../../Interfaces/IUser";
 import "../../App.css";
 import { UserService } from "../../Services/GetService";
+import userIcon from "../../assets/userIcon.png"; // Ensure you have the user icon in your assets
 
-const QrPage: React.FC = () => {
+interface QrProps {
+    userCountFromSocket: number; // Add a prop for user count
+}
+
+const QrPage: React.FC<QrProps> = ({userCountFromSocket}) => {
     const [avatars, setAvatars] = useState<{ avatarNumber: number, x: number, y: number }[]>([]);
     const [dots, setDots] = useState('');
+    const [setUserCount] = useState(0); // New state variable for user count
+    const userCount = userCountFromSocket; // Use the user count from the WebSocket
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -45,7 +52,7 @@ const QrPage: React.FC = () => {
                 <h2>Waiting for players{dots}</h2>
             </section>
 
-            <section className="position-absolute top-50 start-50 translate-middle">
+            <section className="position-absolute top-50 start-50 translate-middle QR-code-container">
                 <img src="/images/QR.png" alt="QR KODE" />
             </section>
 
@@ -57,7 +64,13 @@ const QrPage: React.FC = () => {
                         </div>
                     ))}
                 </div>
+
+                
             </section>
+            <div className="user-count-container m-5">
+                    <img src={userIcon} alt="User Icon" className="user-icon" />
+                    <span className="user-count">{userCount}</span>
+                </div>
         </div>
     );
 };

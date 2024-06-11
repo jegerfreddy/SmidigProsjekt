@@ -14,9 +14,18 @@ const websocketServer = () => {
 
     const voteCounts = { option1: 0, option2: 0, option3: 0, option4: 0 };
 
+    const broadcastUserCount = () => {
+        const userCount = wss.clients.size;
+        wss.clients.forEach(client => {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(JSON.stringify({ type: 'USER_COUNT', userCount }));
+            }
+        });
+    };
+
     wss.on('connection', ws => {
-        
         console.log('Client connected');
+        broadcastUserCount();
 
         ws.on('message', message => {
             console.log('Received:', message);
@@ -55,16 +64,25 @@ const websocketServer = () => {
                         console.log('Vote from socket:', data);
                     }
                     break;
+                case 'USER_CONNECTED':
+                    broadcastUserCount();
+                    break;
                 default:
                     console.log('Unknown message type:', data.type);
                     break;
             }
         });
 
+        ws.on('close', () => {
+            console.log('Client disconnected');
+            broadcastUserCount();
+        });
+
         // Send initial game state and counts to new connections
         ws.send(JSON.stringify({ type: 'GAME_STATE', state: gameState, actEventId, actId }));
         ws.send(JSON.stringify({ type: 'MINIGAME_COUNT', redCount: miniGameRedCount, purpleCount: miniGamePurpleCount, blueCount: miniGameBlueCount, greenCount: miniGameGreenCount }));
         ws.send(JSON.stringify({ type: 'VOTE_COUNTS', counts: voteCounts }));
+        ws.send(JSON.stringify({ type: 'USER_COUNT', userCount: wss.clients.size }));
     });
 
     const setup = (data) => {
