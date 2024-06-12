@@ -2,6 +2,7 @@ package loading.smidig.smidig;
 
 import loading.smidig.smidig.model.Act;
 import loading.smidig.smidig.model.ActEvent;
+import loading.smidig.smidig.model.AdminUser;
 import loading.smidig.smidig.repository.ActEventRepository;
 import loading.smidig.smidig.repository.ActRepository;
 import loading.smidig.smidig.repository.AdminUserRepository;
@@ -10,6 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class SmidigApplication {
@@ -26,6 +29,13 @@ public class SmidigApplication {
 			ActEventRepository actEventRepository
 	){
 		return args ->{
+			/*
+			AdminUser adminUser = new AdminUser();
+			adminUser.setUsername("admin");
+			String pw = "123";
+			adminUser.setPassword(new BCryptPasswordEncoder().encode(pw));
+			adminUserRepository.save(adminUser);
+
 			/*
 			Act act = new Act();
 			act.setActName("Act1");
