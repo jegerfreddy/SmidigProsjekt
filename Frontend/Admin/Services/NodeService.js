@@ -16,7 +16,17 @@ export const getEvents = async () => {
 
 export const getGameCodes = async (amount) => {
 
-  const res = await axios.get(`htt://localhost:4000/getGameCodes/${amount}`)
+  let data;
+
+  await axios.get(`http://localhost:4000/api/getGameCodes/${amount}`)
+    .then((res) => {
+      data = res.data
+    })
+    .catch((res) => {
+      data = []
+    })
+  ;
+
   return data;
 }
 

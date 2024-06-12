@@ -294,6 +294,21 @@ app.get("/api/getActs", async (req, res) => {
     };
 });
 
+app.get("/api/getGameCodes/:amount", (req, res) => {
+
+    const { amount } = req.params;
+
+    axios.get(`http://localhost:8080/api/verify/generate/${amount}`)
+        .then((response) => {
+            res.send(response.data);
+        })
+
+        .catch((response) => {
+            res.sendStatus(500);
+            console.log(response);
+        })
+})
+
 app.get("/api/getEvents", async (req, res) => {
 
     try {
@@ -307,6 +322,7 @@ app.get("/api/getEvents", async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch events' });
     };
 });
+
 app.get("/api/getAllEventsFromAct/:id", async (req, res) => {
     const { id } = req.params;
 
