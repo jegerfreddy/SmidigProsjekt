@@ -6,10 +6,7 @@ import { IAdminContext } from "../../Interfaces/IAdminContext";
 
 const ActItem : FC<IActItem> = ({actID, actName}) => {
 
-    const { events } = useContext(AdminContext) as IAdminContext;
-
-    console.log(events);
-    
+    const { events } = useContext(AdminContext) as IAdminContext;    
 
     const selectedActEvents = events.filter((event) => {
         if (event.actID == actID) {
