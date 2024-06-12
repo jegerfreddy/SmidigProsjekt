@@ -14,6 +14,7 @@ import QrPage from "../Pages/WaitingPages/QrPage";
 const Routing: React.FC = () => {
   const navigate = useNavigate();
   const [userCount, setUserCount] = useState(0);
+  const [voteCountsClear, setVoteCountsClear] = useState(false);
 
   useEffect(() => {
     const ws = new WebSocket('ws://localhost:3000');
@@ -74,9 +75,16 @@ const Routing: React.FC = () => {
       case 'STANDBY':
         navigate('/Standby');
         break;
+      case 'CLEAR_VOTES':
+        setVoteCountsClear(true);
+        break;
       default:
         console.log('Unknown game state:', state);
     }
+  };
+
+  const handleVoteCountsClearProcessed = () => {
+    setVoteCountsClear(false);
   };
 
   return (
@@ -86,12 +94,10 @@ const Routing: React.FC = () => {
           <QrPage userCountFromSocket={userCount} />
         </GeneralProvider>
       } />
-
       <Route path="/standBy" element={<StandByPage />} />
-
       <Route path="/result/:actEventId" element={
         <GeneralProvider service={ResultService}>
-          <ResultPage />
+          <ResultPage voteCountsClear={voteCountsClear} onClearProcessed={handleVoteCountsClearProcessed} />
         </GeneralProvider>
       } />
       <Route path="/waitresult/:actEventId" element={
@@ -99,13 +105,9 @@ const Routing: React.FC = () => {
           <WaitResultPage />
         </GeneralProvider>
       } />
-
       <Route path="/Break" element={<TheaterPausePage />} />
-
       <Route path="/tie/:actEventId" element={<TiePage />} />
-
       <Route path="/minigame/:actEventId" element={<MiniGamePage />} />
-
       <Route path="/endGame" element={<EndGamePage />} />
     </Routes>
   );

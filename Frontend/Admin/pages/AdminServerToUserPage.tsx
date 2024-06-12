@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { IAdminContext } from '../Interfaces/IAdminContext';
 import { AdminContext } from '../Context/AdminContext';
 import { useLocation } from 'react-router-dom';
-import { Button, Container, Grid, Typography, Box, CircularProgress, Card, CardContent, Alert, Snackbar } from '@mui/material';
+import { Button, Container, Grid, Typography, Box, CircularProgress, Card, CardContent } from '@mui/material';
 import { getMiniGameWinnerEvent, getWinner } from '../Services/NodeService';
 
 const AdminServerToUserPage: React.FC = () => {
@@ -12,7 +12,6 @@ const AdminServerToUserPage: React.FC = () => {
 
   const [actEventId, setActEventId] = useState('1');
   const [StartingactEventId, StartingsetActEventId] = useState('1');
-  const [setActId] = useState('1');
   const [actTitle, setActTitle] = useState('');
   const [redCount, setRedCount] = useState(0);
   const [purpleCount, setPurpleCount] = useState(0);
@@ -63,17 +62,17 @@ const AdminServerToUserPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const act = acts.find(a => a.actID === (Number(actId)));
+    const act = acts.find(a => a.actID === Number(actId));
     if (act) {
       setActTitle(act.actName);
     }
-    const event = events.find(a => a.actID === (Number(actId)));
+    const event = events.find(a => a.actID === Number(actId));
     if (event) {
       setActEventId(event.acteventID.toString());
       StartingsetActEventId(event.acteventID.toString());
       console.log('Starting event:', event.acteventID);
     }
-  }, [actId, acts, setActId, events]);
+  }, [actId, acts, events]);
 
   const sendCommand = (command: string, actEventId: string, actId: string) => {
     if (ws) {
@@ -85,25 +84,24 @@ const AdminServerToUserPage: React.FC = () => {
   };
 
   const handleButtonClick = (command: string) => {
-
     switch (command) {
       case 'START':
         setActEventId(StartingactEventId);
         sendCommand(command, actEventId, actId);
-        setLoading(false);       
+        setLoading(false);
         break;
       case 'VOTING':
         handleGetWinningEvent(actEventId);
         sendCommand(command, actEventId, actId);
-        setLoading(false);  
+        setLoading(false);
         break;
       case 'MINIGAME':
         handleGetWinningEvent(actEventId);
         sendCommand(command, actEventId, actId);
         break;
-      case'PAUSE':
-      sendCommand(command, actEventId, actId);
-      setLoading(false);
+      case 'PAUSE':
+        sendCommand(command, actEventId, actId);
+        setLoading(false);
         break;
       case 'STANDBY':
         sendCommand(command, actEventId, actId);
@@ -115,7 +113,7 @@ const AdminServerToUserPage: React.FC = () => {
         break;
       default:
         break;
-    } 
+    }
   };
 
   const handleGetWinningEvent = async (actEventId: string) => {
@@ -124,10 +122,10 @@ const AdminServerToUserPage: React.FC = () => {
       if (result.acteventID) {
         setActEventId(result.acteventID);
       } else {
-        console.error('No winning event found');
+        setActEventId(actEventId);
       }
     } catch (error) {
-      console.error('Error getting winning event:', error);
+      setActEventId(actEventId);
     }
   };
 
@@ -155,10 +153,10 @@ const AdminServerToUserPage: React.FC = () => {
     try {
       const result = await getMiniGameWinnerEvent(option, actEventId);
       console.log('Mini game winner event ID:', result);
-      if (result.acteventID){
+      if (result.acteventID) {
         setActEventId(result.acteventID);
       }
-     } catch (error) {
+    } catch (error) {
       console.error('Error getting mini game winner event:', error);
     }
   };
@@ -170,114 +168,112 @@ const AdminServerToUserPage: React.FC = () => {
       </Typography>
 
       <Grid container spacing={2} mb={4}>
-  <Grid item xs={12} md={4}>
-    <Card variant="outlined" sx={{ backgroundColor: 'lightblue' }}>
-      <CardContent>
-        <Typography variant="h6" component="div">
-          Act ID:
-        </Typography>
-        <Typography variant="h4" component="div">
-          {actId}
-        </Typography>
-      </CardContent>
-    </Card>
-  </Grid>
-  <Grid item xs={12} md={4}>
-    <Card variant="outlined" sx={{ backgroundColor: 'lightgreen' }}>
-      <CardContent>
-        <Typography variant="h6" component="div">
-          Act Title:
-        </Typography>
-        <Typography variant="h4" component="div">
-          {actTitle}
-        </Typography>
-      </CardContent>
-    </Card>
-  </Grid>
-  <Grid item xs={12} md={4}>
-    <Card variant="outlined" sx={{ backgroundColor: 'lightcoral' }}>
-      <CardContent>
-        <Typography variant="h6" component="div">
-          Act Event ID:
-        </Typography>
-        <Typography variant="h4" component="div">
-          {actEventId}
-        </Typography>
-      </CardContent>
-    </Card>
-  </Grid>
-</Grid>
+        <Grid item xs={12} md={4}>
+          <Card variant="outlined" sx={{ backgroundColor: 'lightblue' }}>
+            <CardContent>
+              <Typography variant="h6" component="div">
+                Act ID:
+              </Typography>
+              <Typography variant="h4" component="div">
+                {actId}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Card variant="outlined" sx={{ backgroundColor: 'lightgreen' }}>
+            <CardContent>
+              <Typography variant="h6" component="div">
+                Act Title:
+              </Typography>
+              <Typography variant="h4" component="div">
+                {actTitle}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Card variant="outlined" sx={{ backgroundColor: 'lightcoral' }}>
+            <CardContent>
+              <Typography variant="h6" component="div">
+                Act Event ID:
+              </Typography>
+              <Typography variant="h4" component="div">
+                {actEventId}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
 
-
-<Grid container spacing={2} mb={2}>
-  <Grid item xs={6} md={4}>
-    <Button
-      variant="contained"
-      sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#115293' } }}
-      fullWidth
-      onClick={() => handleButtonClick('START')}
-      disabled={loading}
-    >
-      {loading ? <CircularProgress size={24} /> : 'Restart Game'}
-    </Button>
-  </Grid>
-  <Grid item xs={6} md={4}>
-    <Button
-      variant="contained"
-      sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#115293' } }}
-      fullWidth
-      onClick={() => handleButtonClick('VOTING')}
-      disabled={loading}
-    >
-      {loading ? <CircularProgress size={24} /> : 'Start Voting'}
-    </Button>
-  </Grid>
-  <Grid item xs={6} md={4}>
-    <Button
-      variant="contained"
-      sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#115293' } }}
-      fullWidth
-       onClick={() => handleButtonClick('MINIGAME')}
-       disabled={loading}
-    >
-      {loading ? <CircularProgress size={24} /> : 'MINIGAME'}
-    </Button>
-  </Grid>
-  <Grid item xs={6} md={4}>
-    <Button
-      variant="contained"
-      sx={{ backgroundColor: '#ff9800', '&:hover': { backgroundColor: '#fb8c00' } }}
-      fullWidth
-      onClick={() => handleButtonClick('PAUSE')}
-      disabled={loading}
-    >
-      {loading ? <CircularProgress size={24} /> : 'Pause'}
-    </Button>
-  </Grid>
-  <Grid item xs={6} md={4}>
-    <Button
-      variant="contained"
-      sx={{ backgroundColor: '#ff9800', '&:hover': { backgroundColor: '#fb8c00' } }}
-      fullWidth
-      onClick={() => handleButtonClick('STANDBY')}
-      disabled={loading}
-    >
-      {loading ? <CircularProgress size={24} /> : 'StandBy'}
-    </Button>
-  </Grid>
-  <Grid item xs={6} md={4}>
-    <Button
-      variant="contained"
-      sx={{ backgroundColor: '#ff9800', '&:hover': { backgroundColor: '#fb8c00' } }}
-      fullWidth
-      onClick={() => handleButtonClick('FEEDBACK')}
-      disabled={loading}
-    >
-      {loading ? <CircularProgress size={24} /> : 'Feedback'}
-    </Button>
-  </Grid>
-</Grid>
-
+      <Grid container spacing={2} mb={2}>
+        <Grid item xs={6} md={4}>
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#115293' } }}
+            fullWidth
+            onClick={() => handleButtonClick('START')}
+            disabled={loading}
+          >
+            {loading ? <CircularProgress size={24} /> : 'Restart Game'}
+          </Button>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#115293' } }}
+            fullWidth
+            onClick={() => handleButtonClick('VOTING')}
+            disabled={loading}
+          >
+            {loading ? <CircularProgress size={24} /> : 'Start Voting'}
+          </Button>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#115293' } }}
+            fullWidth
+            onClick={() => handleButtonClick('MINIGAME')}
+            disabled={loading}
+          >
+            {loading ? <CircularProgress size={24} /> : 'MINIGAME'}
+          </Button>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: '#ff9800', '&:hover': { backgroundColor: '#fb8c00' } }}
+            fullWidth
+            onClick={() => handleButtonClick('PAUSE')}
+            disabled={loading}
+          >
+            {loading ? <CircularProgress size={24} /> : 'Pause'}
+          </Button>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: '#ff9800', '&:hover': { backgroundColor: '#fb8c00' } }}
+            fullWidth
+            onClick={() => handleButtonClick('STANDBY')}
+            disabled={loading}
+          >
+            {loading ? <CircularProgress size={24} /> : 'StandBy'}
+          </Button>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: '#ff9800', '&:hover': { backgroundColor: '#fb8c00' } }}
+            fullWidth
+            onClick={() => handleButtonClick('FEEDBACK')}
+            disabled={loading}
+          >
+            {loading ? <CircularProgress size={24} /> : 'Feedback'}
+          </Button>
+        </Grid>
+      </Grid>
 
       <Typography variant="h5" gutterBottom>
         MiniGame Counter
@@ -311,11 +307,6 @@ const AdminServerToUserPage: React.FC = () => {
       <Typography variant="h5" gutterBottom style={{ marginTop: '2rem' }}>
         Winner: {winner}
       </Typography>
-      <Snackbar open={loading} autoHideDuration={6000} onClose={() => setLoading(false)}>
-        <Alert onClose={() => setLoading(false)} severity="info">
-          Processing your request...
-        </Alert>
-      </Snackbar>
     </Container>
   );
 };

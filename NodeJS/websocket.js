@@ -63,6 +63,11 @@ const websocketServer = () => {
                         saveVote(data);
                         console.log('Vote from socket:', data);
                     }
+                    // Reset vote counts to 0 after handling the vote
+                    voteCounts.option1 = 0;
+                    voteCounts.option2 = 0;
+                    voteCounts.option3 = 0;
+                    voteCounts.option4 = 0;
                     break;
                 case 'USER_CONNECTED':
                     broadcastUserCount();
