@@ -53,21 +53,25 @@ public class ActEvent {
     @ManyToOne
     @JoinColumn(name = "next_event_option_1", nullable = true)
     @jakarta.annotation.Nullable
+    @JsonIgnore
     private ActEvent nextEventOption1;
 
     @ManyToOne
     @JoinColumn(name = "next_event_option_2", nullable = true)
     @jakarta.annotation.Nullable
+    @JsonIgnore
     private ActEvent nextEventOption2;
 
     @ManyToOne
     @JoinColumn(name = "next_event_option_3", nullable = true)
     @jakarta.annotation.Nullable
+    @JsonIgnore
     private ActEvent nextEventOption3;
 
     @ManyToOne
     @JoinColumn(name = "next_event_option_4", nullable = true)
     @jakarta.annotation.Nullable
+    @JsonIgnore
     private ActEvent nextEventOption4;
 
     // Constructor
