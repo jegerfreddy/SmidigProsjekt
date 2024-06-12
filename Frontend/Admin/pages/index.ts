@@ -5,7 +5,7 @@ import AdminToUserPage from "./AdminServerToUserPage";
 import SettingsPage from "./SettingsPage";
 import EditEventsPage from "./EditEventsPage";
 import LinkEventsPage from "./LinkEventsPage";
-import GetGameCodesPage from "./GetGameCodePage";
+import GetVerificationCodesPage from "./GetVerificationCodesPage";
 
 export {
     LoginPage,
@@ -15,5 +15,5 @@ export {
     CreateActPage,
     AdminToUserPage,
     SettingsPage,
-    GetGameCodesPage
+    GetVerificationCodesPage as GetGameCodesPage
 }

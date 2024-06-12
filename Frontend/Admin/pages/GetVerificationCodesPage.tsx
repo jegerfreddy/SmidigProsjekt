@@ -1,46 +1,43 @@
 import { getGameCodes } from "../Services/NodeService";
 import { IGameCode } from "../Interfaces/IGameCode";
 import PageHeader from "../Components/GlobalComponents/PageHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const GetGameCodesPage = () => {
+const GetVerificationCodesPage = () => {
 
     const [amount, setAmount] = useState<number>(1);
     const [codesText, setCodesText] = useState<string>("");
     const [codeData, setCodeData] = useState<IGameCode[]>([]);
+    const [counter, setCounter] = useState<number>(0);
 
     const getCodes = (amount: number) => {
 
         getGameCodes(amount)
             .then((data) => {
             
-                let codes: string = "";
-                let count = 0;
-                
-
                 data ? setCodeData(data) : setCodeData([])
-
-                codeData.map((obj: IGameCode) => {
-
-                    if (count < 3) {
-
-                        codes += obj.code + "  ";
-                        count++;
-
-                    } else {
-
-                        count = 0;
-                        codes += "\n" + obj.code + "  ";
-
-                    };
-
-                });
-                
-                setCodesText(codes);
 
             })
         ;
     };
+
+    useEffect(() => {
+
+        codeData.map((obj: IGameCode) => {
+
+            if (counter < 3) {
+
+                setCodesText(prev => prev + obj.code + " ");
+                setCounter(prev => prev + 1);
+
+            } else {
+
+                setCounter(0);
+                setCodesText(prev => prev + "\n" + obj.code + " ");
+
+            };
+        });
+    }, [codeData])
 
     return (
         <>
@@ -49,7 +46,7 @@ const GetGameCodesPage = () => {
             <div className="d-flex flex-column align-items-center">
 
 
-                <div className="d-flex flex-column">
+                <div className="d-flex flex-column align-items-center">
                     <div className="p-3 d-flex flex-column">
                         <span className="d-flex flex-column ">
                             <p>Amount of codes to generate</p>
@@ -60,7 +57,7 @@ const GetGameCodesPage = () => {
                     </div>
                     
 
-                    <div className="border border-dark p-3 rounded">
+                    <div className="border border-dark p-3 rounded w-25">
                         <p>{codesText}</p>
                     </div>
 
@@ -72,4 +69,4 @@ const GetGameCodesPage = () => {
     );
 }
 
-export default GetGameCodesPage;
+export default GetVerificationCodesPage;
