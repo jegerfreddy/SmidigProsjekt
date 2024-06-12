@@ -128,7 +128,7 @@ const SettingsPage = () => {
                     <div className="d-flex flex-column align-items-center mt-3 mb-3 pt-3 pb-3 pl-5 pr-5 border border-dark rounded w-100">
                         <p> <u>Change Username & Password</u></p>
                         <input onChange={(e) => {handleChange(e.target)}} value={renameUser} placeholder="New Username" name="rename-user" type="text" />
-                        <input onChange={(e) => {handleChange(e.target)}} value={renamePass} placeholder="New Password" name="rename-password" type="text" />
+                        <input onChange={(e) => {handleChange(e.target)}} value={renamePass} placeholder="New Password" name="rename-password" type="password" />
                         <input onChange={(e) => {handleChange(e.target)}} value={renameConfirmPass} placeholder="Confirm Password" name="rename-confirm-password" type="password" />
                         <button onClick={handleSave} className="btn btn-success w-100 m-3">Save</button>
                     </div>
