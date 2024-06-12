@@ -117,7 +117,7 @@ const SettingsPage = () => {
             <div className="d-flex flex-column align-items-center">
 
                 <div className="settings-content">
-                    <h2>Logged in as: <i className="text-primary">admin</i></h2>
+                    <h2>Login ID: <i className="text-primary">{localStorage.getItem("loginId")}</i></h2>
 
                     <AlertMessage
                         display={usernameAvailable ? "none" : ""}
