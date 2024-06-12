@@ -11,7 +11,8 @@ const AdminServerToUserPage: React.FC = () => {
   const actId = actID.toString();
 
   const [actEventId, setActEventId] = useState('1');
-  const [setActId] = useState('');
+  const [StartingactEventId, StartingsetActEventId] = useState('1');
+  const [setActId] = useState('1');
   const [actTitle, setActTitle] = useState('');
   const [redCount, setRedCount] = useState(0);
   const [purpleCount, setPurpleCount] = useState(0);
@@ -32,7 +33,6 @@ const AdminServerToUserPage: React.FC = () => {
 
     websocket.onmessage = (message) => {
       const data = JSON.parse(message.data);
-      console.log('Received:', data);
 
       if (data.type === 'MINIGAME_COUNT') {
         setRedCount(data.redCount);
@@ -70,6 +70,8 @@ const AdminServerToUserPage: React.FC = () => {
     const event = events.find(a => a.actID === (Number(actId)));
     if (event) {
       setActEventId(event.acteventID.toString());
+      StartingsetActEventId(event.acteventID.toString());
+      console.log('Starting event:', event.acteventID);
     }
   }, [actId, acts, setActId, events]);
 
@@ -82,28 +84,50 @@ const AdminServerToUserPage: React.FC = () => {
     }
   };
 
-  const handleStartMiniGame = () => {
-    handleGetWinningEvent(actEventId);
-  };
-
   const handleButtonClick = (command: string) => {
-    sendCommand(command, actEventId, actId);
-    if (command === 'VOTING') {
-      // handle specific logic if needed
+
+    switch (command) {
+      case 'START':
+        setActEventId(StartingactEventId);
+        sendCommand(command, actEventId, actId);
+        setLoading(false);       
+        break;
+      case 'VOTING':
+        handleGetWinningEvent(actEventId);
+        sendCommand(command, actEventId, actId);
+        setLoading(false);  
+        break;
+      case 'MINIGAME':
+        handleGetWinningEvent(actEventId);
+        sendCommand(command, actEventId, actId);
+        break;
+      case'PAUSE':
+      sendCommand(command, actEventId, actId);
       setLoading(false);
-    }
-    console.log('Current event:', actEventId);
+        break;
+      case 'STANDBY':
+        sendCommand(command, actEventId, actId);
+        setLoading(false);
+        break;
+      case 'FEEDBACK':
+        sendCommand(command, actEventId, actId);
+        setLoading(false);
+        break;
+      default:
+        break;
+    } 
   };
 
   const handleGetWinningEvent = async (actEventId: string) => {
-    console.log('Saving choice:', actEventId);
     try {
       const result = await getWinner(actEventId);
-      console.log('Winner event ID:', result.acteventID);
-      setActEventId(result.acteventID);
+      if (result.acteventID) {
+        setActEventId(result.acteventID);
+      } else {
+        console.error('No winning event found');
+      }
     } catch (error) {
-      console.error('Error saving choice:', error);
-      sendCommand('MINIGAME', actEventId, actId);
+      console.error('Error getting winning event:', error);
     }
   };
 
@@ -131,7 +155,9 @@ const AdminServerToUserPage: React.FC = () => {
     try {
       const result = await getMiniGameWinnerEvent(option, actEventId);
       console.log('Mini game winner event ID:', result);
-       setActEventId(result.acteventID);
+      if (result.acteventID){
+        setActEventId(result.acteventID);
+      }
      } catch (error) {
       console.error('Error getting mini game winner event:', error);
     }
@@ -211,7 +237,7 @@ const AdminServerToUserPage: React.FC = () => {
       variant="contained"
       sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#115293' } }}
       fullWidth
-       onClick={handleStartMiniGame}
+       onClick={() => handleButtonClick('MINIGAME')}
        disabled={loading}
     >
       {loading ? <CircularProgress size={24} /> : 'MINIGAME'}
