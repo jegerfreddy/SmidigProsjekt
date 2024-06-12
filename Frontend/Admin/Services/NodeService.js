@@ -48,7 +48,7 @@ export const updateEvent = async (event) => {
 
 export const linkEvents = async (choice) => {
     try {
-      const response = await axios.put("http://localhost:4000/api/actEvent/next", {
+      const response = await axios.put("http://localhost:4000/api/LinkEvent/next", {
 
         actEventID: choice.actEventID,
         option: choice.option,
