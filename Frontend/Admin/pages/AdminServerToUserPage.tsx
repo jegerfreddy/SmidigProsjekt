@@ -63,11 +63,15 @@ const AdminServerToUserPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const act = acts.find(a => a.actID === Number(actId));
+    const act = acts.find(a => a.actID === (Number(actId)));
     if (act) {
       setActTitle(act.actName);
     }
-  }, [actId, acts]);
+    const event = events.find(a => a.actID === (Number(actId)));
+    if (event) {
+      setActEventId(event.acteventID.toString());
+    }
+  }, [actId, acts, setActId, events]);
 
   const sendCommand = (command: string, actEventId: string, actId: string) => {
     if (ws) {
