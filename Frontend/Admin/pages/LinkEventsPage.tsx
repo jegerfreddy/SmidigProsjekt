@@ -5,7 +5,7 @@ import Flow from '../Components/Node/Flow'; // Adjust the import path as necessa
 import { linkEvents } from '../Services/NodeService';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ConnectionData } from '../Interfaces/INode';
-
+import { ReactFlowProvider } from 'reactflow'; // Import ReactFlowProvider
 
 const handleSave = async (choices: ConnectionData[]) => {
   for (let i = 0; i < choices.length; i++) {
@@ -57,11 +57,13 @@ const LinkEventsPage = () => {
   };
 
   return (
-    <main className="LinkPage">
-      <Flow events={actEvents} onConnectionsChange={setConnections} saveChoice={saveChoice} />
-      <button className="save-button" onClick={saveConnections}>Save</button>
-      <button className="leave-button" onClick={goToHomePage}>Leave</button>
-    </main>
+    <ReactFlowProvider> {/* Wrap with ReactFlowProvider */}
+      <main className="LinkPage">
+        <Flow events={actEvents} onConnectionsChange={setConnections} saveChoice={saveChoice} />
+        <button className="save-button" onClick={saveConnections}>Save</button>
+        <button className="leave-button" onClick={goToHomePage}>Leave</button>
+      </main>
+    </ReactFlowProvider>
   );
 };
 

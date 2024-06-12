@@ -13,6 +13,8 @@ import ReactFlow, {
   Connection,
   MiniMap,
   FitViewOptions,
+  useReactFlow,
+  OnInit,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import CustomNode from './Customnode';
@@ -37,6 +39,12 @@ const Flow = ({ events, onConnectionsChange, saveChoice }: { events: IEventItem[
   const [nodes, setNodes] = useState<Node[]>([]);
   const [edges, setEdges] = useState<Edge[]>([]);
   const nodesInitialized = useRef(false);
+
+  const onInit: OnInit = (instance) => {
+    if (nodes.length > 0) {
+      instance.fitView(fitViewOptions);
+    }
+  };
 
   useEffect(() => {
     if (!nodesInitialized.current) {
@@ -93,7 +101,7 @@ const Flow = ({ events, onConnectionsChange, saveChoice }: { events: IEventItem[
   );
 
   return (
-    <div style={{ width: '100%', height: '100vh' }}>
+    <div style={{ width: '100%', height: '70vh' }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -101,6 +109,7 @@ const Flow = ({ events, onConnectionsChange, saveChoice }: { events: IEventItem[
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
+        onInit={onInit}
         fitViewOptions={fitViewOptions}
         defaultEdgeOptions={defaultEdgeOptions}
         nodeTypes={nodeTypes}
