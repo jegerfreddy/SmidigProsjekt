@@ -11,6 +11,7 @@ interface Props {
 }
 
 export const AdminProvider: FC<Props> = ({ children }) => {
+
     const [acts, setActs] = useState<IActItem[]>(() => {
         const storedActs = localStorage.getItem("acts");
         return storedActs ? JSON.parse(storedActs) : [];
@@ -29,12 +30,16 @@ export const AdminProvider: FC<Props> = ({ children }) => {
         try {
             const acts = await getActs();
             const events = await getEvents();
-
+            
             setActs(acts);
             setEvents(events);
 
+            localStorage.removeItem("acts");
+            localStorage.removeItem("events");
+
             localStorage.setItem("acts", JSON.stringify(acts));
             localStorage.setItem("events", JSON.stringify(events));
+
         } catch (error) {
             console.error("Failed to fetch data:", error);
         }

@@ -1,5 +1,5 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { ActOverviewPage, EditEventsPage, CreateActPage, AdminToUserPage, SettingsPage } from "../pages/index.ts";
+import { ActOverviewPage, EditEventsPage, CreateActPage, AdminToUserPage, SettingsPage, GetGameCodesPage } from "../pages/index.ts";
 import {AdminProvider} from "../Context/AdminContext.tsx";
 import LinkEventsPage from "../pages/LinkEventsPage.tsx";
 
@@ -51,6 +51,7 @@ const RoutingMain = () => {
                                 <Route path="/newAct" element={<CreateActPage/>}/>
                                 <Route path="/userserver" element={<AdminToUserPage/>}/>
                                 <Route path="/settings" element={<SettingsPage/>}/>
+                                <Route path="/getCodes" element={<GetGameCodesPage/>}/>
                             </Routes>
                         </main>
                     </div>

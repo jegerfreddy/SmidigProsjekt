@@ -8,6 +8,9 @@ const ActItem : FC<IActItem> = ({actID, actName}) => {
 
     const { events } = useContext(AdminContext) as IAdminContext;
 
+    console.log(events);
+    
+
     const selectedActEvents = events.filter((event) => {
         if (event.actID == actID) {
             return event;

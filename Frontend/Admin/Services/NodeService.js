@@ -13,6 +13,13 @@ export const getEvents = async () => {
     return res.data;
     
 };
+
+export const getGameCodes = async (amount) => {
+
+  const res = await axios.get(`htt://localhost:4000/getGameCodes/${amount}`)
+  return data;
+}
+
 export const getWinner = async (actEventId) => {
   console.log('Getting winner from frontend service', actEventId);
   

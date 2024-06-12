@@ -15,6 +15,10 @@ const ActOverviewPage = () => {
                 <Link to="/newAct">
                     <button>New Act</button>
                 </Link>
+
+                <Link to="/getCodes">
+                    <button>Generate Game Codes</button>
+                </Link>
             </div>
 
            <ActList></ActList>
