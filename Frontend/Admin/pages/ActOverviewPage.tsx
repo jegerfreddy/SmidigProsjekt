@@ -13,11 +13,11 @@ const ActOverviewPage = () => {
 
             <div className="page-header-button-container">
                 <Link to="/newAct">
-                    <button>New Act</button>
+                    <button className="">New Act</button>
                 </Link>
 
                 <Link to="/getCodes">
-                    <button>Generate Game Codes</button>
+                    <button className="ml-3">Generate Verification Codes</button>
                 </Link>
             </div>
 

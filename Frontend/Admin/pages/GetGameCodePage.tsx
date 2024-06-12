@@ -44,7 +44,7 @@ const GetGameCodesPage = () => {
 
     return (
         <>
-            <PageHeader title="Generate Game Codes |" underTitle="Game codes are used to verify audience members when they connect to a game."/>
+            <PageHeader title="Verification Codes |" underTitle="Verification codes are used to verify audience members when they connect to a game."/>
 
             <div className="d-flex flex-column align-items-center">
 
