@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const websocketServer = require('./websocket');
-const morgan = require('morgan');
 const {
     UserService, VerifyService, EventService,
     ResultService, WinnerService, VoteService, FeedBackService
@@ -35,9 +34,8 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use(morgan('combined'));
 
-
+// Function to get axios config with Basic Auth
 const getAxiosConfig = () => {
     return {
         auth: {
