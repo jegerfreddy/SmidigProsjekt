@@ -111,13 +111,12 @@ const SettingsPage = () => {
 
     return (
         <>
-
             <PageHeader title="Settings |" underTitle="Add new admin user or change current user details."/>
 
             <div className="d-flex flex-column align-items-center">
 
                 <div className="settings-content">
-                    <h2>Login ID: <i className="text-primary">{localStorage.getItem("loginId")}</i></h2>
+                    <h2 className="m-5">Login ID: <i className="text-primary">{localStorage.getItem("loginId")}</i></h2>
 
                     <AlertMessage
                         display={usernameAvailable ? "none" : ""}
@@ -125,21 +124,24 @@ const SettingsPage = () => {
                         alertId={1}
                     />
 
-                    <div className="d-flex flex-column align-items-center mt-3 mb-3 pt-3 pb-3 pl-5 pr-5 border border-dark rounded w-100">
-                        <p> <u>Change Username & Password</u></p>
-                        <input onChange={(e) => {handleChange(e.target)}} value={renameUser} placeholder="New Username" name="rename-user" type="text" />
-                        <input onChange={(e) => {handleChange(e.target)}} value={renamePass} placeholder="New Password" name="rename-password" type="password" />
-                        <input onChange={(e) => {handleChange(e.target)}} value={renameConfirmPass} placeholder="Confirm Password" name="rename-confirm-password" type="password" />
-                        <button onClick={handleSave} className="btn btn-success w-100 m-3">Save</button>
+                    <div className="d-flex justify-content-center w-100">
+                        <div className="settings-form  border border-dark rounded">
+                            <p> <u>Change Username & Password</u></p>
+                            <input onChange={(e) => {handleChange(e.target)}} value={renameUser} placeholder="New Username" name="rename-user" type="text" />
+                            <input onChange={(e) => {handleChange(e.target)}} value={renamePass} placeholder="New Password" name="rename-password" type="password" />
+                            <input onChange={(e) => {handleChange(e.target)}} value={renameConfirmPass} placeholder="Confirm Password" name="rename-confirm-password" type="password" />
+                            <button onClick={handleSave} className="btn btn-success w-100 m-3">Save</button>
+                        </div>
+
+                        <div className="settings-form  border border-dark rounded">
+                            <p> <u>New Admin</u></p>
+                            <input onChange={(e) => {handleChange(e.target)}} value={newUsername} placeholder="Username" name="new-username" type="text" />
+                            <input onChange={(e) => {handleChange(e.target)}} value={newPassword} placeholder="Password" name="new-password" type="password" />
+                            <input onChange={(e) => {handleChange(e.target)}} value={newConfirmPassword} placeholder="Confirm Password" name="new-confirm-password" type="password" />
+                            <button onClick={addNewUser} className="btn btn-primary w-75 m-3">Add User</button>
+                        </div>
                     </div>
 
-                    <div className="d-flex flex-column align-items-center mt-3 mb-3 pt-3 pb-3 pl-5 pr-5 border border-dark rounded w-100">
-                        <p> <u>New Admin</u></p>
-                        <input onChange={(e) => {handleChange(e.target)}} value={newUsername} placeholder="Username" name="new-username" type="text" />
-                        <input onChange={(e) => {handleChange(e.target)}} value={newPassword} placeholder="Password" name="new-password" type="password" />
-                        <input onChange={(e) => {handleChange(e.target)}} value={newConfirmPassword} placeholder="Confirm Password" name="new-confirm-password" type="password" />
-                        <button onClick={addNewUser} className="btn btn-primary w-75 m-3">Add New Admin</button>
-                    </div>
     
                 </div>
 

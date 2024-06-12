@@ -40,7 +40,7 @@ const GetVerificationCodesPage = () => {
 
     return (
         <>
-            <div className="min-height-100">
+            <div>
                 <PageHeader title="Verification Codes |" underTitle="Verification codes are used to verify audience members when they connect to a game."/>
 
                 <div className="verify-codes-content">
@@ -57,7 +57,7 @@ const GetVerificationCodesPage = () => {
                         </div>
                         
 
-                        <div className="border border-dark rounded codes-container">
+                        <div className="border border-dark rounded codes-container bg-dark text-light">
                             <p>{codeData.length > 0 ? codesText : "Codes are pasted here..."}</p>
                         </div>
 

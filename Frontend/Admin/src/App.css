@@ -61,10 +61,10 @@
   background-color: #f0e8b8;
   display: flex;
   flex-direction: column;
-  border: .01rem solid #cbc6a6;
-  border-radius: 1rem;
   padding: 1.5rem;
   margin: 2rem;
+  border: .01rem solid #cbc6a6;
+  border-radius: 1rem;
   filter: drop-shadow(0 0 .5rem #807c63);
 }
 
@@ -75,7 +75,7 @@
 }
 
 .edit-event-list {
-  background-color: #fcf9e4;
+  background-color: #cac3b3;
   padding: 0;
   overflow-y: scroll;
 }
@@ -143,10 +143,24 @@
 }
 
 .settings-content {
+  background-color: #cac3b3;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: auto;
+  height: 68vh;
+  width: 100vw;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  margin: 3rem;
+  background-color: #f0e8b8;
+  border: .01rem solid #cbc6a6;
+  border-radius: 1rem;
+  filter: drop-shadow(0 0 .5rem #807c63);
 }
 
 .verify-codes-content {
@@ -158,7 +172,6 @@
   width: 50vw;
   height: 30vh;
   padding: 1rem;
-  color: black;
   overflow: scroll;
 }
 
