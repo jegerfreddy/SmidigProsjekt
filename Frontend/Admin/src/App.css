@@ -34,23 +34,34 @@
 }
 
 .page-header {
-  background: white;
+  background-color: #e7cd9f;
   display: flex;
+  width: 100%;
   padding: 1.5rem;
   align-items: center;
   justify-content: start;
+  
+  position: relative;
 }
 
 .page-header-button-container {
-  margin: 1.5rem;
-  margin-top: 0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 1.5rem;
+  z-index: -1;
+  box-shadow: 0 5px 20px -4px rgba(0, 0, 0, 0.412);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .act-item, .edit-act-item {
   background-color: #f0e8b8;
   display: flex;
   flex-direction: column;
-  border: .01rem solid #807c63;
+  border: .01rem solid #cbc6a6;
   border-radius: 1rem;
   padding: 1.5rem;
   margin: 2rem;
@@ -59,8 +70,8 @@
 
 .act-list {
   padding: 0;
-  overflow-y: scroll;
-  background-color: #fcf9e4;
+  height: 100%;
+  background-color: #cac3b3;
 }
 
 .edit-event-list {
@@ -135,7 +146,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
+  height: auto;
+}
+
+.verify-codes-content {
+  background-color: #cac3b3;
+  height: 69vh;
+}
+
+.codes-container {
+  width: 50vw;
+  height: 30vh;
+  padding: 1rem;
+  color: black;
+  overflow: scroll;
 }
 
 .create-act-content {

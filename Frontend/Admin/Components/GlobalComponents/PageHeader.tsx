@@ -5,7 +5,7 @@ const PageHeader : FC<IPageHeader> = ({title, underTitle}) => {
 
     return (
         <div className="page-header">
-            <h1 className="display-5 mt-2" >{title}</h1>
+            <h2 className="display-5 mt-2" >{title}</h2>
             <p className="mt-4 ml-2 text-secondary">{underTitle}</p>
         </div>
     );

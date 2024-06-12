@@ -6,11 +6,13 @@ import { useEffect, useState } from "react";
 const GetVerificationCodesPage = () => {
 
     const [amount, setAmount] = useState<number>(1);
-    const [codesText, setCodesText] = useState<string>("");
+    const [codesText, setCodesText] = useState<string>();
     const [codeData, setCodeData] = useState<IGameCode[]>([]);
-    const [counter, setCounter] = useState<number>(0);
 
     const getCodes = (amount: number) => {
+
+        setCodesText("");
+        
 
         getGameCodes(amount)
             .then((data) => {
@@ -21,49 +23,47 @@ const GetVerificationCodesPage = () => {
         ;
     };
 
+    // This use effect trigger
     useEffect(() => {
 
-        codeData.map((obj: IGameCode) => {
+        if (codeData.length > 0) {
 
-            if (counter < 3) {
+            codeData.map((obj: IGameCode) => {
 
-                setCodesText(prev => prev + obj.code + " ");
-                setCounter(prev => prev + 1);
+                setCodesText( prevText =>  prevText + obj.code + " ");
+    
+            });
 
-            } else {
+        };
 
-                setCounter(0);
-                setCodesText(prev => prev + "\n" + obj.code + " ");
-
-            };
-        });
-    }, [codeData])
+    }, [codeData]);
 
     return (
         <>
-            <PageHeader title="Verification Codes |" underTitle="Verification codes are used to verify audience members when they connect to a game."/>
+            <div className="min-height-100">
+                <PageHeader title="Verification Codes |" underTitle="Verification codes are used to verify audience members when they connect to a game."/>
 
-            <div className="d-flex flex-column align-items-center">
+                <div className="verify-codes-content">
 
+                    <div className="d-flex flex-column align-items-center">
+                        <div className="p-3 d-flex flex-column align-items-center">
+                            <span className="d-flex flex-column align-items-center">
+                                <h3 className="display-4">Choose amount of codes to generate</h3>
+                                <p><i>default amount is 1 code.</i></p>
+                                <input onChange={(e) => {setAmount(parseInt(e.target.value))}} type="text" />
+                            </span>
 
-                <div className="d-flex flex-column align-items-center">
-                    <div className="p-3 d-flex flex-column">
-                        <span className="d-flex flex-column ">
-                            <p>Amount of codes to generate</p>
-                            <input onChange={(e) => {setAmount(parseInt(e.target.value))}} type="text" />
-                        </span>
+                            <button className="btn btn-primary mt-5  w-50" onClick={() => {getCodes(amount)}}>Fetch Codes</button>
+                        </div>
+                        
 
-                        <button className="btn btn-primary m-3" onClick={() => {getCodes(amount)}}>Fetch Codes</button>
+                        <div className="border border-dark rounded codes-container">
+                            <p>{codeData.length > 0 ? codesText : "Codes are pasted here..."}</p>
+                        </div>
+
                     </div>
-                    
-
-                    <div className="border border-dark p-3 rounded w-25">
-                        <p>{codesText}</p>
-                    </div>
-
-                </div>
                 
-
+                </div>
             </div>
         </>
     );

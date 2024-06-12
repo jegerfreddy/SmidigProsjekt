@@ -11,17 +11,19 @@ const ActOverviewPage = () => {
                 underTitle="A list of all exisiting acts."
             />
 
-            <div className="page-header-button-container">
+            <div className="page-header-button-container bg-dark">
                 <Link to="/newAct">
-                    <button>New Act</button>
+                    <button className="mr-3 bg-light text-dark"><p className="h5 m-0">Create Act</p></button>
                 </Link>
 
                 <Link to="/getCodes">
-                    <button>Generate Game Codes</button>
+                    <button className="mr-3 bg-light text-dark border">
+                        <p className="h5 m-0">Generate Verification Codes</p>
+                    </button>
                 </Link>
             </div>
 
-           <ActList></ActList>
+            <ActList></ActList>
         </>
     );
 }
