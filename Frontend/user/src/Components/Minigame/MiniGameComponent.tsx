@@ -37,7 +37,7 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = ({ yourTeam }) => {
     }
 
     // Send increment to backend
-    const ws = new WebSocket('ws://172.20.10.2:3000');
+    const ws = new WebSocket('ws://localhost:3000');
     ws.onopen = () => {
       ws.send(JSON.stringify({ type: 'INCREMENT_MINIGAME_COUNTER', color }));
       ws.close();
@@ -45,7 +45,7 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = ({ yourTeam }) => {
   };
 
   useEffect(() => {
-    const ws = new WebSocket('ws://172.20.10.2:3000');
+    const ws = new WebSocket('ws://localhost:3000');
 
     ws.onopen = () => {
       console.log('Connected to WebSocket server');

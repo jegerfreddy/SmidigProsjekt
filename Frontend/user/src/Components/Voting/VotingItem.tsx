@@ -12,7 +12,7 @@ const VotingItem: React.FC<VotingItemProps> = ({ event }) => {
   const [ws, setWs] = useState<WebSocket | null>(null);
 
   useEffect(() => {
-    const socket = new WebSocket('ws://172.20.10.2:3000');
+    const socket = new WebSocket('ws://localhost:3000');
     setWs(socket);
 
     socket.onopen = () => {

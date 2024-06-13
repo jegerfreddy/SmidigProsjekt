@@ -25,7 +25,7 @@ const AdminServerToUserPage: React.FC = () => {
   const { events, acts } = useContext(AdminContext) as IAdminContext;
 
   useEffect(() => {
-    const websocket = new WebSocket('ws://172.20.10.2:3000');
+    const websocket = new WebSocket('ws://localhost:3000');
 
     websocket.onopen = () => {
       console.log('Connected to WebSocket server');

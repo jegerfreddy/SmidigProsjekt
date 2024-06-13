@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const API_EXTERNAL_BASE_URL = 'http://172.20.10.2:8080/api';
+const API_EXTERNAL_BASE_URL = 'http://localhost:8080/api';
 
 const GetService = (controller) => {
     const getById = async (id) => {

@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/adminUser")
-@CrossOrigin(origins = {"http://172.20.10.2:5173", "http://172.26.91.248:3000"})
+@CrossOrigin(origins = {"http://localhost:5173", "http://172.26.91.248:3000"})
 public class AdminUserController {
 
     private final AdminUserService adminUserService;

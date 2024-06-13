@@ -180,14 +180,14 @@ const websocketServer = () => {
         console.log('Saving new vote:', newVote);
 
         try {
-            const result = await axios.post('http://172.20.10.2:4000/api/vote/new', newVote);
+            const result = await axios.post('http://localhost:4000/api/vote/new', newVote);
             console.log('New vote saved:', result.data);
         } catch (error) {
             console.error('Error occurred while saving vote:', error);
         }
     };
 
-    console.log('WebSocket server running on ws://172.20.10.2:3000');
+    console.log('WebSocket server running on ws://localhost:3000');
 };
 
 module.exports = websocketServer;

@@ -8,7 +8,7 @@ import { IWinner } from '../Interfaces/IWinner';
 import { IVertify } from '../Interfaces/IVertify';
 import { IFeedBack } from '../Interfaces/IFeedBack';
 
-const API_BASE_URL = 'http://172.20.10.2:4000/api';
+const API_BASE_URL = 'http://localhost:4000/api';
 
 const GetService = <T>(controller: string) => {
     const getById = async (id: number): Promise<{ item: T }> => {

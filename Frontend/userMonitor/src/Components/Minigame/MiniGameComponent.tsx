@@ -17,7 +17,7 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = () => {
   const yourUserID = Number(localStorage.getItem('yourUserID') || '0');
 
   useEffect(() => {
-    const ws = new WebSocket('ws://172.20.10.2:3000');
+    const ws = new WebSocket('ws://localhost:3000');
 
     ws.onopen = () => {
       console.log('Connected to WebSocket server');

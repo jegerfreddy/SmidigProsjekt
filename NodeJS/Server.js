@@ -14,13 +14,13 @@ const e = require('express');
 
 const app = express();
 const allowedOrigins = [
-    "http://172.20.10.2:5173",
-    "ws://172.20.10.2:5173",
-    "http://172.20.10.2:5174",
-    "ws://172.20.10.2:5174",
-    "http://172.20.10.2:5175",
-    "ws://172.20.10.2:5175",
-    "http://172.20.10.2:3000"
+    "http://localhost:5173",
+    "ws://localhost:5173",
+    "http://localhost:5174",
+    "ws://localhost:5174",
+    "http://localhost:5175",
+    "ws://localhost:5175",
+    "http://localhost:3000"
 ];
 
 app.use(cors({
@@ -133,7 +133,7 @@ app.get("/api/winningEvent/:actEventId/new", async (req, res) => {
         const  actEventId  = req.params.actEventId;
     
         try {
-            const response = await axios.get(`http://172.20.10.2:8080/api/actEvent/next/${actEventId}`);
+            const response = await axios.get(`http://localhost:8080/api/actEvent/next/${actEventId}`);
             res.status(200).json(response.data);
         } catch (error) {
             console.error("Error linking events:", error);
@@ -146,7 +146,7 @@ app.get("/api/actEvent/next/:actEventId/:option", async (req, res) => {
         const  option  = req.params.option;
     
         try {
-            const response = await axios.get(`http://172.20.10.2:8080/api/actEvent/next/${actEventId}/${option}`);
+            const response = await axios.get(`http://localhost:8080/api/actEvent/next/${actEventId}/${option}`);
             res.status(200).json(response.data);
         } catch (error) {
             console.error("Error linking events:", error);
@@ -159,7 +159,7 @@ app.put("/api/LinkEvent/next", async (req, res) => {
     const { actEventID, option, nextEventID } = req.body;
 
     try {
-        const response = await axios.put(`http://172.20.10.2:8080/api/actEvent/next/${actEventID}/${option}/${nextEventID}`);
+        const response = await axios.put(`http://localhost:8080/api/actEvent/next/${actEventID}/${option}/${nextEventID}`);
         res.status(200).json(response.data);
     } catch (error) {
         console.error("Error linking events:", error);
@@ -228,7 +228,7 @@ app.get("/api/adminUser/checkUsername/:id", async (req, res) => {
 
     try {
         
-        await axios.get(`http://172.20.10.2:8080/api/adminUser/checkUsername/${id}`)
+        await axios.get(`http://localhost:8080/api/adminUser/checkUsername/${id}`)
             .then((response) => {
                 res.send(response.data);
             })
@@ -247,7 +247,7 @@ app.post("/api/addNewAdmin", async (req, res) => {
 
     console.log(newAdmin);
 
-    await axios.post("http://172.20.10.2:8080/api/adminUser/new", newAdmin)
+    await axios.post("http://localhost:8080/api/adminUser/new", newAdmin)
         .then((response) => {
             if (response.status == 200) {
 
@@ -264,7 +264,7 @@ app.put("/api/updateAdmin", async (req, res) => {
 
     try {
         
-        axios.put("http://172.20.10.2:8080/api/adminUser/update", data);
+        axios.put("http://localhost:8080/api/adminUser/update", data);
 
     } catch (error) {
         
@@ -277,7 +277,7 @@ app.post("/api/loginAdmin", async (req, res) => {
 
     const data = req.body;
 
-    await axios.post('http://172.20.10.2:8080/api/adminUser/loginAdmin', data)
+    await axios.post('http://localhost:8080/api/adminUser/loginAdmin', data)
         .then((response) => {
                   
             res.send(JSON.stringify(response.data));
@@ -296,7 +296,7 @@ app.get("/api/getActs", async (req, res) => {
 
     try {
 
-        const dbRes = await axios.get("http://172.20.10.2:8080/api/act/all");
+        const dbRes = await axios.get("http://localhost:8080/api/act/all");
         res.send(dbRes.data);
 
     } catch (error) {
@@ -311,7 +311,7 @@ app.get("/api/getGameCodes/:amount", (req, res) => {
 
     const { amount } = req.params;
 
-    axios.get(`http://172.20.10.2:8080/api/verify/generate/${amount}`)
+    axios.get(`http://localhost:8080/api/verify/generate/${amount}`)
         .then((response) => {
             res.send(response.data);
         })
@@ -326,7 +326,7 @@ app.get("/api/getEvents", async (req, res) => {
 
     try {
 
-        const dbRes = await axios.get("http://172.20.10.2:8080/api/actEvent/all");
+        const dbRes = await axios.get("http://localhost:8080/api/actEvent/all");
         res.send(dbRes.data);
 
     } catch (error) {
@@ -341,7 +341,7 @@ app.get("/api/getAllEventsFromAct/:id", async (req, res) => {
 
     try {
 
-        const dbRes = await axios.get(`http://172.20.10.2:8080/api/actEvent/act/${id}`);
+        const dbRes = await axios.get(`http://localhost:8080/api/actEvent/act/${id}`);
         res.send(dbRes.data);
 
     } catch (error) {
@@ -357,7 +357,7 @@ app.post("/api/updateEvent", async (req, res) => {
 
     try {
 
-        await axios.put("http://172.20.10.2:8080/api/actEvent/update", data);
+        await axios.put("http://localhost:8080/api/actEvent/update", data);
         res.send();
 
     } catch (error) {
@@ -383,7 +383,7 @@ app.post("/api/feedback/new", async (req, res) => {
 
 const httpServer = app.listen(4000, () => {
 
-    console.log('HTTP server running on http://172.20.10.2:4000');
+    console.log('HTTP server running on http://localhost:4000');
 
 });
 
