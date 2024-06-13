@@ -39,6 +39,12 @@ public class AdminUserService {
 
     //update admin user
     public AdminUser updateAdminUser(AdminUser adminUser) {
+        AdminUser userToUpdate = adminUserRepository.findById(adminUser.getAdminID()).orElse(null);
+
+        if(adminUser.getUsername().equals(null) || adminUser.getUsername().equals("")){
+            adminUser.setUsername(userToUpdate.getUsername());
+        }
+
         return adminUserRepository.save(adminUser);
     }
 
