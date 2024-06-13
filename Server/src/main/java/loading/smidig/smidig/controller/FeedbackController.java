@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/feedback")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://172.20.10.2:5173")
 public class FeedbackController {
     private final FeedbackService feedbackService;
     private final UserService userService;

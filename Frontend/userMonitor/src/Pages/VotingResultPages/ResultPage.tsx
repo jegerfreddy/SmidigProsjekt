@@ -26,7 +26,7 @@ const ResultPage: React.FC<ResultPageProps> = ({ voteCountsClear, onClearProcess
   }, [voteCountsClear, onClearProcessed]);
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:3000');
+    const ws = new WebSocket('ws://172.20.10.2:3000');
 
     ws.onopen = () => {
       console.log('Connected to WebSocket server');
@@ -35,11 +35,17 @@ const ResultPage: React.FC<ResultPageProps> = ({ voteCountsClear, onClearProcess
     ws.onmessage = (message) => {
       const data = JSON.parse(message.data);
       if (data.type === 'VOTE_COUNTS') {
-        setVoteCounts(data.counts);
-        console.log('Received:', data);
+        setVoteCounts((prevCounts) => ({
+          ...prevCounts,
+          option1: prevCounts.option1 + data.counts.option1,
+          option2: prevCounts.option2 + data.counts.option2,
+          option3: prevCounts.option3 + data.counts.option3,
+          option4: prevCounts.option4 + data.counts.option4,
+        }));
       }
       if (data.type === 'WINNER') {
         console.log('Winner:', data.winner);
+        console.log('Navigate to break page');
       }
     };
 

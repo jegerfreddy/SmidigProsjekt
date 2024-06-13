@@ -5,7 +5,7 @@ import { IUser } from '../Interfaces/IUser';
 import { IResult } from '../Interfaces/IResult';
 import { IWinner } from '../Interfaces/IWinner';
 
-const API_BASE_URL = 'http://localhost:4000/api';
+const API_BASE_URL = 'http://172.20.10.2:4000/api';
 
 const GetService = <T>(controller: string) => {
     const getById = async (id: number): Promise<{ item: T }> => {
