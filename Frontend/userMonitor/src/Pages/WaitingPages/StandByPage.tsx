@@ -1,7 +1,5 @@
 import React from "react";
 
-/* StandBy - page when the teather is running */
-
 const StandByPage: React.FC = () => {
 
     return (

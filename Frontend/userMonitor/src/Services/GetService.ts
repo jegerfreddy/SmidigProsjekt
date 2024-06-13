@@ -39,7 +39,7 @@ const GetService = <T>(controller: string) => {
         }
     };
 
-        //Denne brukes til å hente avatarer som er valgt, skal vises i waitingLobby
+        
      const getAll = async (): Promise<{ items: IUser[] }> => {
         try {
             const result = await axios.get(`${API_BASE_URL}/${controller}/all`);

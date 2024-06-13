@@ -32,7 +32,7 @@ const ChooseUserNamePage: React.FC = () => {
                     className='userInput'
                     value={username}
                     onChange={handleInputChange}
-                    maxLength={15} // Restrict input to 15 characters
+                    maxLength={15} 
                 />
             </div>
 
@@ -40,7 +40,7 @@ const ChooseUserNamePage: React.FC = () => {
                 <button 
                     className={`pinButton ${username.length > 0 ? 'enabled' : 'disabled'}`}
                     onClick={createUserName}
-                    disabled={username.length === 0} // Disable button if username is empty
+                    disabled={username.length === 0} 
                 >
                     Fortsett
                 </button>

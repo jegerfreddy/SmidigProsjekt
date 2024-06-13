@@ -8,6 +8,6 @@ export type NodeData = {
     title: string;
     actID: number;
     options: (string | undefined)[];
-    width?: number; // Optional width property
-    height?: number; // Optional height property
+    width?: number; 
+    height?: number; 
   };

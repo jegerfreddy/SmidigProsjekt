@@ -15,11 +15,11 @@ const VertiyUserPage: React.FC = () => {
             try {
                 const result = await VerifyService.verifyUser(userId, code);
                 if (result) {
-                    // Handle true case
+                    
                     localStorage.setItem('yourUserID', userId);
                      navigate('/Waiting');
                 } else {
-                    // Handle false case
+                    
                      navigate('/');
                 }
             } catch (error) {

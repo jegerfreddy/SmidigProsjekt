@@ -36,7 +36,7 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = ({ yourTeam }) => {
         return;
     }
 
-    // Send increment to backend
+    
     const ws = new WebSocket('ws://localhost:3000');
     ws.onopen = () => {
       ws.send(JSON.stringify({ type: 'INCREMENT_MINIGAME_COUNTER', color }));

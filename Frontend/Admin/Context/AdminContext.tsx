@@ -48,7 +48,7 @@ export const AdminProvider: FC<Props> = ({ children }) => {
     const postUpdateEvent = async (updatedEvent: IEventItem) => {
         try {
             await updateEvent(updatedEvent);
-            await fetchData(); // This will update the state and localStorage
+            await fetchData(); 
         } catch (error) {
             console.error("Failed to update event:", error);
         }

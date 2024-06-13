@@ -1,11 +1,11 @@
 import { useState, useContext, useEffect, useCallback } from 'react';
 import { AdminContext } from '../Context/AdminContext';
 import { IAdminContext } from '../Interfaces/IAdminContext';
-import Flow from '../Components/Node/Flow'; // Adjust the import path as necessary
+import Flow from '../Components/Node/Flow'; 
 import { linkEvents } from '../Services/NodeService';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ConnectionData } from '../Interfaces/INode';
-import { ReactFlowProvider } from 'reactflow'; // Import ReactFlowProvider
+import { ReactFlowProvider } from 'reactflow'; 
 
 const handleSave = async (choices: ConnectionData[]) => {
   for (let i = 0; i < choices.length; i++) {
@@ -49,7 +49,7 @@ const LinkEventsPage = () => {
 
   const saveChoice = (parentId: number, optionId: number, selectedEventId: number) => {
     setChoices((prevChoices) => [...prevChoices, { parentId, optionId, selectedEventId }]);
-    console.log(`Saved choice: ${parentId}/${optionId}/${selectedEventId}`); // Log or save the choice as needed
+    console.log(`Saved choice: ${parentId}/${optionId}/${selectedEventId}`); 
   };
 
   const goToHomePage = () => {

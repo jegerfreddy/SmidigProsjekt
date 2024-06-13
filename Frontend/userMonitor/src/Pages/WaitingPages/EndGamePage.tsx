@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../App.css"; // Assuming you have a separate CSS file for styles
+import "../../App.css"; 
 
 const EndGamePage: React.FC = () => {
 

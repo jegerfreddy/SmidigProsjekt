@@ -19,7 +19,7 @@ const VotingList: React.FC<Props> = ({ actEventId }) => {
       try {
         const fetchedEvent = await ActEventService.getById(actEventId);
         if (fetchedEvent) {
-          setEvent(fetchedEvent); // Set the fetched event directly
+          setEvent(fetchedEvent); 
         } else {
           console.error("Event not found.");
         }

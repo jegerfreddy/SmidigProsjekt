@@ -21,7 +21,7 @@ import CustomNode from './Customnode';
 import { ConnectionData } from '../../Interfaces/INode';
 import { IEventItem } from '../../Interfaces/IEventItem';
 
-// Define nodeTypes outside the component
+
 const nodeTypes: NodeTypes = {
   custom: CustomNode,
 };

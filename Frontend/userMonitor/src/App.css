@@ -196,29 +196,7 @@ body {
 
 /*loading-logo*/
 
-/*Få den til å flytte seg ved rotering av skjerm*/
-/*.img-fluid {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    }
 
-@media (orientation: portrait) {
-    .img-fluid {
-        max-height: 50vh; 
-    }
-}
-
-@media (orientation: landscape) {
-    .img-fluid {
-        max-height: 40vh;
-    }
-}
-
-.timer {
-  font-size: 2rem;
-
-}*/
 
 /* pølse-bilde rotasjon */
 .rotate-20 {
@@ -357,7 +335,7 @@ body {
 /*CREDITS*/
 .credits-container {
     position: relative;
-    height: 60vh; /* Adjust based on your needs */
+    height: 60vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -389,23 +367,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #00b4aa; /* Adjust the color to match your design */
+  background-color: #00b4aa;
   padding: 10px 20px;
   border-radius: 20px;
   color: white;
   font-weight: bold;
   font-size: 20px;
-  width: 150px; /* Adjust the width as needed */
+  width: 150px;
 }
 
 .user-icon {
-  width: 20px; /* Adjust the size as needed */
+  width: 20px; 
   height: 20px;
   margin-right: 10px;
 }
 
 .user-count {
-  font-size: 20px; /* Adjust the size as needed */
+  font-size: 20px; 
 }
 
 /* qr code css */

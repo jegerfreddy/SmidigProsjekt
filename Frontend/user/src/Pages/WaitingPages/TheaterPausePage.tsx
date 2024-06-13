@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const TheaterPausePage: React.FC = () => {
-    const [seconds, setSeconds] = useState(10); // 15 min. setter den til 10 sek for nå. (15 x 60) for antall sekunder.
+    const [seconds, setSeconds] = useState(10); 
 
     useEffect(() => {
         if (seconds > 0) {

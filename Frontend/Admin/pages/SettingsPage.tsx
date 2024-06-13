@@ -20,14 +20,14 @@ const SettingsPage = () => {
 
     const checkUsernamAvailable = (username: string) => {
 
-        // Clears the timeout while the user is still typing so that we don't send
-        // (value.length) amount of axios calls.
+        
+        
         clearTimeout(timeout);
     
         if (username != "") {
 
-            // This timeout waits for 1,5 seconds after a username has been entered
-            // before it checks if its valid.
+            
+            
             timeout = setTimeout( async () => {
                 await axios.get(`http://localhost:4000/api/adminUser/checkUsername/${username}`)
                     .then((res) => {

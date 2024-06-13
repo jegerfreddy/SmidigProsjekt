@@ -2,32 +2,32 @@ import React, { useState, useEffect } from "react";
 import { IUser } from "../../Interfaces/IUser";
 import "../../App.css";
 import { UserService } from "../../Services/GetService";
-import userIcon from "../../assets/userIcon.png"; // Ensure you have the user icon in your assets
+import userIcon from "../../assets/userIcon.png"; 
 
 interface QrProps {
-    userCountFromSocket: number; // Add a prop for user count
+    userCountFromSocket: number; 
 }
 
 const QrPage: React.FC<QrProps> = ({userCountFromSocket}) => {
     const [avatars, setAvatars] = useState<{ avatarNumber: number, x: number, y: number }[]>([]);
     const [dots, setDots] = useState('');
-    const [setUserCount] = useState(0); // New state variable for user count
-    const userCount = userCountFromSocket; // Use the user count from the WebSocket
+    const [setUserCount] = useState(0); 
+    const userCount = userCountFromSocket; 
 
     useEffect(() => {
         const fetchUsers = async () => {
             try {
                 const result = await UserService.getAll();
                 console.log('Fetched users result:', result);
-                const users = result.items; // Access the nested items array
+                const users = result.items; 
                 const avatarNumbers = users
-                    .filter((user: IUser) => user.avatarNumber > 0) // Ignore avatars with avatarNumber 0
+                    .filter((user: IUser) => user.avatarNumber > 0) 
                     .map((user: IUser) => ({
                         avatarNumber: user.avatarNumber,
-                        x: Math.floor(Math.random() * 80) + 10, // Random x pos. from 10% to 90%
-                        y: Math.floor(Math.random() * 60) + 20 // Random y pos. from 20% to 80%
+                        x: Math.floor(Math.random() * 80) + 10, 
+                        y: Math.floor(Math.random() * 60) + 20 
                     }))
-                    .slice(0, 10); // Limit the number of avatars displayed
+                    .slice(0, 10); 
                 setAvatars(avatarNumbers);
             } catch (error) {
                 console.error('Error fetching users:', error);
@@ -36,12 +36,12 @@ const QrPage: React.FC<QrProps> = ({userCountFromSocket}) => {
 
         fetchUsers();
 
-        const movingDots = ['', '.', '..', '...', '....']; // Array for the dots animation
+        const movingDots = ['', '.', '..', '...', '....']; 
         let index = 0;
         const interval = setInterval(() => {
             setDots(movingDots[index]);
             index = (index + 1) % movingDots.length;
-        }, 500); // Update every 500ms
+        }, 500); 
 
         return () => clearInterval(interval);
     }, []);

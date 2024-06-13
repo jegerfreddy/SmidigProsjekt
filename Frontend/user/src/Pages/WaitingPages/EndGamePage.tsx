@@ -1,6 +1,6 @@
 import React from 'react';
 import PhoneInfo from "../../Components/Phone/PhoneInfo";
-import "../../App.css"; // Assuming you have a separate CSS file for styles
+import "../../App.css"; 
 
 const EndGamePage: React.FC = () => {
     const { orientation } = PhoneInfo();

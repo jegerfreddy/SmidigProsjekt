@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const CreateActItem = () => {
 
-    // Temproray interface to store created events before sending them
-    // to the database.
+    
+    
     interface ITempEvent {
         eventIndex: number,
         eventTitle: string | undefined,
@@ -86,7 +86,7 @@ const CreateActItem = () => {
         setOption3("");
         setOption4("");
 
-        // Temproraly stores created events incase user refreshed page, so that data is not lost.
+        
         localStorage.setItem("tempNewEvents", JSON.stringify(newEvents))
     
     };

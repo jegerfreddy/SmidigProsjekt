@@ -4,9 +4,9 @@ const axios = require('axios');
 const websocketServer = () => {
     const wss = new WebSocket.Server({ port: 3000 });
 
-    let gameState = 'START'; // Example game state
-    let actEventId = ''; // Example act event ID
-    let actId = ''; // Example act ID
+    let gameState = 'START'; 
+    let actEventId = ''; 
+    let actId = ''; 
     let miniGameRedCount = 0;
     let miniGamePurpleCount = 0;
     let miniGameBlueCount = 0;
@@ -63,7 +63,7 @@ const websocketServer = () => {
                         saveVote(data);
                         console.log('Vote from socket:', data);
                     }
-                    // Reset vote counts to 0 after handling the vote
+                    
                     voteCounts.option1 = 0;
                     voteCounts.option2 = 0;
                     voteCounts.option3 = 0;
@@ -83,7 +83,7 @@ const websocketServer = () => {
             broadcastUserCount();
         });
 
-        // Send initial game state and counts to new connections
+        
         ws.send(JSON.stringify({ type: 'GAME_STATE', state: gameState, actEventId, actId }));
         ws.send(JSON.stringify({ type: 'MINIGAME_COUNT', redCount: miniGameRedCount, purpleCount: miniGamePurpleCount, blueCount: miniGameBlueCount, greenCount: miniGameGreenCount }));
         ws.send(JSON.stringify({ type: 'VOTE_COUNTS', counts: voteCounts }));

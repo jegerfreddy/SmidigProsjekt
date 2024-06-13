@@ -10,7 +10,7 @@ const {
 } = require('./services/service');
 const e = require('express');
 
-// SETUP EXPRESS SERVER
+
 
 const app = express();
 const allowedOrigins = [
@@ -38,8 +38,8 @@ app.use(cors({
 app.use(express.json());
 
 
-//  SERVER ENDPOINTS
-// Endpoint for creating a new act and associated events
+
+
 app.post("/api/createAct", async (req, res) => {
     const { actName, events } = req.body;
 
@@ -52,7 +52,7 @@ app.post("/api/createAct", async (req, res) => {
     }
 });
 
-// Add user to database
+
 app.post("/api/user/new", async (req, res) => {
 
     const newUser = req.body;
@@ -71,7 +71,7 @@ app.post("/api/user/new", async (req, res) => {
     }
 });
 
-// HTTP endpoint for creating a new vote
+
 app.post("/api/vote/new", async (req, res) => {
 
     const newVote = req.body;
@@ -90,7 +90,7 @@ app.post("/api/vote/new", async (req, res) => {
     };
 });
 
-// HTTP endpoint for verifying a user
+
 app.post("/api/verify/:userId/:code", async (req, res) => {
 
     const { userId, code } = req.params;
@@ -109,7 +109,7 @@ app.post("/api/verify/:userId/:code", async (req, res) => {
     };
 });
 
-// HTTP endpoint for getting act event by ID
+
 app.get("/api/actEvent/id/:id", async (req, res) => {
 
     const { id } = req.params;
@@ -128,7 +128,7 @@ app.get("/api/actEvent/id/:id", async (req, res) => {
     };
 });
 
-// HTTP endpoint for event option with most votes
+
 app.get("/api/winningEvent/:actEventId/new", async (req, res) => {
         const  actEventId  = req.params.actEventId;
     
@@ -140,7 +140,7 @@ app.get("/api/winningEvent/:actEventId/new", async (req, res) => {
             res.status(500).json({ error: 'Failed to link events' });
         }
     });
-// HTTP endpoint for getting event of minigame winner
+
 app.get("/api/actEvent/next/:actEventId/:option", async (req, res) => {
         const  actEventId  = req.params.actEventId;
         const  option  = req.params.option;
@@ -154,7 +154,7 @@ app.get("/api/actEvent/next/:actEventId/:option", async (req, res) => {
         }
     });
 
-//HTTP endpoint for linking events
+
 app.put("/api/LinkEvent/next", async (req, res) => {
     const { actEventID, option, nextEventID } = req.body;
 
@@ -166,7 +166,7 @@ app.put("/api/LinkEvent/next", async (req, res) => {
         res.status(500).json({ error: 'Failed to link events' });
     }
 });
-// HTTP endpoint for getting result by ID
+
 app.get("/api/vote/percentage/id/:id", async (req, res) => {
 
     const { id } = req.params;
@@ -185,7 +185,7 @@ app.get("/api/vote/percentage/id/:id", async (req, res) => {
     }
 });
 
-// HTTP endpoint for getting winner by ID
+
 app.get("/api/vote/winner/id/:id", async (req, res) => {
 
     const { id } = req.params;
@@ -204,7 +204,7 @@ app.get("/api/vote/winner/id/:id", async (req, res) => {
     }
 });
 
-// HTTP endpoint for getting all users
+
 app.get("/api/user/all", async (req, res) => {
     
     try {
@@ -221,7 +221,7 @@ app.get("/api/user/all", async (req, res) => {
     }
 });
 
-// Additional endpoints
+
 app.get("/api/adminUser/checkUsername/:id", async (req, res) => {
     
     const { id } = req.params;
@@ -367,7 +367,7 @@ app.post("/api/updateEvent", async (req, res) => {
     };
 });
 
-// HTTP endpoint for creating new feedback
+
 app.post("/api/feedback/new", async (req, res) => {
     const newFeedback = req.body;
     try {
@@ -387,5 +387,5 @@ const httpServer = app.listen(4000, () => {
 
 });
 
-// Initialize WebSocket server
+
 websocketServer();

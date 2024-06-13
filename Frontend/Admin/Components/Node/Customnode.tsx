@@ -3,11 +3,11 @@ import { NodeData } from '../../Interfaces/INode';
 
 
 
-// Define the CustomNode component
+
 function CustomNode({ data }: NodeProps<NodeData>) {
   const containerStyle = {
-    width: data.width || 500, // Default width or custom width
-    height: data.height || 250, // Default height or custom height
+    width: data.width || 500, 
+    height: data.height || 250, 
   };
 
   return (

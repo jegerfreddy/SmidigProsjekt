@@ -23,7 +23,7 @@ const GetVerificationCodesPage = () => {
         ;
     };
 
-    // This use effect trigger
+    
     useEffect(() => {
 
         if (codeData.length > 0) {

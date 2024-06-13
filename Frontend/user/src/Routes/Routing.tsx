@@ -30,7 +30,7 @@ const Routing: React.FC = () => {
 
     ws.onopen = () => {
       console.log('Connected to WebSocket server');
-      // Only this component sends the USER_CONNECTED message
+      
       ws.send(JSON.stringify({ type: 'USER_CONNECTED' }));
     };
 

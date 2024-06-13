@@ -19,7 +19,7 @@ const LoginPage : FC<ILoginPage> = ({setLoginValid}) => {
             
         await axios.post("http://localhost:4000/api/loginAdmin", data)
 
-            // This block of code is executed on fulfilled promise
+            
             .then((response) => {
     
                 setLoginValid(true);
@@ -28,7 +28,7 @@ const LoginPage : FC<ILoginPage> = ({setLoginValid}) => {
  
             })
 
-            // This block of code is executed on rejected promise
+            
             .catch((response) => {
 
                 setShowError(true)

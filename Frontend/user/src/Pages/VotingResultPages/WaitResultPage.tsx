@@ -15,7 +15,7 @@ const WaitResultPage: React.FC = () => {
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-                const fetchedResult = await WinnerService.getById(Number(actEventId)); // Convert actEventId to number
+                const fetchedResult = await WinnerService.getById(Number(actEventId)); 
 
                 if (fetchedResult) {
                     setResult(fetchedResult);

@@ -32,7 +32,7 @@ const ResultList: React.FC<Props> = ({ actEventId }) => {
     };
 
     fetchEvent();
-  }, [getById, actEventId]); // Include actEventId in the dependency array
+  }, [getById, actEventId]); 
 
   if (error) {
     return <div>{error}</div>;

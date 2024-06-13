@@ -11,7 +11,7 @@ const FeedBackPage: React.FC = () => {
     const [rating, setRating] = useState<number>(0);
     const userID = Number(localStorage.getItem('yourUserID') || '0');  
     const { actId } = useParams<{ actId: string }>();
-    const actID = Number(actId); // Convert actId from params to a number
+    const actID = Number(actId); 
     const navigate = useNavigate();
 
     const handleClick = (value: number) => {
@@ -37,7 +37,7 @@ const FeedBackPage: React.FC = () => {
                     <button 
                         className={`btn btn-primary btn-lg ${rating === 0 ? 'disabled' : ''}`}
                         onClick={() => handleSubmit({ userID, rating, actID })}
-                        disabled={rating === 0} // Knappen er "grå" før stjerne velges.
+                        disabled={rating === 0} 
                     >
                         Submit Feedback
                     </button>
