@@ -17,7 +17,7 @@ const Routing: React.FC = () => {
   const [voteCountsClear, setVoteCountsClear] = useState(false);
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:3000');
+    const ws = new WebSocket('ws://172.20.10.2:3000');
 
     ws.onopen = () => {
       console.log('Connected to WebSocket server');
@@ -25,7 +25,6 @@ const Routing: React.FC = () => {
 
     ws.onmessage = (message) => {
       const data = JSON.parse(message.data);
-      console.log('Received:', data);
 
       switch (data.type) {
         case 'GAME_STATE':
@@ -35,7 +34,6 @@ const Routing: React.FC = () => {
           setUserCount(data.userCount);
           break;
         default:
-          console.log('Unknown message type:', data.type);
       }
     };
 
@@ -58,6 +56,7 @@ const Routing: React.FC = () => {
         navigate('/');
         break;
       case 'VOTING':
+        setVoteCountsClear(true);
         navigate('/result/' + actEventId);
         break;
       case 'RESULT':
@@ -77,6 +76,10 @@ const Routing: React.FC = () => {
         break;
       case 'CLEAR_VOTES':
         setVoteCountsClear(true);
+        break;
+      case 'MINIGAME_WINNER_RESULT' :
+         navigate('/tie/' + actEventId);
+         console.log('Winner reuslt i switchacse');
         break;
       default:
         console.log('Unknown game state:', state);

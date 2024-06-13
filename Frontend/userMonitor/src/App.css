@@ -295,6 +295,10 @@ body {
   background-color: #BF6A06;
 }
 
+.option-tiePage-bg-red {
+  background-color: #D60005 ;
+}
+
 .btn-primary {
     padding: 10px 20px;
     font-size: 1.25rem;

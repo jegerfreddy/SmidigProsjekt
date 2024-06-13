@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { act, useContext, useEffect, useState } from 'react';
 import { IAdminContext } from '../Interfaces/IAdminContext';
 import { AdminContext } from '../Context/AdminContext';
 import { useLocation } from 'react-router-dom';
 import { Button, Container, Grid, Typography, Box, CircularProgress, Card, CardContent } from '@mui/material';
-import { getMiniGameWinnerEvent, getWinner } from '../Services/NodeService';
+import { checkTie, getMiniGameWinnerEvent, getWinner } from '../Services/NodeService';
 
 const AdminServerToUserPage: React.FC = () => {
   const location = useLocation();
@@ -20,11 +20,12 @@ const AdminServerToUserPage: React.FC = () => {
   const [winner, setWinner] = useState('');
   const [ws, setWs] = useState<WebSocket | null>(null);
   const [loading, setLoading] = useState(false);
+  const [voteTie, setVoteTie] = useState(false);
 
   const { events, acts } = useContext(AdminContext) as IAdminContext;
 
   useEffect(() => {
-    const websocket = new WebSocket('ws://localhost:3000');
+    const websocket = new WebSocket('ws://172.20.10.2:3000');
 
     websocket.onopen = () => {
       console.log('Connected to WebSocket server');
@@ -76,7 +77,6 @@ const AdminServerToUserPage: React.FC = () => {
 
   const sendCommand = (command: string, actEventId: string, actId: string) => {
     if (ws) {
-      setLoading(true);
       ws.send(JSON.stringify({ type: 'CHANGE_GAME_STATE', state: command, actEventId, actId }));
     } else {
       console.error('WebSocket connection is not open');
@@ -91,13 +91,13 @@ const AdminServerToUserPage: React.FC = () => {
         setLoading(false);
         break;
       case 'VOTING':
-        handleGetWinningEvent(actEventId);
-        sendCommand(command, actEventId, actId);
         setLoading(false);
+        handleGetTiedVoteEvent(actEventId);
         break;
       case 'MINIGAME':
         handleGetWinningEvent(actEventId);
         sendCommand(command, actEventId, actId);
+        setLoading(false);
         break;
       case 'PAUSE':
         sendCommand(command, actEventId, actId);
@@ -111,7 +111,13 @@ const AdminServerToUserPage: React.FC = () => {
         sendCommand(command, actEventId, actId);
         setLoading(false);
         break;
+      case 'MINIGAME_WINNER_RESULT' :
+        sendCommand(command, actEventId, actId);
+        console.log('switchcase minigame result');
+        setLoading(false);
+        break;
       default:
+        setLoading(false);
         break;
     }
   };
@@ -119,14 +125,33 @@ const AdminServerToUserPage: React.FC = () => {
   const handleGetWinningEvent = async (actEventId: string) => {
     try {
       const result = await getWinner(actEventId);
-      if (result.acteventID) {
+      console.log('Winner event ID:', result);
         setActEventId(result.acteventID);
+        let command = 'VOTING'
+        actEventId = result.acteventID;
+        sendCommand(command, actEventId, actId);
+    } catch (error) {
+      console.error('Error getting winning event:', error);
+    }
+  };
+  const handleGetTiedVoteEvent = async (actEventId: string) => {
+    try {
+      const result = await checkTie(actEventId);
+      console.log('checking tie or not:', result);
+      if (result.length > 1) {
+        setVoteTie(true);
+        console.log(result.length, 'tied i if');
+      } else if (Array.isArray(result) && result.length === 1 && result[0] === -1) {
+        console.log(result.length, 'tied i else');
+        setVoteTie(false);
+        setLoading(false);
+        let command = 'VOTING'
+        sendCommand(command, actEventId, actId);
       } else {
-        setActEventId(actEventId);
+        handleGetWinningEvent(actEventId);
       }
     } catch (error) {
-      setActEventId(actEventId);
-    }
+      console.error('Error getting tied vote event:', error);}
   };
 
   const handleMiniGameWinner = async (winner: string, actEventId: string) => {
@@ -153,9 +178,10 @@ const AdminServerToUserPage: React.FC = () => {
     try {
       const result = await getMiniGameWinnerEvent(option, actEventId);
       console.log('Mini game winner event ID:', result);
-      if (result.acteventID) {
         setActEventId(result.acteventID);
-      }
+        handleButtonClick('MINIGAME_WINNER_RESULT');
+        setVoteTie(false);
+      
     } catch (error) {
       console.error('Error getting mini game winner event:', error);
     }
@@ -224,9 +250,9 @@ const AdminServerToUserPage: React.FC = () => {
             sx={{ backgroundColor: '#1976d2', '&:hover': { backgroundColor: '#115293' } }}
             fullWidth
             onClick={() => handleButtonClick('VOTING')}
-            disabled={loading}
+            disabled={voteTie}
           >
-            {loading ? <CircularProgress size={24} /> : 'Start Voting'}
+            {voteTie ? <CircularProgress size={24} /> : 'Start Voting'}
           </Button>
         </Grid>
         <Grid item xs={6} md={4}>

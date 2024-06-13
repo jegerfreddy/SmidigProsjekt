@@ -126,15 +126,31 @@ const websocketServer = () => {
         if (miniGameRedCount >= 100) {
             broadcastMiniGameWinner('red');
             resetMiniGame();
+            gameState = 'MINIGAME_WINNER_RESULT';
+            actEventId = '1';
+            actId = '0'
+            broadcastGameState(gameState, actEventId, actId);
         } else if (miniGamePurpleCount >= 100) {
             broadcastMiniGameWinner('purple');
             resetMiniGame();
+            gameState = 'MINIGAME_WINNER_RESULT';
+            actEventId = '2';
+            actId = '0'
+            broadcastGameState(gameState, actEventId, actId);
         } else if (miniGameBlueCount >= 100) {
             broadcastMiniGameWinner('blue');
             resetMiniGame();
+            gameState = 'MINIGAME_WINNER_RESULT';
+            actEventId = '3';
+            actId = '0'
+            broadcastGameState(gameState, actEventId, actId);
         } else if (miniGameGreenCount >= 100) {
             broadcastMiniGameWinner('green');
             resetMiniGame();
+            gameState = 'MINIGAME_WINNER_RESULT';
+            actEventId = '4';
+            actId = '0'
+            broadcastGameState(gameState, actEventId, actId);
         }
     };
 
@@ -164,14 +180,14 @@ const websocketServer = () => {
         console.log('Saving new vote:', newVote);
 
         try {
-            const result = await axios.post('http://localhost:4000/api/vote/new', newVote);
+            const result = await axios.post('http://172.20.10.2:4000/api/vote/new', newVote);
             console.log('New vote saved:', result.data);
         } catch (error) {
             console.error('Error occurred while saving vote:', error);
         }
     };
 
-    console.log('WebSocket server running on ws://localhost:3000');
+    console.log('WebSocket server running on ws://172.20.10.2:3000');
 };
 
 module.exports = websocketServer;

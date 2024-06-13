@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/verify")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://172.20.10.2:5173")
 public class VerificationCodeController {
     private final VerificationCodeService verificationCodeService;
 

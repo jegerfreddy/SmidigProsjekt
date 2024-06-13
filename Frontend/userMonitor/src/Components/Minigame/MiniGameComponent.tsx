@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface MiniGameBaloonsProps {
   yourTeam: string | null;
 }
 
 const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = () => {
+  const navigate = useNavigate();
   const yourTeam = '5';
   const [redValue, setRedValue] = useState(0);
   const [purpleValue, setPurpleValue] = useState(0);
@@ -13,10 +15,9 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = () => {
   const [winner, setWinner] = useState<string | null>(null);
 
   const yourUserID = Number(localStorage.getItem('yourUserID') || '0');
-  console.log('Your user ID:', yourUserID);
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:3000');
+    const ws = new WebSocket('ws://172.20.10.2:3000');
 
     ws.onopen = () => {
       console.log('Connected to WebSocket server');
@@ -24,7 +25,6 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = () => {
 
     ws.onmessage = (message) => {
       const data = JSON.parse(message.data);
-      console.log('Received:', data);
 
       if (data.type === 'MINIGAME_COUNT') {
         setRedValue(data.redCount);
@@ -32,11 +32,13 @@ const MiniGameBaloons: React.FC<MiniGameBaloonsProps> = () => {
         setBlueValue(data.blueCount);
         setGreenValue(data.greenCount);
       } else if (data.type === 'WINNER') {
+        console.log('navigate to break page from component')
         setWinner(data.winner);
         setRedValue(0);
         setPurpleValue(0);
         setBlueValue(0);
         setGreenValue(0);
+        navigate('/Break');
       }
     };
 
