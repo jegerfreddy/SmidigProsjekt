@@ -86,13 +86,14 @@ const SettingsPage = () => {
     const addNewUser = () => {
 
         if (usernameAvailable && (newPassword == newConfirmPassword)) {
+
             const newAdmin = {
                 username: newUsername,
                 password: newPassword
             };
     
             addNewAdmin(newAdmin);
-        }
+        };
     };
 
     const handleSave = () => {
